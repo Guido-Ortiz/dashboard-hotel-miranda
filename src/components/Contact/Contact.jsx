@@ -1,8 +1,13 @@
 import React from 'react'
+import Sidebar from '../Sidebar/Sidebar'
+import Topbar from '../Topbar/Topbar'
 
 const Contact = () => {
   return (
-    <div>Contact</div>
+    <>
+      <Topbar title='Contact'/>
+      <Sidebar />
+    </>
   )
 }
 

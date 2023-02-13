@@ -1,8 +1,13 @@
 import React from 'react'
+import Sidebar from '../Sidebar/Sidebar'
+import Topbar from '../Topbar/Topbar'
 
 const Rooms = () => {
   return (
-    <div>Rooms</div>
+    <>
+      <Topbar title='Rooms' />
+      <Sidebar />
+    </>
   )
 }
 

@@ -1,8 +1,13 @@
 import React from 'react'
+import Sidebar from '../Sidebar/Sidebar'
+import Topbar from '../Topbar/Topbar'
 
 const Users = () => {
   return (
-    <div>Users</div>
+    <>
+      <Topbar title='Users' />
+      <Sidebar />
+    </>
   )
 }
 

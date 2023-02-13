@@ -20,13 +20,13 @@ const Header = ({ title }) => {
   return (
     <HeaderWrapper>
         <div>
-            <MenuOpenIcon sx={{fontSize: 40}} />
+            <MenuOpenIcon sx={{fontSize: 30}} />
             <h2>{title}</h2>
         </div>
         <IconsContainer>
-            <EmailIcon sx={{fontSize: 40}} />
-            <NotificationsNoneIcon sx={{fontSize: 40}} />
-            <LogoutIcon sx={{fontSize: 40}} onClick={handleLogout} />
+            <EmailIcon sx={{fontSize: 30}} />
+            <NotificationsNoneIcon sx={{fontSize: 30}} />
+            <LogoutIcon sx={{fontSize: 30}} onClick={handleLogout} />
         </IconsContainer>
     </HeaderWrapper>
   )
