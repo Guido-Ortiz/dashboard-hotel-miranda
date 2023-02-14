@@ -1,15 +1,13 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-// import { useNavigate } from 'react-router';
+
 import Sidebar from '../Sidebar/Sidebar';
-
 import Topbar from '../Topbar/Topbar'
-import { DashboardWrapper } from './DashboardStyles';
-import KPIs from './KPIs/KPIs';
+import Dashboard from './Dashboard/Dashboard';
 
-import bookings from '../../data/bookings.json';
+import { DashboardWrapper } from './DashboardPageStyles';
 
-const Dashboard = () => {
+const DashboardPage = () => {
 
   const sidebar = useSelector(state => state.sidebar)
 
@@ -18,10 +16,12 @@ const Dashboard = () => {
       <Topbar title='Dashboard' />
       <DashboardWrapper>
         {sidebar && <Sidebar />}
-        <KPIs />
+        <Dashboard />
       </DashboardWrapper>
+
+      {/*  */}
     </>
   )
 }
 
-export default Dashboard
+export default DashboardPage

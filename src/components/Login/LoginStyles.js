@@ -12,7 +12,7 @@ export const LoginWrapper = styled.div `
 export const AsideContainer = styled.div `
     // border: 1px solid green;
     height: 100%;
-    width: 40%;
+    width: 50%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -58,7 +58,7 @@ export const AsideContainer = styled.div `
 export const LoginContainer = styled.div `
     // border: 1px solid red;
     height: 100vh;
-    width: 60%;
+    width: 50%;
     display: flex;
     flex-direction: column;
     align-items: center;

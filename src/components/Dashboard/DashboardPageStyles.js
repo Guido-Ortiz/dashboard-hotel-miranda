@@ -7,4 +7,6 @@ export const DashboardWrapper = styled.div `
     align-items: flex-start;
     justify-content: flex-start;
     background: #f8f8f8;
+    width: 100vw;
+    // width: 70vw !important;
 `;

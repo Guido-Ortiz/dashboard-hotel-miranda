@@ -1,8 +1,9 @@
 import styled from "styled-components";
 
 export const SidebarWrapper = styled.div `
-    // border: 1px solid gold;
+    // border: 1px solid black;
     background: #ffffff;
-    width: 345px;
-    height: 400px;
+    width: 18vw;
+    height: 450px;
+    // margin-right: 2px;
 `;

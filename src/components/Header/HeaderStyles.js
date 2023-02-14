@@ -13,6 +13,10 @@ export const HeaderWrapper = styled.div `
         // border: 1px solid red;
         color: #393939;
         margin-right: 30px;
+
+        &:hover {
+            cursor: pointer;
+        }
     }
 
     h2 {
@@ -37,5 +41,9 @@ export const IconsContainer = styled.div `
 
     svg {
         color: #135846;
+    }
+
+    &:hover {
+        cursor: pointer;
     }
 `;

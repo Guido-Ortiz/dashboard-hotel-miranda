@@ -3,6 +3,7 @@ import styled from "styled-components";
 export const ItemWrapper = styled.div`
     // border: 1px solid orange;
     height: 57px;
+    // width: 100%;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -24,16 +25,16 @@ export const ItemWrapper = styled.div`
         opacity: 1;
     }
     &:active {
-        color: red;
-        border-left: 2px solid red;
+        color: #E23428;
+        border-left: 2px solid #E23428;
     }
     &:focus {
-        color: red;
-        border-left: 2px solid red;
+        color: #E23428;
+        border-left: 2px solid #E23428;
     }
     &:hover {
-        color: red;
-        border-left: 2px solid red;
+        color: #E23428;
+        border-left: 2px solid #E23428;
     }
     
 `;

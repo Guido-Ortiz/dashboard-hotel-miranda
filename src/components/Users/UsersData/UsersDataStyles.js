@@ -6,11 +6,11 @@ export const Wrapper = styled.div `
     flex-direction: column;
     align-items: flex-start;
     justify-content: flex-start;
-    width: 100%;
+    width: 82vw;
 `;
 
 export const FilterWrapper = styled.div `
-    border: 1px solid red;
+    // border: 1px solid red;
     width: 90%;
     padding: 5px;
     display: flex;

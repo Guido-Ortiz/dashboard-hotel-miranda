@@ -1,9 +1,9 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
 import Booking from './components/Booking/Booking';
-import Bookings from './components/Bookings/Bookings';
+import BookingsPage from './components/Bookings/BookingsPage';
 import Contact from './components/Contact/Contact';
-import Dashboard from './components/Dashboard/Dashboard';
+import DashboardPage from './components/Dashboard/DashboardPage';
 import Login from './components/Login/Login';
 import Room from './components/Room/Room';
 import RoomForm from './components/Room/RoomForm/RoomForm';
@@ -24,11 +24,11 @@ function App() {
           <Route path='/' element={<ProtectedRoutes />}>
 
             {/* DASHBOARD */}
-            <Route path='/' element={<Dashboard />} />
+            <Route path='/' element={<DashboardPage />} />
 
             {/* BOOKINGS */}
             <Route path='bookings'>
-              <Route path='' element={<Bookings />} />
+              <Route path='' element={<BookingsPage />} />
               <Route path=':booking_id' element={<Booking />} />
             </Route>
 
