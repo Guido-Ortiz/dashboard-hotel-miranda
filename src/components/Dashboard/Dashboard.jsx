@@ -4,6 +4,10 @@ import { useSelector } from 'react-redux';
 import Sidebar from '../Sidebar/Sidebar';
 
 import Topbar from '../Topbar/Topbar'
+import { DashboardWrapper } from './DashboardStyles';
+import KPIs from './KPIs/KPIs';
+
+import bookings from '../../data/bookings.json';
 
 const Dashboard = () => {
 
@@ -12,7 +16,10 @@ const Dashboard = () => {
   return (
     <>
       <Topbar title='Dashboard' />
-      {sidebar && <Sidebar />}
+      <DashboardWrapper>
+        {sidebar && <Sidebar />}
+        <KPIs />
+      </DashboardWrapper>
     </>
   )
 }

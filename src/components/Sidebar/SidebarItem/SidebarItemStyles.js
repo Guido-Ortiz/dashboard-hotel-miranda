@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const ItemWrapper = styled.div`
-    border: 1px solid orange;
+    // border: 1px solid orange;
     height: 57px;
     display: flex;
     flex-direction: row;
@@ -13,6 +13,7 @@ export const ItemWrapper = styled.div`
 
     svg {
         margin-right: 20px
+       
     }
 
     h4 {
@@ -22,4 +23,17 @@ export const ItemWrapper = styled.div`
         color: #799283;
         opacity: 1;
     }
+    &:active {
+        color: red;
+        border-left: 2px solid red;
+    }
+    &:focus {
+        color: red;
+        border-left: 2px solid red;
+    }
+    &:hover {
+        color: red;
+        border-left: 2px solid red;
+    }
+    
 `;

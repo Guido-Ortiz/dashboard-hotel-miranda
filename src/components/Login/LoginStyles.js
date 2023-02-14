@@ -40,13 +40,17 @@ export const AsideContainer = styled.div `
     }
 
     div {
-        border: 1px solid red;
+        // border: 1px solid red;
         width: 100%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
 
         img {
-            border: 1px solid fuchsia;
+            // border: 1px solid fuchsia;
             text-align: center;
-            width: 30%;
+            width: 50%;
         }
     }
 `;
