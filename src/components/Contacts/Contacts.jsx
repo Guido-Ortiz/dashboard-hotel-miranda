@@ -1,5 +1,6 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
+import { DashboardWrapper, RightContainer } from '../Dashboard/DashboardStyles'
 import Sidebar from '../Sidebar/Sidebar'
 import Topbar from '../Topbar/Topbar'
 
@@ -8,7 +9,15 @@ const Contact = () => {
   return (
     <>
       <Topbar title='Contact' />
-      {sidebar && <Sidebar />}
+      <DashboardWrapper>
+
+        {sidebar && <Sidebar />}
+
+        <RightContainer>
+          <h3>Latest reviews by customers</h3>
+        
+        </RightContainer>
+      </DashboardWrapper>
     </>
   )
 }

@@ -1,9 +1,9 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
-import { DashboardWrapper } from '../Dashboard/DashboardPageStyles'
+import { DashboardWrapper, RightContainer } from '../Dashboard/DashboardStyles'
 import Sidebar from '../Sidebar/Sidebar'
 import Topbar from '../Topbar/Topbar'
-import Bookings from './Bookings/Bookings'
+
 
 const BookingsPage = () => {
 
@@ -13,7 +13,11 @@ const BookingsPage = () => {
       <Topbar title='Bookings' />
       <DashboardWrapper>
         {sidebar && <Sidebar />}
-        <Bookings />
+
+        <RightContainer>
+          <h1>Bookings</h1>
+        </RightContainer>
+        
       </DashboardWrapper>
     </>
   )

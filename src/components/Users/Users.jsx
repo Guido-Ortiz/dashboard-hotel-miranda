@@ -1,6 +1,6 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
-import { DashboardWrapper } from '../Dashboard/DashboardPageStyles'
+import { DashboardWrapper, RightContainer } from '../Dashboard/DashboardStyles'
 import Sidebar from '../Sidebar/Sidebar'
 import Topbar from '../Topbar/Topbar'
 import UsersData from './UsersData/UsersData'
@@ -12,7 +12,10 @@ const Users = () => {
       <Topbar title='Users' />
       <DashboardWrapper>
         {sidebar && <Sidebar />}
-        <UsersData />
+
+        <RightContainer>
+          <UsersData />
+        </RightContainer>
       </DashboardWrapper>
     </>
   )

@@ -1,10 +1,10 @@
-import React from 'react'
-import { ActiveBtn, DescriptionText, Email, InactiveBtn, UserContainer } from './UserStyles'
+import React from 'react';
+import { ActiveBtn, DescriptionText, Email, InactiveBtn, UserContainer } from './UserStyles';
 
 const User = ({ id, name, photo, email, start, description, contact, status }) => {
   return (
     <UserContainer>
-        <img src={photo} alt='Profile picture' />
+        <img src={photo} alt='Profile user' />
         <div>
             <h3>{name}</h3>
             <h4>#{id}</h4>

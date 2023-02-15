@@ -1,12 +1,12 @@
 import styled from "styled-components";
 
 export const Wrapper = styled.div `
-    border: 1px solid fuchsia;
+    // border: 1px solid fuchsia;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     justify-content: flex-start;
-    width: 82vw;
+    width: 100%;
 `;
 
 export const FilterWrapper = styled.div `
