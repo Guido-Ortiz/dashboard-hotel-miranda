@@ -1,8 +1,21 @@
-import React from 'react'
+import React from 'react';
+import { reviewsData } from '../../../data/reviewsData';
+import { SliderItemPeople, SliderItemWrapper } from './SwiperItemStyle';
 
-const SwiperItem = () => {
+const SwiperItem = ({ id, review, date, hour, name, email, telephone, matter, archive }) => {
+  
   return (
-    <div>SwiperItem</div>
+    <SliderItemWrapper>
+      <h4>{matter}</h4>
+      <p>{review}</p>
+      <SliderItemPeople>
+        <div>
+          <h5>{name}</h5>
+          <h5>{email}</h5>
+        </div>
+        <h6>Posted on {date}</h6>
+      </SliderItemPeople>
+    </SliderItemWrapper>
   )
 }
 

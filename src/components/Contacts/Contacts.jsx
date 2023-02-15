@@ -2,7 +2,9 @@ import React from 'react'
 import { useSelector } from 'react-redux'
 import { DashboardWrapper, RightContainer } from '../Dashboard/DashboardStyles'
 import Sidebar from '../Sidebar/Sidebar'
+import Swiper from '../Swiper/Swiper'
 import Topbar from '../Topbar/Topbar'
+import { SwiperContainer } from './ContactsStyles'
 
 const Contact = () => {
   const sidebar = useSelector(state => state.sidebar)
@@ -14,8 +16,11 @@ const Contact = () => {
         {sidebar && <Sidebar />}
 
         <RightContainer>
-          <h3>Latest reviews by customers</h3>
-        
+
+          <SwiperContainer>
+            <Swiper />
+          </SwiperContainer>
+          
         </RightContainer>
       </DashboardWrapper>
     </>

@@ -44,3 +44,29 @@ export const UserDataContainer = styled.div `
     // border: 1px solid red;
 
 `;
+
+export const UserImage = styled.img `
+    border: 1px solid red;
+    width: 50%;
+    height: 50%;
+`;
+
+export const UserData = styled.div `
+    border: 1px solid red;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    // margin: 0 auto;
+    height: 90px;
+
+    h4 {
+        border: 1px solid fuchsia;
+        margin: 0;
+    }
+
+    h5 {
+        border: 1px solid blue;
+        margin: 0;
+    }
+`;
