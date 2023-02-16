@@ -14,34 +14,41 @@ const columns = [
   {
     name: "ID",
     selector: (row) => row.id,
-    sortable: true
+    sortable: true,
+    width: '70px'
   },
   {
     name: "Date",
     selector: (row) => row.date,
-    sortable: true
+    sortable: true,
+    width: '190px'
   },
   {
     name: "Customer",
     selector: (row) => row.customer,
-    sortable: true
+    sortable: true,
+    width: '130px'
   },
   {
     name: "Email",
     selector: (row) => row.email,
+    width: '150px'
   },
   {
     name: "Telephone",
     selector: (row) => row.telephone,
+    width: '150px'
   },
   {
     name: "Comment",
-    selector: (row) => row.comment,
-    sortable: true
+    selector: (row) => <p>{row.comment}</p>,
+    sortable: true,
+    width: '30%',
   },
   {
     name: "Archived",
     selector: (row) => <ArchiveIcon sx={{color: '#135846'}} />,
+    width: '100px'
   },
 ]
 
@@ -61,7 +68,7 @@ const Contact = () => {
 
         {sidebar && <Sidebar />}
 
-        <RightContainer>
+        <RightContainer  style={{border: '1px solid fuchsia'}}>
 
           <SwiperContainer>
             <Swiper />

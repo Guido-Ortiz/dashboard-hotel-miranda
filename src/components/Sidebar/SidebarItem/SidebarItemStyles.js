@@ -26,15 +26,15 @@ export const ItemWrapper = styled.div`
     }
     &:active {
         color: #E23428;
-        border-left: 2px solid #E23428;
+        border-left: 3px solid #E23428;
     }
     &:focus {
         color: #E23428;
-        border-left: 2px solid #E23428;
+        border-left: 3px solid #E23428;
     }
     &:hover {
         color: #E23428;
-        border-left: 2px solid #E23428;
+        border-left: 3px solid #E23428;
     }
     
 `;

@@ -1,25 +1,24 @@
 import styled from "styled-components";
 
 export const SwiperContainer = styled.div `
-    border: 1px solid red;
+    // border: 1px solid red;
 `;
 
 export const TableContactsContainer = styled.div `
-    border: 1px solid red
-    width: 90%;
-    margin: 10px
+    border: 1px solid blue;
+    width: 1000px;
+    margin: 0 auto;
 `;
 
 export const customStyles = {
     rows: {
         style: {
-            height: '100px', // override the row height
-            margin: '5px 0'
+            height: '70px', // override the row height
         },
     },
     headCells: {
         style: {
-            // border: '1px solid red',
+            border: '1px solid red',
             letterSpacing: '1px'
         },
     },
