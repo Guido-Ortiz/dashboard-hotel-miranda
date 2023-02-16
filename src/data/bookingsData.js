@@ -3,8 +3,8 @@ export const bookingsData = [
     id: 1,
     client: "Ivette Aubery",
     photo: "https://travl.dexignlab.com/xhtml/images/room/room1.jpg",
-    type: "Minocqua-Woodruff",
-    number: 1,
+    type: "Suite",
+    number: 101,
     checkin: "15/02/2022",
     checkout: "20/02/2022"
   }, 
@@ -12,8 +12,8 @@ export const bookingsData = [
     id: 2,
     client: "Ivette Aubery",
     photo: "https://travl.dexignlab.com/xhtml/images/room/room1.jpg",
-    type: "Minocqua-Woodruff",
-    number: 2,
+    type: "Single Bed",
+    number: 102,
     checkin: "25/02/2022",
     checkout: "28/02/2022"
   },
@@ -21,8 +21,8 @@ export const bookingsData = [
     id: 3,
     client: "Ivette Aubery",
     photo: "https://travl.dexignlab.com/xhtml/images/room/room1.jpg",
-    type: "Minocqua-Woodruff",
-    number: 2,
+    type: "Double Bed",
+    number: 103,
     checkin: "25/02/2022",
     checkout: "28/02/2022"
   },

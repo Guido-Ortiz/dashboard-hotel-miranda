@@ -1,9 +1,10 @@
 import React from 'react';
-import { FilterWrapper, TextContainer, UserData, UserDataContainer, UserImage, Wrapper } from './UsersDataStyles';
+import { BtnAddEmployee, EmployeeStatus, FilterWrapper, TextContainer, UserData, UserDataContainer, UserImage, Wrapper, UserTableWrapper } from './UsersDataStyles';
 import { users } from '../../../data/users';
 import User from './User/User';
-import { BtnStatus, TopMenu } from '../../Bookings/BookingsStyles';
+import { BtnStatus, BtnTopMenu, TopMenu } from '../../Bookings/BookingsStyles';
 import DataTable from 'react-data-table-component';
+import { Link } from 'react-router-dom';
 
 const columns = [
     {
@@ -34,16 +35,9 @@ const columns = [
     },
     {
         name: "Status",
-        selector: (row) => row.status,
+        selector: (row) => <EmployeeStatus status={row.status}>{row.status}</EmployeeStatus>,
         sortable: true
     },
-
-    // {
-    //   name: "Status",
-    //   selector: (row) => <BtnStatus status={row.status}>{row.status}</BtnStatus>,
-    //   sortable: true
-    // },
-
 ];
 
 const UsersData = () => {
@@ -57,6 +51,7 @@ const UsersData = () => {
         rows: {
             style: {
                 height: '90px', // override the row height
+                margin: '5px 0'
             },
         },
         // headCells: {
@@ -83,10 +78,15 @@ const UsersData = () => {
                 </div>
                 <div>
                     <input type='text' />
-                    <button>Search</button>
+                    <BtnTopMenu>Search</BtnTopMenu>
+                    <Link to='/users/add'>
+                        <BtnAddEmployee>+ Employee</BtnAddEmployee>
+                    </Link>
                 </div>
             </TopMenu>
-            <DataTable columns={columns} data={users} defaultSortFieldId pagination={5} onRowClicked={handleRowClicked} highlightOnHover customStyles={customStyles} />
+            <UserTableWrapper>
+                <DataTable columns={columns} data={users} defaultSortFieldId pagination={5} onRowClicked={handleRowClicked} highlightOnHover customStyles={customStyles} />
+            </UserTableWrapper>
         </Wrapper>
     )
 }

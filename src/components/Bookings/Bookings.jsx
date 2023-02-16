@@ -8,7 +8,7 @@ import Sidebar from '../Sidebar/Sidebar';
 import Topbar from '../Topbar/Topbar';
 
 import { DashboardWrapper, RightContainer } from '../Dashboard/DashboardStyles';
-import { BookingTableContainer, BtnStatus, TopMenu } from './BookingsStyles';
+import { BookingTableContainer, BtnStatus, BtnTopMenu, TopMenu } from './BookingsStyles';
 
 
 const columns = [
@@ -52,7 +52,7 @@ const columns = [
     sortable: true
   },
   
-];
+]
 
 
 const BookingsPage = () => {
@@ -79,7 +79,7 @@ const BookingsPage = () => {
               </div>
               <div>
                 <input type='text' />
-                <button>Search</button>
+                <BtnTopMenu>Search</BtnTopMenu>
               </div>
             </TopMenu>
             <BookingTableContainer>

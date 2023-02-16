@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import DataTable from "react-data-table-component";
 import { bookingsData } from '../../data/bookingsData';
@@ -6,7 +7,7 @@ import { bookingsData } from '../../data/bookingsData';
 import Sidebar from '../Sidebar/Sidebar';
 import Topbar from '../Topbar/Topbar'
 
-import { DashboardWrapper, RightContainer, SwiperContainer, TableContainer } from './DashboardStyles';
+import { BtnToBooking, CustomStylesBookingTable, DashboardWrapper, RightContainer, SwiperContainer, TableContainer } from './DashboardStyles';
 import KPIs from './KPIs/KPIs';
 import Swiper from '../Swiper/Swiper';
 
@@ -18,7 +19,8 @@ const DashboardPage = () => {
     {
       name: "ID",
       selector: (row) => row.id,
-      sortable: true
+      sortable: true,
+      width: '50px'
     },
     {
       name: "Photo",
@@ -27,38 +29,32 @@ const DashboardPage = () => {
     {
       name: "Type",
       selector: (row) => row.type,
-      sortable: true
-    },
-    {
-      name: "Number",
-      selector: (row) => row.number,
-      sortable: true
+      sortable: true,
+      width: '100px'
     },
     {
       name: "Room Number",
       selector: (row) => row.number,
-      sortable: true
+      sortable: true,
+      width: '120px'
     },
     {
       name: "Check-In",
       selector: (row) => row.checkin,
-      sortable: true
+      sortable: true,
+      width: '120px'
     },
     {
       name: "Check-Out",
       selector: (row) => row.checkout,
-      sortable: true
+      sortable: true,
+      width: '120px'
     },
-  ];
-
-
-  const handleRowClicked = (row) => {
-    console.log(row.client);
-  };
-
-  const customStyles = {
-    
-};
+    {
+      name: "See More",
+      selector: (row) => <Link to={`/bookings/${row.id}`}><BtnToBooking>See more</BtnToBooking></Link>
+    }
+  ]
 
   return (
     <>
@@ -70,7 +66,7 @@ const DashboardPage = () => {
           <KPIs />
 
           <TableContainer>
-            <DataTable title="Bookings" columns={columns} data={bookingsData} defaultSortFieldId  pagination={5} onRowClicked={handleRowClicked} highlightOnHover customStyles={customStyles} />
+            <DataTable title="Bookings" columns={columns} data={bookingsData} defaultSortFieldId  pagination={5} highlightOnHover customStyles={CustomStylesBookingTable} />
           </TableContainer>
 
           <SwiperContainer>

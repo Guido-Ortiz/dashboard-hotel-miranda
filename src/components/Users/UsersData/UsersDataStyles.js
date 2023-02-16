@@ -46,27 +46,66 @@ export const UserDataContainer = styled.div `
 `;
 
 export const UserImage = styled.img `
-    border: 1px solid red;
+    // border: 1px solid red;
     width: 50%;
     height: 50%;
 `;
 
 export const UserData = styled.div `
-    border: 1px solid red;
+    // border: 1px solid red;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
-    // margin: 0 auto;
     height: 90px;
 
     h4 {
-        border: 1px solid fuchsia;
+        // border: 1px solid fuchsia;
         margin: 0;
+        text-align: left;
+        font: normal normal medium 16px/25px Poppins;
+        letter-spacing: 0px;
+        color: #212121;
     }
 
     h5 {
-        border: 1px solid blue;
+        // border: 1px solid blue;
         margin: 0;
+        text-align: left;
+        font: normal normal normal 14px/21px Poppins;
+        letter-spacing: 0px;
+        color: #393939;
     }
+`;
+
+export const BtnAddEmployee = styled.button `
+    font-family: 'poppins', sans-serif;
+    font-weight: 400;
+    height: 40px;
+    width: 100px;
+    border: 1px solid #135846;
+    background: #ffffff;
+    color: #135846;
+    letter-spacing: 0.5px;
+    padding: 5px;
+    margin: 0 20px;
+    border-radius: 4px;
+    text-transform: uppercase;
+
+    &:hover {
+        cursor: pointer;
+    }
+`;
+
+export const EmployeeStatus = styled.h4 `
+    text-align: left;
+    font: normal normal 600 14px/21px Poppins;
+    letter-spacing: 0px;
+    color: ${props => props.status === 'Inactive' ? '#E23428' : '#5AD07A'};
+`;
+
+export const UserTableWrapper = styled.div `
+    // border: 1px solid red;
+    margin: 0 auto;
+    width: 90%;
 `;

@@ -40,22 +40,22 @@ export const TopMenu = styled.div`
             font-weight: 400;
             line-height: 1.5;
         }
-
-        button {
-            font-family: 'poppins', sans-serif;
-            font-weight: 400;
-            height: 40px;
-            width: 80px;
-            border: none;
-            background: #135846;
-            color: #ffffff;
-            letter-spacing: 0.5px;
-            padding: 5px;
-            margin: 0 20px;
-            border-radius: 4px;
-            text-transform: uppercase;
-        }
     }    
+`;
+
+export const BtnTopMenu = styled.button `
+    font-family: 'poppins', sans-serif;
+    font-weight: 400;
+    height: 40px;
+    width: 80px;
+    border: none;
+    background: #135846;
+    color: #ffffff;
+    letter-spacing: 0.5px;
+    padding: 5px;
+    margin: 0 20px;
+    border-radius: 4px;
+    text-transform: uppercase;
 `;
 
 export const BtnStatus = styled.button `
