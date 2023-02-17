@@ -62,14 +62,14 @@ const DashboardPage = () => {
       <DashboardWrapper>
         {sidebar && <Sidebar />}
 
-        <RightContainer>
+        <RightContainer sidebar={sidebar}>
           <KPIs />
 
           <TableContainer>
             <DataTable title="Bookings" columns={columns} data={bookingsData} defaultSortFieldId  pagination={5} highlightOnHover customStyles={CustomStylesBookingTable} />
           </TableContainer>
 
-          <SwiperContainer>
+          <SwiperContainer sidebar={sidebar}>
             <h1>Reviews</h1>
             <Swiper />
           </SwiperContainer>
@@ -78,7 +78,6 @@ const DashboardPage = () => {
         
       </DashboardWrapper>
 
-      {/*  */}
     </>
   )
 }

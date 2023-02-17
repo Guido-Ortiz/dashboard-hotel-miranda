@@ -59,7 +59,7 @@ export const BtnTopMenu = styled.button `
 `;
 
 export const BtnStatus = styled.button `
-    border: 1px solid red;
+    // border: 1px solid red;
     color: #ffffff;
     letter-spacing: 1px;
     font-family: 'poppins', sans-serif;

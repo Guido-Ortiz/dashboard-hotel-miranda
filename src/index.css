@@ -35,3 +35,8 @@ code {
   height: 100%;
   object-fit: cover;
 }
+
+.mySwiper {
+
+}
+.swiper-next { color: red; }

@@ -13,8 +13,8 @@ export const DashboardWrapper = styled.div`
 `;
 
 export const RightContainer = styled.div`
-    // border: 1px solid red;
-    width: 100%;
+    // border: ${props => props.sidebar ? '1px solid red' : '1px solid green'};
+    width: ${props => props.sidebar ? '82vw' : '100vw'};
     min-height: 84vh;
 `;
 
@@ -26,13 +26,14 @@ export const TableContainer = styled.div`
 
 export const SwiperContainer = styled.div`
     // border: 1px solid blue;
-    width: 100vw;
-    max-width: 100vw;
+    // width: 100vw;
+    // max-width: 100vw;
+    max-width: ${props => props.sidebar ? '82vw' : '100vw'};
     height: auto;
-    margin: 0 auto;
+    // margin: 0 auto;
     margin-top: 30px;
     margin-bottom: 30px;
-    padding: 30px; 
+    padding: 20px; 
 
     h1 {
         text-align: left;

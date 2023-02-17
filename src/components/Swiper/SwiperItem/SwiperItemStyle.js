@@ -19,6 +19,11 @@ export const SliderItemWrapper = styled.div `
     box-shadow: 0px 4px 4px #00000005;
     padding: 20px;
     margin-bottom: 20px;
+
+    &:hover {
+        cursor: pointer;
+        box-shadow: 0px 16px 30px #00000014;
+    }
 `;
 
 export const SliderItemPeople = styled.div `

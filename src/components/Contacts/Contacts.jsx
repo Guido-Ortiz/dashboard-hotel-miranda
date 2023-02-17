@@ -68,7 +68,7 @@ const Contact = () => {
 
         {sidebar && <Sidebar />}
 
-        <RightContainer  style={{border: '1px solid fuchsia'}}>
+        <RightContainer>
 
           <SwiperContainer>
             <Swiper />
