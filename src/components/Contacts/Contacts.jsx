@@ -83,10 +83,10 @@ const Contact = () => {
 
           <TableContactsContainer>
             <DataTable columns={columns} data={contacts} defaultSortFieldId pagination={5} onRowClicked={handleRowClicked} customStyles={customStyles} highlightOnHover />
-          </TableContactsContainer>
-
+           </TableContactsContainer>
+ 
         </RightContainer>
-      </DashboardWrapper>
+      </DashboardWrapper> 
     </>
   )
 }

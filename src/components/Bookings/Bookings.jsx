@@ -66,10 +66,10 @@ const BookingsPage = () => {
   return (
     <>
       <Topbar title='Bookings' />
-      <DashboardWrapper>
-        {sidebar && <Sidebar />}
+      <DashboardWrapper> 
+        {sidebar && <Sidebar />} 
 
-        <RightContainer>
+         <RightContainer>
             <TopMenu>
               <div>
                 <h4>All Bookings</h4>

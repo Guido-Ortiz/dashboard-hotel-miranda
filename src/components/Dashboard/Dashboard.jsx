@@ -56,6 +56,33 @@ const DashboardPage = () => {
     }
   ]
 
+  // return (
+  //   <>
+  //     <Topbar title='Dashboard' />
+  //     <DashboardWrapper>
+  //       {sidebar && <Sidebar />}
+
+  //       <RightContainer sidebar={sidebar}>
+  //         <KPIs />
+
+  //         <TableContainer>
+  //           <DataTable title="Bookings" columns={columns} data={bookingsData} defaultSortFieldId  pagination={5} highlightOnHover customStyles={CustomStylesBookingTable} />
+  //         </TableContainer>
+
+  //         <SwiperContainer sidebar={sidebar}>
+  //           <h1>Reviews</h1>
+  //           <Swiper />
+  //         </SwiperContainer>
+
+  //       </RightContainer>
+        
+  //     </DashboardWrapper>
+
+  //   </>
+  // )
+
+
+
   return (
     <>
       <Topbar title='Dashboard' />
@@ -80,6 +107,8 @@ const DashboardPage = () => {
 
     </>
   )
+
+
 }
 
 export default DashboardPage

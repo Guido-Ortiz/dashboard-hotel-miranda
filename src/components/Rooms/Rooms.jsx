@@ -97,8 +97,8 @@ const Rooms = () => {
           <RoomsTableContainer>
             <DataTable columns={columns} data={rooms} defaultSortFieldId pagination onRowClicked={handleRowClicked} highlightOnHover customStyles={customStyles} />
           </RoomsTableContainer>
-        </RightContainer>
 
+        </RightContainer>
       </DashboardWrapper>
     </>
   )
