@@ -1,8 +1,7 @@
 import React from 'react';
-import { BtnAddEmployee, EmployeeStatus, FilterWrapper, TextContainer, UserData, UserDataContainer, UserImage, Wrapper, UserTableWrapper } from './UsersDataStyles';
+import { BtnAddEmployee, EmployeeStatus, UserData, UserImage, Wrapper, UserTableWrapper } from './UsersDataStyles';
 import { users } from '../../../data/users';
-import User from './User/User';
-import { BtnStatus, BtnTopMenu, TopMenu } from '../../Bookings/BookingsStyles';
+import { BtnTopMenu, TopMenu } from '../../Bookings/BookingsStyles';
 import DataTable from 'react-data-table-component';
 import { Link } from 'react-router-dom';
 

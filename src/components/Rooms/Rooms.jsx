@@ -3,12 +3,9 @@ import DataTable from 'react-data-table-component';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { rooms } from '../../data/rooms';
-import { BtnTopMenu } from '../Bookings/BookingsStyles';
 import { DashboardWrapper, RightContainer } from '../Dashboard/DashboardStyles';
 import Sidebar from '../Sidebar/Sidebar';
 import Topbar from '../Topbar/Topbar';
-import { BtnAddEmployee } from '../Users/UsersData/UsersDataStyles';
-import { BtnSubmit } from '../Users/UsersForm/UsersFormStyles';
 import { AmenitiesChip, BtnRoomStatus, BtnToRoomForm, RoomImage, RoomsTableContainer } from './RoomsStyles';
 
 const columns = [

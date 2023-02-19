@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import DataTable from 'react-data-table-component';
 import ArchiveIcon from '@mui/icons-material/Archive';
 import { contacts } from '../../data/contacts';
-import { BtnTopMenu, TopMenu } from '../Bookings/BookingsStyles';
+import { TopMenu } from '../Bookings/BookingsStyles';
 import { DashboardWrapper, RightContainer } from '../Dashboard/DashboardStyles';
 import Sidebar from '../Sidebar/Sidebar';
 import Swiper from '../Swiper/Swiper';

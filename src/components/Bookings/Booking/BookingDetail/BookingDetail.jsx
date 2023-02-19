@@ -1,5 +1,4 @@
 import React from 'react';
-import { DashboardWrapper, RightContainer } from '../../../Dashboard/DashboardStyles';
 import { CheckWapper, DetailWrapper, FacilitiesWrapper, FacilityChip, GuestContact, GuestData, GuestWrapper, RoomInfoWrapper, RoomWrapper } from './BookingDetailStyles';
 import guest from '../../../../resources/p1.jpg';
 import { useSelector } from 'react-redux';

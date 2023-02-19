@@ -6,12 +6,12 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 
 import "../../index.css";
-import { Navigation, Pagination, Mousewheel, Keyboard } from "swiper";
+import { Navigation } from "swiper";
 import SwiperItem from './SwiperItem/SwiperItem';
 import { reviewsData } from '../../data/reviewsData';
 import { SwiperContainer } from './SwiperStyles';
 
-export default () => {
+export default Swiper = () => {
     return (
         <SwiperContainer>
 

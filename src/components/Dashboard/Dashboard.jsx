@@ -24,7 +24,7 @@ const DashboardPage = () => {
     },
     {
       name: "Photo",
-      selector: (row) => <img className="mt-1" src={row.photo} alt="Photo" />,
+      selector: (row) => <img className="mt-1" src={row.photo} alt="Profile" />,
     },
     {
       name: "Type",

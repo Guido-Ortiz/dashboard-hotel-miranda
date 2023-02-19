@@ -1,5 +1,4 @@
 import React from 'react';
-import { reviewsData } from '../../../data/reviewsData';
 import { SliderItemPeople, SliderItemWrapper } from './SwiperItemStyle';
 
 const SwiperItem = ({ id, review, date, hour, name, email, telephone, matter, archive }) => {
