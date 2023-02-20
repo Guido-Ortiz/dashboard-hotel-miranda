@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { BtnAddEmployee, EmployeeStatus, UserData, UserImage, Wrapper, UserTableWrapper } from './UsersDataStyles';
-import { users } from '../../../data/users';
+// import { users } from '../../../data/users';
 import { BtnTopMenu, TopMenu } from '../../Bookings/BookingsStyles';
 import DataTable from 'react-data-table-component';
 import { Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { filterUsers, getUsers } from '../../../redux/actions/actions';
 
 const columns = [
     {
@@ -65,15 +67,26 @@ const UsersData = () => {
         //         paddingRight: '8px',
         //     },
         // },
-    };
+    }
+
+    const dispatch = useDispatch()
+    const users = useSelector(state => state.users.users)
+
+    useEffect(() => {
+        dispatch(getUsers())
+    }, [dispatch])
+
+    const handleFilterUser = (filter) => {
+        dispatch(filterUsers(filter))
+    }
 
     return (
         <Wrapper>
             <TopMenu>
                 <div>
-                    <h4>All Employees</h4>
-                    <h4>Active Employees</h4>
-                    <h4>Inactive Employees</h4>
+                    <h4 onClick={() => handleFilterUser('all')}>All Employees</h4>
+                    <h4 onClick={() => handleFilterUser('active')}>Active Employees</h4>
+                    <h4 onClick={() => handleFilterUser('inactive')}>Inactive Employees</h4>
                 </div>
                 <div>
                     <input type='text' />
@@ -83,7 +96,7 @@ const UsersData = () => {
                     </Link>
                 </div>
             </TopMenu>
-            <UserTableWrapper>
+            <UserTableWrapper>          
                 <DataTable columns={columns} data={users} defaultSortFieldId pagination={5} onRowClicked={handleRowClicked} highlightOnHover customStyles={customStyles} />
             </UserTableWrapper>
         </Wrapper>

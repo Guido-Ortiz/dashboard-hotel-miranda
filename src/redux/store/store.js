@@ -4,10 +4,12 @@ import thunk from "redux-thunk";
 import { combineReducers } from "@reduxjs/toolkit";
 import sidebarReducer from "../reducer/sidebarReducer";
 import bookingsReducer from "../reducer/bookingsReducer";
+import userReducer from "../reducer/userReducer";
 
 const rootReducer = combineReducers({
     sidebar: sidebarReducer,
-    bookings: bookingsReducer
+    bookings: bookingsReducer,
+    users: userReducer
 })
 
 export const store = createStore(

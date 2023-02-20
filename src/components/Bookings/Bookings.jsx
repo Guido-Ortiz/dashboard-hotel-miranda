@@ -1,9 +1,8 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getBookings } from '../../redux/actions/actions';
+import { filterBookings, getBookings } from '../../redux/actions/actions';
 
 import DataTable from 'react-data-table-component';
-import { bookingDetails } from '../../data/bookingDetails';
 
 import Sidebar from '../Sidebar/Sidebar';
 import Topbar from '../Topbar/Topbar';
@@ -71,6 +70,10 @@ const Bookings = () => {
     dispatch(getBookings())
   }, [dispatch])
 
+  const handleFilterBookings = filter => {
+    dispatch(filterBookings(filter))
+  }
+
   return (
     <>
       <Topbar title='Bookings' />
@@ -80,10 +83,10 @@ const Bookings = () => {
          <RightContainer>
             <TopMenu>
               <div>
-                <h4>All Bookings</h4>
-                <h4>Checking In</h4>
-                <h4>Checking Out</h4>
-                <h4>In Progress</h4>
+                <h4 onClick={() => handleFilterBookings('all')}>All Bookings</h4>
+                <h4 value='in' onClick={() => handleFilterBookings('in')}>Checking In</h4>
+                <h4 value='out' onClick={() => handleFilterBookings('out')}>Checking Out</h4>
+                <h4 value='progress' onClick={() => handleFilterBookings('progress')}>In Progress</h4>
               </div>
               <div>
                 <input type='text' />

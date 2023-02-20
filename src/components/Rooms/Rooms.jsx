@@ -75,7 +75,7 @@ const customStyles = {
 };
 
 const Rooms = () => {
-  const sidebar = useSelector(state => state.sidebarReducer)
+  const sidebar = useSelector(state => state.sidebar)
   const handleRowClicked = (row) => {
     console.log(row.id);
   }

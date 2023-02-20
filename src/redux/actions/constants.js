@@ -1,3 +1,7 @@
 export const TOGGLE_SIDEBAR = 'TOGGLE_SIDEBAR';
 
 export const GET_BOOKINGS = 'GET_BOOKINGS';
+export const FILTER_BOOKINGS = 'FILTER_BOOKINGS';
+
+export const GET_USERS = 'GET_USERS';
+export const FILTER_USERS = 'FILTER_USERS';

@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { TOGGLE_SIDEBAR, GET_BOOKINGS } from "./constants";
+import { TOGGLE_SIDEBAR, GET_BOOKINGS, FILTER_BOOKINGS, GET_USERS, FILTER_USERS } from "./constants";
 
 export function toggleSidebar(){
     return {
@@ -7,7 +7,7 @@ export function toggleSidebar(){
     }
 }
 
-export function getBookings(a){
+export function getBookings(){
     return async function(dispatch){
         try{
             const response = await axios.get('bookingsMockData.json')
@@ -19,8 +19,32 @@ export function getBookings(a){
             console.log(e)
         }
     }
-    // return {
-    //     type: GET_BOOKINGS,
-    //     payload: a
-    // }
+}
+
+export function filterBookings(payload){
+    return {
+        type: FILTER_BOOKINGS,
+        payload
+    }
+}
+
+export function getUsers(){
+    return async function(dispatch){
+        try{
+            const response = await axios.get('usersMockData.json')
+            return dispatch({
+                type: GET_USERS,
+                payload: response.data
+            })
+        } catch(e){
+            console.log(e)
+        }
+    }
+}
+
+export function filterUsers(payload){
+    return {
+        type: FILTER_USERS,
+        payload
+    }
 }
