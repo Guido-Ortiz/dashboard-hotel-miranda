@@ -6,7 +6,7 @@ import Topbar from '../Topbar/Topbar'
 import UsersData from './UsersData/UsersData'
 
 const Users = () => {
-  const sidebar = useSelector(state => state.sidebar)
+  const sidebar = useSelector(state => state.sidebarReducer)
   return (
     <>
       <Topbar title='Users' />

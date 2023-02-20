@@ -1,5 +1,6 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { getBookings } from '../../redux/actions/actions';
 
 import DataTable from 'react-data-table-component';
 import { bookingDetails } from '../../data/bookingDetails';
@@ -55,13 +56,20 @@ const columns = [
 ]
 
 
-const BookingsPage = () => {
+const Bookings = () => {
+
+  const dispatch = useDispatch()
 
   const sidebar = useSelector(state => state.sidebar)
+  const data = useSelector(state => state.bookings.bookings)
 
   const handleRowClicked = (row) => {
     console.log(row.client);
-  };
+  }
+
+  useEffect(() => {
+    dispatch(getBookings())
+  }, [dispatch])
 
   return (
     <>
@@ -83,7 +91,7 @@ const BookingsPage = () => {
               </div>
             </TopMenu>
             <BookingTableContainer>
-            <DataTable columns={columns} data={bookingDetails} defaultSortFieldId  pagination={5} onRowClicked={handleRowClicked} highlightOnHover />
+            <DataTable columns={columns} data={data} defaultSortFieldId  pagination={5} onRowClicked={handleRowClicked} highlightOnHover />
             </BookingTableContainer>
         </RightContainer>
         
@@ -92,4 +100,4 @@ const BookingsPage = () => {
   )
 }
 
-export default BookingsPage
+export default Bookings

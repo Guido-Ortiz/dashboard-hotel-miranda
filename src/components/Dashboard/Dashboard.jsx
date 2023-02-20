@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import DataTable from "react-data-table-component";
-import { bookingsData } from '../../data/bookingsData';
+// import { bookingsData } from '../../data/bookingsData';
+// import bookingsData from '../../data/bookingsData.json';
 
 import Sidebar from '../Sidebar/Sidebar';
 import Topbar from '../Topbar/Topbar'
@@ -10,10 +11,14 @@ import Topbar from '../Topbar/Topbar'
 import { BtnToBooking, CustomStylesBookingTable, DashboardWrapper, RightContainer, SwiperContainer, TableContainer } from './DashboardStyles';
 import KPIs from './KPIs/KPIs';
 import Swiper from '../Swiper/Swiper';
+import { getBookings } from '../../redux/actions/actions';
+// import { getBookings } from '../../redux/reducer/bookingsSlice';
 
-const DashboardPage = () => {
+const Dashboard = () => {
 
   const sidebar = useSelector(state => state.sidebar)
+
+  const data = useSelector(state => state.bookings.bookings)
 
   const columns = [
     {
@@ -56,32 +61,11 @@ const DashboardPage = () => {
     }
   ]
 
-  // return (
-  //   <>
-  //     <Topbar title='Dashboard' />
-  //     <DashboardWrapper>
-  //       {sidebar && <Sidebar />}
+  const dispatch = useDispatch()
 
-  //       <RightContainer sidebar={sidebar}>
-  //         <KPIs />
-
-  //         <TableContainer>
-  //           <DataTable title="Bookings" columns={columns} data={bookingsData} defaultSortFieldId  pagination={5} highlightOnHover customStyles={CustomStylesBookingTable} />
-  //         </TableContainer>
-
-  //         <SwiperContainer sidebar={sidebar}>
-  //           <h1>Reviews</h1>
-  //           <Swiper />
-  //         </SwiperContainer>
-
-  //       </RightContainer>
-        
-  //     </DashboardWrapper>
-
-  //   </>
-  // )
-
-
+  useEffect(() => {
+    dispatch(getBookings())
+  })
 
   return (
     <>
@@ -93,7 +77,10 @@ const DashboardPage = () => {
           <KPIs />
 
           <TableContainer>
-            <DataTable title="Bookings" columns={columns} data={bookingsData} defaultSortFieldId  pagination={5} highlightOnHover customStyles={CustomStylesBookingTable} />
+            <DataTable title="Bookings" columns={columns} 
+            data={data}
+            // data={bookingsData}
+            defaultSortFieldId  pagination={5} highlightOnHover customStyles={CustomStylesBookingTable} />
           </TableContainer>
 
           <SwiperContainer sidebar={sidebar}>
@@ -111,4 +98,4 @@ const DashboardPage = () => {
 
 }
 
-export default DashboardPage
+export default Dashboard

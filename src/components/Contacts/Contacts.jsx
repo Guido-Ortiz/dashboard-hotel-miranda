@@ -55,7 +55,7 @@ const columns = [
 
 
 const Contact = () => {
-  const sidebar = useSelector(state => state.sidebar)
+  const sidebar = useSelector(state => state.sidebarReducer)
 
   const handleRowClicked = (row) => {
     console.log(row.id);
