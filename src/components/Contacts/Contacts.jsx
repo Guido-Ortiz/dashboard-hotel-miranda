@@ -1,14 +1,14 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import DataTable from 'react-data-table-component';
 import ArchiveIcon from '@mui/icons-material/Archive';
-import { contacts } from '../../data/contacts';
 import { TopMenu } from '../Bookings/BookingsStyles';
 import { DashboardWrapper, RightContainer } from '../Dashboard/DashboardStyles';
 import Sidebar from '../Sidebar/Sidebar';
 import Swiper from '../Swiper/Swiper';
 import Topbar from '../Topbar/Topbar';
 import { SwiperContainer, TableContactsContainer, customStyles } from './ContactsStyles';
+import { getContacts } from '../../redux/actions/actions';
 
 const columns = [
   {
@@ -55,11 +55,19 @@ const columns = [
 
 
 const Contact = () => {
+
+  const dispatch = useDispatch()
+
   const sidebar = useSelector(state => state.sidebar)
+  const data = useSelector(state => state.contacts.contacts)
 
   const handleRowClicked = (row) => {
     console.log(row.id);
   }
+
+  useEffect(() => {
+    dispatch(getContacts())
+  }, [dispatch])
 
   return (
     <>
@@ -82,7 +90,7 @@ const Contact = () => {
           </TopMenu>
 
           <TableContactsContainer>
-            <DataTable columns={columns} data={contacts} defaultSortFieldId pagination={5} onRowClicked={handleRowClicked} customStyles={customStyles} highlightOnHover />
+            <DataTable columns={columns} data={data} defaultSortFieldId pagination={5} onRowClicked={handleRowClicked} customStyles={customStyles} highlightOnHover />
            </TableContactsContainer>
  
         </RightContainer>

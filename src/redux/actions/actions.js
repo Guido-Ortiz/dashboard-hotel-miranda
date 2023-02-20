@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { TOGGLE_SIDEBAR, GET_BOOKINGS, FILTER_BOOKINGS, GET_USERS, FILTER_USERS } from "./constants";
+import { TOGGLE_SIDEBAR, GET_BOOKINGS, FILTER_BOOKINGS, GET_USERS, FILTER_USERS, GET_CONTACTS } from "./constants";
 
 export function toggleSidebar(){
     return {
@@ -46,5 +46,19 @@ export function filterUsers(payload){
     return {
         type: FILTER_USERS,
         payload
+    }
+}
+
+export function getContacts(){
+    return async function(dispatch){
+        try{
+            const response = await axios.get('contactsMockData.json')
+            return dispatch({
+                type: GET_CONTACTS,
+                payload: response.data
+            })
+        } catch(e){
+            console.log(e)
+        }
     }
 }

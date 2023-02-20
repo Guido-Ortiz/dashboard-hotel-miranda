@@ -5,3 +5,5 @@ export const FILTER_BOOKINGS = 'FILTER_BOOKINGS';
 
 export const GET_USERS = 'GET_USERS';
 export const FILTER_USERS = 'FILTER_USERS';
+
+export const GET_CONTACTS = 'GET_CONTACTS';

@@ -5,11 +5,13 @@ import { combineReducers } from "@reduxjs/toolkit";
 import sidebarReducer from "../reducer/sidebarReducer";
 import bookingsReducer from "../reducer/bookingsReducer";
 import userReducer from "../reducer/userReducer";
+import contactsReducer from "../reducer/contactsReducer";
 
 const rootReducer = combineReducers({
     sidebar: sidebarReducer,
     bookings: bookingsReducer,
-    users: userReducer
+    users: userReducer,
+    contacts: contactsReducer
 })
 
 export const store = createStore(
