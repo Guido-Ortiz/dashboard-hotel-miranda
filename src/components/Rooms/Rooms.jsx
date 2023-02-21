@@ -42,7 +42,7 @@ const Rooms = () => {
     {
       name: "ID",
       selector: (row) => row.id,
-      width: '8%'
+      width: '7%'
     },
     {
       name: "Image",
@@ -52,7 +52,7 @@ const Rooms = () => {
       name: "Number",
       selector: (row) => row.number,
       sortable: true,
-      width: '12%'
+      width: '10%'
     },
     {
       name: "Type",
@@ -61,13 +61,13 @@ const Rooms = () => {
     {
       name: "Amenities",
       selector: (row) => row.amenities.map(e => <AmenitiesChip>{e}</AmenitiesChip>),
-      width: '20%'
+      width: '15%'
     },
     {
       name: "Price",
       selector: (row) => row.price,
       sortable: true,
-      width: '7%'
+      width: '8%'
     },
     {
       name: "% Offer",
@@ -78,7 +78,8 @@ const Rooms = () => {
     {
       name: "Status",
       selector: (row) => <BtnRoomStatus status={row.status}>{row.status}</BtnRoomStatus>,
-      sortable: true
+      sortable: true,
+      width: '14%'
     },
     {
       name: "Actions",
