@@ -3,6 +3,7 @@ export const TOGGLE_SIDEBAR = 'TOGGLE_SIDEBAR';
 export const GET_BOOKINGS = 'GET_BOOKINGS';
 export const DELETE_BOOKING = 'DELETE_BOOKING';
 export const FILTER_BOOKINGS = 'FILTER_BOOKINGS';
+export const GET_BOOKING_DETAIL = 'GET_BOOKING_DETAIL';
 
 export const GET_USERS = 'GET_USERS';
 export const DELETE_USER = 'DELETE_USER';

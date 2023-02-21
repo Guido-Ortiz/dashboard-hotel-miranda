@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { TOGGLE_SIDEBAR, GET_BOOKINGS, FILTER_BOOKINGS, GET_USERS, FILTER_USERS, GET_CONTACTS, ARCHIVED_CONTACT, FILTER_CONTACTS, GET_ROOMS, FILTER_ROOMS, DELETE_BOOKING, DELETE_USER, DELETE_ROOM, DELETE_CONTACT } from "./constants";
+import { TOGGLE_SIDEBAR, GET_BOOKINGS, FILTER_BOOKINGS, GET_USERS, FILTER_USERS, GET_CONTACTS, ARCHIVED_CONTACT, FILTER_CONTACTS, GET_ROOMS, FILTER_ROOMS, DELETE_BOOKING, DELETE_USER, DELETE_ROOM, DELETE_CONTACT, GET_BOOKING_DETAIL } from "./constants";
 
 export function toggleSidebar(){
     return {
@@ -31,6 +31,13 @@ export function deleteBooking(payload){
 export function filterBookings(payload){
     return {
         type: FILTER_BOOKINGS,
+        payload
+    }
+}
+
+export function getBookingDetail(payload){
+    return {
+        type: GET_BOOKING_DETAIL,
         payload
     }
 }

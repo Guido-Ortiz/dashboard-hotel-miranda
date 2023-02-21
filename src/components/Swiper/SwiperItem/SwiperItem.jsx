@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Popup from 'reactjs-popup';
+// import Popup from 'reactjs-popup';
 import { ClosePopup, SliderItemPeople, SliderItemWrapper, StyledPopup } from './SwiperItemStyle';
 
 const SwiperItem = ({ id, review, date, hour, name, email, telephone, matter, archive }) => {

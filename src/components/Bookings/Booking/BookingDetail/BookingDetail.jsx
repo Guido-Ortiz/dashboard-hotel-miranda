@@ -1,11 +1,24 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { CheckWapper, DetailWrapper, FacilitiesWrapper, FacilityChip, GuestContact, GuestData, GuestWrapper, RoomInfoWrapper, RoomWrapper } from './BookingDetailStyles';
 import guest from '../../../../resources/p1.jpg';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Email, Phone } from '@mui/icons-material';
+import { useParams } from 'react-router';
+import { getBookingDetail } from '../../../../redux/actions/actions';
 
 const BookingDetail = () => {
+
+  const { booking_id } = useParams()
+  // console.log(booking_id)
+
+  const dispatch = useDispatch()
+
   const sidebar = useSelector(state => state.sidebar)
+  const detail = useSelector(state => state.bookings.detail[0])
+
+  useEffect(() => {
+    dispatch(getBookingDetail(booking_id))
+  }, [dispatch, booking_id])
 
   return (
     <DetailWrapper sidebar={sidebar}>
@@ -14,16 +27,16 @@ const BookingDetail = () => {
         <GuestWrapper>
             <img src={guest} alt='Guest' />
             <GuestData>
-              <h2>Rory Mclroy</h2>
-              <h4>#123456</h4>
+              <h2>{detail.client}</h2>
+              <h4>#{detail.id}</h4>
               <GuestContact>
                 <div>
                   <Phone/>
-                  <h3>guido@gmail.com</h3>
+                  <h3>{detail.email}</h3>
                 </div>
                 <div>
                   <Email />
-                  <h3>12345678</h3>
+                  <h3>{detail.telephone}</h3>
                 </div>
                 
               </GuestContact>

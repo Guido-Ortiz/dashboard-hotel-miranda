@@ -29,19 +29,19 @@ const Dashboard = () => {
     },
     {
       name: "Photo",
-      selector: (row) => <img className="mt-1" src={row.photo} alt="Profile" />,
+      selector: (row) => <img src={row.photo} alt="Profile" />,
     },
     {
       name: "Type",
       selector: (row) => row.type,
       sortable: true,
-      width: '100px'
+      width: '180px'
     },
     {
-      name: "Room Number",
+      name: "N°",
       selector: (row) => row.number,
       sortable: true,
-      width: '120px'
+      width: '60px'
     },
     {
       name: "Check-In",
@@ -77,10 +77,7 @@ const Dashboard = () => {
           <KPIs />
 
           <TableContainer>
-            <DataTable title="Bookings" columns={columns} 
-            data={data}
-            // data={bookingsData}
-            defaultSortFieldId  pagination={5} highlightOnHover customStyles={CustomStylesBookingTable} />
+            <DataTable title="Bookings" columns={columns} data={data} defaultSortFieldId  pagination={5} highlightOnHover customStyles={CustomStylesBookingTable} />
           </TableContainer>
 
           <SwiperContainer sidebar={sidebar}>
