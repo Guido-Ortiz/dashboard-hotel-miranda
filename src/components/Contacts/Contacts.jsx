@@ -11,8 +11,6 @@ import { SwiperContainer, TableContactsContainer, customStyles } from './Contact
 import { archivedContact, filterContacts, getContacts } from '../../redux/actions/actions';
 
 
-
-
 const Contact = () => {
 
   const columns = [

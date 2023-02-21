@@ -9,3 +9,6 @@ export const FILTER_USERS = 'FILTER_USERS';
 export const GET_CONTACTS = 'GET_CONTACTS';
 export const ARCHIVED_CONTACT = 'ARCHIVED_CONTACT';
 export const FILTER_CONTACTS = 'FILTER_CONTACTS';
+
+export const GET_ROOMS = 'GET_ROOMS';
+export const FILTER_ROOMS = 'FILTER_ROOMS';

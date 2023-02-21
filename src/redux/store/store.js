@@ -6,12 +6,14 @@ import sidebarReducer from "../reducer/sidebarReducer";
 import bookingsReducer from "../reducer/bookingsReducer";
 import userReducer from "../reducer/userReducer";
 import contactsReducer from "../reducer/contactsReducer";
+import roomsReducer from "../reducer/roomsReducer";
 
 const rootReducer = combineReducers({
     sidebar: sidebarReducer,
     bookings: bookingsReducer,
     users: userReducer,
-    contacts: contactsReducer
+    contacts: contactsReducer,
+    rooms: roomsReducer
 })
 
 export const store = createStore(
