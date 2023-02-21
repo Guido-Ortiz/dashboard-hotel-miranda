@@ -8,6 +8,10 @@ export const TableContactsContainer = styled.div `
     // border: 1px solid blue;
     width: 1000px;
     margin: 0 auto;
+
+    svg:hover {
+        cursor: pointer;
+    }
 `;
 
 export const customStyles = {

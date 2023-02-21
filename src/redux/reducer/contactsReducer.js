@@ -1,7 +1,8 @@
-import { GET_CONTACTS } from "../actions/constants"
+import { ARCHIVED_CONTACT, FILTER_CONTACTS, GET_CONTACTS } from "../actions/constants"
 
 const initialState = {
     contacts: [],
+    allContacts: [],
     archived: []
 }
 
@@ -12,30 +13,33 @@ const contactsReducer = (state = initialState, action) => {
             return {
                 ...state,
                 contacts: action.payload,
+                allContacts: action.payload,
             }
 
-        // case FILTER_BOOKINGS:
-        //     let filter = []
-        //     if(action.payload === 'all'){
-        //         filter = state.allBookings
-        //     } else {
-        //         if(action.payload === 'in'){
-        //             filter = state.allBookings.filter(e => e.status === 'Check-In')
-        //         } else {
-        //             if(action.payload === 'out'){
-        //                 filter = state.allBookings.filter(e => e.status === 'Check-Out')
-        //             } else {
-        //                 filter = state.allBookings.filter(e =>e.status === 'In-Progress')
-        //             }
-        //         }
-        //     }
-        //     return {
-        //             ...state,
-        //             bookings: filter
-        //         }
-        
+        case ARCHIVED_CONTACT:
+            const contact = state.contacts.find(c => c.id === action.payload.id)
+            contact.archived = !contact.archived
+            return {
+                ...state,
+                archived: [...state.archived, action.payload],
+                contacts: state.contacts.map(e => e),
+                allContacts: state.contacts.map(e => e)
+            }
 
-        default:
+        case FILTER_CONTACTS:
+            let filter = []
+            if(action.payload === 'all'){
+                filter = state.allContacts
+            } else {
+                    filter = state.allContacts.filter(e => e.archived === true)
+                }
+            return {
+                    ...state,
+                    contacts: filter
+                }
+           
+        
+            default:
             return state
     }
 }
