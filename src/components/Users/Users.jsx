@@ -13,7 +13,7 @@ const Users = () => {
       <DashboardWrapper>
         {sidebar && <Sidebar />}
 
-        <RightContainer>
+        <RightContainer sidebar={sidebar}>
           <UsersData />
         </RightContainer>
       </DashboardWrapper>

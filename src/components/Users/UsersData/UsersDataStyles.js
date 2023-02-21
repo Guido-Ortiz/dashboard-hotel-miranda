@@ -1,7 +1,35 @@
 import styled from "styled-components";
 
+export const customStyles = {
+    rows: {
+        style: {
+            height: '90px', // override the row height
+            margin: '5px 0'
+        },
+    },
+    headCells: {
+        style: {
+            border: '1px solid blue',
+            // minWidth: '5px',
+            // width: '20%',
+            margin: '0',
+            padding: '5px',
+            // paddingLeft: '8px', // override the cell padding for head cells
+            // paddingRight: '8px',
+        },
+    },
+    cells: {
+        style: {
+            // border: '1px dashed green',
+            width: '15px'
+            // paddingLeft: '8px', // override the cell padding for data cells
+            // paddingRight: '8px',
+        },
+    },
+}
+
 export const Wrapper = styled.div `
-    // border: 1px solid fuchsia;
+    border: 1px solid fuchsia;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -49,6 +77,8 @@ export const UserImage = styled.img `
     // border: 1px solid red;
     width: 50%;
     height: 50%;
+    margin-right: 6px;
+    border-radius: 0.75rem 
 `;
 
 export const UserData = styled.div `
@@ -105,7 +135,14 @@ export const EmployeeStatus = styled.h4 `
 `;
 
 export const UserTableWrapper = styled.div `
-    // border: 1px solid red;
+    border: 1px solid red;
     margin: 0 auto;
     width: 90%;
+`;
+
+export const User = styled.div `
+    border: 1px solid fuchsia;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 `;

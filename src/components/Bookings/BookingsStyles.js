@@ -64,7 +64,7 @@ export const BtnStatus = styled.button `
     letter-spacing: 1px;
     font-family: 'poppins', sans-serif;
     font-weight: 400;
-    height: 40px;
+    height: 34px;
     width: 90px;
     border: none;
     padding: 5px;
@@ -78,4 +78,33 @@ export const BookingTableContainer = styled.div `
     margin-top: 20px;
     margin-lefet: 10px;
     margin: 0 auto;
+`;
+
+export const ActionsContainer = styled.div `
+    // border: 1px solid red;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
+    svg {
+        color: #799283;
+        // margin-right: 15px;
+
+        &:hover {
+            cursor: pointer;
+            color: #E23428;
+        }
+    }
+`;
+
+export const BtnRequest = styled.button `
+    height: 35px;
+    border: 1px solid #799283;
+    background: #EEF9F2 0% 0% no-repeat padding-box;
+    border-radius: 12px;
+    text-align: left;
+    font: normal normal medium 16px/25px Poppins;
+    letter-spacing: 0.5px;
+    color: #212121;
 `;

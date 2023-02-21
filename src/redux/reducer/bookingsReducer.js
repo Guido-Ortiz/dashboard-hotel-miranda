@@ -1,4 +1,4 @@
-import { FILTER_BOOKINGS, GET_BOOKINGS } from "../actions/constants";
+import { DELETE_BOOKING, FILTER_BOOKINGS, GET_BOOKINGS } from "../actions/constants";
 
 const initialState = {
     bookings: [],
@@ -13,6 +13,13 @@ const bookingsReducer = (state = initialState, action) => {
                 ...state,
                 bookings: action.payload,
                 allBookings: action.payload
+            }
+
+        case DELETE_BOOKING:
+            return {
+                ...state,
+                bookings: state.bookings.filter(b => b.id !== action.payload),
+                allBookings: state.bookings.filter(b => b.id !== action.payload)
             }
 
         case FILTER_BOOKINGS:

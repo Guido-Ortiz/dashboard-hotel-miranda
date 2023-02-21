@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { TOGGLE_SIDEBAR, GET_BOOKINGS, FILTER_BOOKINGS, GET_USERS, FILTER_USERS, GET_CONTACTS, ARCHIVED_CONTACT, FILTER_CONTACTS, GET_ROOMS, FILTER_ROOMS } from "./constants";
+import { TOGGLE_SIDEBAR, GET_BOOKINGS, FILTER_BOOKINGS, GET_USERS, FILTER_USERS, GET_CONTACTS, ARCHIVED_CONTACT, FILTER_CONTACTS, GET_ROOMS, FILTER_ROOMS, DELETE_BOOKING, DELETE_USER, DELETE_ROOM, DELETE_CONTACT } from "./constants";
 
 export function toggleSidebar(){
     return {
@@ -21,6 +21,13 @@ export function getBookings(){
     }
 }
 
+export function deleteBooking(payload){
+    return {
+        type: DELETE_BOOKING,
+        payload
+    }
+}
+
 export function filterBookings(payload){
     return {
         type: FILTER_BOOKINGS,
@@ -39,6 +46,13 @@ export function getUsers(){
         } catch(e){
             console.log(e)
         }
+    }
+}
+
+export function deleteUser(payload){
+    return {
+        type: DELETE_USER,
+        payload
     }
 }
 
@@ -70,6 +84,13 @@ export function archivedContact(payload){
     }
 }
 
+export function deleteContact(payload){
+    return {
+        type: DELETE_CONTACT,
+        payload
+    }
+}
+
 export function filterContacts(payload){
     return {
         type: FILTER_CONTACTS,
@@ -88,6 +109,13 @@ export function getRooms(){
         } catch(e){
             console.log(e)
         }
+    }
+}
+
+export function deleteRoom(payload){
+    return {
+        type: DELETE_ROOM,
+        payload
     }
 }
 

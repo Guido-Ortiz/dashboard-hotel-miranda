@@ -2,13 +2,14 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import DataTable from 'react-data-table-component';
 import ArchiveIcon from '@mui/icons-material/Archive';
-import { TopMenu } from '../Bookings/BookingsStyles';
+import DeleteIcon from '@mui/icons-material/Delete';
+import { ActionsContainer, TopMenu } from '../Bookings/BookingsStyles';
 import { DashboardWrapper, RightContainer } from '../Dashboard/DashboardStyles';
 import Sidebar from '../Sidebar/Sidebar';
 import Swiper from '../Swiper/Swiper';
 import Topbar from '../Topbar/Topbar';
 import { SwiperContainer, TableContactsContainer, customStyles } from './ContactsStyles';
-import { archivedContact, filterContacts, getContacts } from '../../redux/actions/actions';
+import { archivedContact, deleteContact, filterContacts, getContacts } from '../../redux/actions/actions';
 
 
 const Contact = () => {
@@ -18,41 +19,44 @@ const Contact = () => {
       name: "ID",
       selector: (row) => row.id,
       sortable: true,
-      width: '70px'
+      width: '6%'
     },
     {
       name: "Date",
       selector: (row) => row.date,
       sortable: true,
-      width: '190px'
+      width: '16%'
     },
     {
       name: "Customer",
       selector: (row) => row.customer,
       sortable: true,
-      width: '130px'
+      width: '12%'
     },
     {
       name: "Email",
       selector: (row) => row.email,
-      width: '150px'
+      width: '12%'
     },
     {
       name: "Telephone",
       selector: (row) => row.telephone,
-      width: '150px'
+      width: '10%'
     },
     {
       name: "Comment",
       selector: (row) => <p>{row.comment}</p>,
       sortable: true,
-      width: '30%',
+      width: '400px',
     },
     {
       name: "Actions",
-      selector: (row) => <ArchiveIcon sx={{color: '#135846'}} onClick={() => handleArchivedContact(row.id, row.customer, row.date, row.email, row.telephone, row.comment)} />,
-      width: '100px'
-    },
+      selector: (row) => <ActionsContainer>
+        <ArchiveIcon sx={{ color: '#135846' }} onClick={() => handleArchivedContact(row.id, row.customer, row.date, row.email, row.telephone, row.comment)} />
+        <DeleteIcon onClick={() => handleDeleteContact(row.id)} />
+      </ActionsContainer>,
+      width: '8%'
+    }
   ]
 
   const dispatch = useDispatch()
@@ -65,20 +69,23 @@ const Contact = () => {
     console.log(row.id);
   }
 
-  const handleArchivedContact = ( id, customer, date, email, telephone, comment ) => {
-    if(!archived.find(e => e.id === id)){
-      dispatch(archivedContact( {id, date, customer, email, telephone, comment })) 
-    } else alert ('Contact already archived!')
+  const handleArchivedContact = (id, customer, date, email, telephone, comment) => {
+    if (!archived.find(e => e.id === id)) {
+      dispatch(archivedContact({ id, date, customer, email, telephone, comment }))
+    } else alert('Contact already archived!')
   }
+
+  useEffect(() => {
+    dispatch(getContacts())
+  }, [dispatch])
 
   const handleFilterContacts = (filter) => {
     dispatch(filterContacts(filter))
   }
 
-
-  useEffect(() => {
-    dispatch(getContacts())
-  }, [dispatch])
+  const handleDeleteContact = (id) => {
+    dispatch(deleteContact(id))
+  }
 
   return (
     <>
@@ -87,7 +94,7 @@ const Contact = () => {
 
         {sidebar && <Sidebar />}
 
-        <RightContainer>
+        <RightContainer sidebar={sidebar}>
 
           <SwiperContainer>
             <Swiper />
@@ -102,10 +109,10 @@ const Contact = () => {
 
           <TableContactsContainer>
             <DataTable columns={columns} data={data} defaultSortFieldId pagination={5} onRowClicked={handleRowClicked} customStyles={customStyles} highlightOnHover />
-           </TableContactsContainer>
- 
+          </TableContactsContainer>
+
         </RightContainer>
-      </DashboardWrapper> 
+      </DashboardWrapper>
     </>
   )
 }

@@ -1,4 +1,4 @@
-import { ARCHIVED_CONTACT, FILTER_CONTACTS, GET_CONTACTS } from "../actions/constants"
+import { ARCHIVED_CONTACT, DELETE_CONTACT, FILTER_CONTACTS, GET_CONTACTS } from "../actions/constants"
 
 const initialState = {
     contacts: [],
@@ -26,20 +26,27 @@ const contactsReducer = (state = initialState, action) => {
                 allContacts: state.contacts.map(e => e)
             }
 
+        case DELETE_CONTACT:
+            return {
+                ...state,
+                contacts: state.contacts.filter(b => b.id !== action.payload),
+                allContacts: state.contacts.filter(b => b.id !== action.payload)
+            }
+
         case FILTER_CONTACTS:
             let filter = []
-            if(action.payload === 'all'){
+            if (action.payload === 'all') {
                 filter = state.allContacts
             } else {
-                    filter = state.allContacts.filter(e => e.archived === true)
-                }
+                filter = state.allContacts.filter(e => e.archived === true)
+            }
             return {
-                    ...state,
-                    contacts: filter
-                }
-           
-        
-            default:
+                ...state,
+                contacts: filter
+            }
+
+
+        default:
             return state
     }
 }

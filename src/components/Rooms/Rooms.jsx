@@ -3,56 +3,17 @@ import DataTable from 'react-data-table-component';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 // import { rooms } from '../../data/rooms';
-import { filterRooms, getRooms } from '../../redux/actions/actions';
-import { TopMenu } from '../Bookings/BookingsStyles';
+import { deleteRoom, filterRooms, getRooms } from '../../redux/actions/actions';
+import { ActionsContainer, TopMenu } from '../Bookings/BookingsStyles';
 import { DashboardWrapper, RightContainer } from '../Dashboard/DashboardStyles';
 import Sidebar from '../Sidebar/Sidebar';
 import Topbar from '../Topbar/Topbar';
 import { AmenitiesChip, BtnRoomStatus, BtnToRoomForm, RoomImage, RoomsTableContainer } from './RoomsStyles';
 
-const columns = [
-  {
-    name: "ID",
-    selector: (row) => row.id,
-    width: '8%'
-  },
-  {
-    name: "Image",
-    selector: (row) => <RoomImage src={row.photos[0]} alt='Thumbnail' />
-  },
-  {
-    name: "Number",
-    selector: (row) => row.number,
-    sortable: true,
-    width: '12%'
-  },
-  {
-    name: "Type",
-    selector: (row) => row.type,
-  },
-  {
-    name: "Amenities",
-    selector: (row) => row.amenities.map(e => <AmenitiesChip>{e}</AmenitiesChip>),
-    width: '20%'
-  },
-  {
-    name: "Price",
-    selector: (row) => row.price,
-    sortable: true,
-    width: '7%'
-  },
-  {
-    name: "% Offer",
-    selector: (row) => <p>{row.price} - %{row.offer} = {row.price - row.offer / 100}</p>,
-    sortable: true,
-    width: '15%'
-  },
-  {
-    name: "Status",
-    selector: (row) => <BtnRoomStatus status={row.status}>{row.status}</BtnRoomStatus>,
-    sortable: true
-  },
-]
+import UpdateIcon from '@mui/icons-material/Update';
+import DeleteIcon from '@mui/icons-material/Delete';
+
+
 
 const customStyles = {
   rows: {
@@ -77,6 +38,58 @@ const customStyles = {
 
 const Rooms = () => {
 
+  const columns = [
+    {
+      name: "ID",
+      selector: (row) => row.id,
+      width: '8%'
+    },
+    {
+      name: "Image",
+      selector: (row) => <RoomImage src={row.photos[0]} alt='Thumbnail' />
+    },
+    {
+      name: "Number",
+      selector: (row) => row.number,
+      sortable: true,
+      width: '12%'
+    },
+    {
+      name: "Type",
+      selector: (row) => row.type,
+    },
+    {
+      name: "Amenities",
+      selector: (row) => row.amenities.map(e => <AmenitiesChip>{e}</AmenitiesChip>),
+      width: '20%'
+    },
+    {
+      name: "Price",
+      selector: (row) => row.price,
+      sortable: true,
+      width: '7%'
+    },
+    {
+      name: "% Offer",
+      selector: (row) => <p>{row.price} - %{row.offer} = {row.price - row.offer / 100}</p>,
+      sortable: true,
+      width: '15%'
+    },
+    {
+      name: "Status",
+      selector: (row) => <BtnRoomStatus status={row.status}>{row.status}</BtnRoomStatus>,
+      sortable: true
+    },
+    {
+      name: "Actions",
+      selector: (row) => <ActionsContainer>
+        <UpdateIcon sx={{marginRight: '10px'}} />
+        <DeleteIcon onClick={() => handleDeleteRoom(row.id)} />
+      </ActionsContainer>,
+      width: '10%'
+    }
+  ]
+
   const sidebar = useSelector(state => state.sidebar)
   const data = useSelector(state => state.rooms.rooms)
 
@@ -92,6 +105,10 @@ const Rooms = () => {
 
   const handleFilterRooms = (filter) => {
     dispatch(filterRooms(filter))
+  }
+
+  const handleDeleteRoom = (id) => {
+    dispatch(deleteRoom(id))
   }
 
   return (

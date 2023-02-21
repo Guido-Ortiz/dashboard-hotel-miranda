@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { filterBookings, getBookings } from '../../redux/actions/actions';
+import { deleteBooking, filterBookings, getBookings } from '../../redux/actions/actions';
 
 import DataTable from 'react-data-table-component';
 
@@ -8,63 +8,66 @@ import Sidebar from '../Sidebar/Sidebar';
 import Topbar from '../Topbar/Topbar';
 
 import { DashboardWrapper, RightContainer } from '../Dashboard/DashboardStyles';
-import { BookingTableContainer, BtnStatus, BtnTopMenu, TopMenu } from './BookingsStyles';
+import { ActionsContainer, BookingTableContainer, BtnRequest, BtnStatus, BtnTopMenu, TopMenu } from './BookingsStyles';
 
-
-const columns = [
-  {
-    name: "Guest",
-    selector: (row) => row.client,
-    sortable: true
-  },
-  {
-    name: "Order",
-    selector: (row) => row.order
-  },
-  {
-    name: "Check-In",
-    selector: (row) => row.checkin,
-    sortable: true
-  },
-  {
-    name: "Check-Out",
-    selector: (row) => row.checkout,
-    sortable: true
-  },
-  {
-    name: "Request",
-    selector: (row) => row.request,
-    sortable: true
-  },
-  {
-    name: "Type",
-    selector: (row) => row.type,
-    sortable: true
-  },
-  {
-    name: "Number",
-    selector: (row) => row.number,
-    sortable: true
-  },
-  {
-    name: "Status",
-    selector: (row) => <BtnStatus status={row.status}>{row.status}</BtnStatus>,
-    sortable: true
-  },
-  
-]
-
+import UpdateIcon from '@mui/icons-material/Update';
+import DeleteIcon from '@mui/icons-material/Delete';
 
 const Bookings = () => {
+
+  const columns = [
+    {
+      name: "Guest",
+      selector: (row) => row.client,
+      sortable: true
+    },
+    {
+      name: "Order",
+      selector: (row) => row.order
+    },
+    {
+      name: "Check-In",
+      selector: (row) => row.checkin,
+      sortable: true
+    },
+    {
+      name: "Check-Out",
+      selector: (row) => row.checkout,
+      sortable: true
+    },
+    {
+      name: "Request",
+      selector: (row) => <BtnRequest>View Notes</BtnRequest>,
+      sortable: true
+    },
+    {
+      name: "Type",
+      selector: (row) => row.type,
+      sortable: true
+    },
+    {
+      name: "Number",
+      selector: (row) => row.number,
+      sortable: true
+    },
+    {
+      name: "Status",
+      selector: (row) => <BtnStatus status={row.status}>{row.status}</BtnStatus>,
+      sortable: true
+    },
+    {
+      name: "Actions",
+      selector: (row) => <ActionsContainer>
+        <UpdateIcon sx={{marginRight: '10px'}} />
+        <DeleteIcon onClick={() => handleDeleteBooking(row.id)} />
+      </ActionsContainer>
+    }
+  ]
 
   const dispatch = useDispatch()
 
   const sidebar = useSelector(state => state.sidebar)
   const data = useSelector(state => state.bookings.bookings)
-
-  const handleRowClicked = (row) => {
-    console.log(row.client);
-  }
 
   useEffect(() => {
     dispatch(getBookings())
@@ -72,6 +75,10 @@ const Bookings = () => {
 
   const handleFilterBookings = filter => {
     dispatch(filterBookings(filter))
+  }
+
+  const handleDeleteBooking = (id) => {
+    dispatch(deleteBooking(id))
   }
 
   return (
@@ -94,7 +101,7 @@ const Bookings = () => {
               </div>
             </TopMenu>
             <BookingTableContainer>
-            <DataTable columns={columns} data={data} defaultSortFieldId  pagination={5} onRowClicked={handleRowClicked} highlightOnHover />
+            <DataTable columns={columns} data={data} defaultSortFieldId  pagination={5} highlightOnHover />
             </BookingTableContainer>
         </RightContainer>
         

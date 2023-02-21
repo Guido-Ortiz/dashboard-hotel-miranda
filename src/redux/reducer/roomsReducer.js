@@ -1,4 +1,4 @@
-import { FILTER_ROOMS, GET_ROOMS } from "../actions/constants"
+import { DELETE_ROOM, FILTER_ROOMS, GET_ROOMS } from "../actions/constants"
 
 
 const initialState = {
@@ -16,21 +16,28 @@ const roomsReducer = (state = initialState, action) => {
                 allRooms: action.payload
             }
 
+        case DELETE_ROOM:
+            return {
+                ...state,
+                rooms: state.rooms.filter(b => b.id !== action.payload),
+                allRooms: state.rooms.filter(b => b.id !== action.payload)
+            }
+
         case FILTER_ROOMS:
             let filter = []
-            if(action.payload === 'all'){
+            if (action.payload === 'all') {
                 filter = state.allRooms
             } else {
-                if(action.payload === 'available'){
+                if (action.payload === 'available') {
                     filter = state.allRooms.filter(e => e.status === 'Available')
                 } else {
-                        filter = state.allRooms.filter(e => e.status === 'Booked')                  
+                    filter = state.allRooms.filter(e => e.status === 'Booked')
                 }
             }
             return {
-                    ...state,
-                    rooms: filter
-                }
+                ...state,
+                rooms: filter
+            }
 
 
         default:
