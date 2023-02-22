@@ -1,24 +1,54 @@
-import React, { useEffect } from 'react';
-import { CheckWapper, DetailWrapper, FacilitiesWrapper, FacilityChip, GuestContact, GuestData, GuestWrapper, RoomInfoWrapper, RoomWrapper } from './BookingDetailStyles';
+import React, { useEffect, useState } from 'react';
+import { BoxEdit, BtnEdit, CheckWapper, DetailWrapper, FacilitiesWrapper, FacilityChip, GuestContact, GuestData, GuestWrapper, InputEdit, RoomInfoWrapper, RoomWrapper } from './BookingDetailStyles';
 import guest from '../../../../resources/p1.jpg';
 import { useDispatch, useSelector } from 'react-redux';
 import { Email, Phone } from '@mui/icons-material';
 import { useParams } from 'react-router';
 import { getBookingDetail } from '../../../../redux/actions/actions';
 
+import { Stack, Modal, Box, Typography, TextField, Button } from '@mui/material';
+
 const BookingDetail = () => {
 
+  
   const { booking_id } = useParams()
   // console.log(booking_id)
-
+  
   const dispatch = useDispatch()
-
+  
   const sidebar = useSelector(state => state.sidebar)
-  const detail = useSelector(state => state.bookings.detail[0])
-
+  const detail = useSelector(state => state.bookings.detail)
+  
   useEffect(() => {
     dispatch(getBookingDetail(booking_id))
   }, [dispatch, booking_id])
+  
+  const [open, setOpen] = useState(false)
+  const [newBooking, setNewBooking] = useState({
+    name: detail[0].client,
+    status: detail[0].status,
+    number: detail[0].number
+  })
+
+  const handleOpen = () => {
+    setOpen(true)
+  }
+
+  const handleClose = () => setOpen(false)
+
+  const handleEdit = () => {
+    console.log('edit photo')
+    // dispatch(editPhoto({ id, newDescription }))
+    setOpen(false)
+}
+
+const handleChange = e => {
+  setNewBooking({
+    ...newBooking,
+    [e.target.name]: e.target.value
+  })
+  console.log(newBooking)
+}
 
   return (
     <DetailWrapper sidebar={sidebar}>
@@ -27,17 +57,18 @@ const BookingDetail = () => {
         <GuestWrapper>
             <img src={guest} alt='Guest' />
             <GuestData>
-              <h2>{detail.client}</h2>
-              <h4>#{detail.id}</h4>
+              <h2>{detail[0].client}</h2>
+              <h4>#{detail[0].id}</h4>
               <GuestContact>
                 <div>
                   <Phone/>
-                  <h3>{detail.email}</h3>
+                  <h3>{detail[0].email}</h3>
                 </div>
                 <div>
                   <Email />
-                  <h3>{detail.telephone}</h3>
+                  <h3>{detail[0].telephone}</h3>
                 </div>
+                <BtnEdit onClick={handleOpen}>Edit Booking</BtnEdit>
                 
               </GuestContact>
             </GuestData>  
@@ -80,6 +111,50 @@ const BookingDetail = () => {
       </div>
 
       <RoomWrapper>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores nostrum quos itaque dignissimos? At culpa soluta deleniti quibusdam officiis similique recusandae officia expedita quam est eligendi aspernatur, sit, impedit perferendis.</RoomWrapper>
+
+
+
+      <Modal open={open} onClose={handleClose} aria-labelledby="modal-modal-title" aria-describedby="modal-modal-description">
+        <BoxEdit>
+
+          <h3>Edit Booking {booking_id}</h3>
+
+          <div>
+
+
+          <InputEdit type="text" placeholder='Guest name' value={newBooking.name} name='name' onChange={e => handleChange(e)}/>
+          <InputEdit type="date" placeholder='' />
+          <InputEdit type="date" placeholder='Check-In' />
+          <InputEdit type="date" placeholder='' />
+          <InputEdit type="text" placeholder='Special request' />
+          <select>
+            <option value="">Select a room type</option>
+            <option value="single">Single Bed</option>
+            <option value="double">Double Bed</option>
+            <option value="sup">Double Superior</option>
+            <option value="suite">Suite</option>
+          </select>
+          {/* <InputEdit type="text" placeholder='Room type' /> */}
+          <InputEdit type="number" placeholder='Room number' name='number' value={newBooking.number} onChange={e => handleChange(e)}/>
+          <InputEdit type="text" placeholder='Status' name='status' value={newBooking.status} onChange={e => handleChange(e)}/>
+
+          </div>
+          {/* <Box sx={style}> */}
+
+            {/* <Typography id="modal-modal-title" variant="h6" component="h2">Edit Booking {}</Typography>
+            <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+            Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
+          </Typography> */}
+            {/* <Stack direction='column' justifyContent='flex-start' alignItems='flex-start'>
+              <TextField fullWidth variant='outlined' label='Description' name='newDescription' 
+              // value={newDescription} 
+              onChange={e => setNewDescription(e.target.value)} sx={{ margin: '20px 0' }} /> */}
+              <BtnEdit onClick={handleEdit} modal='modal' >Edit Booking</BtnEdit>
+            {/* </Stack> */}
+
+          {/* </Box> */}
+              </BoxEdit>
+        </Modal>
 
     </DetailWrapper>
     // </RightWrapp>

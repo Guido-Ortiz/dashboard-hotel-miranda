@@ -6,14 +6,13 @@ export const DetailWrapper = styled.div `
     display: flex;
     flex-direction: row;
     min-height: 84vh;
-    padding: 10px;
+    // padding: 10px;
 
     div {
         // border: 1px solid green;
         display: flex;
         flex-direction: column;
         width: 100%;
-        // margin-left: 20px;
 
         p {
             // border: 1px solid blue;
@@ -203,4 +202,73 @@ export const RoomWrapper = styled.div `
     border: 1px dashed fuchsia;
     margin: 5px;
     width: 50%;
+`;
+
+export const BtnEdit = styled.button `
+     height: ${props => props.modal === 'modal' ? '50px' : '35px'};
+     width: 200px;
+     letter-spacing: 1px;
+     color: #ffffff;
+     background: #135846;
+     border: none;
+     border-radius: 8px;
+     margin: 0 auto;
+     margin-top: 10px;
+     font: normal normal normal 14px/21px Poppins;
+
+     &:hover {
+        cursor: pointer;
+     }
+`;
+
+export const BoxEdit = styled.div `
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 600px;
+    background: #ffffff;
+    border: 1px solid #135846;
+    box-shadow: 24px;
+    padding: 20px;
+
+    h3 {
+        text-align: left;
+        font: normal normal medium 24px/35px Poppins;
+        color: #212121;
+        letter-spacing: 1px;
+    }
+
+    div {
+        // border: 1px solid red;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        flex-wrap: wrap;
+        padding: 10px;
+    }
+
+    select {
+        height: 43px;
+        width: 44%;
+        border: 1px solid #135846;
+        margin: 10px;
+        border-radius: 8px;
+        font: normal normal normal 14px/21px Poppins;
+        letter-spacing: 0.5px;
+        color: #363636;
+    }
+`;
+
+export const InputEdit = styled.input `
+    height: 35px;
+    width: 40%;
+    outline: none;
+    border: 1px solid #135846;
+    margin: 10px;
+    border-radius: 8px;
+    padding: 5px 8px;
+    font: normal normal normal 14px/21px Poppins;
+    letter-spacing: 0.5px;
+    color: #363636;
 `;

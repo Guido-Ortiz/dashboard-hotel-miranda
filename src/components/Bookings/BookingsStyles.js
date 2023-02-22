@@ -63,9 +63,10 @@ export const BtnStatus = styled.button `
     color: #ffffff;
     letter-spacing: 1px;
     font-family: 'poppins', sans-serif;
+    font-size: 13px;
     font-weight: 400;
     height: 34px;
-    width: 90px;
+    width: 94px;
     border: none;
     padding: 5px;
     border-radius: 4px;
@@ -74,9 +75,8 @@ export const BtnStatus = styled.button `
 
 export const BookingTableContainer = styled.div `
     // border: 1px solid red;
-    width: 90%;
+    width: 95%;
     margin-top: 20px;
-    margin-lefet: 10px;
     margin: 0 auto;
 `;
 
@@ -108,3 +108,29 @@ export const BtnRequest = styled.button `
     letter-spacing: 0.5px;
     color: #212121;
 `;
+
+export const CustomTable = {
+    // rows: {
+    //     style: {
+    //         minHeight: '72px', // override the row height
+    //     },
+    // },
+    headCells: {
+        style: {
+            // border: '1px solid red',
+            paddingLeft: '8px',
+            paddingRight: '0px'
+            // width: '40px',
+            // textAlign: 'left',
+            // paddingLeft: '10px',
+            // paddingRight: 0
+        },
+    },
+    cells: {
+        style: {
+            // border: '1px dashed blue',
+            paddingLeft: '8px', // override the cell padding for data cells
+    //         paddingRight: '8px',
+        },
+    },
+}
