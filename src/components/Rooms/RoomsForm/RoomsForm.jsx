@@ -1,6 +1,7 @@
 import { Chip } from '@mui/material'
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { createRoom } from '../../../redux/actions/actions'
 import { DashboardWrapper, RightContainer } from '../../Dashboard/DashboardStyles'
 import Sidebar from '../../Sidebar/Sidebar'
 import Topbar from '../../Topbar/Topbar'
@@ -45,6 +46,11 @@ const RoomsForm = () => {
         })
     }
 
+    const handleAddRoom = () => {
+        // console.log(room)
+        dispatch(createRoom(room))
+    }
+
     return (
         <>
             <Topbar title='Rooms' />
@@ -55,7 +61,8 @@ const RoomsForm = () => {
                     <FormText>Complete the following form to add a new room.</FormText>
                     <InputWrapper>
                         {/* <input type="file" placeholder='Photos' value={room.photo} onChange={e => handleImage(e)} /> */}
-                        <select name='type' value={room.type}onChange={e => handleChange(e)}>
+                         <input type="text" placeholder='Photos' value={room.photo}  />
+                        <select name='type' value={room.type} onChange={e => handleChange(e)}>
                             <option value="">Please select a type</option>
                             <option value="single">Single Bed</option>
                             <option value="double">Double Bed</option>
@@ -64,14 +71,14 @@ const RoomsForm = () => {
                         </select>
                         <input type="number" placeholder='Room number' name='number' value={room.number} onChange={e => handleChange(e)} />
                         <input type="text" placeholder='Description' name='description' value={room.description} onChange={e => handleChange(e)} />
-                        <select name='offer'>
+                        <select name='offer' onChange={(e) => handleChange(e)}>
                             <option value="">Offer</option>
                             <option value="yes">Yes</option>
                             <option value="no">No</option>
                         </select>
-                        <input type="number" placeholder='Discount %' onChange={e => handleChange(e)} />
-                        <input type="number" placeholder='Price per night' onChange={e => handleChange(e)} />
-                        <input type="text" placeholder='Cancelation policy' onChange={e => handleChange(e)} />
+                        <input type="number" placeholder='Discount %' name='discount' onChange={e => handleChange(e)} />
+                        <input type="number" placeholder='Price per night' name='price' onChange={e => handleChange(e)} />
+                        <input type="text" placeholder='Cancelation policy' name='cancel' onChange={e => handleChange(e)} />
                         <select onChange={e => handleAmenities(e)}>
                             <option value="">Please select room amenities</option>
                             {
@@ -87,10 +94,10 @@ const RoomsForm = () => {
                             room.amenities.map((amenity, i) => <Chip key={i} label={amenity} />
                             )
                         }
-                        <input type="text" placeholder='Amenities' name='amenities' value={room.cancel}  />
+                        {/* <input type="text" placeholder='Amenities' name='amenities' value={room.cancel}  /> */}
                         
                     </InputWrapper>
-                    <BtnSubmit>Add Room</BtnSubmit>
+                    <BtnSubmit onClick={handleAddRoom}>Add Room</BtnSubmit>
                 </RightContainer>
             </DashboardWrapper>
         </>
