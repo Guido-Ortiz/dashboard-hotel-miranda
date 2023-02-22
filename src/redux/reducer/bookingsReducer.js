@@ -1,4 +1,4 @@
-import { DELETE_BOOKING, FILTER_BOOKINGS, GET_BOOKINGS, GET_BOOKING_DETAIL } from "../actions/constants";
+import { DELETE_BOOKING, EDIT_BOOKING, FILTER_BOOKINGS, GET_BOOKINGS, GET_BOOKING_DETAIL } from "../actions/constants";
 
 const initialState = {
     bookings: [],
@@ -44,13 +44,25 @@ const bookingsReducer = (state = initialState, action) => {
                 }
 
             case GET_BOOKING_DETAIL:
-                console.log(action.payload)
                 let detail = state.allBookings.filter(b => b.id === parseInt(action.payload))
                 // console.log(detail) 
             return {
                 ...state,
                 detail: detail
             }
+
+            case EDIT_BOOKING:
+                console.log(action.payload)
+                const booking  = state.bookings.find(e => e.id === parseInt(action.payload.booking_id))
+                console.log(booking)
+                booking.name = action.payload.newBooking.name
+                booking.status = action.payload.newBooking.status
+                booking.number = action.payload.newBooking.number
+                return {
+                    ...state,
+                    bookings: state.bookings.map(e => e),
+                    allBookings: state.allBookings.map(e => e)
+                }
         
 
         default:

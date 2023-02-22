@@ -6,4 +6,6 @@ export const SidebarWrapper = styled.div `
     min-width: 18vw;
     height: auto;
     min-height: 84vh;
+    // position: fixed;
+    // z-index: 1;
 `;

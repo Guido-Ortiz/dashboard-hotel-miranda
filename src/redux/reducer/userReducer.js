@@ -1,4 +1,4 @@
-import { DELETE_USER, FILTER_USERS, GET_USERS } from "../actions/constants";
+import { CREATE_USER, DELETE_USER, FILTER_USERS, GET_USERS } from "../actions/constants";
 
 const initialState = {
     users: [],
@@ -33,10 +33,19 @@ const userReducer = (state = initialState, action) => {
                     filter = state.allUsers.filter(e => e.status === 'Inactive')
                 }
             }
-
             return {
                 ...state,
                 users: filter
+            }
+
+        case CREATE_USER:
+            // return{
+            //     ...state
+            // }
+            return {
+                ...state,
+                users: [...state.users, action.payload],
+                allUsers: [...state.allUsers, action.payload]
             }
 
 

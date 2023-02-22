@@ -4,31 +4,26 @@ import guest from '../../../../resources/p1.jpg';
 import { useDispatch, useSelector } from 'react-redux';
 import { Email, Phone } from '@mui/icons-material';
 import { useParams } from 'react-router';
-import { getBookingDetail } from '../../../../redux/actions/actions';
+import { editBooking, getBookingDetail } from '../../../../redux/actions/actions';
 
 import { Stack, Modal, Box, Typography, TextField, Button } from '@mui/material';
 
 const BookingDetail = () => {
 
-  
+
   const { booking_id } = useParams()
   // console.log(booking_id)
-  
+
   const dispatch = useDispatch()
-  
+
   const sidebar = useSelector(state => state.sidebar)
   const detail = useSelector(state => state.bookings.detail)
-  
+
   useEffect(() => {
     dispatch(getBookingDetail(booking_id))
   }, [dispatch, booking_id])
-  
-  const [open, setOpen] = useState(false)
-  const [newBooking, setNewBooking] = useState({
-    name: detail[0].client,
-    status: detail[0].status,
-    number: detail[0].number
-  })
+
+
 
   const handleOpen = () => {
     setOpen(true)
@@ -37,41 +32,47 @@ const BookingDetail = () => {
   const handleClose = () => setOpen(false)
 
   const handleEdit = () => {
-    console.log('edit photo')
-    // dispatch(editPhoto({ id, newDescription }))
+    dispatch(editBooking({ booking_id, newBooking }))
     setOpen(false)
-}
+  }
 
-const handleChange = e => {
-  setNewBooking({
-    ...newBooking,
-    [e.target.name]: e.target.value
+  const handleChange = e => {
+    setNewBooking({
+      ...newBooking,
+      [e.target.name]: e.target.value
+    })
+  }
+
+  const [open, setOpen] = useState(false)
+
+  const [newBooking, setNewBooking] = useState({
+    name: '',
+    status: '',
+    number: ''
   })
-  console.log(newBooking)
-}
 
   return (
     <DetailWrapper sidebar={sidebar}>
 
       <div>
         <GuestWrapper>
-            <img src={guest} alt='Guest' />
-            <GuestData>
-              <h2>{detail[0].client}</h2>
-              <h4>#{detail[0].id}</h4>
-              <GuestContact>
-                <div>
-                  <Phone/>
-                  <h3>{detail[0].email}</h3>
-                </div>
-                <div>
-                  <Email />
-                  <h3>{detail[0].telephone}</h3>
-                </div>
-                <BtnEdit onClick={handleOpen}>Edit Booking</BtnEdit>
-                
-              </GuestContact>
-            </GuestData>  
+          <img src={guest} alt='Guest' />
+          <GuestData>
+            <h2>Guest</h2>
+            <h4>#123456</h4>
+            <GuestContact>
+              <div>
+                <Phone />
+                <h3>email</h3>
+              </div>
+              <div>
+                <Email />
+                <h3>telephone</h3>
+              </div>
+              <BtnEdit onClick={handleOpen}>Edit Booking</BtnEdit>
+
+            </GuestContact>
+          </GuestData>
         </GuestWrapper>
 
         <CheckWapper>
@@ -87,13 +88,13 @@ const handleChange = e => {
 
         <RoomInfoWrapper>
           <div>
-              <h5>Room info</h5>
-              <h2>Deluxe Z - 002424</h2>
-            </div>
-            <div>
-              <h5>Price</h5>
-              <h2>$145 <span>/night</span></h2>
-            </div>
+            <h5>Room info</h5>
+            <h2>Deluxe Z - 002424</h2>
+          </div>
+          <div>
+            <h5>Price</h5>
+            <h2>$145 <span>/night</span></h2>
+          </div>
         </RoomInfoWrapper>
 
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor, voluptas. Non voluptates rerum ipsum veniam earum dignissimos eveniet est quibusdam ducimus. Repellat id consequuntur impedit, maxime ipsa distinctio suscipit nesciunt.</p>
@@ -122,39 +123,26 @@ const handleChange = e => {
           <div>
 
 
-          <InputEdit type="text" placeholder='Guest name' value={newBooking.name} name='name' onChange={e => handleChange(e)}/>
-          <InputEdit type="date" placeholder='' />
-          <InputEdit type="date" placeholder='Check-In' />
-          <InputEdit type="date" placeholder='' />
-          <InputEdit type="text" placeholder='Special request' />
-          <select>
-            <option value="">Select a room type</option>
-            <option value="single">Single Bed</option>
-            <option value="double">Double Bed</option>
-            <option value="sup">Double Superior</option>
-            <option value="suite">Suite</option>
-          </select>
-          {/* <InputEdit type="text" placeholder='Room type' /> */}
-          <InputEdit type="number" placeholder='Room number' name='number' value={newBooking.number} onChange={e => handleChange(e)}/>
-          <InputEdit type="text" placeholder='Status' name='status' value={newBooking.status} onChange={e => handleChange(e)}/>
+            <InputEdit type="text" placeholder='Guest name' value={newBooking.name} name='name' onChange={e => handleChange(e)} />
+            <InputEdit type="date" placeholder='' />
+            <InputEdit type="date" placeholder='Check-In' />
+            <InputEdit type="date" placeholder='' />
+            <InputEdit type="text" placeholder='Special request' />
+            <select>
+              <option value="">Select a room type</option>
+              <option value="single">Single Bed</option>
+              <option value="double">Double Bed</option>
+              <option value="sup">Double Superior</option>
+              <option value="suite">Suite</option>
+            </select>
+            <InputEdit type="number" placeholder='Room number' name='number' value={newBooking.number} onChange={e => handleChange(e)} />
+            <InputEdit type="text" placeholder='Status' name='status' value={newBooking.status} onChange={e => handleChange(e)} />
 
           </div>
-          {/* <Box sx={style}> */}
+          <BtnEdit onClick={handleEdit} modal='modal' >Edit Booking</BtnEdit>
 
-            {/* <Typography id="modal-modal-title" variant="h6" component="h2">Edit Booking {}</Typography>
-            <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-            Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-          </Typography> */}
-            {/* <Stack direction='column' justifyContent='flex-start' alignItems='flex-start'>
-              <TextField fullWidth variant='outlined' label='Description' name='newDescription' 
-              // value={newDescription} 
-              onChange={e => setNewDescription(e.target.value)} sx={{ margin: '20px 0' }} /> */}
-              <BtnEdit onClick={handleEdit} modal='modal' >Edit Booking</BtnEdit>
-            {/* </Stack> */}
-
-          {/* </Box> */}
-              </BoxEdit>
-        </Modal>
+        </BoxEdit>
+      </Modal>
 
     </DetailWrapper>
     // </RightWrapp>

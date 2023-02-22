@@ -1,4 +1,4 @@
-import { DELETE_ROOM, FILTER_ROOMS, GET_ROOMS } from "../actions/constants"
+import { CREATE_ROOM, DELETE_ROOM, FILTER_ROOMS, GET_ROOMS } from "../actions/constants"
 
 
 const initialState = {
@@ -37,6 +37,16 @@ const roomsReducer = (state = initialState, action) => {
             return {
                 ...state,
                 rooms: filter
+            }
+
+        case CREATE_ROOM:
+            // return{
+            //     ...state
+            // }
+            return {
+                ...state,
+                rooms: [...state.rooms, action.payload],
+                allRooms: [...state.allRooms, action.payload]
             }
 
 
