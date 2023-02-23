@@ -89,12 +89,12 @@ const Contact = () => {
 
   return (
     <>
-      <Topbar title='Contact' />
+      {/* <Topbar title='Contact' />
       <DashboardWrapper>
 
         {sidebar && <Sidebar />}
 
-        <RightContainer sidebar={sidebar}>
+        <RightContainer sidebar={sidebar}> */}
 
           <SwiperContainer>
             <Swiper />
@@ -111,8 +111,8 @@ const Contact = () => {
             <DataTable columns={columns} data={data} defaultSortFieldId pagination={5} onRowClicked={handleRowClicked} customStyles={customStyles} highlightOnHover />
           </TableContactsContainer>
 
-        </RightContainer>
-      </DashboardWrapper>
+        {/* </RightContainer>
+      </DashboardWrapper> */}
     </>
   )
 }

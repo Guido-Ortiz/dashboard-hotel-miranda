@@ -9,14 +9,14 @@ const Users = () => {
   const sidebar = useSelector(state => state.sidebar)
   return (
     <>
-      <Topbar title='Users' />
+      {/* <Topbar title='Users' />
       <DashboardWrapper>
         {sidebar && <Sidebar />}
 
-        <RightContainer sidebar={sidebar}>
+        <RightContainer sidebar={sidebar}> */}
           <UsersData />
-        </RightContainer>
-      </DashboardWrapper>
+        {/* </RightContainer>
+      </DashboardWrapper> */}
     </>
   )
 }

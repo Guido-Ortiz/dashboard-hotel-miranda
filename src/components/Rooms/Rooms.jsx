@@ -114,11 +114,11 @@ const Rooms = () => {
 
   return (
     <>
-      <Topbar title='Rooms' />
+      {/* <Topbar title='Rooms' />
       <DashboardWrapper>
         {sidebar && <Sidebar />}
 
-        <RightContainer>
+        <RightContainer> */}
 
           <TopMenu>
             <div>
@@ -139,8 +139,8 @@ const Rooms = () => {
             <DataTable columns={columns} data={data} defaultSortFieldId pagination onRowClicked={handleRowClicked} highlightOnHover customStyles={customStyles} />
           </RoomsTableContainer>
 
-        </RightContainer>
-      </DashboardWrapper>
+        {/* </RightContainer>
+      </DashboardWrapper> */}
     </>
   )
 }
