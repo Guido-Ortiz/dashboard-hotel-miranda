@@ -35,13 +35,13 @@ const RoomsForm = () => {
         })
     }
 
-    const handleImage = (e) => {
-        // console.log('image')
-        setRoom({
-            ...room,
-            photo: [...room.photo, e.target.files]
-        })
-    }
+    // const handleImage = (e) => {
+    //     // console.log('image')
+    //     setRoom({
+    //         ...room,
+    //         photo: [...room.photo, e.target.files]
+    //     })
+    // }
 
     const handleAddRoom = () => {
         // console.log(room)

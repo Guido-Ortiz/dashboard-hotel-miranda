@@ -27,13 +27,9 @@ const Bookings = () => {
 
   const [open, setOpen] = useState(false)
   const [newDescription, setNewDescription] = useState('')
-
+  console.log(newDescription)
+  
   const columns = [
-    // {
-    //   name: "Photo",
-    //   selector: (row) => <img src={row.photo} alt="Guest" />,
-    //   width: '18%'
-    // },
     {
       name: "Booking",
       selector: (row) => <ClientData>
