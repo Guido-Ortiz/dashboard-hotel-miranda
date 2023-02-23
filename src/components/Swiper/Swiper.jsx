@@ -11,7 +11,7 @@ import SwiperItem from './SwiperItem/SwiperItem';
 import { reviewsData } from '../../data/reviewsData';
 import { SwiperContainer } from './SwiperStyles';
 
-export default () => {
+const Swipers =() => {
     return (
         <SwiperContainer>
 
@@ -32,3 +32,5 @@ export default () => {
 
     );
 };
+
+export default Swipers
