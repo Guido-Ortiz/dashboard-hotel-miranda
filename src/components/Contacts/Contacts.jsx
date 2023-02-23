@@ -4,10 +4,7 @@ import DataTable from 'react-data-table-component';
 import ArchiveIcon from '@mui/icons-material/Archive';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { ActionsContainer, TopMenu } from '../Bookings/BookingsStyles';
-import { DashboardWrapper, RightContainer } from '../Dashboard/DashboardStyles';
-import Sidebar from '../Sidebar/Sidebar';
 import Swiper from '../Swiper/Swiper';
-import Topbar from '../Topbar/Topbar';
 import { SwiperContainer, TableContactsContainer, customStyles } from './ContactsStyles';
 import { archivedContact, deleteContact, filterContacts, getContacts } from '../../redux/actions/actions';
 
@@ -19,7 +16,7 @@ const Contact = () => {
       name: "ID",
       selector: (row) => row.id,
       sortable: true,
-      width: '6%'
+      width: '5%'
     },
     {
       name: "Date",
@@ -41,7 +38,7 @@ const Contact = () => {
     {
       name: "Telephone",
       selector: (row) => row.telephone,
-      width: '10%'
+      width: '8%'
     },
     {
       name: "Comment",
@@ -61,7 +58,7 @@ const Contact = () => {
 
   const dispatch = useDispatch()
 
-  const sidebar = useSelector(state => state.sidebar)
+  // const sidebar = useSelector(state => state.sidebar)
   const data = useSelector(state => state.contacts.contacts)
   const archived = useSelector(state => state.contacts.archived)
 

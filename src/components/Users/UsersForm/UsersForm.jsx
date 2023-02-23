@@ -1,15 +1,15 @@
 import React, { useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { createUser } from '../../../redux/actions/actions'
-import { DashboardWrapper, RightContainer } from '../../Dashboard/DashboardStyles'
-import Sidebar from '../../Sidebar/Sidebar'
-import Topbar from '../../Topbar/Topbar'
+// import { DashboardWrapper, RightContainer } from '../../Dashboard/DashboardStyles'
+// import Sidebar from '../../Sidebar/Sidebar'
+// import Topbar from '../../Topbar/Topbar'
 // import { BtnAddEmployee } from '../UsersData/UsersDataStyles'
 import { FormText, InputWrapper, BtnSubmit } from './UsersFormStyles'
 
 
 const UsersForm = () => {
-  const sidebar = useSelector(state => state.sidebar)
+  // const sidebar = useSelector(state => state.sidebar)
   const dispatch = useDispatch()
 
   const [user, setUser] = useState({
@@ -39,11 +39,11 @@ const UsersForm = () => {
 
   return (
     <>
-      <Topbar title='Users' />
+      {/* <Topbar title='Users' />
       <DashboardWrapper>
         { sidebar && <Sidebar />}
 
-        <RightContainer>
+        <RightContainer> */}
           <FormText>Complete the following form to add a new employee to your staff.</FormText>
           <InputWrapper>
             <input type="text" placeholder='Insert your photo' name='photo' value={user.photo} onChange={(e) => handleChange(e)}/>
@@ -66,9 +66,9 @@ const UsersForm = () => {
             <input type="password" placeholder='Password'name='password' value={user.password} onChange={(e) => handleChange(e)}/>
           </InputWrapper>
           <BtnSubmit onClick={handleSubmit}>Add Employee</BtnSubmit>
-        </RightContainer>
+        {/* </RightContainer>
 
-      </DashboardWrapper>
+      </DashboardWrapper> */}
     </>
   )
 }

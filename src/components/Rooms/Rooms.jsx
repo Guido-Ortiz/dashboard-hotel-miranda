@@ -2,35 +2,30 @@ import React, { useEffect } from 'react';
 import DataTable from 'react-data-table-component';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-// import { rooms } from '../../data/rooms';
 import { deleteRoom, filterRooms, getRooms } from '../../redux/actions/actions';
 import { ActionsContainer, TopMenu } from '../Bookings/BookingsStyles';
-import { DashboardWrapper, RightContainer } from '../Dashboard/DashboardStyles';
-import Sidebar from '../Sidebar/Sidebar';
-import Topbar from '../Topbar/Topbar';
-import { AmenitiesChip, BtnRoomStatus, BtnToRoomForm, RoomImage, RoomsTableContainer } from './RoomsStyles';
-
+import { AmenitiesChip, AmenitiesContainer, BtnRoomStatus, BtnToRoomForm, Price, RoomImage, RoomInfoContainer, RoomsTableContainer } from './RoomsStyles';
 import UpdateIcon from '@mui/icons-material/Update';
 import DeleteIcon from '@mui/icons-material/Delete';
-
-
 
 const customStyles = {
   rows: {
     style: {
       // border: '1px solid blue'
+      height: '100px'
     },
   },
   headCells: {
     style: {
-      // border: '1px solid fuchsia',          
+      // border: '1px solid fuchsia',
+      paddingLeft: '4px',
     },
   },
   cells: {
     style: {
       // border: '1px solid blue',
-      width: '10px'
-      // paddingLeft: '8px', // override the cell padding for data cells
+      width: '10px',
+      paddingLeft: '4px', // override the cell padding for data cells
       // paddingRight: '8px',
     },
   },
@@ -40,38 +35,43 @@ const Rooms = () => {
 
   const columns = [
     {
-      name: "ID",
-      selector: (row) => row.id,
-      width: '7%'
-    },
-    {
       name: "Image",
       selector: (row) => <RoomImage src={row.photos[0]} alt='Thumbnail' />
     },
     {
-      name: "Number",
-      selector: (row) => row.number,
-      sortable: true,
-      width: '10%'
+      name: "Room",
+      selector: (row) => <RoomInfoContainer>
+        <h3>{row.number}</h3>
+        <h4>#{row.id}</h4>
+      </RoomInfoContainer>,
+      width: '8%'
     },
     {
       name: "Type",
       selector: (row) => row.type,
+      // width: '10%'
     },
     {
       name: "Amenities",
-      selector: (row) => row.amenities.map(e => <AmenitiesChip>{e}</AmenitiesChip>),
+      selector: (row) =>
+        <AmenitiesContainer>
+          {
+            row.amenities.map(e =>
+              <AmenitiesChip>{e}</AmenitiesChip>
+            )}
+        </AmenitiesContainer>
+      ,
       width: '15%'
     },
     {
       name: "Price",
-      selector: (row) => row.price,
+      selector: (row) => <Price>${row.price}<span>/Night</span></Price>,
       sortable: true,
-      width: '8%'
+      width: '12%'
     },
     {
       name: "% Offer",
-      selector: (row) => <p>{row.price} - %{row.offer} = {row.price - row.offer / 100}</p>,
+      selector: (row) => <Price>${row.price - row.offer}<span>/Night</span></Price>,
       sortable: true,
       width: '15%'
     },
@@ -84,14 +84,14 @@ const Rooms = () => {
     {
       name: "Actions",
       selector: (row) => <ActionsContainer>
-        <UpdateIcon sx={{marginRight: '10px'}} />
+        <UpdateIcon sx={{ marginRight: '10px' }} />
         <DeleteIcon onClick={() => handleDeleteRoom(row.id)} />
       </ActionsContainer>,
       width: '10%'
     }
   ]
 
-  const sidebar = useSelector(state => state.sidebar)
+  // const sidebar = useSelector(state => state.sidebar)
   const data = useSelector(state => state.rooms.rooms)
 
   const dispatch = useDispatch()
@@ -114,33 +114,24 @@ const Rooms = () => {
 
   return (
     <>
-      {/* <Topbar title='Rooms' />
-      <DashboardWrapper>
-        {sidebar && <Sidebar />}
+      <TopMenu>
+        <div>
+          <h4 onClick={() => handleFilterRooms('all')}>All Rooms</h4>
+          <h4 value='in' onClick={() => handleFilterRooms('available')}>Available</h4>
+          <h4 value='out' onClick={() => handleFilterRooms('booked')}>Booked</h4>
+        </div>
+        <div>
 
-        <RightContainer> */}
+          <Link to='/rooms/add'>
+            <BtnToRoomForm>+ Room</BtnToRoomForm>
+          </Link>
+        </div>
+      </TopMenu>
 
-          <TopMenu>
-            <div>
-              <h4 onClick={() => handleFilterRooms('all')}>All Rooms</h4>
-              <h4 value='in' onClick={() => handleFilterRooms('available')}>Available</h4>
-              <h4 value='out' onClick={() => handleFilterRooms('booked')}>Booked</h4>
-            </div>
-            <div>
+      <RoomsTableContainer>
+        <DataTable columns={columns} data={data} defaultSortFieldId pagination onRowClicked={handleRowClicked} highlightOnHover customStyles={customStyles} />
+      </RoomsTableContainer>
 
-              <Link to='/rooms/add'>
-                <BtnToRoomForm>+ Room</BtnToRoomForm>
-              </Link>
-            </div>
-          </TopMenu>
-
-
-          <RoomsTableContainer>
-            <DataTable columns={columns} data={data} defaultSortFieldId pagination onRowClicked={handleRowClicked} highlightOnHover customStyles={customStyles} />
-          </RoomsTableContainer>
-
-        {/* </RightContainer>
-      </DashboardWrapper> */}
     </>
   )
 }

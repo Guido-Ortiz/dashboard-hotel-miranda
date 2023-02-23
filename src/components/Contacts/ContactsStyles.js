@@ -5,8 +5,8 @@ export const SwiperContainer = styled.div `
 `;
 
 export const TableContactsContainer = styled.div `
-    // border: 1px solid blue;
-    width: '90%';
+    border: 1px solid blue;
+    width: 98%;
     margin: 0 auto;
 
     svg:hover {
@@ -17,22 +17,19 @@ export const TableContactsContainer = styled.div `
 export const customStyles = {
     rows: {
         style: {
-            height: '70px', // override the row height
+            height: '70px',  
         },
     },
     headCells: {
         style: {
             // border: '1px solid red',
-            letterSpacing: '1px'
+            paddingLeft: '6px'
         },
     },
     cells: {
         style: {
-            // paddingLeft: '8px', // override the cell padding for data cells
-            // paddingRight: '8px',
             // border: '1px dashed green',
-            height: '100%',
-            wordBreak: 'break-all',
+            paddingLeft: '6px',
         },
     },
 };
