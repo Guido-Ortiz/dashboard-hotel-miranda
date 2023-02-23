@@ -17,12 +17,6 @@ const Dashboard = () => {
   const data = useSelector(state => state.bookings.bookings)
 
   const columns = [
-    // {
-    //   name: "ID",
-    //   selector: (row) => row.id,
-    //   sortable: true,
-    //   width: '50px'
-    // },
     {
       name: "Photo",
       selector: (row) => <img src={row.photo} alt="Profile" />,

@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import Popup from 'reactjs-popup';
 
 export const SliderItemWrapper = styled.div`
     // border: 1px solid fuchsia;
@@ -45,40 +44,41 @@ export const SliderItemPeople = styled.div`
     }
 `;
 
-export const StyledPopup = styled(Popup)`
-
-    // border: 1px solid red;
-  // use your custom style for ".popup-overlay"
-  &-overlay {
-    border: 1px solid #799283;
-    border-radius: 15px;
-    background: grey;
-    width: 50%;
-    height: 50%;
-    margin: 0 auto;
-    margin-top: 150px;
-    postion: relative;
-  }
-  // use your custom style for ".popup-content"
-  &-content {
-    color: #ffffff;
+export const BoxSwiper = styled.div `
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 600px;
+    background: #ffffff;
+    border: 2px solid #135846;
+    box-shadow: 24px;
     padding: 20px;
-    letter-spacing: 1px;
-  }
-`;
 
-export const ClosePopup = styled.span`
-cursor: pointer;
-color: #799283;
-font-weight: 600;
-position: absolute;
-display: block;
-padding: 5px;
-line-height: 20px;
-right: 10px;
-top: 0px;
-font-size: 24px;
-background: #ffffff;
-// border-radius: 18px;
-border: 1px solid #cfcece;
+    h3 {
+        text-align: left;
+        font: normal normal medium 24px/35px Poppins;
+        color: #212121;
+        letter-spacing: 1px;
+    }
+
+    div {
+        // border: 1px solid red;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        flex-wrap: wrap;
+        padding: 10px;
+    }
+
+    select {
+        height: 43px;
+        width: 44%;
+        border: 1px solid #135846;
+        margin: 10px;
+        border-radius: 8px;
+        font: normal normal normal 14px/21px Poppins;
+        letter-spacing: 0.5px;
+        color: #363636;
+    }
 `;

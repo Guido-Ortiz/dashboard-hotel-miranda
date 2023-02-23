@@ -34,7 +34,7 @@ export const AmenitiesChip = styled.div `
 // dispaly: block;
     border: 1px solid #135846;
     width: auto;
-    padding: 2px;
+    padding: 2px 4px;
     letter-spacing: 0.5px;
     border-radius: 4px;
     margin: 4px;
@@ -108,4 +108,11 @@ export const Price = styled.h4 `
         letter-spacing: 0px;
         color: #799283;
     }
-`; 
+`;
+
+export const RoomType = styled.h4 `
+    text-align: left;
+    font: normal normal medium 16px/25px Poppins;
+    letter-spacing: 1px;
+    color: #393939;
+`;

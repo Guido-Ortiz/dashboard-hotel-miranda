@@ -5,60 +5,56 @@ import ArchiveIcon from '@mui/icons-material/Archive';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { ActionsContainer, TopMenu } from '../Bookings/BookingsStyles';
 import Swiper from '../Swiper/Swiper';
-import { SwiperContainer, TableContactsContainer, customStyles } from './ContactsStyles';
+import { SwiperContainer, TableContactsContainer, customStyles, InfoColumn, Customer, Comment } from './ContactsStyles';
 import { archivedContact, deleteContact, filterContacts, getContacts } from '../../redux/actions/actions';
-
+import { Tooltip } from '@mui/material';
 
 const Contact = () => {
 
   const columns = [
     {
-      name: "ID",
-      selector: (row) => row.id,
-      sortable: true,
-      width: '5%'
-    },
-    {
-      name: "Date",
-      selector: (row) => row.date,
-      sortable: true,
-      width: '16%'
+      name: "Info",
+      selector: row => <InfoColumn>
+      <h3>{row.date}</h3>
+      <h4>#{row.id}</h4>
+      {/* <h5>#{row.id}</h5> */}
+    </InfoColumn>,
+    sortable: true,
+    width: '18%'
     },
     {
       name: "Customer",
-      selector: (row) => row.customer,
-      sortable: true,
-      width: '12%'
+      selector: row => <Customer>
+        <h3>{row.customer}</h3>
+        <h4>{row.email}</h4>
+        <h4>{row.telephone}</h4>
+    </Customer>,
+    sortable: true,
+    width: '18%'
     },
     {
-      name: "Email",
-      selector: (row) => row.email,
-      width: '12%'
-    },
-    {
-      name: "Telephone",
-      selector: (row) => row.telephone,
-      width: '8%'
+      name: "Isue",
+      seector: row => <h4>Isue</h4>,
+      width: '14%'
     },
     {
       name: "Comment",
-      selector: (row) => <p>{row.comment}</p>,
+      selector: (row) => <Comment>{row.comment}</Comment>,
       sortable: true,
       width: '400px',
     },
     {
       name: "Actions",
-      selector: (row) => <ActionsContainer>
-        <ArchiveIcon sx={{ color: '#135846' }} onClick={() => handleArchivedContact(row.id, row.customer, row.date, row.email, row.telephone, row.comment)} />
-        <DeleteIcon onClick={() => handleDeleteContact(row.id)} />
+      selector: (row) => <ActionsContainer><Tooltip title="Archived message">
+        <ArchiveIcon sx={{ color: '#135846' }} onClick={() => handleArchivedContact(row.id, row.customer, row.date, row.email, row.telephone, row.comment)} /></Tooltip>
+        <Tooltip title="Delete message"><DeleteIcon onClick={() => handleDeleteContact(row.id)} /></Tooltip>
       </ActionsContainer>,
-      width: '8%'
+      // width: '18%'
     }
   ]
 
   const dispatch = useDispatch()
 
-  // const sidebar = useSelector(state => state.sidebar)
   const data = useSelector(state => state.contacts.contacts)
   const archived = useSelector(state => state.contacts.archived)
 
@@ -86,30 +82,22 @@ const Contact = () => {
 
   return (
     <>
-      {/* <Topbar title='Contact' />
-      <DashboardWrapper>
 
-        {sidebar && <Sidebar />}
+      <SwiperContainer>
+        <Swiper />
+      </SwiperContainer>
 
-        <RightContainer sidebar={sidebar}> */}
+      <TopMenu>
+        <div>
+          <h4 value='all' onClick={() => handleFilterContacts('all')}>All Contacts</h4>
+          <h4 value='archived' onClick={() => handleFilterContacts('archived')}>Archived</h4>
+        </div>
+      </TopMenu>
 
-          <SwiperContainer>
-            <Swiper />
-          </SwiperContainer>
+      <TableContactsContainer>
+        <DataTable columns={columns} data={data} defaultSortFieldId pagination={5} onRowClicked={handleRowClicked} customStyles={customStyles} highlightOnHover />
+      </TableContactsContainer>
 
-          <TopMenu>
-            <div>
-              <h4 value='all' onClick={() => handleFilterContacts('all')}>All Contacts</h4>
-              <h4 value='archived' onClick={() => handleFilterContacts('archived')}>Archived</h4>
-            </div>
-          </TopMenu>
-
-          <TableContactsContainer>
-            <DataTable columns={columns} data={data} defaultSortFieldId pagination={5} onRowClicked={handleRowClicked} customStyles={customStyles} highlightOnHover />
-          </TableContactsContainer>
-
-        {/* </RightContainer>
-      </DashboardWrapper> */}
     </>
   )
 }

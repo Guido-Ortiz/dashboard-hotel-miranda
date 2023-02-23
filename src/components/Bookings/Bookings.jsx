@@ -2,13 +2,14 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { deleteBooking, filterBookings, getBookings } from '../../redux/actions/actions';
 import DataTable from 'react-data-table-component';
-import { ActionsContainer, BookingTableContainer, BtnRequest, BtnStatus, BtnTopMenu, CustomTable, TopMenu } from './BookingsStyles';
+import { ActionsContainer, BookingTableContainer, BtnRequest, BtnStatus, BtnTopMenu, ClientData, CustomTable, TopMenu } from './BookingsStyles';
 
 import UpdateIcon from '@mui/icons-material/Update';
 import DeleteIcon from '@mui/icons-material/Delete';
 
 import { Stack, Modal, Box, Typography, TextField, Button } from '@mui/material';
 import { Link } from 'react-router-dom';
+import { BookingColumn, Date } from '../Dashboard/DashboardStyles';
 
 const style = {
   position: 'absolute',
@@ -28,46 +29,52 @@ const Bookings = () => {
   const [newDescription, setNewDescription] = useState('')
 
   const columns = [
+    // {
+    //   name: "Photo",
+    //   selector: (row) => <img src={row.photo} alt="Guest" />,
+    //   width: '18%'
+    // },
     {
-      name: "Guest",
-      selector: (row) => row.client,
+      name: "Booking",
+      selector: (row) => <ClientData>
+        <h3>{row.client}</h3>
+        <h4>#{row.id}</h4>
+      </ClientData>,
       sortable: true,
-      width: '12%'
+      width: '15%'
     },
     {
       name: "Order",
-      selector: (row) => row.order,
-      width: '10%'
+      selector: (row) => <Date>{row.order}</Date>,
+      sortable: true,
+      width: '108px'
     },
     {
       name: "Check-In",
-      selector: (row) => row.checkin,
+      selector: (row) => <Date>{row.checkin}</Date>,
       sortable: true,
-      width: '10%'
+      width: '108px'
     },
     {
       name: "Check-Out",
-      selector: (row) => row.checkout,
+      selector: (row) => <Date>{row.checkout}</Date>,
       sortable: true,
-      width: '11%'
+      width: '108px'
     },
     {
       name: "Request",
       selector: (row) => <BtnRequest>View Notes</BtnRequest>,
       sortable: true,
-      width: '13%'
+      width: '12%'
     },
     {
-      name: "Type",
-      selector: (row) => row.type,
+      name: "Room",
+      selector: (row) => <BookingColumn>
+        <h3>{row.type}</h3>
+        <h4>N° {row.number}</h4>
+      </BookingColumn>,
       sortable: true,
-      width: '15%'
-    },
-    {
-      name: "N°",
-      selector: (row) => row.number,
-      sortable: true,
-      width: '6%'
+      width: '18%'
     },
     {
       name: "Status",

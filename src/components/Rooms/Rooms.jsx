@@ -4,9 +4,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { deleteRoom, filterRooms, getRooms } from '../../redux/actions/actions';
 import { ActionsContainer, TopMenu } from '../Bookings/BookingsStyles';
-import { AmenitiesChip, AmenitiesContainer, BtnRoomStatus, BtnToRoomForm, Price, RoomImage, RoomInfoContainer, RoomsTableContainer } from './RoomsStyles';
+import { AmenitiesChip, AmenitiesContainer, BtnRoomStatus, BtnToRoomForm, Price, RoomImage, RoomInfoContainer, RoomsTableContainer, RoomType } from './RoomsStyles';
 import UpdateIcon from '@mui/icons-material/Update';
 import DeleteIcon from '@mui/icons-material/Delete';
+import { Tooltip } from '@mui/material';
 
 const customStyles = {
   rows: {
@@ -41,14 +42,14 @@ const Rooms = () => {
     {
       name: "Room",
       selector: (row) => <RoomInfoContainer>
-        <h3>{row.number}</h3>
+        <h3>N° {row.number}</h3>
         <h4>#{row.id}</h4>
       </RoomInfoContainer>,
       width: '8%'
     },
     {
       name: "Type",
-      selector: (row) => row.type,
+      selector: (row) => <RoomType>{row.type}</RoomType>,
       // width: '10%'
     },
     {
@@ -84,8 +85,8 @@ const Rooms = () => {
     {
       name: "Actions",
       selector: (row) => <ActionsContainer>
-        <UpdateIcon sx={{ marginRight: '10px' }} />
-        <DeleteIcon onClick={() => handleDeleteRoom(row.id)} />
+        <Tooltip title='Update Room'><UpdateIcon sx={{ marginRight: '10px' }} /></Tooltip>
+        <Tooltip title='Delete Room'><DeleteIcon onClick={() => handleDeleteRoom(row.id)} /></Tooltip>
       </ActionsContainer>,
       width: '10%'
     }

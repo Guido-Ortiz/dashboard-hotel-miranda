@@ -7,6 +7,7 @@ export const TopMenu = styled.div`
     align-items: center;
     justify-content: space-between;
     width: 100%;
+    letter-spacing: 1px;
         
     div {
         display: flex;
@@ -80,6 +81,29 @@ export const BookingTableContainer = styled.div `
     margin: 0 auto;
 `;
 
+export const ClientData = styled.div `
+    h3, h4, h5 {
+        margin: 0;
+    }
+
+    h3 {
+        text-align: left;
+        font: normal normal medium 20px/30px Poppins;
+        font-weight: 700;
+        letter-spacing: 1px;
+        color: #393939;
+        margin-bottom: 5px;
+    }
+
+    h4 {
+        text-align: left;
+        font: normal normal medium 18px/28px Poppins;
+        letter-spacing: 1px;
+        color: #799283;
+        // margin-bottom: 5px;
+    }
+`;
+
 export const ActionsContainer = styled.div `
     // border: 1px solid red;
     display: flex;
@@ -110,27 +134,21 @@ export const BtnRequest = styled.button `
 `;
 
 export const CustomTable = {
-    // rows: {
-    //     style: {
-    //         minHeight: '72px', // override the row height
-    //     },
-    // },
+    rows: {
+        style: {
+            minHeight: '70px',
+        },
+    },
     headCells: {
         style: {
-            // border: '1px solid red',
-            paddingLeft: '8px',
-            paddingRight: '0px'
-            // width: '40px',
-            // textAlign: 'left',
-            // paddingLeft: '10px',
-            // paddingRight: 0
+            // border: '1px dashed green',
+            paddingLeft: '4px',
         },
     },
     cells: {
         style: {
             // border: '1px dashed blue',
-            paddingLeft: '8px', // override the cell padding for data cells
-    //         paddingRight: '8px',
+            paddingLeft: '4px', 
         },
     },
 }

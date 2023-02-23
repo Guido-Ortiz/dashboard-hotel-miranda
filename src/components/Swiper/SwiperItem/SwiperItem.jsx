@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-// import Popup from 'reactjs-popup';
-import { ClosePopup, SliderItemPeople, SliderItemWrapper, StyledPopup } from './SwiperItemStyle';
+import Modal from '@mui/material/Modal';
+import { BoxSwiper, SliderItemPeople, SliderItemWrapper } from './SwiperItemStyle';
 
 const SwiperItem = ({ id, review, date, hour, name, email, telephone, matter, archive }) => {
 
@@ -21,18 +21,17 @@ const SwiperItem = ({ id, review, date, hour, name, email, telephone, matter, ar
         </SliderItemPeople>
       </SliderItemWrapper>
 
-      <StyledPopup open={open} closeOnDocumentClick onClose={closeModal}>
-        <div className="modal">
-          <ClosePopup className="close" onClick={closeModal}>
-            &times;
-          </ClosePopup>
+      
+
+      <Modal open={open} onClose={closeModal} aria-labelledby="modal-modal-title" aria-describedby="modal-modal-description">
+        <BoxSwiper>
           <h4>{matter}</h4>
           <p>{review}</p>
           <h5>{name}</h5>
           <h5>{email}</h5>
           <h6>{date}</h6>
-        </div>
-      </StyledPopup>
+        </BoxSwiper>
+      </Modal>
     </>
   )
 }
