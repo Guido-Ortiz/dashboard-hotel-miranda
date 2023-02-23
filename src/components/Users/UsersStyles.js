@@ -28,49 +28,38 @@ export const customStyles = {
     },
 }
 
-export const Wrapper = styled.div `
+export const UsersWrapper = styled.div `
     // border: 1px solid fuchsia;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     justify-content: flex-start;
-    width: 100%;
+    width: 98%;
 `;
 
-export const FilterWrapper = styled.div `
+export const UserTableWrapper = styled.div `
     // border: 1px solid red;
+    margin: 0 auto;
     width: 90%;
+`;
+
+export const BtnAddEmployee = styled.button `
+    font-family: 'poppins', sans-serif;
+    font-weight: 400;
+    height: 40px;
+    width: 100px;
+    border: 1px solid #135846;
+    background: #ffffff;
+    color: #135846;
+    letter-spacing: 0.5px;
     padding: 5px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-`;
+    margin: 0 20px;
+    border-radius: 4px;
+    text-transform: uppercase;
 
-export const TextContainer = styled.div `
-    // border: 1px solid blue;
-    display: flex;
-    flex-direction: row;
-    // align-items: flex-end;
-    // justify-content: flex-end;
-
-    h4 {
-        // border: 1px solid orange;
-        margin-right: 10px;
-        text-align: right;
-        // font: normal normal medium 16px/25px Poppins;
-        letter-spacing: 0.5px;
-        color: #6E6E6E;
-
-        &:focus {
-            color: red;
-        }
+    &:hover {
+        cursor: pointer;
     }
-`;
-
-export const UserDataContainer = styled.div `
-    // border: 1px solid red;
-
 `;
 
 export const UserImage = styled.img `
@@ -79,6 +68,13 @@ export const UserImage = styled.img `
     height: 50%;
     margin-right: 6px;
     border-radius: 0.75rem 
+`;
+
+export const User = styled.div `
+    // border: 1px solid fuchsia;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 `;
 
 export const UserData = styled.div `
@@ -108,41 +104,9 @@ export const UserData = styled.div `
     }
 `;
 
-export const BtnAddEmployee = styled.button `
-    font-family: 'poppins', sans-serif;
-    font-weight: 400;
-    height: 40px;
-    width: 100px;
-    border: 1px solid #135846;
-    background: #ffffff;
-    color: #135846;
-    letter-spacing: 0.5px;
-    padding: 5px;
-    margin: 0 20px;
-    border-radius: 4px;
-    text-transform: uppercase;
-
-    &:hover {
-        cursor: pointer;
-    }
-`;
-
 export const EmployeeStatus = styled.h4 `
     text-align: left;
     font: normal normal 600 14px/21px Poppins;
     letter-spacing: 0px;
     color: ${props => props.status === 'Inactive' ? '#E23428' : '#5AD07A'};
-`;
-
-export const UserTableWrapper = styled.div `
-    // border: 1px solid red;
-    margin: 0 auto;
-    width: 90%;
-`;
-
-export const User = styled.div `
-    // border: 1px solid fuchsia;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
 `;

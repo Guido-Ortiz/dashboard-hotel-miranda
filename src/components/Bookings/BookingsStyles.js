@@ -7,6 +7,7 @@ export const TopMenu = styled.div`
     align-items: center;
     justify-content: space-between;
     width: 100%;
+    letter-spacing: 1px;
         
     div {
         display: flex;
@@ -63,9 +64,10 @@ export const BtnStatus = styled.button `
     color: #ffffff;
     letter-spacing: 1px;
     font-family: 'poppins', sans-serif;
+    font-size: 13px;
     font-weight: 400;
-    height: 40px;
-    width: 90px;
+    height: 34px;
+    width: 94px;
     border: none;
     padding: 5px;
     border-radius: 4px;
@@ -74,8 +76,79 @@ export const BtnStatus = styled.button `
 
 export const BookingTableContainer = styled.div `
     // border: 1px solid red;
-    width: 90%;
+    width: 95%;
     margin-top: 20px;
-    margin-lefet: 10px;
     margin: 0 auto;
 `;
+
+export const ClientData = styled.div `
+    h3, h4, h5 {
+        margin: 0;
+    }
+
+    h3 {
+        text-align: left;
+        font: normal normal medium 20px/30px Poppins;
+        font-weight: 700;
+        letter-spacing: 1px;
+        color: #393939;
+        margin-bottom: 5px;
+    }
+
+    h4 {
+        text-align: left;
+        font: normal normal medium 18px/28px Poppins;
+        letter-spacing: 1px;
+        color: #799283;
+        // margin-bottom: 5px;
+    }
+`;
+
+export const ActionsContainer = styled.div `
+    // border: 1px solid red;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
+    svg {
+        color: #799283;
+        // margin-right: 15px;
+
+        &:hover {
+            cursor: pointer;
+            color: #E23428;
+        }
+    }
+`;
+
+export const BtnRequest = styled.button `
+    height: 35px;
+    border: 1px solid #799283;
+    background: #EEF9F2 0% 0% no-repeat padding-box;
+    border-radius: 12px;
+    text-align: left;
+    font: normal normal medium 16px/25px Poppins;
+    letter-spacing: 0.5px;
+    color: #212121;
+`;
+
+export const CustomTable = {
+    rows: {
+        style: {
+            minHeight: '70px',
+        },
+    },
+    headCells: {
+        style: {
+            // border: '1px dashed green',
+            paddingLeft: '4px',
+        },
+    },
+    cells: {
+        style: {
+            // border: '1px dashed blue',
+            paddingLeft: '4px', 
+        },
+    },
+}

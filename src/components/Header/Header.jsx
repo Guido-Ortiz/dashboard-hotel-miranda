@@ -8,7 +8,8 @@ import MenuOpenIcon from '@mui/icons-material/MenuOpen';
 import EmailIcon from '@mui/icons-material/Email';
 import LogoutIcon from '@mui/icons-material/Logout';
 import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone';
-import { toggleSidebar } from '../../redux/actions/action';
+// import { toggleSidebar } from '../../redux/reducer/sidebarSlice';
+import { toggleSidebar } from '../../redux/actions/actions';
 
 const Header = ({ title }) => {
 

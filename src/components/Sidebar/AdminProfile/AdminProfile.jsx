@@ -8,7 +8,7 @@ const AdminProfile = () => {
         <img src={admin} alt='Admin Profile' />
         <h4>Guido Ortiz</h4>
         <h5>guido@hotelmiranda.com</h5>
-        <BtnAdminProfile>Contact Us</BtnAdminProfile>
+        <BtnAdminProfile>Edit</BtnAdminProfile>
     </ProfileContainer>
   )
 }

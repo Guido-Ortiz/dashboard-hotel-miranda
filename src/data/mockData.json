@@ -1,0 +1,37 @@
+[
+  {
+  "id": 1,
+  "client": "Ivette Aubery",
+  "photo": "https://travl.dexignlab.com/xhtml/images/room/room1.jpg",
+  "type": "Suite",
+  "number": 101,
+  "checkin": "15/02/2022",
+  "checkout": "20/02/2022"
+},
+{
+    "id": 2,
+    "client": "Jon Rahm",
+    "photo": "https://travl.dexignlab.com/xhtml/images/room/room1.jpg",
+    "type": "Suite",
+    "number": 102,
+    "checkin": "15/02/2022",
+    "checkout": "20/02/2022"
+  },
+  {
+    "id": 3,
+    "client": "Steph Curry",
+    "photo": "https://travl.dexignlab.com/xhtml/images/room/room1.jpg",
+    "type": "Suite",
+    "number": 103,
+    "checkin": "15/02/2022",
+    "checkout": "20/02/2022"
+  },
+  {
+    "id": 4,
+    "client": "Max Homa",
+    "photo": "https://travl.dexignlab.com/xhtml/images/room/room1.jpg",
+    "type": "Suite",
+    "number": 101,
+    "checkin": "15/02/2022",
+    "checkout": "20/02/2022"
+  }]

@@ -3,9 +3,9 @@ import Header from '../Header/Header';
 import Logo from './Logo/Logo';
 import { Wrapper } from './TopbarStyles';
 
-const Topbar = ({ title }) => {
+const Topbar = ({ title, location }) => {
   return (
-    <Wrapper>
+    <Wrapper location={location}>
         <Logo />
         <Header title={title} />
     </Wrapper>

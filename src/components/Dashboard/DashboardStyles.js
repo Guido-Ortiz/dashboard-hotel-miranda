@@ -8,8 +8,7 @@ export const DashboardWrapper = styled.div`
     justify-content: flex-start;
     background: #f8f8f8;
     width: 100vw;
-    max-width: 100vw;
-    // width: 70vw !important;    
+    max-width: 100vw;   
 `;
 
 export const RightContainer = styled.div`
@@ -22,6 +21,13 @@ export const TableContainer = styled.div`
     // border: 1px solid red;
     width: 90%;
     margin: 0 auto;
+    
+    h1 {
+        text-align: left;
+        font: normal normal 600 28px/42px Poppins;
+        letter-spacing: 1px;
+        color: #262626;
+    }
 `;
 
 export const SwiperContainer = styled.div`
@@ -62,25 +68,64 @@ export const BtnToBooking = styled.button`
     }
 `;
 
+export const BookingColumn = styled.div `
+    // border: 1px solid red;
+
+    h3, h4, h5 {
+        margin: 0;
+    }
+
+    h3 {
+        text-align: left;
+        font: normal normal medium 20px/30px Poppins;
+        font-weight: 700;
+        letter-spacing: 1px;
+        color: #393939;
+        margin-bottom: 5px;
+    }
+
+    h4 {
+        text-align: left;
+        font: normal normal medium 18px/28px Poppins;
+        letter-spacing: 1px;
+        color: #393939;
+        margin-bottom: 5px;
+    }
+
+    h5 {
+        text-align: left;
+        font: normal normal normal 12px/19px Poppins;
+        letter-spacing: 1px;
+        color: #799283;
+    }
+`;
+
+export const Date = styled.div `
+    text-align: left;
+    font: normal normal medium 16px/25px Poppins;
+    letter-spacing: 1px;
+    color: #393939;
+`;
+
 export const CustomStylesBookingTable = {
-    // rows: {
-    //     style: {
-    //         minHeight: '72px', // override the row height
-    //     },
-    // },
-    headCells: {
+    rows: {
         style: {
-            // border: '1px solid red',
-            width: '40px',
-            textAlign: 'left',
-            paddingLeft: '10px',
-            paddingRight: 0
+            minHeight: '72px',
         },
     },
-    // cells: {
-    //     style: {
-    //         paddingLeft: '8px', // override the cell padding for data cells
-    //         paddingRight: '8px',
-    //     },
-    // },
+    headCells: {
+        style: {
+            // border: '1px dashed red',
+            // width: '40px',
+            // textAlign: 'left',
+            paddingLeft: '4px',
+            // paddingRight: 0
+        },
+    },
+    cells: {
+        style: {
+            // border: '1px dashed green',
+            paddingLeft: '4px', 
+        },
+    },
 }

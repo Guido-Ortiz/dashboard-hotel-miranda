@@ -1,1 +1,22 @@
 export const TOGGLE_SIDEBAR = 'TOGGLE_SIDEBAR';
+
+export const GET_BOOKINGS = 'GET_BOOKINGS';
+export const DELETE_BOOKING = 'DELETE_BOOKING';
+export const FILTER_BOOKINGS = 'FILTER_BOOKINGS';
+export const GET_BOOKING_DETAIL = 'GET_BOOKING_DETAIL';
+export const EDIT_BOOKING = 'EDIT_BOOKING';
+
+export const GET_USERS = 'GET_USERS';
+export const DELETE_USER = 'DELETE_USER';
+export const FILTER_USERS = 'FILTER_USERS';
+export const CREATE_USER = 'CREATE_USER';
+
+export const GET_CONTACTS = 'GET_CONTACTS';
+export const ARCHIVED_CONTACT = 'ARCHIVED_CONTACT';
+export const DELETE_CONTACT = 'DELETE_CONTACT';
+export const FILTER_CONTACTS = 'FILTER_CONTACTS';
+
+export const GET_ROOMS = 'GET_ROOMS';
+export const DELETE_ROOM = 'DELETE_ROOM';
+export const FILTER_ROOMS = 'FILTER_ROOMS';
+export const CREATE_ROOM = 'CREATE_ROOM';
