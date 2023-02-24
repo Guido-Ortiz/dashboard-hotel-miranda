@@ -34,6 +34,7 @@ const customStyles = {
 
 const Rooms = () => {
 
+  
   const columns = [
     {
       name: "Image",
@@ -55,11 +56,11 @@ const Rooms = () => {
     {
       name: "Amenities",
       selector: (row) =>
-        <AmenitiesContainer>
+      <AmenitiesContainer>
           {
             row.amenities.map(e =>
               <AmenitiesChip>{e}</AmenitiesChip>
-            )}
+              )}
         </AmenitiesContainer>
       ,
       width: '15%'
@@ -91,16 +92,16 @@ const Rooms = () => {
       width: '10%'
     }
   ]
-
+  
   // const sidebar = useSelector(state => state.sidebar)
   const data = useSelector(state => state.rooms.rooms)
-
+  
   const dispatch = useDispatch()
-
+  
   const handleRowClicked = (row) => {
     console.log(row.id)
   }
-
+  
   useEffect(() => {
     dispatch(getRooms())
   }, [dispatch])

@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const DetailWrapper = styled.div `
-    border: ${props => props.sidebar ? '1px solid red' : '1px solid green'};
+    // border: ${props => props.sidebar ? '1px solid red' : '1px solid green'};
     width: ${props => props.sidebar ? '82vw' : '100vw'};
     display: flex;
     flex-direction: row;
@@ -199,7 +199,7 @@ export  const FacilityChip = styled.div `
 `;
 
 export const RoomWrapper = styled.div `
-    border: 1px dashed fuchsia;
+    // border: 1px dashed fuchsia;
     margin: 5px;
     width: 50%;
     height: 50%;

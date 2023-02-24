@@ -9,7 +9,7 @@ import Dashboard from './components/Dashboard/Dashboard';
 import { DashboardWrapper, RightContainer } from './components/Dashboard/DashboardStyles';
 import Login from './components/Login/Login';
 
-import Room from './components/Room/Room';
+// import Room from './components/Room/Room';
 
 import Rooms from './components/Rooms/Rooms';
 import RoomsForm from './components/Rooms/RoomsForm/RoomsForm';
@@ -48,7 +48,7 @@ function App() {
 
               <Route path='rooms'>
                 <Route path='' element={<Rooms />} />
-                <Route path=':room_id' element={<Room />} />
+                {/* <Route path=':room_id' element={<Room />} /> */}
                 <Route path='add' element={<RoomsForm />} />
               </Route>
 

@@ -3,13 +3,15 @@ import { Chip } from '@mui/material';
 import { useDispatch } from 'react-redux';
 import { createRoom } from '../../../redux/actions/actions';
 import { BtnSubmit, FormText, InputWrapper } from '../../Users/UsersForm/UsersFormStyles';
+// import { useNavigate } from 'react-router';
 
 const RoomsForm = () => {
 
     const dispatch = useDispatch()
+    // const navigate = useNavigate()
     const amenities = ['Wi-Fi', 'TV', 'Towels', 'AC', 'Parking']
     const [room, setRoom] = useState({
-        photo: [],
+        photos: [],
         type: '',
         number: 100,
         description: '',
@@ -44,8 +46,9 @@ const RoomsForm = () => {
     // }
 
     const handleAddRoom = () => {
-        // console.log(room)
         dispatch(createRoom(room))
+        alert('Room added succesfully')
+        // navigate("/rooms")
     }
 
     return (

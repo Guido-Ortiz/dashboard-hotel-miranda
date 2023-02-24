@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const SliderWrapper = styled.div `
-    border: 1px solid fuchsia;
+    // border: 1px solid fuchsia;
     max-width: 40vw;
     heigth: 50%;
 

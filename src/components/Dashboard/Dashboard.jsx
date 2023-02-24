@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { deleteBooking, getBookings } from '../../redux/actions/actions';
@@ -9,12 +9,17 @@ import { BookingColumn, BtnToBooking, CustomStylesBookingTable, Date, SwiperCont
 import { ActionsContainer } from '../Bookings/BookingsStyles';
 import UpdateIcon from '@mui/icons-material/Update';
 import DeleteIcon from '@mui/icons-material/Delete';
+import { CircularProgress, Snackbar } from '@mui/material';
+import IconButton from '@mui/material/IconButton';
+import CloseIcon from '@mui/icons-material/Close';
+
 
 const Dashboard = () => {
 
   const sidebar = useSelector(state => state.sidebar)
 
   const data = useSelector(state => state.bookings.bookings)
+  const allData = useSelector(state => state.bookings.allBookings)
 
   const columns = [
     {
@@ -68,12 +73,46 @@ const Dashboard = () => {
   const dispatch = useDispatch()
 
   useEffect(() => {
-    dispatch(getBookings())
-  })
+    setTimeout(() => {
+      dispatch(getBookings())
+    }, 2000);
+    // dispatch(getBookings())
+  }, [dispatch])
 
   const handleDeleteBooking = (id) => {
     dispatch(deleteBooking(id))
+    handleClick()
   }
+  const [open, setOpen] = useState(false)
+
+  if (data.length === 0 && allData.length === 0) {
+    return (
+      <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center', margin: '0 auto' }}>
+        <CircularProgress sx={{ color: '#E23428', marginTop: '200px' }} />
+      </div>
+    )
+  }
+
+  const handleClick = () => {
+    setOpen(true);
+  };
+
+  const handleClose = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+
+    setOpen(false);
+  };
+
+  const action = (
+    <React.Fragment>
+      <IconButton size="small" aria-label="close" color="inherit" onClick={handleClose}>
+        <CloseIcon fontSize="small" />
+      </IconButton>
+    </React.Fragment>
+  );
+
 
   return (
     <>
@@ -88,7 +127,9 @@ const Dashboard = () => {
         <h1>Reviews</h1>
         <Swiper />
       </SwiperContainer>
-      
+
+      <Snackbar open={open} autoHideDuration={6000} onClose={handleClose} message="Booking deleted" action={action} />
+
     </>
   )
 }
