@@ -11,7 +11,7 @@ export const reviewsData = [
         archive: 'archive'
     },
     {
-        id: 1,
+        id: 2,
         review: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi ad cupiditate ipsa dolorum officiis aut mollitia ab quaerat, quas, asperiores qui alias voluptates at voluptatibus quod illum temporibus nemo libero.",
         date: "12-12-12",
         hour: "15:30hs",
@@ -22,7 +22,7 @@ export const reviewsData = [
         archive: 'archive'
     },
     {
-        id: 1,
+        id: 3,
         review: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi ad cupiditate ipsa dolorum officiis aut mollitia ab quaerat, quas, asperiores qui alias voluptates at voluptatibus quod illum temporibus nemo libero.",
         date: "12-12-12",
         hour: "15:30hs",
@@ -33,7 +33,7 @@ export const reviewsData = [
         archive: 'archive'
     },
     {
-        id: 1,
+        id: 4,
         review: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi ad cupiditate ipsa dolorum officiis aut mollitia ab quaerat, quas, asperiores qui alias voluptates at voluptatibus quod illum temporibus nemo libero.",
         date: "12-12-12",
         hour: "15:30hs",
@@ -44,7 +44,7 @@ export const reviewsData = [
         archive: 'archive'
     },
     {
-        id: 1,
+        id: 5,
         review: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi ad cupiditate ipsa dolorum officiis aut mollitia ab quaerat, quas, asperiores qui alias voluptates at voluptatibus quod illum temporibus nemo libero.",
         date: "12-12-12",
         hour: "15:30hs",
@@ -55,7 +55,7 @@ export const reviewsData = [
         archive: 'archive'
     },
     {
-        id: 1,
+        id: 6,
         review: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi ad cupiditate ipsa dolorum officiis aut mollitia ab quaerat, quas, asperiores qui alias voluptates at voluptatibus quod illum temporibus nemo libero.",
         date: "12-12-12",
         hour: "15:30hs",

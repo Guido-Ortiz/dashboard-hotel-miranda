@@ -6,7 +6,6 @@ import { Provider } from 'react-redux';
 import { store } from './redux/store/store';
 import { BrowserRouter } from 'react-router-dom';
 import { UserProvider } from './context/userContext';
-// import { UserProvider } from './context/userContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { deleteBooking, filterBookings, getBookings } from '../../redux/actions/actions';
 import DataTable from 'react-data-table-component';
@@ -7,27 +7,26 @@ import { ActionsContainer, BookingTableContainer, BtnRequest, BtnStatus, BtnTopM
 import UpdateIcon from '@mui/icons-material/Update';
 import DeleteIcon from '@mui/icons-material/Delete';
 
-import { Stack, Modal, Box, Typography, TextField, Button } from '@mui/material';
+// import { Stack, Modal, Box, Typography, TextField, Button } from '@mui/material';
 import { Link } from 'react-router-dom';
 import { BookingColumn, Date } from '../Dashboard/DashboardStyles';
 
-const style = {
-  position: 'absolute',
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
-  width: { md: 400, xs: 200 },
-  bgcolor: 'background.paper',
-  border: '1px solid #007DED',
-  boxShadow: 24,
-  p: 4,
-};
+// const style = {
+//   position: 'absolute',
+//   top: '50%',
+//   left: '50%',
+//   transform: 'translate(-50%, -50%)',
+//   width: { md: 400, xs: 200 },
+//   bgcolor: 'background.paper',
+//   border: '1px solid #007DED',
+//   boxShadow: 24,
+//   p: 4,
+// };
 
 const Bookings = () => {
 
-  const [open, setOpen] = useState(false)
-  const [newDescription, setNewDescription] = useState('')
-  console.log(newDescription)
+  // const [open, setOpen] = useState(false)
+  // const [newDescription, setNewDescription] = useState('')
   
   const columns = [
     {
@@ -81,7 +80,7 @@ const Bookings = () => {
     {
       name: "Actions",
       selector: (row) => <ActionsContainer>
-        <Link to={`/bookings/${row.id}`}><UpdateIcon sx={{ marginRight: '10px' }} onClick={handleOpen} /></Link>
+        <Link to={`/bookings/${row.id}`}><UpdateIcon sx={{ marginRight: '10px' }} /></Link>
         <DeleteIcon onClick={() => handleDeleteBooking(row.id)} />
       </ActionsContainer>,
       width: '9%'
@@ -104,17 +103,17 @@ const Bookings = () => {
     dispatch(deleteBooking(id))
   }
 
-  const handleOpen = () => {
-    setOpen(true)
-  }
+  // const handleOpen = () => {
+  //   setOpen(true)
+  // }
 
-  const handleClose = () => setOpen(false)
+  // const handleClose = () => setOpen(false)
 
-  const handleEdit = () => {
-    console.log('edit photo')
-    // dispatch(editPhoto({ id, newDescription }))
-    setOpen(false)
-  }
+  // const handleEdit = () => {
+  //   console.log('edit photo')
+  //   // dispatch(editPhoto({ id, newDescription }))
+  //   setOpen(false)
+  // }
 
   return (
     <>
@@ -135,7 +134,7 @@ const Bookings = () => {
         <DataTable columns={columns} data={data} defaultSortFieldId pagination={5} highlightOnHover customStyles={CustomTable} />
       </BookingTableContainer>
 
-      <Modal open={open} onClose={handleClose} aria-labelledby="modal-modal-title" aria-describedby="modal-modal-description">
+      {/* <Modal open={open} onClose={handleClose} aria-labelledby="modal-modal-title" aria-describedby="modal-modal-description">
         <Box sx={style}>
           <Typography id="modal-modal-title" variant="h6" component="h2">Edit Booking { }</Typography>
           <Typography id="modal-modal-description" sx={{ mt: 2 }}>
@@ -149,7 +148,7 @@ const Bookings = () => {
           </Stack>
 
         </Box>
-      </Modal>
+      </Modal> */}
 
     </>
   )

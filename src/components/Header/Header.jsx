@@ -1,51 +1,45 @@
 import React from 'react';
 import { useNavigate } from 'react-router';
 import { useDispatch } from 'react-redux';
-
 import { HeaderWrapper, IconsContainer } from './HeaderStyles';
-
 import MenuOpenIcon from '@mui/icons-material/MenuOpen';
 import EmailIcon from '@mui/icons-material/Email';
 import LogoutIcon from '@mui/icons-material/Logout';
 import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone';
-// import { toggleSidebar } from '../../redux/reducer/sidebarSlice';
 import { toggleSidebar } from '../../redux/actions/actions';
 import { useUser } from '../../context/userContext';
 import { LOGOUT } from '../../context/constants';
 
 const Header = ({ title }) => {
 
-    const dispatchAction = useDispatch()
+  const dispatchAction = useDispatch()
 
-    const { dispatch } = useUser()
-    
-    const navigate = useNavigate()
+  const { dispatch } = useUser()
 
-    const handleLogout = () => {
-      dispatch({
-        type: LOGOUT
-      })
-      navigate('/login')
-        // localStorage.removeItem("logged_in")
-        // localStorage.removeItem("user")
-        // navigate("/login")
-      }
+  const navigate = useNavigate()
 
-      const handleToggle = () => {
-        dispatchAction(toggleSidebar())
-      }
+  const handleLogout = () => {
+    dispatch({
+      type: LOGOUT
+    })
+    navigate('/login')
+  }
+
+  const handleToggle = () => {
+    dispatchAction(toggleSidebar())
+  }
 
   return (
     <HeaderWrapper>
-        <div>
-            <MenuOpenIcon sx={{fontSize: 30}} onClick={handleToggle} />
-            <h2>{title}</h2>
-        </div>
-        <IconsContainer>
-            <EmailIcon sx={{fontSize: 30}} />
-            <NotificationsNoneIcon sx={{fontSize: 30}} />
-            <LogoutIcon sx={{fontSize: 30}} onClick={handleLogout} />
-        </IconsContainer>
+      <div>
+        <MenuOpenIcon sx={{ fontSize: 30 }} onClick={handleToggle} />
+        <h2>{title}</h2>
+      </div>
+      <IconsContainer>
+        <EmailIcon sx={{ fontSize: 30 }} />
+        <NotificationsNoneIcon sx={{ fontSize: 30 }} />
+        <LogoutIcon sx={{ fontSize: 30 }} onClick={handleLogout} />
+      </IconsContainer>
     </HeaderWrapper>
   )
 }

@@ -19,7 +19,7 @@ const Booking = () => {
   const sidebar = useSelector(state => state.sidebar)
   const detail = useSelector(state => state.bookings.detail)
   console.log(detail)
-  
+
   useEffect(() => {
     dispatch(getBookingDetail(booking_id))
   }, [dispatch, booking_id])
@@ -62,6 +62,7 @@ const Booking = () => {
           <img src={guest} alt='Guest' />
           <GuestData>
             <h2>Guest</h2>
+            {/* <h2>{detail[0].client}</h2> */}
             <h4>#123456</h4>
             <GuestContact>
               <div>

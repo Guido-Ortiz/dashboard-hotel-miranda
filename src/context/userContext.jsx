@@ -9,7 +9,7 @@ export const useUser = () => {
     return useContext(UserContext);
 }
 
-const initialState = JSON.parse(localStorage.getItem(KEY_LOCALSTORAGE)) || {logged: false, email: "", username: ""}
+const initialState = JSON.parse(localStorage.getItem(KEY_LOCALSTORAGE)) || { logged: false, email: "", username: "" }
 
 const reducer = (state,action)=> {
 
