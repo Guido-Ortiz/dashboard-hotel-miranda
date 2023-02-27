@@ -34,7 +34,6 @@ const customStyles = {
 
 const Rooms = () => {
 
-  
   const columns = [
     {
       name: "Image",
