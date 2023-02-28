@@ -128,7 +128,7 @@ const Login = () => {
           }
         })
         navigate('/')
-    } else alert ('wrong credencials')}
+    } else alert ('Wrong credentials')}
 
 
   return (
@@ -146,9 +146,9 @@ const Login = () => {
         <h1>Sign in your account</h1>
         <form onSubmit={handleLogin}>
           <label>Email</label>
-          <input name='email' type='email' value={input.email} onChange={e => handleChange(e)} placeholder='Enter your email'/>
+          <input name='email' type='email' value={input.email} onChange={e => handleChange(e)} placeholder='Enter your email' className='input' />
           <label>Password</label>
-          <input name='password' type='password' value={input.password} onChange={e => handleChange(e)} placeholder='Enter your password'/>
+          <input name='password' type='password' value={input.password} onChange={e => handleChange(e)} placeholder='Enter your password' className='password' />
           <button type='submit'>Login</button>
         </form>
       </LoginContainer>
