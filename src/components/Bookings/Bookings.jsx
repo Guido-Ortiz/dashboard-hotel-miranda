@@ -7,21 +7,8 @@ import { ActionsContainer, BookingTableContainer, BtnRequest, BtnStatus, BtnTopM
 import UpdateIcon from '@mui/icons-material/Update';
 import DeleteIcon from '@mui/icons-material/Delete';
 
-// import { Stack, Modal, Box, Typography, TextField, Button } from '@mui/material';
 import { Link } from 'react-router-dom';
 import { BookingColumn, Date } from '../Dashboard/DashboardStyles';
-
-// const style = {
-//   position: 'absolute',
-//   top: '50%',
-//   left: '50%',
-//   transform: 'translate(-50%, -50%)',
-//   width: { md: 400, xs: 200 },
-//   bgcolor: 'background.paper',
-//   border: '1px solid #007DED',
-//   boxShadow: 24,
-//   p: 4,
-// };
 
 const Bookings = () => {
 
@@ -73,7 +60,7 @@ const Bookings = () => {
     },
     {
       name: "Status",
-      selector: (row) => <BtnStatus status={row.status}>{row.status}</BtnStatus>,
+      selector: (row) => <BtnStatus status={row.status} data-testid='background'>{row.status}</BtnStatus>,
       sortable: true,
       width: '13%'
     },
