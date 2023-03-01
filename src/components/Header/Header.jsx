@@ -38,7 +38,7 @@ const Header = ({ title }) => {
       <IconsContainer>
         <EmailIcon sx={{ fontSize: 30 }} />
         <NotificationsNoneIcon sx={{ fontSize: 30 }} />
-        <LogoutIcon sx={{ fontSize: 30 }} onClick={handleLogout} />
+        <LogoutIcon sx={{ fontSize: 30 }} onClick={handleLogout} data-testid="logout" className='logout' />
       </IconsContainer>
     </HeaderWrapper>
   )
