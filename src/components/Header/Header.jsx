@@ -10,7 +10,7 @@ import { toggleSidebar } from '../../redux/actions/actions';
 import { useUser } from '../../context/userContext';
 import { LOGOUT } from '../../context/constants';
 
-const Header = ({ title }) => {
+const Header = ({ location }) => {
 
   const dispatchAction = useDispatch()
 
@@ -33,7 +33,7 @@ const Header = ({ title }) => {
     <HeaderWrapper>
       <div>
         <MenuOpenIcon sx={{ fontSize: 30 }} onClick={handleToggle} />
-        <h2>{title}</h2>
+        { location ? <h2>{location}</h2> : <h2>Dashboard</h2> }
       </div>
       <IconsContainer>
         <EmailIcon sx={{ fontSize: 30 }} />

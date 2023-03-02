@@ -25,7 +25,8 @@ export const HeaderWrapper = styled.div `
         font: normal normal 600 28px/42px Poppins;
         letter-spacing: 0px;
         color: #262626;
-        opacity: 1; 
+        opacity: 1;
+        text-transform: capitalize; 
     }
 
     div {
