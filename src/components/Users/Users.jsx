@@ -21,11 +21,13 @@ const Users = () => {
                 <h5>{row.start}</h5>
             </UserData>
         </User>,
-        width: '210px'
+        width: '23%'
+        // width: '211px'
     },
     {
         name: "Description",
-        selector: (row) => row.description
+        selector: (row) => row.description,
+        width: '45%'
     },
     {
         name: "Contact",
