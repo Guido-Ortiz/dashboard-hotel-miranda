@@ -1,5 +1,5 @@
-import React from 'react'
-import { WrapperKPI } from './KPIStyles'
+import React from 'react';
+import { WrapperKPI } from './KPIStyles';
 
 const KPI = ({ icon, number, name }) => {
   return (

@@ -23,7 +23,7 @@ export const HeaderWrapper = styled.div `
         color: #262626;
         text-align: left;
         font: normal normal 600 28px/42px Poppins;
-        letter-spacing: 0px;
+        letter-spacing: 1px;
         color: #262626;
         opacity: 1;
         text-transform: capitalize; 

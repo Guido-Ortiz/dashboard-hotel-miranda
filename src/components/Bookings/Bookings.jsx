@@ -12,9 +12,6 @@ import { BookingColumn, Date } from '../Dashboard/DashboardStyles';
 
 const Bookings = () => {
 
-  // const [open, setOpen] = useState(false)
-  // const [newDescription, setNewDescription] = useState('')
-  
   const columns = [
     {
       name: "Booking",
@@ -90,18 +87,6 @@ const Bookings = () => {
     dispatch(deleteBooking(id))
   }
 
-  // const handleOpen = () => {
-  //   setOpen(true)
-  // }
-
-  // const handleClose = () => setOpen(false)
-
-  // const handleEdit = () => {
-  //   console.log('edit photo')
-  //   // dispatch(editPhoto({ id, newDescription }))
-  //   setOpen(false)
-  // }
-
   return (
     <>
       <TopMenu>
@@ -120,22 +105,6 @@ const Bookings = () => {
       <BookingTableContainer>
         <DataTable columns={columns} data={data} defaultSortFieldId pagination={5} highlightOnHover customStyles={CustomTable} />
       </BookingTableContainer>
-
-      {/* <Modal open={open} onClose={handleClose} aria-labelledby="modal-modal-title" aria-describedby="modal-modal-description">
-        <Box sx={style}>
-          <Typography id="modal-modal-title" variant="h6" component="h2">Edit Booking { }</Typography>
-          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-            Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-          </Typography>
-          <Stack direction='column' justifyContent='flex-start' alignItems='flex-start'>
-            <TextField fullWidth variant='outlined' label='Description' name='newDescription'
-              // value={newDescription} 
-              onChange={e => setNewDescription(e.target.value)} sx={{ margin: '20px 0' }} />
-            <Button variant="contained" onClick={handleEdit}>Edit Description</Button>
-          </Stack>
-
-        </Box>
-      </Modal> */}
 
     </>
   )

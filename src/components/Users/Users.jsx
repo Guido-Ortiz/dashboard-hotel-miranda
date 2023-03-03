@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
-import DataTable from 'react-data-table-component';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import DataTable from 'react-data-table-component';
 import { deleteUser, filterUsers, getUsers } from '../../redux/actions/actions';
 import { BtnTopMenu, TopMenu, ActionsContainer } from '../Bookings/BookingsStyles';
 import { UsersWrapper, UserTableWrapper, BtnAddEmployee, User, UserImage, UserData, EmployeeStatus, customStyles } from './UsersStyles';
@@ -11,12 +11,6 @@ import DeleteIcon from '@mui/icons-material/Delete';
 const Users = () => {
 
   const columns = [
-    // {
-    //     name: "ID",
-    //     selector: (row) => row.id,
-    //     sortable: true,
-    //     width: '5%'
-    // },
     {
         name: "User",
         selector: (row) => <User>
@@ -29,20 +23,6 @@ const Users = () => {
         </User>,
         width: '210px'
     },
-    // {
-    //     name: "Image",
-    //     selector: (row) => <UserImage src={row.photo} alt="Profile pic" />,
-    //     width: '180px'
-    // },
-    // {
-    //     name: "User",
-    //     selector: (row) => <UserData>
-    //         <h4>{row.name}</h4>
-    //         <h5>#{row.id}</h5>
-    //         <h5>{row.start}</h5>
-    //     </UserData>,
-    //     width: '14%'
-    // },
     {
         name: "Description",
         selector: (row) => row.description
@@ -89,12 +69,11 @@ const Users = () => {
 
   return (
     <UsersWrapper>
-      {/* <UsersData /> */}
       <TopMenu>
         <div>
-          <h4 onClick={() => handleFilterUser('all')}>All Employees</h4>
-          <h4 onClick={() => handleFilterUser('active')}>Active Employees</h4>
-          <h4 onClick={() => handleFilterUser('inactive')}>Inactive Employees</h4>
+          <h4 onClick={() => handleFilterUser('all')}>All</h4>
+          <h4 onClick={() => handleFilterUser('active')}>Active</h4>
+          <h4 onClick={() => handleFilterUser('inactive')}>Inactive</h4>
         </div>
         <div>
           <input type='text' />
