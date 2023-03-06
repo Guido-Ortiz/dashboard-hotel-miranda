@@ -3,27 +3,20 @@ import styled from "styled-components";
 export const customStyles = {
     rows: {
         style: {
-            height: '90px', // override the row height
-            margin: '5px 0'
+            // height: '90px', // override the row height
         },
     },
     headCells: {
         style: {
             // border: '1px solid blue',
-            // minWidth: '5px',
-            // width: '20%',
-            margin: '0',
-            padding: '5px',
-            // paddingLeft: '8px', // override the cell padding for head cells
-            // paddingRight: '8px',
+            padding: '5px'
         },
     },
     cells: {
         style: {
             // border: '1px dashed green',
-            width: '15px'
-            // paddingLeft: '8px', // override the cell padding for data cells
-            // paddingRight: '8px',
+            width: '15px',
+            padding: '5px'
         },
     },
 }
@@ -67,7 +60,7 @@ export const UserImage = styled.img `
     width: 50%;
     height: 50%;
     margin-right: 6px;
-    border-radius: 0.75rem 
+    border-radius: 0.65rem 
 `;
 
 export const User = styled.div `
@@ -85,21 +78,24 @@ export const UserData = styled.div `
     align-items: flex-start;
     height: 90px;
 
+    h4, h5 {
+        letter-spacing: 0.5px;
+        margin: 0;
+        margin-bottom: 2px;
+        font-family: 'poppins', sans-serif;
+    }
+
     h4 {
         // border: 1px solid fuchsia;
-        margin: 0;
-        text-align: left;
-        font: normal normal medium 16px/25px Poppins;
-        letter-spacing: 0px;
+        line-height: 22px;
+        font-size: 13px;
         color: #212121;
     }
 
     h5 {
         // border: 1px solid blue;
-        margin: 0;
-        text-align: left;
-        font: normal normal normal 14px/21px Poppins;
-        letter-spacing: 0px;
+        line-height: 21px;
+        font-size: 12px;
         color: #393939;
     }
 `;

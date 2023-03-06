@@ -17,7 +17,6 @@ const Contact = () => {
       selector: row => <InfoColumn>
       <h3>{row.date}</h3>
       <h4>#{row.id}</h4>
-      {/* <h5>#{row.id}</h5> */}
     </InfoColumn>,
     sortable: true,
     width: '18%'

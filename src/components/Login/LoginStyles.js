@@ -106,10 +106,9 @@ export const LoginContainer = styled.div `
         }
 
         input {
-            width: 100%;
+            width: 94% !important;
             margin-bottom: 20px;
             height: 30px;
-            width: 
             font-size: .875rem;
             font-weight: 400;
             line-height: 1.5;
@@ -117,6 +116,7 @@ export const LoginContainer = styled.div `
             outline: none;
             padding: 5px 10px;
             letter-spacing: 1px;
+            border-radius: 6px;
         }
 
         button {
@@ -124,7 +124,7 @@ export const LoginContainer = styled.div `
             background: #e23428;
             color: #ffffff;
             font-weight: 700;
-            height: 3.125rem;
+            height: 3rem;
             border-radius: 0.8rem;
             font-size: 1rem;
             padding: 0.938rem 1.5rem;
@@ -133,6 +133,7 @@ export const LoginContainer = styled.div `
             text-decoration: none;
             border: none;
             letter-spacing: 1px;
+            margin-top: 10px;
         } 
 
         button:hover {
