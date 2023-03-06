@@ -8,23 +8,15 @@ export const customStyles = {
     },
     headCells: {
         style: {
-            border: '1px solid blue',
+            // border: '1px solid blue',
             padding: '5px'
-            // minWidth: '5px',
-            // width: '20%',
-            // margin: '0',
-            // padding: '5px',
-            // paddingLeft: '8px', // override the cell padding for head cells
-            // paddingRight: '8px',
         },
     },
     cells: {
         style: {
-            border: '1px dashed green',
+            // border: '1px dashed green',
             width: '15px',
-            // padding: '5px'
-            // paddingLeft: '8px', // override the cell padding for data cells
-            // paddingRight: '8px',
+            padding: '5px'
         },
     },
 }
@@ -98,7 +90,6 @@ export const UserData = styled.div `
         line-height: 22px;
         font-size: 13px;
         color: #212121;
-        margin-top: 2px; 
     }
 
     h5 {
