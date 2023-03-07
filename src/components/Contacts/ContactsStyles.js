@@ -87,6 +87,7 @@ export const customStyles = {
     cells: {
         style: {
             // border: '1px dashed green',
+            width: '10px',
             paddingLeft: '4px',
         },
     },

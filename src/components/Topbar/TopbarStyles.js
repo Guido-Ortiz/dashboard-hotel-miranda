@@ -6,8 +6,14 @@ export const Wrapper = styled.nav`
         display: none !important;` 
     }  
     max-width: 100vw;
+    width: 100%;
     height: 16vh; //120
     display: flex;
     flex-direction: row;
+    // position: fixed;
+    // top: 0;
+    // left: 0;
+    // z-index: auto;
+    // overflow: hidden;
 `;
 

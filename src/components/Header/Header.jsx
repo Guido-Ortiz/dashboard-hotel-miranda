@@ -9,6 +9,7 @@ import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone';
 import { toggleSidebar } from '../../redux/actions/actions';
 import { useUser } from '../../context/userContext';
 import { LOGOUT } from '../../context/constants';
+import { Tooltip } from '@mui/material';
 
 const Header = ({ location }) => {
 
@@ -38,7 +39,11 @@ const Header = ({ location }) => {
       <IconsContainer>
         <EmailIcon sx={{ fontSize: 30 }} />
         <NotificationsNoneIcon sx={{ fontSize: 30 }} />
-        <div className="logout"><LogoutIcon sx={{ fontSize: 30 }} onClick={handleLogout} data-testid="logout"  /></div>
+        <div className="logout">
+          <Tooltip title='Logout'>
+            <LogoutIcon sx={{ fontSize: 30 }} onClick={handleLogout} data-testid="logout"  />
+          </Tooltip>
+          </div>
       </IconsContainer>
     </HeaderWrapper>
   )

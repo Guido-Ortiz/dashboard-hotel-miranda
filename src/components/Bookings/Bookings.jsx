@@ -26,19 +26,19 @@ const Bookings = () => {
       name: "Order",
       selector: (row) => <Date>{row.order}</Date>,
       sortable: true,
-      width: '108px'
+      width: '11%'
     },
     {
       name: "Check-In",
       selector: (row) => <Date>{row.checkin}</Date>,
       sortable: true,
-      width: '108px'
+      width: '11%'
     },
     {
       name: "Check-Out",
       selector: (row) => <Date>{row.checkout}</Date>,
       sortable: true,
-      width: '108px'
+      width: '11%'
     },
     {
       name: "Request",

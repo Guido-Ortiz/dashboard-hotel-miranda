@@ -14,6 +14,10 @@ export const RightContainer = styled.div`
     // border: ${props => props.sidebar ? '1px solid red' : '1px solid green'};
     width: ${props => props.sidebar ? '82vw' : '100vw'};
     min-height: 84vh;
+    // position: relative;
+    // left: ${props => props.sidebar ? '18vw' : '0'};
+    // top: 16vh;
+    // z-index: 0;
 `;
 
 export const TableContainer = styled.div`
@@ -115,15 +119,13 @@ export const CustomStylesBookingTable = {
     headCells: {
         style: {
             // border: '1px dashed red',
-            // width: '40px',
-            // textAlign: 'left',
             paddingLeft: '4px',
-            // paddingRight: 0
         },
     },
     cells: {
         style: {
             // border: '1px dashed green',
+            width: '10px',
             paddingLeft: '4px', 
         },
     },

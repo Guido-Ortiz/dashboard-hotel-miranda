@@ -148,6 +148,7 @@ export const CustomTable = {
     cells: {
         style: {
             // border: '1px dashed blue',
+            width: '10px',
             paddingLeft: '4px', 
         },
     },

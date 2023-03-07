@@ -35,25 +35,25 @@ const Dashboard = () => {
         <h5>#{row.id}</h5>
       </BookingColumn>,
       sortable: true,
-      width: '16%'
+      width: '17%'
     },
     {
       name: "Order",
       selector: (row) => <Date>{row.order}</Date>,
       sortable: true,
-      width: '120px'
+      width: '12%'
     },
     {
       name: "Check-In",
       selector: (row) => <Date>{row.checkin}</Date>,
       sortable: true,
-      width: '120px'
+      width: '12%'
     },
     {
       name: "Check-Out",
       selector: (row) => <Date>{row.checkout}</Date>,
       sortable: true,
-      width: '120px'
+      width: '12%'
     },
     {
       name: "See More",

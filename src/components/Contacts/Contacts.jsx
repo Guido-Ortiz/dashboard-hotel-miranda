@@ -15,11 +15,11 @@ const Contact = () => {
     {
       name: "Info",
       selector: row => <InfoColumn>
-      <h3>{row.date}</h3>
-      <h4>#{row.id}</h4>
-    </InfoColumn>,
-    sortable: true,
-    width: '18%'
+        <h3>{row.date}</h3>
+        <h4>#{row.id}</h4>
+      </InfoColumn>,
+      sortable: true,
+      width: '18%'
     },
     {
       name: "Customer",
@@ -27,9 +27,9 @@ const Contact = () => {
         <h3>{row.customer}</h3>
         <h4>{row.email}</h4>
         <h4>{row.telephone}</h4>
-    </Customer>,
-    sortable: true,
-    width: '18%'
+      </Customer>,
+      sortable: true,
+      width: '18%'
     },
     {
       name: "Isue",
@@ -40,7 +40,7 @@ const Contact = () => {
       name: "Comment",
       selector: (row) => <Comment>{row.comment}</Comment>,
       sortable: true,
-      width: '400px',
+      width: '36%', //400px
     },
     {
       name: "Actions",
@@ -48,7 +48,7 @@ const Contact = () => {
         <ArchiveIcon sx={{ color: '#135846' }} onClick={() => handleArchivedContact(row.id, row.customer, row.date, row.email, row.telephone, row.comment)} /></Tooltip>
         <Tooltip title="Delete message"><DeleteIcon onClick={() => handleDeleteContact(row.id)} /></Tooltip>
       </ActionsContainer>,
-      // width: '18%'
+      width: '14%'
     }
   ]
 
