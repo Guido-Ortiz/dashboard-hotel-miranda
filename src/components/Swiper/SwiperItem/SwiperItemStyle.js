@@ -16,13 +16,16 @@ export const SliderItemWrapper = styled.div`
     justify-content: flex-start;
     background: #ffffff;
     border-radius: 20px;
-    box-shadow: 0px 4px 4px #00000005;
+    // box-shadow: 0px 4px 4px #00000005;
     padding: 20px;
     margin-bottom: 20px;
+    border: 1px solid #135846;
+    margin: 0 auto;
+    margin-right: 10px;
 
     &:hover {
         cursor: pointer;
-        box-shadow: 0px 16px 30px #00000014;
+        // box-shadow: 0px 16px 30px #00000014;
     }
 `;
 

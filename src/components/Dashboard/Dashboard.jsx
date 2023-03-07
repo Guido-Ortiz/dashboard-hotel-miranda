@@ -9,7 +9,7 @@ import { BookingColumn, BtnToBooking, CustomStylesBookingTable, Date, SwiperCont
 import { ActionsContainer } from '../Bookings/BookingsStyles';
 import UpdateIcon from '@mui/icons-material/Update';
 import DeleteIcon from '@mui/icons-material/Delete';
-import { CircularProgress, Snackbar } from '@mui/material';
+import { CircularProgress, Snackbar, Alert, Tooltip } from '@mui/material';
 import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
 
@@ -63,8 +63,14 @@ const Dashboard = () => {
     {
       name: "Actions",
       selector: (row) => <ActionsContainer>
-        <Link to={`/bookings/${row.id}`}><UpdateIcon sx={{ marginRight: '10px' }} /></Link>
-        <DeleteIcon onClick={() => handleDeleteBooking(row.id)} />
+        <Link to={`/bookings/${row.id}`}>
+          <Tooltip title='Update Booking'>
+            <UpdateIcon sx={{ marginRight: '10px' }} />
+          </Tooltip>
+          </Link>
+          <Tooltip title='Delete Booking'>
+            <DeleteIcon onClick={() => handleDeleteBooking(row.id)} />
+          </Tooltip>
       </ActionsContainer>,
       width: '12%'
     }
@@ -113,7 +119,6 @@ const Dashboard = () => {
     </React.Fragment>
   );
 
-
   return (
     <>
       <KPIs />
@@ -128,8 +133,12 @@ const Dashboard = () => {
         <Swiper />
       </SwiperContainer>
 
-      <Snackbar open={open} autoHideDuration={6000} onClose={handleClose} message="Booking deleted" action={action} />
-
+      {/* <Snackbar open={open} autoHideDuration={4000} onClose={handleClose} message="Booking deleted" action={action} sx={{border: '1px solid fuchsia'}} /> */}
+      <Snackbar open={open} autoHideDuration={4000} onClose={handleClose} message="Booking deleted" action={action}>
+        <Alert onClose={handleClose} severity="success" sx={{ width: '100%' }}>
+          Booking deleted!
+        </Alert>
+      </Snackbar>
     </>
   )
 }

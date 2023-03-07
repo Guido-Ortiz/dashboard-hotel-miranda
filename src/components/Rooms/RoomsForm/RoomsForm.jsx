@@ -53,7 +53,6 @@ const RoomsForm = () => {
 
     return (
         <>
-
             <FormText>Complete the following form to add a new room.</FormText>
             <InputWrapper>
                 {/* <input type="file" placeholder='Photos' value={room.photo} onChange={e => handleImage(e)} /> */}
@@ -65,14 +64,18 @@ const RoomsForm = () => {
                     <option value="superior">Double Bed Superior</option>
                     <option value="suite">Suite</option>
                 </select>
-                <input type="number" placeholder='Room number' name='number' value={room.number} onChange={e => handleChange(e)} />
+                <input type="number" placeholder='Room number' name='number' onChange={e => handleChange(e)} />
                 <input type="text" placeholder='Description' name='description' value={room.description} onChange={e => handleChange(e)} />
                 <select name='offer' onChange={(e) => handleChange(e)}>
                     <option value="">Offer</option>
                     <option value="yes">Yes</option>
                     <option value="no">No</option>
                 </select>
-                <input type="number" placeholder='Discount %' name='discount' onChange={e => handleChange(e)} />
+                {
+                    room.offer === 'yes'
+                        ? <input type="number" placeholder='Discount %' name='discount' onChange={e => handleChange(e)} />
+                        : <input type="number" placeholder='Discount %' name='discount' onChange={e => handleChange(e)} disabled />
+                }
                 <input type="number" placeholder='Price per night' name='price' onChange={e => handleChange(e)} />
                 <input type="text" placeholder='Cancelation policy' name='cancel' onChange={e => handleChange(e)} />
                 <select onChange={e => handleAmenities(e)}>
@@ -87,8 +90,7 @@ const RoomsForm = () => {
 
                 </select>
                 {
-                    room.amenities.map((amenity, i) => <Chip key={i} label={amenity} />
-                    )
+                    room.amenities.map((amenity, i) => <Chip key={i} label={amenity} />)
                 }
                 {/* <input type="text" placeholder='Amenities' name='amenities' value={room.cancel}  /> */}
 

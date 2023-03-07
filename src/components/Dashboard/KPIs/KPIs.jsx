@@ -10,7 +10,7 @@ import CloseIcon from '@mui/icons-material/Close';
 const KPIs = () => {
   return (
     <WrapperKPIs>
-        <KPI number={2} name='Total Reservations' icon={<BedIcon />} />
+        <KPI number={2} name='Reservations' icon={<BedIcon />} />
         <KPI number={2} name='Ocupation' icon={<EventAvailableIcon />} />
         <KPI number={2} name='Check-In' icon={<CheckIcon />} />
         <KPI number={2} name='Check-Out' icon={<CloseIcon />} />

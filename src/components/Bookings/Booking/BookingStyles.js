@@ -3,6 +3,7 @@ import styled from "styled-components";
 export const DetailWrapper = styled.div `
     // border: ${props => props.sidebar ? '1px solid red' : '1px solid green'};
     width: ${props => props.sidebar ? '82vw' : '100vw'};
+    // max-width: 96vw;
     display: flex;
     flex-direction: row;
     min-height: 84vh;
@@ -27,7 +28,7 @@ export const DetailWrapper = styled.div `
 
 export const GuestWrapper = styled.div `
     // border: 1px dashed blue;
-    margin: 5px;
+    // margin: 5px;
     width: 50%;
     display: flex;
     flex-direction: row !important;

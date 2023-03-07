@@ -130,3 +130,7 @@ export const CustomStylesBookingTable = {
         },
     },
 }
+
+export const Snack = styled.div `
+    border: 1px solid red;
+`;
