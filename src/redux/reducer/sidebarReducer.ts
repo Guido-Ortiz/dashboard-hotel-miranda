@@ -1,6 +1,6 @@
 import { TOGGLE_SIDEBAR } from "../actions/constants"
 
-const sidebarReducer = (state = true, action) => {
+const sidebarReducer = (state = true, action: { type: any }) => {
     switch (action.type) {
 
         case TOGGLE_SIDEBAR:

@@ -4,7 +4,7 @@ const initialState = {
     sidebar: true
 }
 
-const rootReducer = (state = initialState, action) => {
+const rootReducer = (state = initialState, action: { type: any }) => {
     switch (action.type) {
 
         case TOGGLE_SIDEBAR:

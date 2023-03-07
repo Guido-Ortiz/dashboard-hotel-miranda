@@ -11,7 +11,7 @@ export const useUser = () => {
 
 const initialState = JSON.parse(localStorage.getItem(KEY_LOCALSTORAGE)) || { logged: false, email: "", username: "" }
 
-const reducer = (state,action)=> {
+const reducer = (state: any,action: { type: any; value: { email: any; username: any; }; })=> {
 
     switch(action.type){
         case LOGIN:

@@ -1,7 +1,7 @@
 import React from 'react';
-import Header from '../Header/Header';
+const Header = require('../Header/Header');
 import Logo from './Logo/Logo';
-import { Wrapper } from './TopbarStyles';
+const { Wrapper } = require('./TopbarStyles');
 
 const Topbar = ({ location }) => {
   // const title = location.slice(1)

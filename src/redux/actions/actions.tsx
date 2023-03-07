@@ -8,7 +8,7 @@ export function toggleSidebar() {
 }
 
 export function getBookings() {
-    return async function (dispatch) {
+    return async function (dispatch: (arg0: { type: string; payload: any; }) => any) {
         try {
             const response = await axios.get('bookingsMockData.json')
             return dispatch({
@@ -21,21 +21,21 @@ export function getBookings() {
     }
 }
 
-export function deleteBooking(payload) {
+export function deleteBooking(payload: any) {
     return {
         type: DELETE_BOOKING,
         payload
     }
 }
 
-export function filterBookings(payload) {
+export function filterBookings(payload: any) {
     return {
         type: FILTER_BOOKINGS,
         payload
     }
 }
 
-export function getBookingDetail(payload) {
+export function getBookingDetail(payload: any) {
     return {
         type: GET_BOOKING_DETAIL,
         payload
@@ -57,7 +57,7 @@ export function getBookingDetail(payload) {
 //     }
 // }
 
-export function editBooking(payload) {
+export function editBooking(payload: any) {
     return {
         type: EDIT_BOOKING,
         payload
@@ -65,7 +65,7 @@ export function editBooking(payload) {
 }
 
 export function getUsers() {
-    return async function (dispatch) {
+    return async function (dispatch: (arg0: { type: string; payload: any; }) => any) {
         try {
             const response = await axios.get('usersMockData.json')
             return dispatch({
@@ -78,21 +78,21 @@ export function getUsers() {
     }
 }
 
-export function deleteUser(payload) {
+export function deleteUser(payload: any) {
     return {
         type: DELETE_USER,
         payload
     }
 }
 
-export function filterUsers(payload) {
+export function filterUsers(payload: any) {
     return {
         type: FILTER_USERS,
         payload
     }
 }
 
-export function createUser(payload) {
+export function createUser(payload: any) {
     // return async function(dispatch){
         // const response = await axios.post('....', payload)
         // return response
@@ -104,7 +104,7 @@ export function createUser(payload) {
 }
 
 export function getContacts() {
-    return async function (dispatch) {
+    return async function (dispatch: (arg0: { type: string; payload: any; }) => any) {
         try {
             const response = await axios.get('contactsMockData.json')
             return dispatch({
@@ -117,21 +117,21 @@ export function getContacts() {
     }
 }
 
-export function archivedContact(payload) {
+export function archivedContact(payload: any) {
     return {
         type: ARCHIVED_CONTACT,
         payload
     }
 }
 
-export function deleteContact(payload) {
+export function deleteContact(payload: any) {
     return {
         type: DELETE_CONTACT,
         payload
     }
 }
 
-export function filterContacts(payload) {
+export function filterContacts(payload: any) {
     return {
         type: FILTER_CONTACTS,
         payload
@@ -139,7 +139,7 @@ export function filterContacts(payload) {
 }
 
 export function getRooms() {
-    return async function (dispatch) {
+    return async function (dispatch: (arg0: { type: string; payload: any; }) => any) {
         try {
             const response = await axios.get('roomsMockData.json')
             return dispatch({
@@ -152,21 +152,21 @@ export function getRooms() {
     }
 }
 
-export function deleteRoom(payload) {
+export function deleteRoom(payload: any) {
     return {
         type: DELETE_ROOM,
         payload
     }
 }
 
-export function filterRooms(payload) {
+export function filterRooms(payload: any) {
     return {
         type: FILTER_ROOMS,
         payload
     }
 }
 
-export function createRoom(payload) {
+export function createRoom(payload: any) {
     // return async function(dispatch){
         // const response = await axios.post('....', payload)
         // return response
