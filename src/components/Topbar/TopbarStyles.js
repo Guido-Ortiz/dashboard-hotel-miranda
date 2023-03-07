@@ -5,7 +5,7 @@ export const Wrapper = styled.nav`
     ${props => props.location === '/login' && css`
         display: none !important;` 
     }  
-    width: 100vw;
+    max-width: 100vw;
     height: 16vh; //120
     display: flex;
     flex-direction: row;

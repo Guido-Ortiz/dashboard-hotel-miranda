@@ -9,6 +9,6 @@ export const WrapperKPIs = styled.div `
     flex-direction: row;
     align-items: center;
     justify-content: space-around;
-    width: 100%;
+    max-width: 100vw;
     height: 120px;
 `;
