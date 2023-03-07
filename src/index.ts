@@ -2,7 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
-import { Provider } from 'react-redux';
+const { Provider } = require('react-redux')
+// import { Provider } from 'react-redux';
 import { store } from './redux/store/store';
 import { BrowserRouter } from 'react-router-dom';
 import { UserProvider } from './context/userContext';
