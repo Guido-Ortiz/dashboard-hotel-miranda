@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { Dispatch } from 'redux';
 import { deleteBooking, filterBookings, getBookings } from '../../redux/actions/actions';
 import DataTable from 'react-data-table-component';
 import { ActionsContainer, BookingTableContainer, BtnRequest, BtnStatus, BtnTopMenu, ClientData, CustomTable, TopMenu } from './BookingsStyles';
@@ -9,13 +10,14 @@ import DeleteIcon from '@mui/icons-material/Delete';
 
 import { Link } from 'react-router-dom';
 import { BookingColumn, Date } from '../Dashboard/DashboardStyles';
+import { StoreState } from '../../redux/reducer/reducer';
 
 const Bookings = () => {
 
   const columns = [
     {
       name: "Booking",
-      selector: (row) => <ClientData>
+      selector: (row: { client: string; id: number }) => <ClientData>
         <h3>{row.client}</h3>
         <h4>#{row.id}</h4>
       </ClientData>,
@@ -24,31 +26,31 @@ const Bookings = () => {
     },
     {
       name: "Order",
-      selector: (row) => <Date>{row.order}</Date>,
+      selector: (row: { order: string | number | boolean | React.ReactElement<any, string | React.JSXElementConstructor<any>> | React.ReactFragment | React.ReactPortal | null | undefined; }) => <Date>{row.order}</Date>,
       sortable: true,
       width: '108px'
     },
     {
       name: "Check-In",
-      selector: (row) => <Date>{row.checkin}</Date>,
+      selector: (row: { checkin: string | number | boolean | React.ReactElement<any, string | React.JSXElementConstructor<any>> | React.ReactFragment | React.ReactPortal | null | undefined; }) => <Date>{row.checkin}</Date>,
       sortable: true,
       width: '108px'
     },
     {
       name: "Check-Out",
-      selector: (row) => <Date>{row.checkout}</Date>,
+      selector: (row: { checkout: string | number | boolean | React.ReactElement<any, string | React.JSXElementConstructor<any>> | React.ReactFragment | React.ReactPortal | null | undefined; }) => <Date>{row.checkout}</Date>,
       sortable: true,
       width: '108px'
     },
     {
       name: "Request",
-      selector: (row) => <BtnRequest>View Notes</BtnRequest>,
+      selector: (row: string) => <BtnRequest>View Notes</BtnRequest>,
       sortable: true,
       width: '12%'
     },
     {
       name: "Room",
-      selector: (row) => <BookingColumn>
+      selector: (row: { type: string; number: number }) => <BookingColumn>
         <h3>{row.type}</h3>
         <h4>N° {row.number}</h4>
       </BookingColumn>,
@@ -57,13 +59,13 @@ const Bookings = () => {
     },
     {
       name: "Status",
-      selector: (row) => <BtnStatus status={row.status} data-testid='background'>{row.status}</BtnStatus>,
+      selector: (row: { status: string }) => <BtnStatus status={row.status} data-testid='background'>{row.status}</BtnStatus>,
       sortable: true,
       width: '13%'
     },
     {
       name: "Actions",
-      selector: (row) => <ActionsContainer>
+      selector: (row: { id: number; }) => <ActionsContainer>
         <Link to={`/bookings/${row.id}`}><UpdateIcon sx={{ marginRight: '10px' }} /></Link>
         <DeleteIcon onClick={() => handleDeleteBooking(row.id)} />
       </ActionsContainer>,
@@ -71,19 +73,19 @@ const Bookings = () => {
     }
   ]
 
-  const dispatch = useDispatch()
+  const dispatch: Dispatch<any> = useDispatch();
 
-  const data = useSelector(state => state.bookings.bookings)
+  const data = useSelector((state: StoreState) => state.bookings.bookings)
 
   useEffect(() => {
     dispatch(getBookings())
   }, [dispatch])
 
-  const handleFilterBookings = filter => {
+  const handleFilterBookings = (filter: string) => {
     dispatch(filterBookings(filter))
   }
 
-  const handleDeleteBooking = (id) => {
+  const handleDeleteBooking = (id: number) => {
     dispatch(deleteBooking(id))
   }
 

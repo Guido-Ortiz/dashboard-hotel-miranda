@@ -1,22 +1,39 @@
-import { TOGGLE_SIDEBAR } from "../actions/constants"
+import { combineReducers } from 'redux';
+import { BookingsStoreState, bookingsReducer } from './bookingsReducer';
 
-const initialState = {
-    sidebar: true
+export interface StoreState {
+  bookings: BookingsStoreState
 }
 
-const rootReducer = (state = initialState, action: { type: any }) => {
-    switch (action.type) {
+export const reducers = combineReducers<StoreState>({
+  bookings: bookingsReducer
+})
 
-        case TOGGLE_SIDEBAR:
-            return {
-                ...state,
-                sidebar: !state.sidebar
-            }
+
+
+
+
+
+// import { TOGGLE_SIDEBAR } from "../actions/constants"
+
+// const initialState = {
+//     sidebar: true
+// }
+
+// const rootReducer = (state = initialState, action: { type: any }) => {
+//     switch (action.type) {
+
+//         case TOGGLE_SIDEBAR:
+//             return {
+//                 ...state,
+//                 sidebar: !state.sidebar
+//             }
         
 
-        default:
-            return state
-        //break;
-    }
-}
-export default rootReducer
+//         default:
+//             return state
+//         //break;
+//     }
+// }
+// export default rootReducer
+
