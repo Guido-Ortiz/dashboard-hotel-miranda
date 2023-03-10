@@ -1,12 +1,13 @@
 import { combineReducers } from 'redux';
 import { BookingsStoreState, bookingsReducer } from './bookingsReducer';
+import userReducer from './userReducer';
 
 export interface StoreState {
   bookings: BookingsStoreState
 }
 
 export const reducers = combineReducers<StoreState>({
-  bookings: bookingsReducer
+  bookings: bookingsReducer,
 })
 
 
