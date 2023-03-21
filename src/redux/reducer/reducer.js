@@ -13,10 +13,8 @@ const rootReducer = (state = initialState, action) => {
                 sidebar: !state.sidebar
             }
         
-
         default:
             return state
-        //break;
     }
 }
 export default rootReducer

@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const customStyles = {
     rows: {
         style: {
-            // height: '90px', // override the row height
+            // height: '90px',
         },
     },
     headCells: {
