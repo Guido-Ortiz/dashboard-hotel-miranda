@@ -133,7 +133,6 @@ const Dashboard = () => {
         <Swiper />
       </SwiperContainer>
 
-      {/* <Snackbar open={open} autoHideDuration={4000} onClose={handleClose} message="Booking deleted" action={action} sx={{border: '1px solid fuchsia'}} /> */}
       <Snackbar open={open} autoHideDuration={4000} onClose={handleClose} message="Booking deleted" action={action}>
         <Alert onClose={handleClose} severity="success" sx={{ width: '100%' }}>
           Booking deleted!

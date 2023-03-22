@@ -12,7 +12,6 @@ import BookingSlider from './BookingSlider/BookingSlider';
 const Booking = () => {
 
   const { booking_id } = useParams()
-  // console.log(booking_id)
 
   const dispatch = useDispatch()
 
