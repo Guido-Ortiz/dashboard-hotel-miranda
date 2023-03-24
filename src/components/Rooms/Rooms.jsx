@@ -26,8 +26,7 @@ const customStyles = {
     style: {
       // border: '1px solid blue',
       width: '10px',
-      paddingLeft: '4px', // override the cell padding for data cells
-      // paddingRight: '8px',
+      paddingLeft: '4px',
     },
   },
 };
@@ -93,7 +92,6 @@ const Rooms = () => {
     }
   ]
   
-  // const sidebar = useSelector(state => state.sidebar)
   const data = useSelector(state => state.rooms.rooms)
   
   const dispatch = useDispatch()

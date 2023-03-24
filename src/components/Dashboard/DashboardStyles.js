@@ -62,7 +62,6 @@ export const BtnToBooking = styled.button`
     color: #135846;
     letter-spacing: 0.5px;
     padding: 5px;
-    // margin: 0 20px;
     border-radius: 4px;
     text-transform: uppercase;
 

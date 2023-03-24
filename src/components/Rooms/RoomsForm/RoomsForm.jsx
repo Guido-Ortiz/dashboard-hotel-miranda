@@ -3,12 +3,10 @@ import { Chip } from '@mui/material';
 import { useDispatch } from 'react-redux';
 import { createRoom } from '../../../redux/actions/actions';
 import { BtnSubmit, FormText, InputWrapper } from '../../Users/UsersForm/UsersFormStyles';
-// import { useNavigate } from 'react-router';
 
 const RoomsForm = () => {
 
     const dispatch = useDispatch()
-    // const navigate = useNavigate()
     const amenities = ['Wi-Fi', 'TV', 'Towels', 'AC', 'Parking']
     const [room, setRoom] = useState({
         photos: [],
@@ -30,32 +28,21 @@ const RoomsForm = () => {
     }
 
     const handleAmenities = (e) => {
-        // console.log(room.amenities)
         setRoom({
             ...room,
             amenities: [...room.amenities, e.target.value]
         })
     }
 
-    // const handleImage = (e) => {
-    //     // console.log('image')
-    //     setRoom({
-    //         ...room,
-    //         photo: [...room.photo, e.target.files]
-    //     })
-    // }
-
     const handleAddRoom = () => {
         dispatch(createRoom(room))
         alert('Room added succesfully')
-        // navigate("/rooms")
     }
 
     return (
         <>
             <FormText>Complete the following form to add a new room.</FormText>
             <InputWrapper>
-                {/* <input type="file" placeholder='Photos' value={room.photo} onChange={e => handleImage(e)} /> */}
                 <input type="text" placeholder='Photos' value={room.photo} />
                 <select name='type' value={room.type} onChange={e => handleChange(e)}>
                     <option value="">Please select a type</option>
@@ -92,7 +79,6 @@ const RoomsForm = () => {
                 {
                     room.amenities.map((amenity, i) => <Chip key={i} label={amenity} />)
                 }
-                {/* <input type="text" placeholder='Amenities' name='amenities' value={room.cancel}  /> */}
 
             </InputWrapper>
             <BtnSubmit onClick={handleAddRoom}>Add Room</BtnSubmit>

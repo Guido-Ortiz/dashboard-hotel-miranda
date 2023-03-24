@@ -61,7 +61,6 @@ const Booking = () => {
           <img src={guest} alt='Guest' />
           <GuestData>
             <h2>Guest</h2>
-            {/* <h2>{detail[0].client}</h2> */}
             <h4>#123456</h4>
             <GuestContact>
               <div>
