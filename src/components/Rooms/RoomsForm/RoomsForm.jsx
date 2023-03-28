@@ -3,6 +3,7 @@ import { Chip } from '@mui/material';
 import { useDispatch } from 'react-redux';
 import { createRoom } from '../../../redux/actions/actions';
 import { BtnSubmit, FormText, InputWrapper } from '../../Users/UsersForm/UsersFormStyles';
+import { chipStyle } from './RoomsFormStyles';
 
 const RoomsForm = () => {
 
@@ -77,7 +78,7 @@ const RoomsForm = () => {
 
                 </select>
                 {
-                    room.amenities.map((amenity, i) => <Chip key={i} label={amenity} />)
+                    room.amenities.map((amenity, i) => <Chip key={i} label={amenity} sx={chipStyle} />)
                 }
 
             </InputWrapper>
