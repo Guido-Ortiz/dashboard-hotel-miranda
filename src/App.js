@@ -1,7 +1,7 @@
 import { React } from 'react';
+import './App.css';
 import { useSelector } from 'react-redux';
 import { Route, Routes, useLocation } from 'react-router-dom';
-import './App.css';
 import Booking from './components/Bookings/Booking/Booking';
 import Bookings from './components/Bookings/Bookings';
 import Contacts from './components/Contacts/Contacts';
@@ -24,9 +24,10 @@ function App() {
   return (
     <div>
 
-      <Topbar location={location.pathname} />
+      <Topbar location={location.pathname} sidebar={sidebar} />
       <DashboardWrapper>
-        {sidebar && <Sidebar location={location.pathname} />}
+        {/* {sidebar && <Sidebar location={location.pathname} sidebar={sidebar} />} */}
+        <Sidebar location={location.pathname} sidebar={sidebar} />
 
         <RightContainer sidebar={sidebar}>
 

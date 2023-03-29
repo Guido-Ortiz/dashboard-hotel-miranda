@@ -11,7 +11,7 @@ import { useUser } from '../../context/userContext';
 import { LOGOUT } from '../../context/constants';
 import { Tooltip } from '@mui/material';
 
-const Header = ({ location }) => {
+const Header = ({ location, sidebar }) => {
 
   const dispatchAction = useDispatch()
 
@@ -31,7 +31,7 @@ const Header = ({ location }) => {
   }
 
   return (
-    <HeaderWrapper>
+    <HeaderWrapper sidebar={sidebar}>
       <div>
         <MenuOpenIcon sx={{ fontSize: 30 }} onClick={handleToggle} />
         { location ? <h2>{location}</h2> : <h2>Dashboard</h2> }

@@ -10,10 +10,6 @@ export const Wrapper = styled.nav`
     height: 16vh; //120
     display: flex;
     flex-direction: row;
-    // position: fixed;
-    // top: 0;
-    // left: 0;
-    // z-index: auto;
-    // overflow: hidden;
+    justify-content: flex-start;
 `;
 

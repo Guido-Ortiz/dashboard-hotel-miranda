@@ -1,7 +1,10 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 export const ProfileContainer = styled.div `
-    // border: 1px solid red;
+    border: 1px solid red;
+    ${props => props.sidebar === false && css`
+        display: none !important;` 
+    }  
     font-family: 'poppins', sans-serif;
     display: flex;
     flex-direction: column;
@@ -11,7 +14,6 @@ export const ProfileContainer = styled.div `
     margin-top: 30px;
     margin-bottom: 50px;
     padding: 20px 0;
-    // margin: 1.25rem 1.25rem;
     border-radius: 1.125rem;
     box-shadow: 0 19px 19px rgb(0 0 0 / 16%);
 

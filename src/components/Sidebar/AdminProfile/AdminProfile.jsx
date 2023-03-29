@@ -2,9 +2,9 @@ import React from 'react'
 import { BtnAdminProfile, ProfileContainer } from './AdminProfileStyles'
 import admin from '../../../resources/admin.jpg';
 
-const AdminProfile = () => {
+const AdminProfile = ({ sidebar }) => {
   return (
-    <ProfileContainer>
+    <ProfileContainer sidebar={sidebar}>
         <img src={admin} alt='Admin Profile' />
         <h4>Guido Ortiz</h4>
         <h5>guido@hotelmiranda.com</h5>

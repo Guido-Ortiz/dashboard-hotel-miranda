@@ -14,10 +14,6 @@ export const RightContainer = styled.div`
     // border: ${props => props.sidebar ? '1px solid red' : '1px solid green'};
     width: ${props => props.sidebar ? '82vw' : '100vw'};
     min-height: 84vh;
-    // position: relative;
-    // left: ${props => props.sidebar ? '18vw' : '0'};
-    // top: 16vh;
-    // z-index: 0;
 `;
 
 export const TableContainer = styled.div`

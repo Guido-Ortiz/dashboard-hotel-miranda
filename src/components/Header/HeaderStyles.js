@@ -1,8 +1,9 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 export const HeaderWrapper = styled.div `
     // border: 1px solid green;
-    margin-left: 20px;
+    margin-left: ${props => props.sidebar === true ? '20px' : '40px'} ;
+    // margin-left: 20px;
     display: flex;
     flex-direction: row;
     align-items: center;

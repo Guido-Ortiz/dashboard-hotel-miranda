@@ -4,16 +4,16 @@ import Header from '../Header/Header';
 import Logo from './Logo/Logo';
 import { Wrapper } from './TopbarStyles';
 
-const Topbar = ({ location }) => {
+const Topbar = ({ location, sidebar }) => {
 
   const title = location.split('/')
 
   return (
     <Wrapper location={location}>
       <Link to='/'>
-        <Logo />
+        <Logo sidebar={sidebar} />
       </Link>
-      <Header location={title[1]} />
+      <Header location={title[1]} sidebar={sidebar} />
     </Wrapper>
   )
 }
