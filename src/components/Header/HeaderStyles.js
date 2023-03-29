@@ -2,7 +2,7 @@ import styled, { css } from "styled-components";
 
 export const HeaderWrapper = styled.div `
     // border: 1px solid green;
-    margin-left: ${props => props.sidebar === true ? '20px' : '40px'} ;
+    margin-left: ${props => props.sidebar === true ? '20px' : '40px'};
     // margin-left: 20px;
     display: flex;
     flex-direction: row;
@@ -11,8 +11,8 @@ export const HeaderWrapper = styled.div `
     width: 100%;
 
     svg {
-        // border: 1px solid red;
-        color: #393939;
+        // border: 1px solid red; 
+        color: ${props => props.sidebar === true ? '#393939' : '#E23428'};
         margin-right: 30px;
 
         &:hover {

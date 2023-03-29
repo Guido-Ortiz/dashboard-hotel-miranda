@@ -7,7 +7,7 @@ import { ActionsContainer, TopMenu } from '../Bookings/BookingsStyles';
 import Swiper from '../Swiper/Swiper';
 import { SwiperContainer, TableContactsContainer, customStyles, InfoColumn, Customer, Comment } from './ContactsStyles';
 import { archivedContact, deleteContact, filterContacts, getContacts } from '../../redux/actions/actions';
-import { Tooltip } from '@mui/material';
+import { Rating, Tooltip } from '@mui/material';
 
 const Contact = () => {
 
@@ -38,7 +38,10 @@ const Contact = () => {
     },
     {
       name: "Comment",
-      selector: (row) => <Comment>{row.comment}</Comment>,
+      selector: (row) => <div>
+        <Rating name="half-rating-read" defaultValue={2.5} precision={0.5} readOnly sx={{ color: '#135846' }} />
+        <Comment>{row.comment}</Comment>
+      </div>,
       sortable: true,
       width: '36%', //400px
     },

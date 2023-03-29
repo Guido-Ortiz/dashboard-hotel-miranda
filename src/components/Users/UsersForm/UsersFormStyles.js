@@ -12,7 +12,7 @@ export const FormText = styled.p `
 `;
 
 export const InputWrapper = styled.div `
-    // border: 1px solid fuchsia;
+    border: 1px solid fuchsia;
     width: 90%;
     margin: 0 auto;
     display: flex;
@@ -20,13 +20,30 @@ export const InputWrapper = styled.div `
     flex-wrap: wrap;
     margin-bottom: 30px;
 
+    div {
+        border: 1px solid green;
+        width: 50%;
+        padding: 10px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+
+        h4 {
+            font-family: 'poppins', sans-serif;
+            font-weight: 400;
+            line-height: 1.5;
+            color: #6E6E6E;
+            margin: 0;
+        }
+    }
+
     input, select {
         background: #fff;
         border: 0.0625rem solid #ccc7c7;
         padding: 0.3125rem 1.25rem;
         color: #6e6e6e;
         height: 30px;
-        width: 40%;
+        // width: 40%;
         border-radius: 5px;
         margin: 10px;
         letter-spacing: 1px;

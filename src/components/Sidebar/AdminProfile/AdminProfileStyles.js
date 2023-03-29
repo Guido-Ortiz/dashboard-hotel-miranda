@@ -1,7 +1,7 @@
 import styled, { css } from "styled-components";
 
 export const ProfileContainer = styled.div `
-    border: 1px solid red;
+    // border: 1px solid red;
     ${props => props.sidebar === false && css`
         display: none !important;` 
     }  
