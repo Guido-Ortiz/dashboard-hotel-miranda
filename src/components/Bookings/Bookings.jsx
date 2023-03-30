@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { deleteBooking, filterBookings, getBookings } from '../../redux/actions/actions';
 import DataTable from 'react-data-table-component';
@@ -6,9 +6,13 @@ import { ActionsContainer, BookingTableContainer, BtnRequest, BtnStatus, BtnTopM
 
 import UpdateIcon from '@mui/icons-material/Update';
 import DeleteIcon from '@mui/icons-material/Delete';
+import Snackbar from '@mui/material/Snackbar';
+import Alert from '@mui/material/Alert';
+
 
 import { Link } from 'react-router-dom';
 import { BookingColumn, Date } from '../Dashboard/DashboardStyles';
+import { IconButton, Tooltip } from '@mui/material';
 
 const Bookings = () => {
 
@@ -65,7 +69,11 @@ const Bookings = () => {
       name: "Actions",
       selector: (row) => <ActionsContainer>
         <Link to={`/bookings/${row.id}`}><UpdateIcon sx={{ marginRight: '10px' }} /></Link>
-        <DeleteIcon onClick={() => handleDeleteBooking(row.id)} />
+        <Tooltip title='Delete Booking'>
+          <IconButton>
+            <DeleteIcon onClick={() => handleDeleteBooking(row.id)} />
+          </IconButton>
+        </Tooltip>
       </ActionsContainer>,
       width: '9%'
     }
@@ -82,9 +90,18 @@ const Bookings = () => {
   const handleFilterBookings = filter => {
     dispatch(filterBookings(filter))
   }
+  const [open, setOpen] = useState(false);
+
+  const handleClose = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+    setOpen(false);
+  }
 
   const handleDeleteBooking = (id) => {
     dispatch(deleteBooking(id))
+    setOpen(true)
   }
 
   return (
@@ -105,6 +122,10 @@ const Bookings = () => {
       <BookingTableContainer>
         <DataTable columns={columns} data={data} defaultSortFieldId pagination={5} highlightOnHover customStyles={CustomTable} />
       </BookingTableContainer>
+
+      <Snackbar open={open} autoHideDuration={2000} onClose={handleClose} >
+        <Alert onClose={handleClose} severity="success" sx={{ width: '100%' }}>Booking deleted!</Alert>
+      </Snackbar>
 
     </>
   )

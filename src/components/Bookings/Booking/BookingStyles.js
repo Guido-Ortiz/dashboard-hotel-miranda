@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const DetailWrapper = styled.div `
+export const DetailWrapper = styled.div`
     // border: ${props => props.sidebar ? '1px solid red' : '1px solid green'};
     width: ${props => props.sidebar ? '82vw' : '100vw'};
     // max-width: 96vw;
@@ -26,7 +26,7 @@ export const DetailWrapper = styled.div `
     }
 `;
 
-export const GuestWrapper = styled.div `
+export const GuestWrapper = styled.div`
     // border: 1px dashed blue;
     // margin: 5px;
     width: 50%;
@@ -42,7 +42,7 @@ export const GuestWrapper = styled.div `
     }    
 `;
 
-export const GuestData = styled.div `
+export const GuestData = styled.div`
     // border: 1px solid red;
     width: 55% !important;
     height: auto;
@@ -71,7 +71,7 @@ export const GuestData = styled.div `
     }
 `;
 
-export const GuestContact = styled.div `
+export const GuestContact = styled.div`
     // border: 1px solid green;
     display: row;
     width: 100%;
@@ -94,7 +94,7 @@ export const GuestContact = styled.div `
     }
 `;
 
-export const CheckWapper = styled.div `
+export const CheckWapper = styled.div`
     // border: 1px dashed fuchsia;
     display: flex;
     flex-direction: row !important;
@@ -126,7 +126,7 @@ export const CheckWapper = styled.div `
     }
 `;
 
-export const RoomInfoWrapper = styled.div `
+export const RoomInfoWrapper = styled.div`
     // border: 1px solid red;
     display: flex;
     flex-direction: row !important;
@@ -160,7 +160,7 @@ export const RoomInfoWrapper = styled.div `
     }
 `;
 
-export const FacilitiesWrapper = styled.div `
+export const FacilitiesWrapper = styled.div`
     // border: 1px solid red;
     margin: 5px;
 
@@ -181,7 +181,7 @@ export const FacilitiesWrapper = styled.div `
      }
 `;
 
-export  const FacilityChip = styled.div `
+export const FacilityChip = styled.div`
     // display: inline-block;
     width: 130px !important;
     background-color: #e2f9f3;
@@ -199,7 +199,7 @@ export  const FacilityChip = styled.div `
     vertical-align: middle;
 `;
 
-export const RoomWrapper = styled.div `
+export const RoomWrapper = styled.div`
     // border: 1px dashed fuchsia;
     margin: 5px;
     width: 50%;
@@ -230,14 +230,14 @@ export const RoomWrapper = styled.div `
     }
 `;
 
-export const BtnEdit = styled.button `
+export const BtnEdit = styled.button`
      height: ${props => props.modal === 'modal' ? '50px' : '35px'};
      width: 200px;
      letter-spacing: 1px;
      color: #ffffff;
      background: #135846;
      border: none;
-     border-radius: 8px;
+     border-radius: 0.8rem;
      margin: 0 auto;
      margin-top: 10px;
      font: normal normal normal 14px/21px Poppins;
@@ -247,16 +247,21 @@ export const BtnEdit = styled.button `
      }
 `;
 
-export const BoxEdit = styled.div `
+export const BoxEdit = styled.div`
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 600px;
+    width: 650px;
+    height: auto;
     background: #ffffff;
     border: 1px solid #135846;
     box-shadow: 24px;
     padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    // align-items: center;
 
     h3 {
         text-align: left;
@@ -266,35 +271,68 @@ export const BoxEdit = styled.div `
     }
 
     div {
-        // border: 1px solid red;
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        flex-wrap: wrap;
-        padding: 10px;
+        // border: 1px solid blue;
+         display: flex;
+         flex-direction: row;
+    //     align-items: center;
+         flex-wrap: wrap;
+    //     padding: 10px;
+     }
+
+     select {
+        margin: 0;
+        background: #fff;
+        border: 0.0625rem solid #ccc7c7;
+        padding: 0.3125rem 1.25rem;
+        color: #6e6e6e;
+        height: 30px;
+        border-radius: 1rem;
+        margin: 10px;
+        letter-spacing: 1px;
+        outline: none;
+
+        // &:hover {
+        //     border: 1px solid #135846;
+        // }
     }
 
     select {
         height: 43px;
-        width: 44%;
-        border: 1px solid #135846;
-        margin: 10px;
-        border-radius: 8px;
-        font: normal normal normal 14px/21px Poppins;
-        letter-spacing: 0.5px;
-        color: #363636;
+        width: 98%;
+        
+        option {
+            font-size: 0.875rem;
+            font-weight: 400;
+            line-height: 1.5;
+        }
     }
 `;
 
-export const InputEdit = styled.input `
-    height: 35px;
-    width: 40%;
+export const InputEdit = styled.input`
+    height: 30px;
+    width: 90%;
     outline: none;
-    border: 1px solid #135846;
+    border: 0.0625rem solid #ccc7c7;
     margin: 10px;
-    border-radius: 8px;
+    border-radius: 0.8rem;
     padding: 5px 8px;
     font: normal normal normal 14px/21px Poppins;
     letter-spacing: 0.5px;
     color: #363636;
+`;
+
+export const InputEditWrapper = styled.div`
+    // border: 1px solid red!important;
+    width: 48%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+
+    h4 {
+        margin: 0;   
+        font-family: 'poppins', sans-serif;
+        font-weight: 400;
+        line-height: 1.5;
+        color: #6E6E6E;
+    }
 `;
