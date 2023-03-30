@@ -33,13 +33,15 @@ export const TopMenu = styled.div`
             height: 32px;
             border: none;
             border: 1px solid #135846;
-            border-radius: 4px;
+            border-radius: 0.8rem;
             outline: none;
             padding: 5px;
             background: #FCFCFC;
             font-size: 0.875rem;
             font-weight: 400;
             line-height: 1.5;
+            color: #6E6E6E;
+            letter-spacing: 0.5px;
         }
     }    
 `;

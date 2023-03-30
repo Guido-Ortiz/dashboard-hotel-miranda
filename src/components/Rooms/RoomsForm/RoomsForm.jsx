@@ -9,16 +9,18 @@ const RoomsForm = () => {
 
     const dispatch = useDispatch()
     const amenities = ['Wi-Fi', 'TV', 'Towels', 'AC', 'Parking']
+    const cancelation = ['If cancelled up to 48 hours before arrival no fee will be charged', 'If cancelled less than 48 hours before arrival 100% of the first night will be charged', 'If you are a no-show, 100% of the first night will be charged']
     const [room, setRoom] = useState({
-        photos: [],
-        type: '',
-        number: 100,
-        description: '',
+        number: '',
+        price: '',
         offer: '',
-        price: 100,
-        discount: 0.05,
+        discount: '',
+        type: '',
+        status: '',
+        amenities: [],
         cancel: '',
-        amenities: []
+        // photos: [],
+        // description: '',
     })
 
     const handleChange = (e) => {
@@ -26,6 +28,7 @@ const RoomsForm = () => {
             ...room,
             [e.target.name]: e.target.value
         })
+        console.log(room)
     }
 
     const handleAmenities = (e) => {
@@ -44,43 +47,81 @@ const RoomsForm = () => {
         <>
             <FormText>Complete the following form to add a new room.</FormText>
             <InputWrapper>
-                <input type="text" placeholder='Photos' value={room.photo} />
-                <select name='type' value={room.type} onChange={e => handleChange(e)}>
-                    <option value="">Please select a type</option>
-                    <option value="single">Single Bed</option>
-                    <option value="double">Double Bed</option>
-                    <option value="superior">Double Bed Superior</option>
-                    <option value="suite">Suite</option>
-                </select>
-                <input type="number" placeholder='Room number' name='number' onChange={e => handleChange(e)} />
-                <input type="text" placeholder='Description' name='description' value={room.description} onChange={e => handleChange(e)} />
-                <select name='offer' onChange={(e) => handleChange(e)}>
-                    <option value="">Offer</option>
-                    <option value="yes">Yes</option>
-                    <option value="no">No</option>
-                </select>
-                {
-                    room.offer === 'yes'
-                        ? <input type="number" placeholder='Discount %' name='discount' onChange={e => handleChange(e)} />
-                        : <input type="number" placeholder='Discount %' name='discount' onChange={e => handleChange(e)} disabled />
-                }
-                <input type="number" placeholder='Price per night' name='price' onChange={e => handleChange(e)} />
-                <input type="text" placeholder='Cancelation policy' name='cancel' onChange={e => handleChange(e)} />
-                <select onChange={e => handleAmenities(e)}>
-                    <option value="">Please select room amenities</option>
+                <div>
+                    <h4>Room Number</h4>
+                    <input type="number" placeholder='Room number' name='number' onChange={e => handleChange(e)} />
+                </div>
+                <div>
+                    <h4>Price per night</h4>
+                    <input type="number" placeholder='Price per night' name='price' onChange={e => handleChange(e)} />
+                </div>
+                <div>
+                    <h4>Offer</h4>
+                    <div onChange={e => handleChange(e)}>
+                        <input type="radio" name='offer' value="yes" />
+                        <h4 for="html">Yes</h4>
+                        <input type="radio" name='offer' value="no" />
+                        <h4 for="css">No</h4>
+                    </div>
+                </div>
+                <div>
+                    <h4>Discount</h4>
+                    {room.offer === 'no'
+                        ? <input type="number" placeholder='Discount %' disabled />
+                        : <input type="number" placeholder='Discount %' name='discount' onChange={e => handleChange(e)} />}
+
+                </div>
+                <div>
+                    <h4>Room Type</h4>
+                    <select name='type' onChange={e => handleChange(e)}>
+                        <option value="">Please select a type</option>
+                        <option value="single">Single Bed</option>
+                        <option value="double">Double Bed</option>
+                        <option value="superior">Double Bed Superior</option>
+                        <option value="suite">Suite</option>
+                    </select>
+                </div>
+                <div>
+                    <h4>Room Status</h4>
+                    <div onChange={e => handleChange(e)}>
+                        <input type="radio" name='status' value="available" />
+                        <h4 for="html">Available</h4>
+                        <input type="radio" name='status' value="booked" />
+                        <h4 for="css">Booked</h4>
+                    </div>
+                </div>
+                <div>
+                    <h4>Amenities</h4>
+                    <select onChange={e => handleAmenities(e)}>
+                        <option value="">Please select room amenities</option>
+                        {
+                            amenities.map(e => {
+                                return (
+                                    <option value={e} key={e}>{e}</option>
+                                )
+                            })
+                        }
+
+                    </select>
                     {
-                        amenities.map(e => {
-                            return (
-                                <option value={e} key={e}>{e}</option>
-                            )
-                        })
+                        room.amenities.map((amenity, i) => <Chip key={i} label={amenity} sx={chipStyle} />)
                     }
 
-                </select>
-                {
-                    room.amenities.map((amenity, i) => <Chip key={i} label={amenity} sx={chipStyle} />)
-                }
+                </div>
+                <div>
+                    <h4>Cancelation Policy</h4>
+                    <select name='cancel' onChange={e => handleChange(e)}>
+                        <option value="">Please select a cancelation policy</option>
+                        {
+                            cancelation.map(e => {
+                                return (
+                                    <option value={e} key={e}>{e}</option>
+                                )
+                            })
+                        }
 
+                    </select>
+                </div>
             </InputWrapper>
             <BtnSubmit onClick={handleAddRoom}>Add Room</BtnSubmit>
 

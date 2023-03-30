@@ -97,7 +97,7 @@ const Bookings = () => {
           <h4 value='progress' onClick={() => handleFilterBookings('progress')}>In Progress</h4>
         </div>
         <div>
-          <input type='text' />
+          <input type='text' placeholder='Search bookings' />
           <BtnTopMenu>Search</BtnTopMenu>
         </div>
       </TopMenu>
