@@ -24,7 +24,6 @@ const UsersForm = () => {
       ...user,
       [e.target.name]: e.target.value
     })
-    console.log(user)
   }
 
   const handleSubmit = () => {
@@ -40,23 +39,46 @@ const UsersForm = () => {
           <h4>Full Name</h4>
           <input type="text" placeholder='Jane Doe' name='name' value={user.name} onChange={(e) => handleChange(e)} />
         </div>
-        <input type="text" placeholder='Insert your photo' name='photo' value={user.photo} onChange={(e) => handleChange(e)} />
-        <select name='position' value={user.position} onChange={(e) => handleChange(e)}>
-          <option value="">Please select a position</option>
-          <option value="manager">Manager</option>
-          <option value="receptionist">Receptionist</option>
-          <option value="service">Service</option>
-        </select>
-        <input type="text" placeholder='E-mail' name='email' value={user.email} onChange={(e) => handleChange(e)} />
-        <input type="text" placeholder='Phone' name='phone' value={user.phone} onChange={(e) => handleChange(e)} />
-        <input type="date" placeholder='Start Date' name='start' value={user.start} onChange={(e) => handleChange(e)} />
-        <input type="text" placeholder='Description' name='description' value={user.description} onChange={(e) => handleChange(e)} />
-        <select name='status' value={user.status} onChange={(e) => handleChange(e)}>
-          <option value="">Please select a status</option>
-          <option value="active">Active</option>
-          <option value="inactive">Inactive</option>
-        </select>
-        <input type="password" placeholder='Password' name='password' value={user.password} onChange={(e) => handleChange(e)} />
+        <div>
+          <h4>E-mail</h4>
+          <input type="text" placeholder='janedoe@email.com' name='email' value={user.email} onChange={(e) => handleChange(e)} />
+        </div>
+        <div>
+          <h4>Phone</h4>
+          <input type="text" placeholder='Phone' name='phone' value={user.phone} onChange={(e) => handleChange(e)} />
+        </div>
+        <div>
+          <h4>Start Date</h4>
+          <input type="date" placeholder='Start Date' name='start' value={user.start} onChange={(e) => handleChange(e)} />
+        </div>
+        <div>
+          <h4>Position</h4>
+          <select name='position' value={user.position} onChange={(e) => handleChange(e)}>
+            <option value="">Please select a position</option>
+            <option value="manager">Manager</option>
+            <option value="receptionist">Receptionist</option>
+            <option value="service">Service</option>
+          </select>
+        </div>
+        <div>
+          <h4>Status</h4>
+          <div>
+            <input type="radio" name='status' value="HTML" />
+            <h4 for="html">Active</h4>
+            <input type="radio" name='status' value="CSS" />
+            <h4 for="css">Inactive</h4>
+          </div>
+        
+        </div>
+        <div>
+          <h4>Photo</h4>
+          <input type="text" placeholder='Insert your photo' name='photo' value={user.photo} onChange={(e) => handleChange(e)} />
+        </div>
+        <div>
+          <h4>Password</h4>
+          <input type="password" placeholder='Password' name='password' value={user.password} onChange={(e) => handleChange(e)} />
+        </div>
+
       </InputWrapper>
       <BtnSubmit onClick={handleSubmit}>Add Employee</BtnSubmit>
 

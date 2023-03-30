@@ -38,7 +38,7 @@ export const UserTableWrapper = styled.div `
 
 export const BtnAddEmployee = styled.button `
     font-family: 'poppins', sans-serif;
-    font-weight: 400;
+    font-weight: 600;
     height: 40px;
     width: 100px;
     border: 1px solid #135846;
@@ -47,7 +47,7 @@ export const BtnAddEmployee = styled.button `
     letter-spacing: 0.5px;
     padding: 5px;
     margin: 0 20px;
-    border-radius: 4px;
+    border-radius: 0.8rem;
     text-transform: uppercase;
 
     &:hover {

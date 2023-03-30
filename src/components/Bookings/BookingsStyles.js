@@ -48,14 +48,14 @@ export const BtnTopMenu = styled.button `
     font-family: 'poppins', sans-serif;
     font-weight: 400;
     height: 40px;
-    width: 80px;
+    width: 100px;
     border: none;
     background: #135846;
     color: #ffffff;
     letter-spacing: 0.5px;
     padding: 5px;
     margin: 0 20px;
-    border-radius: 4px;
+    border-radius: 0.8rem;
     text-transform: uppercase;
 `;
 
