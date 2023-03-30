@@ -129,7 +129,7 @@ const Dashboard = () => {
       </TableContainer>
 
       <SwiperContainer sidebar={sidebar}>
-        <h1>Reviews</h1>
+        <h1>Latests Reviews</h1>
         <Swiper />
       </SwiperContainer>
 

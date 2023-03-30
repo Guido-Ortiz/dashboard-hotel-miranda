@@ -1,7 +1,8 @@
-import React, { useState } from 'react'
-import { useDispatch } from 'react-redux'
-import { createUser } from '../../../redux/actions/actions'
-import { FormText, InputWrapper, BtnSubmit } from './UsersFormStyles'
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { createUser } from '../../../redux/actions/actions';
+import { FormText, InputWrapper, BtnSubmit, radio, label } from './UsersFormStyles';
+import { RadioGroup, FormControlLabel, FormControl, Radio } from '@mui/material'
 
 const UsersForm = () => {
 
@@ -24,10 +25,10 @@ const UsersForm = () => {
       ...user,
       [e.target.name]: e.target.value
     })
+    console.log(user)
   }
 
   const handleSubmit = () => {
-    console.log(user)
     dispatch(createUser(user))
   }
 
@@ -62,13 +63,21 @@ const UsersForm = () => {
         </div>
         <div>
           <h4>Status</h4>
-          <div>
+          {/* <div>
             <input type="radio" name='status' value="HTML" />
             <h4 for="html">Active</h4>
             <input type="radio" name='status' value="CSS" />
             <h4 for="css">Inactive</h4>
-          </div>
-        
+          </div> */}
+          <FormControl sx={{ height: '30px' }} onChange={e => handleChange(e)}>
+            <RadioGroup row aria-labelledby="demo-row-radio-buttons-group-label" name="row-radio-buttons-group" defaultValue="active">
+              <div>
+                <FormControlLabel name='status' value="active" control={<Radio sx={radio} />} label="Active" sx={label} />
+                <FormControlLabel name='status' value="inactive" control={<Radio sx={radio} />} label="Inactive" sx={label} />
+              </div>
+            </RadioGroup>
+          </FormControl>
+
         </div>
         <div>
           <h4>Photo</h4>

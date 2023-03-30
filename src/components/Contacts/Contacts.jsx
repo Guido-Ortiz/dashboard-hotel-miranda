@@ -32,8 +32,8 @@ const Contact = () => {
       width: '18%'
     },
     {
-      name: "Isue",
-      seector: row => <h4>Isue</h4>,
+      name: "Issue",
+      selector: row => <h4>Issue</h4>,
       width: '14%'
     },
     {
@@ -47,7 +47,7 @@ const Contact = () => {
     },
     {
       name: "Actions",
-      selector: (row) => <ActionsContainer><Tooltip title="Archived message">
+      selector: (row) => <ActionsContainer><Tooltip title="Archive message">
         <ArchiveIcon sx={{ color: '#135846' }} onClick={() => handleArchivedContact(row.id, row.customer, row.date, row.email, row.telephone, row.comment)} /></Tooltip>
         <Tooltip title="Delete message"><DeleteIcon onClick={() => handleDeleteContact(row.id)} /></Tooltip>
       </ActionsContainer>,

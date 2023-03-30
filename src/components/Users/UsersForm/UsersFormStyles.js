@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const FormText = styled.p `
+export const FormText = styled.p`
     // border: 1px solid red;
     font-family: 'poppins', sans-serif;
     font-size: 1.05rem;
@@ -11,7 +11,7 @@ export const FormText = styled.p `
     letter-spacing: 1px;
 `;
 
-export const InputWrapper = styled.div `
+export const InputWrapper = styled.div`
     // border: 1px solid fuchsia;
     width: 90%;
     margin: 0 auto;
@@ -89,7 +89,7 @@ export const InputWrapper = styled.div `
     }
 `;
 
-export const BtnSubmit = styled.button `
+export const BtnSubmit = styled.button`
     font-family: 'poppins', sans-serif;
     font-weight: 500;
     height: 40px;
@@ -115,3 +115,19 @@ export const BtnSubmit = styled.button `
         color: #135846;
     }
 `;
+
+export const radio = {
+    color: '#135846',
+    '&.Mui-checked': {
+        color: '#135846',
+    },
+}
+
+export const label = {
+    fontFamily: 'poppins', 
+    fontWeight: 400,
+    lineHeight: 1.5,
+    color: '#6E6E6E',
+    marginRight: '10px',
+    letterspacing: '0.5px'
+  }
