@@ -12,7 +12,7 @@ export const FormText = styled.p `
 `;
 
 export const InputWrapper = styled.div `
-    border: 1px solid fuchsia;
+    // border: 1px solid fuchsia;
     width: 90%;
     margin: 0 auto;
     display: flex;

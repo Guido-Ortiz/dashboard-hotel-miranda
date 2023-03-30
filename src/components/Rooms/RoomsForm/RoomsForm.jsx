@@ -3,7 +3,8 @@ import { Chip } from '@mui/material';
 import { useDispatch } from 'react-redux';
 import { createRoom } from '../../../redux/actions/actions';
 import { BtnSubmit, FormText, InputWrapper } from '../../Users/UsersForm/UsersFormStyles';
-import { chipStyle } from './RoomsFormStyles';
+import { StyledChip, chipStyle, ChipsContainer } from './RoomsFormStyles';
+import { AmenitiesChip } from '../RoomsStyles';
 
 const RoomsForm = () => {
 
@@ -32,16 +33,25 @@ const RoomsForm = () => {
     }
 
     const handleAmenities = (e) => {
-        setRoom({
-            ...room,
-            amenities: [...room.amenities, e.target.value]
-        })
+        if(!room.amenities.includes(e.target.value)){
+            setRoom({
+                ...room,
+                amenities: [...room.amenities, e.target.value]
+            })
+        }
     }
 
     const handleAddRoom = () => {
         dispatch(createRoom(room))
         alert('Room added succesfully')
     }
+
+    const handleDelete = (e) => {
+        setRoom({
+            ...room,
+            amenities: room.amenities.filter(a => a !== e)
+        })
+      }
 
     return (
         <>
@@ -93,7 +103,7 @@ const RoomsForm = () => {
                 <div>
                     <h4>Amenities</h4>
                     <select onChange={e => handleAmenities(e)}>
-                        <option value="">Please select room amenities</option>
+                        <option value="a">Please select room amenities</option>
                         {
                             amenities.map(e => {
                                 return (
@@ -103,9 +113,13 @@ const RoomsForm = () => {
                         }
 
                     </select>
+                    <ChipsContainer>
                     {
-                        room.amenities.map((amenity, i) => <Chip key={i} label={amenity} sx={chipStyle} />)
+                        room.amenities.map((amenity, i) => 
+                        <StyledChip key={i} label={amenity} onDelete={e => handleDelete(amenity)} />
+                        )
                     }
+                    </ChipsContainer>
 
                 </div>
                 <div>
