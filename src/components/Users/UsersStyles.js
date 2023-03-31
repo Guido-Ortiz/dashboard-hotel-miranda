@@ -106,3 +106,15 @@ export const EmployeeStatus = styled.h4 `
     letter-spacing: 0px;
     color: ${props => props.status === 'Inactive' ? '#E23428' : '#5AD07A'};
 `;
+
+export const modalStyle = {
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    width: 400,
+    bgcolor: 'background.paper',
+    border: '1px solid #135846',
+    boxShadow: 24,
+    p: 4,
+  }

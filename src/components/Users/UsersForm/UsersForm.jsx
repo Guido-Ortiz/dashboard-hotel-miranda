@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { useParams } from 'react-router';
 import { createUser } from '../../../redux/actions/actions';
 import { FormText, InputWrapper, BtnSubmit, radio, label } from './UsersFormStyles';
 import { RadioGroup, FormControlLabel, FormControl, Radio } from '@mui/material'
@@ -7,8 +8,13 @@ import { RadioGroup, FormControlLabel, FormControl, Radio } from '@mui/material'
 const UsersForm = () => {
 
   const dispatch = useDispatch()
+  const users = useSelector(state => state.users.users)
 
-  const [user, setUser] = useState({
+  const { user_id } = useParams()
+
+  const singleUser = users.filter(e => e.id == user_id)
+
+  const [user, setUser] = useState(!user_id ? {
     photo: '',
     name: '',
     position: '',
@@ -17,6 +23,16 @@ const UsersForm = () => {
     start: '',
     description: '',
     status: '',
+    password: ''
+  } : {
+    photo: singleUser[0].photo,
+    name: singleUser[0].name,
+    position: '',
+    email: singleUser[0].email,
+    phone: '',
+    start: singleUser[0].start,
+    description: singleUser[0].description,
+    status: singleUser[0].status,
     password: ''
   })
 
@@ -34,7 +50,11 @@ const UsersForm = () => {
 
   return (
     <>
-      <FormText>Complete the following form to add a new employee to your staff.</FormText>
+      {user_id
+        ? <FormText>Edit User #{user_id} information</FormText>
+        : <FormText>Complete the following form to add a new employee to your staff.</FormText>
+      }
+      {/* <FormText>Complete the following form to add a new employee to your staff.</FormText> */}
       <InputWrapper>
         <div>
           <h4>Full Name</h4>

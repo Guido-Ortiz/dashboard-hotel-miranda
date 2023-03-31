@@ -52,6 +52,7 @@ function App() {
               <Route path='users'>
                 <Route path='' element={<Users />} />
                 <Route path='add' element={<UsersForm />} />
+                <Route path=':user_id' element={<UsersForm />} />
               </Route>
 
               <Route path='/contact' element={<Contacts />} />
