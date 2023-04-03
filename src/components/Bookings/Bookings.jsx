@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { deleteBooking, filterBookings, getBookings } from '../../redux/actions/actions';
+// import { deleteBooking, filterBookings, getBookings } from '../../redux/actions/actions';
 import DataTable from 'react-data-table-component';
 import { ActionsContainer, BookingTableContainer, BtnRequest, BtnStatus, BtnTopMenu, ClientData, CustomTable, TopMenu } from './BookingsStyles';
 
@@ -84,11 +84,11 @@ const Bookings = () => {
   const data = useSelector(state => state.bookings.bookings)
 
   useEffect(() => {
-    dispatch(getBookings())
+    // dispatch(getBookings())
   }, [dispatch])
 
   const handleFilterBookings = filter => {
-    dispatch(filterBookings(filter))
+    // dispatch(filterBookings(filter))
   }
   const [open, setOpen] = useState(false);
 
@@ -100,7 +100,7 @@ const Bookings = () => {
   }
 
   const handleDeleteBooking = (id) => {
-    dispatch(deleteBooking(id))
+    // dispatch(deleteBooking(id))
     setOpen(true)
   }
 

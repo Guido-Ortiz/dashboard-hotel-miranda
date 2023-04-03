@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import DataTable from 'react-data-table-component';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { deleteRoom, filterRooms, getRooms } from '../../redux/actions/actions';
+// import { deleteRoom, filterRooms, getRooms } from '../../redux/actions/actions';
 import { ActionsContainer, TopMenu } from '../Bookings/BookingsStyles';
 import { AmenitiesChip, AmenitiesContainer, BtnRoomStatus, BtnToRoomForm, Price, RoomImage, RoomInfoContainer, RoomsTableContainer, RoomType } from './RoomsStyles';
 import UpdateIcon from '@mui/icons-material/Update';
@@ -101,15 +101,15 @@ const Rooms = () => {
   }
   
   useEffect(() => {
-    dispatch(getRooms())
+    // dispatch(getRooms())
   }, [dispatch])
 
   const handleFilterRooms = (filter) => {
-    dispatch(filterRooms(filter))
+    // dispatch(filterRooms(filter))
   }
 
   const handleDeleteRoom = (id) => {
-    dispatch(deleteRoom(id))
+    // dispatch(deleteRoom(id))
   }
 
   return (

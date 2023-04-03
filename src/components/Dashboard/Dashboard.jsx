@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { deleteBooking, getBookings } from '../../redux/actions/actions';
+// import { deleteBooking, getBookings } from '../../redux/actions/actions';
 import DataTable from "react-data-table-component";
 import KPIs from './KPIs/KPIs';
 import Swiper from '../Swiper/Swiper';
@@ -78,15 +78,15 @@ const Dashboard = () => {
 
   const dispatch = useDispatch()
 
-  useEffect(() => {
-    setTimeout(() => {
-      dispatch(getBookings())
-    }, 2000);
-    // dispatch(getBookings())
-  }, [dispatch])
+  // useEffect(() => {
+  //   setTimeout(() => {
+  //     dispatch(getBookings())
+  //   }, 2000);
+  //   // dispatch(getBookings())
+  // }, [dispatch])
 
   const handleDeleteBooking = (id) => {
-    dispatch(deleteBooking(id))
+    // dispatch(deleteBooking(id))
     handleClick()
   }
   const [open, setOpen] = useState(false)

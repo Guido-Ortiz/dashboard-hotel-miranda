@@ -6,7 +6,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import { ActionsContainer, TopMenu } from '../Bookings/BookingsStyles';
 import Swiper from '../Swiper/Swiper';
 import { SwiperContainer, TableContactsContainer, customStyles, InfoColumn, Customer, Comment } from './ContactsStyles';
-import { archivedContact, deleteContact, filterContacts, getContacts } from '../../redux/actions/actions';
+// import { archivedContact, deleteContact, filterContacts, getContacts } from '../../redux/actions/actions';
 import { Rating, Tooltip } from '@mui/material';
 
 const Contact = () => {
@@ -66,20 +66,21 @@ const Contact = () => {
 
   const handleArchivedContact = (id, customer, date, email, telephone, comment) => {
     if (!archived.find(e => e.id === id)) {
-      dispatch(archivedContact({ id, date, customer, email, telephone, comment }))
+      console.log('archiva')
+      // dispatch(archivedContact({ id, date, customer, email, telephone, comment }))
     } else alert('Contact already archived!')
   }
 
-  useEffect(() => {
-    dispatch(getContacts())
-  }, [dispatch])
+  // useEffect(() => {
+  //   dispatch(getContacts())
+  // }, [dispatch])
 
   const handleFilterContacts = (filter) => {
-    dispatch(filterContacts(filter))
+    // dispatch(filterContacts(filter))
   }
 
   const handleDeleteContact = (id) => {
-    dispatch(deleteContact(id))
+    // dispatch(deleteContact(id))
   }
 
   return (

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Chip } from '@mui/material';
 import { useDispatch } from 'react-redux';
-import { createRoom } from '../../../redux/actions/actions';
+// import { createRoom } from '../../../redux/actions/actions';
 import { BtnSubmit, FormText, InputWrapper } from '../../Users/UsersForm/UsersFormStyles';
 import { StyledChip, chipStyle, ChipsContainer } from './RoomsFormStyles';
 import { AmenitiesChip } from '../RoomsStyles';
@@ -42,7 +42,7 @@ const RoomsForm = () => {
     }
 
     const handleAddRoom = () => {
-        dispatch(createRoom(room))
+        // dispatch(createRoom(room))
         alert('Room added succesfully')
     }
 

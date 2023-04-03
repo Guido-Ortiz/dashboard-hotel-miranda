@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import DataTable from 'react-data-table-component';
-import { deleteUser, filterUsers, getUsers } from '../../redux/actions/actions';
+// import { deleteUser, filterUsers,  } from '../../redux/actions/actions';
 import { BtnTopMenu, TopMenu, ActionsContainer } from '../Bookings/BookingsStyles';
 import { UsersWrapper, UserTableWrapper, BtnAddEmployee, User, UserImage, UserData, EmployeeStatus, customStyles, modalStyle } from './UsersStyles';
 import UpdateIcon from '@mui/icons-material/Update';
@@ -12,6 +12,8 @@ import DeleteIcon from '@mui/icons-material/Delete';
 // import Typography from '@mui/material/Typography';
 // import Modal from '@mui/material/Modal';
 import { Box, Typography, Modal } from '@mui/material';
+// import { getUsers } from '../../redux/slices/usersSlice';
+import { getUsers } from '../../features/usersSlice';
 
 const Users = () => {
 
@@ -63,17 +65,18 @@ const Users = () => {
   const dispatch = useDispatch()
 
   const users = useSelector(state => state.users.users)
+  console.log(users)
 
   useEffect(() => {
     dispatch(getUsers())
   }, [dispatch])
 
   const handleFilterUser = (filter) => {
-    dispatch(filterUsers(filter))
+    // dispatch(filterUsers(filter))
   }
 
   const handleDeleteUser = (id) => {
-    dispatch(deleteUser(id))
+    // dispatch(deleteUser(id))
   }
 
 

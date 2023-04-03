@@ -4,7 +4,7 @@ import Header from '../Header/Header';
 import Logo from './Logo/Logo';
 import { Wrapper } from './TopbarStyles';
 
-const Topbar = ({ location, sidebar }) => {
+const Topbar = ({ location, sidebar, setSidebar }) => {
 
   const title = location.split('/')
 
@@ -13,7 +13,7 @@ const Topbar = ({ location, sidebar }) => {
       <Link to='/'>
         <Logo sidebar={sidebar} />
       </Link>
-      <Header location={title[1]} sidebar={sidebar} />
+      <Header location={title[1]} sidebar={sidebar} setSidebar={setSidebar} />
     </Wrapper>
   )
 }

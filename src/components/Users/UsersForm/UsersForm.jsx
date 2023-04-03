@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router';
-import { createUser } from '../../../redux/actions/actions';
+// import { createUser } from '../../../redux/actions/actions';
 import { FormText, InputWrapper, BtnSubmit, radio, label } from './UsersFormStyles';
 import { RadioGroup, FormControlLabel, FormControl, Radio } from '@mui/material'
 
@@ -45,7 +45,7 @@ const UsersForm = () => {
   }
 
   const handleSubmit = () => {
-    dispatch(createUser(user))
+    // dispatch(createUser(user))
   }
 
   return (
