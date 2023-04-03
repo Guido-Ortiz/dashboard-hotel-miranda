@@ -8,6 +8,7 @@ import Swiper from '../Swiper/Swiper';
 import { SwiperContainer, TableContactsContainer, customStyles, InfoColumn, Customer, Comment } from './ContactsStyles';
 // import { archivedContact, deleteContact, filterContacts, getContacts } from '../../redux/actions/actions';
 import { Rating, Tooltip } from '@mui/material';
+import { getReviews } from '../../features/reviewsSlice';
 
 const Contact = () => {
 
@@ -24,7 +25,7 @@ const Contact = () => {
     {
       name: "Customer",
       selector: row => <Customer>
-        <h3>{row.customer}</h3>
+        <h3>{row.name}</h3>
         <h4>{row.email}</h4>
         <h4>{row.telephone}</h4>
       </Customer>,
@@ -40,7 +41,7 @@ const Contact = () => {
       name: "Comment",
       selector: (row) => <div>
         <Rating name="half-rating-read" defaultValue={2.5} precision={0.5} readOnly sx={{ color: '#135846' }} />
-        <Comment>{row.comment}</Comment>
+        <Comment>{row.review}</Comment>
       </div>,
       sortable: true,
       width: '36%', //400px
@@ -57,8 +58,8 @@ const Contact = () => {
 
   const dispatch = useDispatch()
 
-  const data = useSelector(state => state.contacts.contacts)
-  const archived = useSelector(state => state.contacts.archived)
+  const data = useSelector(state => state.reviews.reviews)
+  const archived = useSelector(state => state.reviews.archived)
 
   const handleRowClicked = (row) => {
     console.log(row.id);
@@ -71,9 +72,9 @@ const Contact = () => {
     } else alert('Contact already archived!')
   }
 
-  // useEffect(() => {
-  //   dispatch(getContacts())
-  // }, [dispatch])
+  useEffect(() => {
+    dispatch(getReviews())
+  }, [dispatch])
 
   const handleFilterContacts = (filter) => {
     // dispatch(filterContacts(filter))

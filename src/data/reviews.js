@@ -1,4 +1,4 @@
-export const reviewsData = [
+export const reviews = [
     {
         id: 1,
         review: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi ad cupiditate ipsa dolorum officiis aut mollitia ab quaerat, quas, asperiores qui alias voluptates at voluptatibus quod illum temporibus nemo libero.",

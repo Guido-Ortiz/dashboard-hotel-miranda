@@ -2,12 +2,12 @@ import React, { useEffect } from 'react';
 import DataTable from 'react-data-table-component';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-// import { deleteRoom, filterRooms, getRooms } from '../../redux/actions/actions';
 import { ActionsContainer, TopMenu } from '../Bookings/BookingsStyles';
 import { AmenitiesChip, AmenitiesContainer, BtnRoomStatus, BtnToRoomForm, Price, RoomImage, RoomInfoContainer, RoomsTableContainer, RoomType } from './RoomsStyles';
 import UpdateIcon from '@mui/icons-material/Update';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { Tooltip } from '@mui/material';
+import { getRooms } from '../../features/roomsSlice';
 
 const customStyles = {
   rows: {
@@ -102,6 +102,7 @@ const Rooms = () => {
   
   useEffect(() => {
     // dispatch(getRooms())
+    dispatch(getRooms())
   }, [dispatch])
 
   const handleFilterRooms = (filter) => {
