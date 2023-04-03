@@ -8,7 +8,7 @@ import Swiper from '../Swiper/Swiper';
 import { SwiperContainer, TableContactsContainer, customStyles, InfoColumn, Customer, Comment } from './ContactsStyles';
 // import { archivedContact, deleteContact, filterContacts, getContacts } from '../../redux/actions/actions';
 import { Rating, Tooltip } from '@mui/material';
-import { getReviews } from '../../features/reviewsSlice';
+import { getReviews } from '../../redux/features/reviewsSlice';
 
 const Contact = () => {
 

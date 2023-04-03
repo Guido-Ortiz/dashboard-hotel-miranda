@@ -14,7 +14,7 @@ import { Link } from 'react-router-dom';
 import { BookingColumn, Date } from '../Dashboard/DashboardStyles';
 import { IconButton, Tooltip } from '@mui/material';
 
-import { getBookings } from '../../features/bookingsSlice';
+import { deleteBooking, getBookings } from '../../redux/features/bookingsSlice';
 
 const Bookings = () => {
 
@@ -103,6 +103,8 @@ const Bookings = () => {
 
   const handleDeleteBooking = (id) => {
     // dispatch(deleteBooking(id))
+    alert('${id}')
+    dispatch(deleteBooking(id))
     setOpen(true)
   }
 

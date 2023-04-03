@@ -13,7 +13,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 // import Modal from '@mui/material/Modal';
 import { Box, Typography, Modal } from '@mui/material';
 // import { getUsers } from '../../redux/slices/usersSlice';
-import { getUsers } from '../../features/usersSlice';
+import { getUsers } from '../../redux/features/usersSlice';
 
 const Users = () => {
 
@@ -65,7 +65,6 @@ const Users = () => {
   const dispatch = useDispatch()
 
   const users = useSelector(state => state.users.users)
-  console.log(users)
 
   useEffect(() => {
     dispatch(getUsers())

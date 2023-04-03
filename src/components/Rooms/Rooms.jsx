@@ -7,7 +7,7 @@ import { AmenitiesChip, AmenitiesContainer, BtnRoomStatus, BtnToRoomForm, Price,
 import UpdateIcon from '@mui/icons-material/Update';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { Tooltip } from '@mui/material';
-import { getRooms } from '../../features/roomsSlice';
+import { getRooms } from '../../redux/features/roomsSlice';
 
 const customStyles = {
   rows: {

@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { getData } from '../helpers/getData';
-import { rooms } from "../data/rooms";
+import { getData } from '../../helpers/getData';
+import { rooms } from "../../data/rooms";
 
 export const getRooms = createAsyncThunk(
     'rooms/getRooms',
