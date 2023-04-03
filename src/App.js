@@ -40,7 +40,7 @@ function App() {
 
               <Route path='/' element={<Dashboard />} />
 
-              {/* <Route path='bookings'>
+              <Route path='bookings'>
                 <Route path='' element={<Bookings />} />
                 <Route path=':booking_id' element={<Booking />} />
               </Route>
@@ -48,7 +48,7 @@ function App() {
               <Route path='rooms'>
                 <Route path='' element={<Rooms />} />
                 <Route path='add' element={<RoomsForm />} />
-              </Route> */}
+              </Route>
 
               <Route path='users'>
                 <Route path='' element={<Users />} />
@@ -56,7 +56,7 @@ function App() {
                 <Route path=':user_id' element={<UsersForm />} />
               </Route>
 
-              {/* <Route path='/contact' element={<Contacts />} /> */}
+              <Route path='/contact' element={<Contacts />} />
 
             </Route>
 

@@ -8,7 +8,6 @@ import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import EmailIcon from '@mui/icons-material/Email';
 import LogoutIcon from '@mui/icons-material/Logout';
 import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone';
-// import { toggleSidebar } from '../../redux/actions/actions';
 import { useUser } from '../../context/userContext';
 import { LOGOUT } from '../../context/constants';
 

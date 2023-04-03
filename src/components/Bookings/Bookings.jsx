@@ -14,6 +14,8 @@ import { Link } from 'react-router-dom';
 import { BookingColumn, Date } from '../Dashboard/DashboardStyles';
 import { IconButton, Tooltip } from '@mui/material';
 
+import { getBookings } from '../../features/bookingsSlice';
+
 const Bookings = () => {
 
   const columns = [
@@ -84,7 +86,7 @@ const Bookings = () => {
   const data = useSelector(state => state.bookings.bookings)
 
   useEffect(() => {
-    // dispatch(getBookings())
+    dispatch(getBookings())
   }, [dispatch])
 
   const handleFilterBookings = filter => {
