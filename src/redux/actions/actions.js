@@ -68,6 +68,8 @@ export function getUsers() {
     return async function (dispatch) {
         try {
             const response = await axios.get('usersMockData.json')
+            // const response = await axios.get(`http://localhost:3000/users`)
+            console.log(response)
             return dispatch({
                 type: GET_USERS,
                 payload: response.data
