@@ -10,10 +10,12 @@ export const TopMenu = styled.div`
     letter-spacing: 1px;
         
     div {
+        // border: 1px solid red;
         display: flex;
         flex-direction: row;
         align-items: center;
         justify-content: flex-start;
+        // border-bottom: 1px solid #6E6E6E;
     
         h4 {
             font-size: 1rem;
@@ -21,6 +23,8 @@ export const TopMenu = styled.div`
             padding: 0.5rem 1.25rem;
             color: #6E6E6E;
             font-family: 'poppins', sans-serif;
+            color: ${props => props.active === 'all' ? '#68e365' : props.status === 'Check-Out' ? '#E23428' : 'orange'}
+            border-bottom: 1px solid #6E6E6E;
     
             &:hover {
                 cursor: pointer;

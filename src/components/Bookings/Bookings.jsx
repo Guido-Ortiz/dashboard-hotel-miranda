@@ -85,14 +85,26 @@ const Bookings = () => {
 
   const data = useSelector(state => state.bookings.bookings)
 
+  const [active, setActive] = useState({
+    all: true,
+    in: false,
+    out: false,
+    progress: false
+  })
+
   useEffect(() => {
     dispatch(getBookings())
   }, [dispatch])
 
-  const handleFilterBookings = filter => {
+  const handleFilterBookings = (filter, e) => {
+    // setActive({
+    //   ...active,
+    //   all
+    // })
+    // setActive(filter)
     // dispatch(filterBookings(filter))
   }
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(false)
 
   const handleClose = (event, reason) => {
     if (reason === 'clickaway') {
@@ -110,10 +122,10 @@ const Bookings = () => {
     <>
       <TopMenu>
         <div>
-          <h4 onClick={() => handleFilterBookings('all')}>All Bookings</h4>
-          <h4 value='in' onClick={() => handleFilterBookings('in')}>Checking In</h4>
-          <h4 value='out' onClick={() => handleFilterBookings('out')}>Checking Out</h4>
-          <h4 value='progress' onClick={() => handleFilterBookings('progress')}>In Progress</h4>
+          <h4 name='all' onClick={(e) => handleFilterBookings('all', e)}>All Bookings</h4>
+          <h4 value='in' name='in' onClick={() => handleFilterBookings('in')}>Checking In</h4>
+          <h4 value='out' name='out' onClick={() => handleFilterBookings('out')}>Checking Out</h4>
+          <h4 value='progress' name='progress' onClick={() => handleFilterBookings('progress')}>In Progress</h4>
         </div>
         <div>
           <input type='text' placeholder='Search bookings' />

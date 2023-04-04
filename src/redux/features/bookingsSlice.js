@@ -69,7 +69,7 @@ export const bookingsSlice = createSlice({
 
             .addCase(deleteBooking.fulfilled, (state, action) => {
                 state.status = 'Fullfilled'
-                state.bookings = state.bookings.filter(e => e.id !== action.payload)
+                state.bookings = state.bookings.map(e => e.id === action.payload.id ? action.payload : e)
             })
     }
 })
