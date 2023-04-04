@@ -102,8 +102,6 @@ const Bookings = () => {
   }
 
   const handleDeleteBooking = (id) => {
-    // dispatch(deleteBooking(id))
-    alert('${id}')
     dispatch(deleteBooking(id))
     setOpen(true)
   }

@@ -31,7 +31,7 @@ const initialState = {
     bookings: [],
     allBookings: [],
     booking: null,
-    status: 'loading'
+    status: 'Loading'
 }
 
 export const bookingsSlice = createSlice({
@@ -56,7 +56,21 @@ export const bookingsSlice = createSlice({
                 state.status = 'Error'
             })
 
-            // .addCase(deleteBooking.fulfilled, )
+            .addCase(getBooking.pending,  (state) => {
+                state.status = 'Loading'
+            })
+            .addCase(getBooking.fulfilled, (state, action) => {
+                state.status = 'Fullfilled'
+                state.booking = action.payload
+            })
+            .addCase(getBooking.rejected, (state) => {
+                state.status = 'Error'
+            })
+
+            .addCase(deleteBooking.fulfilled, (state, action) => {
+                state.status = 'Fullfilled'
+                state.bookings = state.bookings.filter(e => e.id !== action.payload)
+            })
     }
 })
 
