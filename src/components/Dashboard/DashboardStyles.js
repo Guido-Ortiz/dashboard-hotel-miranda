@@ -8,12 +8,21 @@ export const DashboardWrapper = styled.div`
     justify-content: flex-start;
     background: #f8f8f8;
     max-width: 100vw;   
+
+    
 `;
 
 export const RightContainer = styled.div`
     // border: ${props => props.sidebar ? '1px solid red' : '1px solid green'};
     width: ${props => props.sidebar ? '82vw' : '100vw'};
     min-height: 84vh;
+    
+
+
+    // position: relative;
+    // top: 16vh;
+    // left: 18vw;
+    // z-index: 0;
 `;
 
 export const TableContainer = styled.div`

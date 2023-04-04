@@ -11,5 +11,11 @@ export const Wrapper = styled.nav`
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
+
+
+
+    // position: fixed;
+    // top: 0;
+    // z-index: 1000;
 `;
 

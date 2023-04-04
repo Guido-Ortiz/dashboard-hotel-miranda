@@ -13,10 +13,15 @@ export const SidebarWrapper = styled.div`
             width: 5vw;
             border: 1px solid red`
     }  
-    
-     
     background: #ffffff;
     // min-width: 18vw;
     height: auto;
     min-height: 84vh;
+
+
+
+    // position: fixed;
+    // left: 0;
+    // top: 16vh;
+    // z-index: 0;
 `;
