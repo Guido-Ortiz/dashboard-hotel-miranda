@@ -8,6 +8,7 @@ export const TopMenu = styled.div`
     justify-content: space-between;
     width: 100%;
     letter-spacing: 1px;
+    
         
     div {
         // border: 1px solid red;
@@ -23,8 +24,27 @@ export const TopMenu = styled.div`
             padding: 0.5rem 1.25rem;
             color: #6E6E6E;
             font-family: 'poppins', sans-serif;
-            color: ${props => props.active === 'all' ? '#68e365' : props.status === 'Check-Out' ? '#E23428' : 'orange'}
-            border-bottom: 1px solid #6E6E6E;
+
+            color: ${props => props.all === true ? '#68e365' : 'blue'}  
+
+            // border-bottom: 1px solid #6E6E6E;
+    
+            &:hover {
+                cursor: pointer;
+                color: #135846;
+            }
+        }
+
+        h3 {
+            font-size: 1rem;
+            font-weight: 700;
+            padding: 0.5rem 1.25rem;
+            // color: #6E6E6E;
+            font-family: 'poppins', sans-serif;
+
+            color: #135846;  
+
+            // border-bottom: 1px solid #6E6E6E;
     
             &:hover {
                 cursor: pointer;
@@ -50,7 +70,7 @@ export const TopMenu = styled.div`
     }    
 `;
 
-export const BtnTopMenu = styled.button `
+export const BtnTopMenu = styled.button`
     font-family: 'poppins', sans-serif;
     font-weight: 400;
     height: 40px;
@@ -65,7 +85,7 @@ export const BtnTopMenu = styled.button `
     text-transform: uppercase;
 `;
 
-export const BtnStatus = styled.button `
+export const BtnStatus = styled.button`
     // border: 1px solid red;
     color: #ffffff;
     letter-spacing: 1px;
@@ -80,14 +100,14 @@ export const BtnStatus = styled.button `
     background: ${props => props.status === 'Check-In' ? '#68e365' : props.status === 'Check-Out' ? '#E23428' : 'orange'}
 `;
 
-export const BookingTableContainer = styled.div `
+export const BookingTableContainer = styled.div`
     // border: 1px solid red;
     width: 95%;
     margin-top: 20px;
     margin: 0 auto;
 `;
 
-export const ClientData = styled.div `
+export const ClientData = styled.div`
     h3, h4, h5 {
         margin: 0;
     }
@@ -110,7 +130,7 @@ export const ClientData = styled.div `
     }
 `;
 
-export const ActionsContainer = styled.div `
+export const ActionsContainer = styled.div`
     // border: 1px solid red;
     display: flex;
     flex-direction: row;
@@ -128,7 +148,7 @@ export const ActionsContainer = styled.div `
     }
 `;
 
-export const BtnRequest = styled.button `
+export const BtnRequest = styled.button`
     height: 35px;
     border: 1px solid #799283;
     background: #EEF9F2 0% 0% no-repeat padding-box;
@@ -155,7 +175,7 @@ export const CustomTable = {
         style: {
             // border: '1px dashed blue',
             width: '10px',
-            paddingLeft: '4px', 
+            paddingLeft: '4px',
         },
     },
 }
