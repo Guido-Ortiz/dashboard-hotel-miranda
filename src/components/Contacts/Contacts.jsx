@@ -108,14 +108,9 @@ const Contact = () => {
         <div>
           {/* { all === true ? <h3 value='all' onClick={() => handleFilterContacts('all')}>All Contacts</h3> : <h4 onClick={() => handleFilterContacts('all')}>All Contacts</h4> }
           { !archive ? <h4 onClick={() => handleFilterContacts('archived')}>Archived</h4> : <h3 value='archived' onClick={() => handleFilterContacts('archived')}>Archived</h3> } */}
-          { <ButtonTabsAll value='all' onClick={() => handleFilterContacts('all')} all={all} archive={archive}>All Contacts</ButtonTabsAll> 
-          // : <ButtonTabs onClick={() => handleFilterContacts('all')}>All Contacts</ButtonTabs> 
-          }
-          { 
-          // !archive ? 
+          <ButtonTabsAll value='all' onClick={() => handleFilterContacts('all')} all={all} archive={archive}>All Contacts</ButtonTabsAll> 
           <ButtonTabsArchive onClick={() => handleFilterContacts('archived')} all={all} archive={archive}>Archived</ButtonTabsArchive> 
-          // : <ButtonTabs value='archived' onClick={() => handleFilterContacts('archived')}>Archived</ButtonTabs> 
-          }
+      
         </div>
       </TopMenu>
 

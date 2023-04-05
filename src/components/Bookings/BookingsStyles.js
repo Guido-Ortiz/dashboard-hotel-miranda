@@ -182,7 +182,9 @@ export const ButtonTabsAll = styled.button`
     font-weight: 700;
     padding: 0.5rem 1.25rem;
     font-family: 'poppins', sans-serif;
+    // margin-right: 2px;
     color: ${props => props.all == true ? '#135846' : '#6E6E6E'};
+    border-bottom: ${props => props.all == true ? '2px solid #135846' : '1px solid #6E6E6E'};
         
     &:hover {
         cursor: pointer;
@@ -196,7 +198,8 @@ export const ButtonTabsArchive = styled.button`
     font-weight: 700;
     padding: 0.5rem 1.25rem;
     font-family: 'poppins', sans-serif;
-    color: ${props => props.archive == true ? '#135846' : '#6E6E6E'}; 
+    color: ${props => props.archive == true ? '#135846' : '#6E6E6E'};
+    border-bottom: ${props => props.archive == true ? '2px solid #135846' : '1px solid #6E6E6E'}; 
 
     &:hover {
         cursor: pointer;
