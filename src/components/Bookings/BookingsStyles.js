@@ -23,12 +23,7 @@ export const TopMenu = styled.div`
             font-weight: 500;
             padding: 0.5rem 1.25rem;
             color: #6E6E6E;
-            font-family: 'poppins', sans-serif;
-
-            color: ${props => props.all === true ? '#68e365' : 'blue'}  
-
-            // border-bottom: 1px solid #6E6E6E;
-    
+            font-family: 'poppins', sans-serif;    
             &:hover {
                 cursor: pointer;
                 color: #135846;
@@ -179,3 +174,32 @@ export const CustomTable = {
         },
     },
 }
+
+
+export const ButtonTabsAll = styled.button`
+    font-size: 1rem;
+    border: none;
+    font-weight: 700;
+    padding: 0.5rem 1.25rem;
+    font-family: 'poppins', sans-serif;
+    color: ${props => props.all == true ? '#135846' : '#6E6E6E'};
+        
+    &:hover {
+        cursor: pointer;
+        // color: #135846;
+    }
+`;
+
+export const ButtonTabsArchive = styled.button`
+    font-size: 1rem;
+    border: none;
+    font-weight: 700;
+    padding: 0.5rem 1.25rem;
+    font-family: 'poppins', sans-serif;
+    color: ${props => props.archive == true ? '#135846' : '#6E6E6E'}; 
+
+    &:hover {
+        cursor: pointer;
+        // color: #135846;
+    }
+`;

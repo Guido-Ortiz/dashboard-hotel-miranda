@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import DataTable from 'react-data-table-component';
 import ArchiveIcon from '@mui/icons-material/Archive';
 import DeleteIcon from '@mui/icons-material/Delete';
-import { ActionsContainer, TopMenu } from '../Bookings/BookingsStyles';
+import { ActionsContainer, ButtonTabsAll, ButtonTabsArchive, TopMenu } from '../Bookings/BookingsStyles';
 import Swiper from '../Swiper/Swiper';
 import { SwiperContainer, TableContactsContainer, customStyles, InfoColumn, Customer, Comment } from './ContactsStyles';
 import { Rating, Tooltip } from '@mui/material';
@@ -106,8 +106,16 @@ const Contact = () => {
 
       <TopMenu>
         <div>
-          { all === true ? <h3 value='all' onClick={() => handleFilterContacts('all')}>All Contacts</h3> : <h4 onClick={() => handleFilterContacts('all')}>All Contacts</h4> }
-          { !archive ? <h4 onClick={() => handleFilterContacts('archived')}>Archived</h4> : <h3 value='archived' onClick={() => handleFilterContacts('archived')}>Archived</h3> }
+          {/* { all === true ? <h3 value='all' onClick={() => handleFilterContacts('all')}>All Contacts</h3> : <h4 onClick={() => handleFilterContacts('all')}>All Contacts</h4> }
+          { !archive ? <h4 onClick={() => handleFilterContacts('archived')}>Archived</h4> : <h3 value='archived' onClick={() => handleFilterContacts('archived')}>Archived</h3> } */}
+          { <ButtonTabsAll value='all' onClick={() => handleFilterContacts('all')} all={all} archive={archive}>All Contacts</ButtonTabsAll> 
+          // : <ButtonTabs onClick={() => handleFilterContacts('all')}>All Contacts</ButtonTabs> 
+          }
+          { 
+          // !archive ? 
+          <ButtonTabsArchive onClick={() => handleFilterContacts('archived')} all={all} archive={archive}>Archived</ButtonTabsArchive> 
+          // : <ButtonTabs value='archived' onClick={() => handleFilterContacts('archived')}>Archived</ButtonTabs> 
+          }
         </div>
       </TopMenu>
 
