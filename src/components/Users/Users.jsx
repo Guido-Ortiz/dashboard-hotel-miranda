@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import DataTable from 'react-data-table-component';
 // import { deleteUser, filterUsers,  } from '../../redux/actions/actions';
 import { BtnTopMenu, TopMenu, ActionsContainer } from '../Bookings/BookingsStyles';
-import { UsersWrapper, UserTableWrapper, BtnAddEmployee, User, UserImage, UserData, EmployeeStatus, customStyles, modalStyle } from './UsersStyles';
+import { UsersWrapper, UserTableWrapper, BtnAddEmployee, User, UserImage, UserData, EmployeeStatus, customStyles, modalStyle, BtnTabsAllUsers, BtnTabsActiveUsers, BtnTabsInactiveUsers } from './UsersStyles';
 import UpdateIcon from '@mui/icons-material/Update';
 import DeleteIcon from '@mui/icons-material/Delete';
 // import Box from '@mui/material/Box';
@@ -69,8 +69,27 @@ const Users = () => {
     dispatch(getUsers())
   }, [dispatch])
 
+  const [all, setAll] = useState(true)
+  const [active, setActive] = useState(false)
+  const [inactive, setInactive] = useState(false)
+
   const handleFilterUser = (filter) => {
     // dispatch(filterUsers(filter))
+    if(filter === 'all'){
+      setAll(true)
+      setActive(false)
+      setInactive(false)
+    }
+    if(filter === 'active'){
+      setAll(false)
+      setActive(true)
+      setInactive(false)
+    }
+    if(filter === 'inactive'){
+      setAll(false)
+      setActive(false)
+      setInactive(true)
+    }
   }
 
   const handleDeleteUser = (id) => {
@@ -83,9 +102,12 @@ const Users = () => {
     <UsersWrapper>
       <TopMenu>
         <div>
-          <h4 onClick={() => handleFilterUser('all')}>All</h4>
+          {/* <h4 onClick={() => handleFilterUser('all')}>All</h4>
           <h4 onClick={() => handleFilterUser('active')}>Active</h4>
-          <h4 onClick={() => handleFilterUser('inactive')}>Inactive</h4>
+          <h4 onClick={() => handleFilterUser('inactive')}>Inactive</h4> */}
+          <BtnTabsAllUsers onClick={() => handleFilterUser('all')} all={all} active={active} inactive={inactive}>All</BtnTabsAllUsers>
+          <BtnTabsActiveUsers onClick={() => handleFilterUser('active')} all={all} active={active} inactive={inactive}>Active</BtnTabsActiveUsers>
+          <BtnTabsInactiveUsers onClick={() => handleFilterUser('inactive')} all={all} active={active} inactive={inactive}>Inactive</BtnTabsInactiveUsers>
         </div>
         <div>
           <input type='text' />

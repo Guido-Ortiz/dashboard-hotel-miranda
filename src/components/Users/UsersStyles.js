@@ -21,7 +21,7 @@ export const customStyles = {
     },
 }
 
-export const UsersWrapper = styled.div `
+export const UsersWrapper = styled.div`
     // border: 1px solid fuchsia;
     display: flex;
     flex-direction: column;
@@ -30,13 +30,13 @@ export const UsersWrapper = styled.div `
     width: 98%;
 `;
 
-export const UserTableWrapper = styled.div `
+export const UserTableWrapper = styled.div`
     // border: 1px solid red;
     margin: 0 auto;
     width: 90%;
 `;
 
-export const BtnAddEmployee = styled.button `
+export const BtnAddEmployee = styled.button`
     font-family: 'poppins', sans-serif;
     font-weight: 600;
     height: 40px;
@@ -55,7 +55,7 @@ export const BtnAddEmployee = styled.button `
     }
 `;
 
-export const UserImage = styled.img `
+export const UserImage = styled.img`
     // border: 1px solid red;
     width: 50%;
     height: 50%;
@@ -63,14 +63,14 @@ export const UserImage = styled.img `
     border-radius: 0.65rem 
 `;
 
-export const User = styled.div `
+export const User = styled.div`
     // border: 1px solid fuchsia;
     display: flex;
     flex-direction: row;
     align-items: center;
 `;
 
-export const UserData = styled.div `
+export const UserData = styled.div`
     // border: 1px solid red;
     display: flex;
     flex-direction: column;
@@ -100,7 +100,7 @@ export const UserData = styled.div `
     }
 `;
 
-export const EmployeeStatus = styled.h4 `
+export const EmployeeStatus = styled.h4`
     text-align: left;
     font: normal normal 600 14px/21px Poppins;
     letter-spacing: 0px;
@@ -117,4 +117,52 @@ export const modalStyle = {
     border: '1px solid #135846',
     boxShadow: 24,
     p: 4,
-  }
+}
+
+export const BtnTabsAllUsers = styled.button`
+font-size: 1rem;
+border: none;
+font-weight: 700;
+padding: 0.5rem 1.25rem;
+font-family: 'poppins', sans-serif;
+// margin-right: 2px;
+color: ${props => props.all == true ? '#135846' : '#6E6E6E'};
+border-bottom: ${props => props.all == true ? '2px solid #135846' : '1px solid #6E6E6E'};
+    
+&:hover {
+    cursor: pointer;
+    // color: #135846;
+}
+`;
+
+export const BtnTabsActiveUsers = styled.button`
+font-size: 1rem;
+border: none;
+font-weight: 700;
+padding: 0.5rem 1.25rem;
+font-family: 'poppins', sans-serif;
+// margin-right: 2px;
+color: ${props => props.active == true ? '#135846' : '#6E6E6E'};
+border-bottom: ${props => props.active == true ? '2px solid #135846' : '1px solid #6E6E6E'};
+    
+&:hover {
+    cursor: pointer;
+    // color: #135846;
+}
+`;
+
+export const BtnTabsInactiveUsers = styled.button`
+font-size: 1rem;
+border: none;
+font-weight: 700;
+padding: 0.5rem 1.25rem;
+font-family: 'poppins', sans-serif;
+// margin-right: 2px;
+color: ${props => props.inactive == true ? '#135846' : '#6E6E6E'};
+border-bottom: ${props => props.inactive == true ? '2px solid #135846' : '1px solid #6E6E6E'};
+    
+&:hover {
+    cursor: pointer;
+    // color: #135846;
+}
+`;
