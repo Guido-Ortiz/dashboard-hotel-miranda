@@ -37,11 +37,25 @@ const initialState = {
 export const bookingsSlice = createSlice({
     name: 'bookings',
     initialState,
-    // reducers: {
-    //     someAction: function() {
-
-    //     }
-    //  },
+    reducers: {
+        filterBookings: (state, action) => {
+            let filter = []
+            if(action.payload === 'all'){
+                filter = state.allBookings
+            } else {
+                if(action.payload === 'in'){
+                    filter = state.allBookings.filter(e => e.status === 'Check-In')
+                } else {
+                    if(action.payload === 'out'){
+                        filter = state.allBookings.filter(e => e.status === 'Check-Out')
+                    } else {
+                        filter = state.allBookings.filter(e =>e.status === 'In-Progress')
+                    }
+                }
+            }
+            state.bookings = filter
+        }
+     },
     extraReducers: (builder) => {
         builder
             .addCase(getBookings.pending, (state) => {
@@ -73,5 +87,7 @@ export const bookingsSlice = createSlice({
             })
     }
 })
+
+export const { filterBookings } = bookingsSlice.actions
 
 export default bookingsSlice.reducer

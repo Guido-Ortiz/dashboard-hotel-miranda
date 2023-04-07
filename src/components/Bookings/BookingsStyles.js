@@ -182,10 +182,9 @@ export const ButtonTabsAll = styled.button`
     font-weight: 700;
     padding: 0.5rem 1.25rem;
     font-family: 'poppins', sans-serif;
-    // margin-right: 2px;
-    color: ${props => props.all == true ? '#135846' : '#6E6E6E'};
-    border-bottom: ${props => props.all == true ? '2px solid #135846' : '1px solid #6E6E6E'};
-        
+    color: ${props => props.all ? '#135846' : '#6E6E6E'};
+    border-bottom: ${props => props.all ? '2px solid #135846' : '1px solid #6E6E6E'};
+    font-weight: ${props => props.all ? '700' : '500'}; 
     &:hover {
         cursor: pointer;
         // color: #135846;
@@ -198,11 +197,55 @@ export const ButtonTabsArchive = styled.button`
     font-weight: 700;
     padding: 0.5rem 1.25rem;
     font-family: 'poppins', sans-serif;
-    color: ${props => props.archive == true ? '#135846' : '#6E6E6E'};
-    border-bottom: ${props => props.archive == true ? '2px solid #135846' : '1px solid #6E6E6E'}; 
-
+    color: ${props => props.archive ? '#135846' : '#6E6E6E'};
+    border-bottom: ${props => props.archive ? '2px solid #135846' : '1px solid #6E6E6E'}; 
+    font-weight: ${props => props.archive ? '700' : '500'};
     &:hover {
         cursor: pointer;
         // color: #135846;
+    }
+`;
+
+export const ButtonTabsIn = styled.button`
+    font-size: 1rem;
+    border: none;
+    font-weight: 700;
+    padding: 0.5rem 1.25rem;
+    font-family: 'poppins', sans-serif;
+    // margin-right: 2px;
+    color: ${props => props.in ? '#135846' : '#6E6E6E'};
+    border-bottom: ${props => props.in ? '2px solid #135846' : '1px solid #6E6E6E'};
+    font-weight: ${props => props.in  ? '700' : '500'};
+    &:hover {
+        cursor: pointer;
+        // color: #135846;
+    }
+`;
+
+export const ButtonTabsOut = styled.button`
+    font-size: 1rem;
+    border: none;
+    font-weight: 700;
+    padding: 0.5rem 1.25rem;
+    font-family: 'poppins', sans-serif;
+    color: ${props => props.out ? '#135846' : '#6E6E6E'};
+    border-bottom: ${props => props.out ? '2px solid #135846' : '1px solid #6E6E6E'}; 
+    font-weight: ${props => props.out ? '700' : '500'};
+    &:hover {
+        cursor: pointer;
+    }
+`;
+
+export const ButtonTabsProgress = styled.button`
+    font-size: 1rem;
+    border: none;
+    font-weight: 700;
+    padding: 0.5rem 1.25rem;
+    font-family: 'poppins', sans-serif;
+    color: ${props => props.progres ? '#135846' : '#6E6E6E'};
+    border-bottom: ${props => props.progres ? '2px solid #135846' : '1px solid #6E6E6E'}; 
+    font-weight: ${props => props.progres ? '700' : '500'};
+    &:hover {
+        cursor: pointer;
     }
 `;
