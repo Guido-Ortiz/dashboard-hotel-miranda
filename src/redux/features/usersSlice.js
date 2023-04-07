@@ -22,11 +22,21 @@ const initialState = {
 export const usersSlice = createSlice({
     name: 'users',
     initialState,
-    // reducers: {
-    //     someAction: function() {
-   
-    //     }
-    //  },
+    reducers: {
+        filterUsers: (state, action) => {
+            let filter = []
+            if (action.payload === 'all') {
+                filter = state.allUsers
+            } else {
+                if (action.payload === 'active') {
+                    filter = state.allUsers.filter(e => e.status === 'Active')
+                } else {
+                    filter = state.allUsers.filter(e => e.status === 'Inactive')
+                }
+            }
+            state.users = filter
+        }
+     },
     extraReducers: (builder) => {
         builder
             .addCase(getUsers.fulfilled, (state, action) => {
@@ -38,5 +48,7 @@ export const usersSlice = createSlice({
             })
     }
 })
+
+export const { filterUsers } = usersSlice.actions
 
 export default usersSlice.reducer

@@ -12,7 +12,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 // import Typography from '@mui/material/Typography';
 // import Modal from '@mui/material/Modal';
 import { Box, Typography, Modal } from '@mui/material';
-import { getUsers } from '../../redux/features/usersSlice';
+import { filterUsers, getUsers } from '../../redux/features/usersSlice';
 
 const Users = () => {
 
@@ -90,6 +90,7 @@ const Users = () => {
       setActive(false)
       setInactive(true)
     }
+    dispatch(filterUsers(filter))
   }
 
   const handleDeleteUser = (id) => {
