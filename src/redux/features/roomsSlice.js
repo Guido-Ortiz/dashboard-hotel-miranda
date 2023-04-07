@@ -22,11 +22,21 @@ const initialState = {
 export const roomsSlice = createSlice({
     name: 'rooms',
     initialState,
-    // reducers: {
-    //     someAction: function() {
-   
-    //     }
-    //  },
+    reducers: {
+        filterRooms: (state, action) => {
+            let filter = []
+            if (action.payload === 'all') {
+                filter = state.allRooms
+            } else {
+                if (action.payload === 'available') {
+                    filter = state.allRooms.filter(e => e.status === 'Available')
+                } else {
+                    filter = state.allRooms.filter(e => e.status === 'Booked')
+                }
+            }
+            state.rooms = filter
+        }
+    },
     extraReducers: (builder) => {
         builder
             .addCase(getRooms.fulfilled, (state, action) => {
@@ -38,5 +48,7 @@ export const roomsSlice = createSlice({
             })
     }
 })
+
+export const { filterRooms } = roomsSlice.actions
 
 export default roomsSlice.reducer

@@ -7,7 +7,7 @@ import { AmenitiesChip, AmenitiesContainer, BtnRoomStatus, BtnTabsAllRooms, BtnT
 import UpdateIcon from '@mui/icons-material/Update';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { Tooltip } from '@mui/material';
-import { getRooms } from '../../redux/features/roomsSlice';
+import { filterRooms, getRooms } from '../../redux/features/roomsSlice';
 
 const customStyles = {
   rows: {
@@ -122,6 +122,7 @@ const Rooms = () => {
       setAvailable(false)
       setBooked(true)
     }
+    dispatch(filterRooms(filter))
   }
 
   const handleDeleteRoom = (id) => {
