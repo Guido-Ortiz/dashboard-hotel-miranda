@@ -74,7 +74,6 @@ const Users = () => {
   const [inactive, setInactive] = useState(false)
 
   const handleFilterUser = (filter) => {
-    // dispatch(filterUsers(filter))
     if(filter === 'all'){
       setAll(true)
       setActive(false)
@@ -103,9 +102,6 @@ const Users = () => {
     <UsersWrapper>
       <TopMenu>
         <div>
-          {/* <h4 onClick={() => handleFilterUser('all')}>All</h4>
-          <h4 onClick={() => handleFilterUser('active')}>Active</h4>
-          <h4 onClick={() => handleFilterUser('inactive')}>Inactive</h4> */}
           <BtnTabsAllUsers onClick={() => handleFilterUser('all')} all={all} active={active} inactive={inactive}>All</BtnTabsAllUsers>
           <BtnTabsActiveUsers onClick={() => handleFilterUser('active')} all={all} active={active} inactive={inactive}>Active</BtnTabsActiveUsers>
           <BtnTabsInactiveUsers onClick={() => handleFilterUser('inactive')} all={all} active={active} inactive={inactive}>Inactive</BtnTabsInactiveUsers>

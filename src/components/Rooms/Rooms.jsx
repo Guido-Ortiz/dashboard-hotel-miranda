@@ -1,9 +1,9 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import DataTable from 'react-data-table-component';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { ActionsContainer, TopMenu } from '../Bookings/BookingsStyles';
-import { AmenitiesChip, AmenitiesContainer, BtnRoomStatus, BtnToRoomForm, Price, RoomImage, RoomInfoContainer, RoomsTableContainer, RoomType } from './RoomsStyles';
+import { AmenitiesChip, AmenitiesContainer, BtnRoomStatus, BtnTabsAllRooms, BtnTabsAvailable, BtnTabsBooked, BtnToRoomForm, Price, RoomImage, RoomInfoContainer, RoomsTableContainer, RoomType } from './RoomsStyles';
 import UpdateIcon from '@mui/icons-material/Update';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { Tooltip } from '@mui/material';
@@ -107,19 +107,42 @@ const Rooms = () => {
 
   const handleFilterRooms = (filter) => {
     // dispatch(filterRooms(filter))
+    if(filter === 'all'){
+      setAll(true)
+      setAvailable(false)
+      setBooked(false)
+    }
+    if(filter === 'available'){
+      setAll(false)
+      setAvailable(true)
+      setBooked(false)
+    }
+    if(filter === 'booked'){
+      setAll(false)
+      setAvailable(false)
+      setBooked(true)
+    }
   }
 
   const handleDeleteRoom = (id) => {
     // dispatch(deleteRoom(id))
   }
 
+  const [all, setAll] = useState(true)
+  const [available, setAvailable] = useState(false)
+  const [booked, setBooked] = useState(false)
+
   return (
     <>
       <TopMenu>
         <div>
-          <h4 onClick={() => handleFilterRooms('all')}>All Rooms</h4>
+          {/* <h4 onClick={() => handleFilterRooms('all')}>All Rooms</h4>
           <h4 value='in' onClick={() => handleFilterRooms('available')}>Available</h4>
-          <h4 value='out' onClick={() => handleFilterRooms('booked')}>Booked</h4>
+          <h4 value='out' onClick={() => handleFilterRooms('booked')}>Booked</h4> */}
+          <BtnTabsAllRooms onClick={() => handleFilterRooms('all')} all={all} available={available} booked={booked}>All Rooms</BtnTabsAllRooms>
+          <BtnTabsAvailable onClick={() => handleFilterRooms('available')} all={all} available={available} booked={booked}>Available</BtnTabsAvailable>
+          <BtnTabsBooked onClick={() => handleFilterRooms('booked')} all={all} available={available} booked={booked}>Booked</BtnTabsBooked>
+
         </div>
         <div>
 
