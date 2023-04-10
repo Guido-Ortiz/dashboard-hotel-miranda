@@ -1,11 +1,10 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { getData } from '../../helpers/getData';
-import { users } from '../../data/users';
+// import { getData } from '../../helpers/getData';
+// import { users } from '../../data/users';
+import apiFetch from "../../helpers/apiFetch";
 
-export const getUsers = createAsyncThunk(
-    'users/getUsers',
-    async () => {
-        return await getData(users)
+export const getUsers = createAsyncThunk('users/getUsers', async () => {
+        return await apiFetch('users', 'GET', null)
     }
 )
 
@@ -25,16 +24,16 @@ export const usersSlice = createSlice({
     reducers: {
         filterUsers: (state, action) => {
             let filter = []
-            if (action.payload === 'all') {
-                filter = state.allUsers
+            if (action.payload === 'All') {
+                filter = state.allUsers.data
             } else {
-                if (action.payload === 'active') {
-                    filter = state.allUsers.filter(e => e.status === 'Active')
+                if (action.payload === 'Active') {
+                    filter = state.allUsers.data.filter(e => e.userstatus === 'Active')
                 } else {
-                    filter = state.allUsers.filter(e => e.status === 'Inactive')
+                    filter = state.allUsers.data.filter(e => e.userstatus === 'Inactive')
                 }
             }
-            state.users = filter
+            state.users.data = filter
         }
      },
     extraReducers: (builder) => {

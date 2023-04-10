@@ -16,28 +16,32 @@ const Users = () => {
       selector: (row) => <User>
         <UserImage src={row.photo} alt="Profile pic" />
         <UserData>
-          <h4>{row.name}</h4>
-          <h5>#{row.id}</h5>
+          <h4>{row.username}</h4>
+          <h5>#{row._id}</h5>
           <h5>{row.start}</h5>
         </UserData>
       </User>,
-      width: '23%'
+      width: '37%'
       // width: '211px'
     },
     {
       name: "Description",
       selector: (row) => row.description,
-      width: '45%'
+      width: '18%'
     },
     {
       name: "Contact",
-      selector: (row) => row.contact,
+      selector: (row) => <UserData>
+      {/* <h4>{row.username}</h4> */}
+      <h5>{row.phone}</h5>
+      <h5>{row.email}</h5>
+    </UserData>,
       sortable: true,
-      width: '12%'
+      width: '25%'
     },
     {
       name: "Status",
-      selector: (row) => <EmployeeStatus status={row.status}>{row.status}</EmployeeStatus>,
+      selector: (row) => <EmployeeStatus status={row.userstatus}>{row.userstatus}</EmployeeStatus>,
       sortable: true,
       width: '10%'
     },
@@ -57,7 +61,7 @@ const Users = () => {
 
   const dispatch = useDispatch()
 
-  const users = useSelector(state => state.users.users)
+  const users = useSelector(state => state.users.users.data)
 
   useEffect(() => {
     dispatch(getUsers())
@@ -68,17 +72,17 @@ const Users = () => {
   const [inactive, setInactive] = useState(false)
 
   const handleFilterUser = (filter) => {
-    if(filter === 'all'){
+    if(filter === 'All'){
       setAll(true)
       setActive(false)
       setInactive(false)
     }
-    if(filter === 'active'){
+    if(filter === 'Active'){
       setAll(false)
       setActive(true)
       setInactive(false)
     }
-    if(filter === 'inactive'){
+    if(filter === 'Inactive'){
       setAll(false)
       setActive(false)
       setInactive(true)
@@ -96,9 +100,9 @@ const Users = () => {
     <UsersWrapper>
       <TopMenu>
         <div>
-          <BtnTabsAllUsers onClick={() => handleFilterUser('all')} all={all} active={active} inactive={inactive}>All</BtnTabsAllUsers>
-          <BtnTabsActiveUsers onClick={() => handleFilterUser('active')} all={all} active={active} inactive={inactive}>Active</BtnTabsActiveUsers>
-          <BtnTabsInactiveUsers onClick={() => handleFilterUser('inactive')} all={all} active={active} inactive={inactive}>Inactive</BtnTabsInactiveUsers>
+          <BtnTabsAllUsers onClick={() => handleFilterUser('All')} all={all} active={active} inactive={inactive}>All</BtnTabsAllUsers>
+          <BtnTabsActiveUsers onClick={() => handleFilterUser('Active')} all={all} active={active} inactive={inactive}>Active</BtnTabsActiveUsers>
+          <BtnTabsInactiveUsers onClick={() => handleFilterUser('Inactive')} all={all} active={active} inactive={inactive}>Inactive</BtnTabsInactiveUsers>
         </div>
         <div>
           <input type='text' />

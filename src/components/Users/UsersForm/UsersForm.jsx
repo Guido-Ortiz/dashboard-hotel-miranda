@@ -50,9 +50,9 @@ const UsersForm = () => {
 
   return (
     <>
-      {user_id
-        ? <FormText>Edit User #{user_id} information</FormText>
-        : <FormText>Complete the following form to add a new employee to your staff.</FormText>
+      { user_id
+          ? <FormText>Edit User #{user_id} information</FormText>
+          : <FormText>Complete the following form to add a new employee to your staff.</FormText>
       }
       {/* <FormText>Complete the following form to add a new employee to your staff.</FormText> */}
       <InputWrapper>

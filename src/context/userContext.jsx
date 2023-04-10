@@ -16,9 +16,11 @@ const reducer = (state,action)=> {
     switch(action.type){
         case LOGIN:
             return { 
-                logged: true, 
-                email: action.value.email, 
-                username: action.value.username
+                // logged: true, 
+                // email: action.value.email, 
+                // username: action.value.username
+                ...state,
+                admin: action.payload
             }
         case EDIT_USERNAME:
             return {

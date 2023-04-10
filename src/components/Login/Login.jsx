@@ -6,6 +6,7 @@ import logo from '../../resources/logo.png';
 import login_image from '../../resources/login_image.png';
 import { useUser } from '../../context/userContext';
 import { LOGIN } from '../../context/constants';
+import { useLogin } from '../../helpers/useLogin';
 
 const admin = {
   email: 'admin@hotelmiranda.com',
@@ -30,18 +31,61 @@ const Login = () => {
 
   const { dispatch } = useUser()
 
-  const handleLogin = (e) => {
+  const { login } = useLogin()
+
+  // const handleLogin = (e) => {
+  //   e.preventDefault()
+  //     if(input.email === admin.email && input.password === admin.password){
+  //       dispatch({
+  //         type: LOGIN,
+  //         value: {
+  //           username: '',
+  //           email: 'admin@hotelmiranda.com'
+  //         }
+  //       })
+  //       navigate('/')
+  //   } else alert ('Wrong credentials')}
+
+  const handleLogin = async (e) => {
     e.preventDefault()
-      if(input.email === admin.email && input.password === admin.password){
-        dispatch({
-          type: LOGIN,
-          value: {
-            username: '',
-            email: 'admin@hotelmiranda.com'
-          }
-        })
-        navigate('/')
-    } else alert ('Wrong credentials')}
+    const response = await fetch('http://localhost:3001/login', {
+      method: "POST",
+        mode: "cors",
+        cache: "default",
+        credentials: "same-origin",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        redirect: "follow",
+        referrerPolicy: "no-referrer",
+        body: JSON.stringify({
+          email: input.email,
+          password: input.password,
+        }),
+    })
+
+    const token = await response.json()
+
+    if(token){
+      login(input.email, input.password)
+      localStorage.setItem('admin', JSON.stringify({
+        email: input.email,
+        logged: true,
+        token: token
+      }))
+    } else alert('Wrong credentials')
+ 
+
+    // if (input.email === admin.email && input.password === admin.password) {
+    //   dispatch({
+    //     type: LOGIN,
+    //     value: {
+    //       username: '',
+    //       email: 'admin@hotelmiranda.com'
+    //     }
+    //   })
+      navigate('/')
+  }
 
 
   return (
