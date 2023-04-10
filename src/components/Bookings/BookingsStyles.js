@@ -8,19 +8,38 @@ export const TopMenu = styled.div`
     justify-content: space-between;
     width: 100%;
     letter-spacing: 1px;
+    
         
     div {
+        // border: 1px solid red;
         display: flex;
         flex-direction: row;
         align-items: center;
         justify-content: flex-start;
+        // border-bottom: 1px solid #6E6E6E;
     
         h4 {
             font-size: 1rem;
             font-weight: 500;
             padding: 0.5rem 1.25rem;
             color: #6E6E6E;
+            font-family: 'poppins', sans-serif;    
+            &:hover {
+                cursor: pointer;
+                color: #135846;
+            }
+        }
+
+        h3 {
+            font-size: 1rem;
+            font-weight: 700;
+            padding: 0.5rem 1.25rem;
+            // color: #6E6E6E;
             font-family: 'poppins', sans-serif;
+
+            color: #135846;  
+
+            // border-bottom: 1px solid #6E6E6E;
     
             &:hover {
                 cursor: pointer;
@@ -46,7 +65,7 @@ export const TopMenu = styled.div`
     }    
 `;
 
-export const BtnTopMenu = styled.button `
+export const BtnTopMenu = styled.button`
     font-family: 'poppins', sans-serif;
     font-weight: 400;
     height: 40px;
@@ -61,7 +80,7 @@ export const BtnTopMenu = styled.button `
     text-transform: uppercase;
 `;
 
-export const BtnStatus = styled.button `
+export const BtnStatus = styled.button`
     // border: 1px solid red;
     color: #ffffff;
     letter-spacing: 1px;
@@ -76,14 +95,14 @@ export const BtnStatus = styled.button `
     background: ${props => props.status === 'Check-In' ? '#68e365' : props.status === 'Check-Out' ? '#E23428' : 'orange'}
 `;
 
-export const BookingTableContainer = styled.div `
+export const BookingTableContainer = styled.div`
     // border: 1px solid red;
     width: 95%;
     margin-top: 20px;
     margin: 0 auto;
 `;
 
-export const ClientData = styled.div `
+export const ClientData = styled.div`
     h3, h4, h5 {
         margin: 0;
     }
@@ -106,7 +125,7 @@ export const ClientData = styled.div `
     }
 `;
 
-export const ActionsContainer = styled.div `
+export const ActionsContainer = styled.div`
     // border: 1px solid red;
     display: flex;
     flex-direction: row;
@@ -124,7 +143,7 @@ export const ActionsContainer = styled.div `
     }
 `;
 
-export const BtnRequest = styled.button `
+export const BtnRequest = styled.button`
     height: 35px;
     border: 1px solid #799283;
     background: #EEF9F2 0% 0% no-repeat padding-box;
@@ -151,7 +170,82 @@ export const CustomTable = {
         style: {
             // border: '1px dashed blue',
             width: '10px',
-            paddingLeft: '4px', 
+            paddingLeft: '4px',
         },
     },
 }
+
+
+export const ButtonTabsAll = styled.button`
+    font-size: 1rem;
+    border: none;
+    font-weight: 700;
+    padding: 0.5rem 1.25rem;
+    font-family: 'poppins', sans-serif;
+    color: ${props => props.all ? '#135846' : '#6E6E6E'};
+    border-bottom: ${props => props.all ? '2px solid #135846' : '1px solid #6E6E6E'};
+    font-weight: ${props => props.all ? '700' : '500'}; 
+    &:hover {
+        cursor: pointer;
+        // color: #135846;
+    }
+`;
+
+export const ButtonTabsArchive = styled.button`
+    font-size: 1rem;
+    border: none;
+    font-weight: 700;
+    padding: 0.5rem 1.25rem;
+    font-family: 'poppins', sans-serif;
+    color: ${props => props.archive ? '#135846' : '#6E6E6E'};
+    border-bottom: ${props => props.archive ? '2px solid #135846' : '1px solid #6E6E6E'}; 
+    font-weight: ${props => props.archive ? '700' : '500'};
+    &:hover {
+        cursor: pointer;
+        // color: #135846;
+    }
+`;
+
+export const ButtonTabsIn = styled.button`
+    font-size: 1rem;
+    border: none;
+    font-weight: 700;
+    padding: 0.5rem 1.25rem;
+    font-family: 'poppins', sans-serif;
+    // margin-right: 2px;
+    color: ${props => props.in ? '#135846' : '#6E6E6E'};
+    border-bottom: ${props => props.in ? '2px solid #135846' : '1px solid #6E6E6E'};
+    font-weight: ${props => props.in  ? '700' : '500'};
+    &:hover {
+        cursor: pointer;
+        // color: #135846;
+    }
+`;
+
+export const ButtonTabsOut = styled.button`
+    font-size: 1rem;
+    border: none;
+    font-weight: 700;
+    padding: 0.5rem 1.25rem;
+    font-family: 'poppins', sans-serif;
+    color: ${props => props.out ? '#135846' : '#6E6E6E'};
+    border-bottom: ${props => props.out ? '2px solid #135846' : '1px solid #6E6E6E'}; 
+    font-weight: ${props => props.out ? '700' : '500'};
+    &:hover {
+        cursor: pointer;
+    }
+`;
+
+export const ButtonTabsProgress = styled.button`
+    font-size: 1rem;
+    border: none;
+    font-weight: 700;
+    padding: 0.5rem 1.25rem;
+    font-family: 'poppins', sans-serif;
+    color: ${props => props.progres ? '#135846' : '#6E6E6E'};
+    border-bottom: ${props => props.progres ? '2px solid #135846' : '1px solid #6E6E6E'}; 
+    font-weight: ${props => props.progres ? '700' : '500'};
+    &:hover {
+        cursor: pointer;
+    }
+`;

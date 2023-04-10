@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { deleteBooking, filterBookings, getBookings } from '../../redux/actions/actions';
+// import { deleteBooking, filterBookings, getBookings } from '../../redux/actions/actions';
 import DataTable from 'react-data-table-component';
-import { ActionsContainer, BookingTableContainer, BtnRequest, BtnStatus, BtnTopMenu, ClientData, CustomTable, TopMenu } from './BookingsStyles';
+import { ActionsContainer, BookingTableContainer, BtnRequest, BtnStatus, BtnTopMenu, ButtonTabsAll, ButtonTabsIn, ButtonTabsOut, ButtonTabsProgress, ClientData, CustomTable, TopMenu } from './BookingsStyles';
 
 import UpdateIcon from '@mui/icons-material/Update';
 import DeleteIcon from '@mui/icons-material/Delete';
@@ -13,6 +13,8 @@ import Alert from '@mui/material/Alert';
 import { Link } from 'react-router-dom';
 import { BookingColumn, Date } from '../Dashboard/DashboardStyles';
 import { IconButton, Tooltip } from '@mui/material';
+
+import { deleteBooking, filterBookings, getBookings } from '../../redux/features/bookingsSlice';
 
 const Bookings = () => {
 
@@ -83,14 +85,54 @@ const Bookings = () => {
 
   const data = useSelector(state => state.bookings.bookings)
 
+  const [active, setActive] = useState({
+    all: true,
+    in: false,
+    out: false,
+    progres: false
+  })
+
   useEffect(() => {
     dispatch(getBookings())
   }, [dispatch])
 
-  const handleFilterBookings = filter => {
+  const handleFilterBookings = (filter) => {
+    if (filter === 'all') {
+      setActive({
+        all: true,
+        in: false,
+        out: false,
+        progres: false
+      })
+    }
+    if (filter === 'in') {
+      setActive({
+        all: false,
+        in: true,
+        out: false,
+        progres: false
+      })
+    }
+    if (filter === 'out') {
+      setActive({
+        all: false,
+        in: false,
+        out: true,
+        progres: false
+      })
+    }
+    if (filter === 'progres') {
+      setActive({
+        all: false,
+        in: false,
+        out: false,
+        progres: true
+      })
+    }
     dispatch(filterBookings(filter))
   }
-  const [open, setOpen] = useState(false);
+
+  const [open, setOpen] = useState(false)
 
   const handleClose = (event, reason) => {
     if (reason === 'clickaway') {
@@ -108,10 +150,10 @@ const Bookings = () => {
     <>
       <TopMenu>
         <div>
-          <h4 onClick={() => handleFilterBookings('all')}>All Bookings</h4>
-          <h4 value='in' onClick={() => handleFilterBookings('in')}>Checking In</h4>
-          <h4 value='out' onClick={() => handleFilterBookings('out')}>Checking Out</h4>
-          <h4 value='progress' onClick={() => handleFilterBookings('progress')}>In Progress</h4>
+          <ButtonTabsAll onClick={(e) => handleFilterBookings('all')} all={active.all} in={active.in} out={active.out} progres={active.progres}>All Bookings</ButtonTabsAll>
+          <ButtonTabsIn onClick={(e) => handleFilterBookings('in')} all={active.all} in={active.in} out={active.out} progres={active.progres}>Checking In</ButtonTabsIn>
+          <ButtonTabsOut onClick={(e) => handleFilterBookings('out')} all={active.all} in={active.in} out={active.out} progres={active.progres}>Checking Out</ButtonTabsOut>
+          <ButtonTabsProgress onClick={(e) => handleFilterBookings('progres')} all={active.all} in={active.in} out={active.out} progres={active.progres}>In Progress</ButtonTabsProgress>
         </div>
         <div>
           <input type='text' placeholder='Search bookings' />

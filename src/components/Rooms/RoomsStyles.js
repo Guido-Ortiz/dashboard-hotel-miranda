@@ -116,3 +116,46 @@ export const RoomType = styled.h4 `
     letter-spacing: 1px;
     color: #393939;
 `;
+
+export const BtnTabsAllRooms = styled.button `
+    font-size: 1rem;
+    border: none;
+    font-weight: ${props => props.all ? '700' : '500'};
+    padding: 0.5rem 1.25rem;
+    font-family: 'poppins', sans-serif;
+    // margin-right: 2px;
+    color: ${props => props.all ? '#135846' : '#6E6E6E'};
+    border-bottom: ${props => props.all ? '2px solid #135846' : '1px solid #6E6E6E'};
+        
+    &:hover {
+        cursor: pointer;
+    }
+`;
+
+export const BtnTabsAvailable = styled.button`
+    font-size: 1rem;
+    border: none;
+    font-weight: ${props => props.available ? '700' : '500'};
+    padding: 0.5rem 1.25rem;
+    font-family: 'poppins', sans-serif;
+    color: ${props => props.available ? '#135846' : '#6E6E6E'};
+    border-bottom: ${props => props.available ? '2px solid #135846' : '1px solid #6E6E6E'};
+    
+    &:hover {
+        cursor: pointer;
+    }
+`;
+
+export const BtnTabsBooked = styled.button`
+    font-size: 1rem;
+    border: none;
+    font-weight: ${props => props.booked ? '700' : '500'};
+    padding: 0.5rem 1.25rem;
+    font-family: 'poppins', sans-serif;
+    color: ${props => props.booked ? '#135846' : '#6E6E6E'};
+    border-bottom: ${props => props.booked ? '2px solid #135846' : '1px solid #6E6E6E'};
+        
+    &:hover {
+        cursor: pointer;
+    }
+`;

@@ -1,4 +1,4 @@
-import { React } from 'react';
+import { React, useState } from 'react';
 import './App.css';
 import { useSelector } from 'react-redux';
 import { Route, Routes, useLocation } from 'react-router-dom';
@@ -18,16 +18,17 @@ import ProtectedRoutes from './services/ProtectedRoutes';
 
 function App() {
 
-  const sidebar = useSelector(state => state.sidebar)
+  // const sidebar = useSelector(state => state.sidebar)
+  const [sidebar, setSidebar] = useState(true)
   const location = useLocation()
 
   return (
     <div>
 
-      <Topbar location={location.pathname} sidebar={sidebar} />
+      <Topbar location={location.pathname} sidebar={sidebar} setSidebar={setSidebar} />
       <DashboardWrapper>
         {/* {sidebar && <Sidebar location={location.pathname} sidebar={sidebar} />} */}
-        <Sidebar location={location.pathname} sidebar={sidebar} />
+        <Sidebar location={location.pathname} sidebar={sidebar} setSidebar={setSidebar} />
 
         <RightContainer sidebar={sidebar}>
 

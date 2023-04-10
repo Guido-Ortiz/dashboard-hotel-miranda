@@ -4,7 +4,7 @@ import guest from '../../../resources/p1.jpg';
 import { useDispatch, useSelector } from 'react-redux';
 import { Email, Phone } from '@mui/icons-material';
 import { useParams } from 'react-router';
-import { editBooking, getBookingDetail } from '../../../redux/actions/actions';
+// import { editBooking, getBookingDetail } from '../../../redux/actions/actions';
 
 import { Modal } from '@mui/material';
 import BookingSlider from './BookingSlider/BookingSlider';
@@ -16,10 +16,10 @@ const Booking = () => {
   const dispatch = useDispatch()
 
   const sidebar = useSelector(state => state.sidebar)
-  const detail = useSelector(state => state.bookings.detail)
+  // const detail = useSelector(state => state.bookings.detail)
 
   useEffect(() => {
-    dispatch(getBookingDetail(booking_id))
+    // dispatch(getBookingDetail(booking_id))
   }, [dispatch, booking_id])
 
   const requests = ['Early Check-In', 'Late Check-Out', 'None']
@@ -31,7 +31,7 @@ const Booking = () => {
   const handleClose = () => setOpen(false)
 
   const handleEdit = () => {
-    dispatch(editBooking({ booking_id, newBooking }))
+    // dispatch(editBooking({ booking_id, newBooking }))
     setOpen(false)
   }
 

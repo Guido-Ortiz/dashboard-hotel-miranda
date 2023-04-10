@@ -8,7 +8,7 @@ import "swiper/css/pagination";
 import "../../index.css";
 import { Navigation } from "swiper";
 import SwiperItem from './SwiperItem/SwiperItem';
-import { reviewsData } from '../../data/reviewsData';
+import { reviews } from '../../data/reviews';
 import { SwiperContainer } from './SwiperStyles';
 
 const Swipers =() => {
@@ -19,7 +19,7 @@ const Swipers =() => {
             navigation={true}
             modules={[Navigation]} className="mySwiper" slidesPerView={2}>
                 {
-                    reviewsData.map(e => {
+                    reviews.map(e => {
                         return (
                             <SwiperSlide>
                                 <SwiperItem id={e.id} review={e.review} date={e.date} hour={e.hour} name={e.name} email={e.email} telephone={e.telephone} matter={e.matter} archive={e.archive} />

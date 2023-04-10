@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { deleteBooking, getBookings } from '../../redux/actions/actions';
 import DataTable from "react-data-table-component";
 import KPIs from './KPIs/KPIs';
 import Swiper from '../Swiper/Swiper';
@@ -12,6 +11,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import { CircularProgress, Snackbar, Alert, Tooltip } from '@mui/material';
 import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
+import { getBookings } from '../../redux/features/bookingsSlice';
 
 
 const Dashboard = () => {
@@ -79,14 +79,11 @@ const Dashboard = () => {
   const dispatch = useDispatch()
 
   useEffect(() => {
-    setTimeout(() => {
-      dispatch(getBookings())
-    }, 2000);
-    // dispatch(getBookings())
+      dispatch(getBookings())  
   }, [dispatch])
 
   const handleDeleteBooking = (id) => {
-    dispatch(deleteBooking(id))
+    // dispatch(deleteBooking(id))
     handleClick()
   }
   const [open, setOpen] = useState(false)

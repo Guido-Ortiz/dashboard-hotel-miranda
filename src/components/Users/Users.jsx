@@ -2,16 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import DataTable from 'react-data-table-component';
-import { deleteUser, filterUsers, getUsers } from '../../redux/actions/actions';
 import { BtnTopMenu, TopMenu, ActionsContainer } from '../Bookings/BookingsStyles';
-import { UsersWrapper, UserTableWrapper, BtnAddEmployee, User, UserImage, UserData, EmployeeStatus, customStyles, modalStyle } from './UsersStyles';
+import { UsersWrapper, UserTableWrapper, BtnAddEmployee, User, UserImage, UserData, EmployeeStatus, customStyles, modalStyle, BtnTabsAllUsers, BtnTabsActiveUsers, BtnTabsInactiveUsers } from './UsersStyles';
 import UpdateIcon from '@mui/icons-material/Update';
 import DeleteIcon from '@mui/icons-material/Delete';
-// import Box from '@mui/material/Box';
-// import Button from '@mui/material/Button';
-// import Typography from '@mui/material/Typography';
-// import Modal from '@mui/material/Modal';
-import { Box, Typography, Modal } from '@mui/material';
+import { filterUsers, getUsers } from '../../redux/features/usersSlice';
 
 const Users = () => {
 
@@ -68,12 +63,31 @@ const Users = () => {
     dispatch(getUsers())
   }, [dispatch])
 
+  const [all, setAll] = useState(true)
+  const [active, setActive] = useState(false)
+  const [inactive, setInactive] = useState(false)
+
   const handleFilterUser = (filter) => {
+    if(filter === 'all'){
+      setAll(true)
+      setActive(false)
+      setInactive(false)
+    }
+    if(filter === 'active'){
+      setAll(false)
+      setActive(true)
+      setInactive(false)
+    }
+    if(filter === 'inactive'){
+      setAll(false)
+      setActive(false)
+      setInactive(true)
+    }
     dispatch(filterUsers(filter))
   }
 
   const handleDeleteUser = (id) => {
-    dispatch(deleteUser(id))
+    // dispatch(deleteUser(id))
   }
 
 
@@ -82,9 +96,9 @@ const Users = () => {
     <UsersWrapper>
       <TopMenu>
         <div>
-          <h4 onClick={() => handleFilterUser('all')}>All</h4>
-          <h4 onClick={() => handleFilterUser('active')}>Active</h4>
-          <h4 onClick={() => handleFilterUser('inactive')}>Inactive</h4>
+          <BtnTabsAllUsers onClick={() => handleFilterUser('all')} all={all} active={active} inactive={inactive}>All</BtnTabsAllUsers>
+          <BtnTabsActiveUsers onClick={() => handleFilterUser('active')} all={all} active={active} inactive={inactive}>Active</BtnTabsActiveUsers>
+          <BtnTabsInactiveUsers onClick={() => handleFilterUser('inactive')} all={all} active={active} inactive={inactive}>Inactive</BtnTabsInactiveUsers>
         </div>
         <div>
           <input type='text' />
@@ -97,18 +111,6 @@ const Users = () => {
       <UserTableWrapper>
         <DataTable columns={columns} data={users} defaultSortFieldId pagination={5} highlightOnHover customStyles={customStyles} />
       </UserTableWrapper>
-
-      {/* <Modal open={open} onClose={handleClose} aria-labelledby="modal-modal-title" aria-describedby="modal-modal-description">
-        <UsersModal />
-        {/* <Box sx={modalStyle}>
-          <Typography id="modal-modal-title" variant="h6" component="h2">
-            Text in a modal
-          </Typography>
-          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-            Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-          </Typography>
-        </Box> 
-      </Modal> */}
 
     </UsersWrapper>
   )
