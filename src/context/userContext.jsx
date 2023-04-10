@@ -11,16 +11,17 @@ export const useUser = () => {
 
 const initialState = JSON.parse(localStorage.getItem(KEY_LOCALSTORAGE)) || { logged: false, email: "", username: "" }
 
-const reducer = (state,action)=> {
+const reducer = (state, action)=> {
 
     switch(action.type){
         case LOGIN:
             return { 
                 // logged: true, 
-                // email: action.value.email, 
-                // username: action.value.username
-                ...state,
+                // email: action.payload.email, 
+                // username: action.value.username,
                 admin: action.payload
+                // ...state,
+                // admin: action.payload
             }
         case EDIT_USERNAME:
             return {
@@ -35,7 +36,7 @@ const reducer = (state,action)=> {
         case LOGOUT:
             return{
                 logged: false, 
-                email:'', username:''
+                admin: null
             }
 
         default:

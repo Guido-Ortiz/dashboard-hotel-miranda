@@ -50,41 +50,33 @@ const Login = () => {
     e.preventDefault()
     const response = await fetch('http://localhost:3001/login', {
       method: "POST",
-        mode: "cors",
-        cache: "default",
-        credentials: "same-origin",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        redirect: "follow",
-        referrerPolicy: "no-referrer",
-        body: JSON.stringify({
-          email: input.email,
-          password: input.password,
-        }),
+      mode: "cors",
+      cache: "default",
+      credentials: "same-origin",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      redirect: "follow",
+      referrerPolicy: "no-referrer",
+      body: JSON.stringify({
+        email: input.email,
+        password: input.password,
+      }),
     })
 
     const token = await response.json()
+    console.log(token)
 
-    if(token){
-      login(input.email, input.password)
+    if (token) {
+      login(input.password, input.email)
       localStorage.setItem('admin', JSON.stringify({
         email: input.email,
         logged: true,
         token: token
       }))
     } else alert('Wrong credentials')
- 
 
-    // if (input.email === admin.email && input.password === admin.password) {
-    //   dispatch({
-    //     type: LOGIN,
-    //     value: {
-    //       username: '',
-    //       email: 'admin@hotelmiranda.com'
-    //     }
-    //   })
-      navigate('/')
+    navigate('/')
   }
 
 

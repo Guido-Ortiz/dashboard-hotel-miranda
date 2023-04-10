@@ -1,10 +1,10 @@
 const url = 'http://localhost:3001/'
 
-const apiFetch = async (direction, method, data) => {
+const apiFetch = async (endpoint, method, data) => {
     let token = localStorage.getItem('admin')
     if (localStorage.getItem('admin')) token = JSON.parse(token).token
     console.log(token.token)
-    const response = await fetch(url + direction, {
+    const response = await fetch(url + endpoint, {
         method: method,
         mode: "cors",
         cache: "no-cache",

@@ -94,7 +94,7 @@ const Users = () => {
     // dispatch(deleteUser(id))
   }
 
-
+  console.log(localStorage.getItem('admin'))
 
   return (
     <UsersWrapper>

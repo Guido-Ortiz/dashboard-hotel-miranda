@@ -3,13 +3,13 @@ import { useUser } from "../context/userContext"
 
 export const useLogin = () => {
     const { dispatch } = useUser()
-    const login = async (username, email) => {
+    const login = async (password, email) => {
         try {
             dispatch({
                 type: LOGIN,
                 payload: {
-                    username,
-                    email
+                    email,
+                    password
                 }
             })
         } catch(e) {
