@@ -10,6 +10,7 @@ import LogoutIcon from '@mui/icons-material/Logout';
 import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone';
 import { useUser } from '../../context/userContext';
 import { LOGOUT } from '../../context/constants';
+import useLogout from '../../helpers/useLogout';
 
 const Header = ({ location, sidebar, setSidebar }) => {
 
@@ -19,11 +20,18 @@ const Header = ({ location, sidebar, setSidebar }) => {
 
   const navigate = useNavigate()
 
+  // const handleLogout = () => {
+  //   dispatch({
+  //     type: LOGOUT
+  //   })
+  //   navigate('/login')
+  // }
+
+  const { logout } = useLogout()
+
   const handleLogout = () => {
-    dispatch({
-      type: LOGOUT
-    })
-    navigate('/login')
+    localStorage.removeItem('admin')
+    logout()
   }
 
   const handleToggle = () => {
