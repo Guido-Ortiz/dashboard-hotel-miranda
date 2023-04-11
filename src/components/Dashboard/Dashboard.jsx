@@ -18,8 +18,8 @@ const Dashboard = () => {
 
   const sidebar = useSelector(state => state.sidebar)
 
-  const data = useSelector(state => state.bookings.bookings)
-  const allData = useSelector(state => state.bookings.allBookings)
+  const data = useSelector(state => state.bookings.bookings.data)
+  const allData = useSelector(state => state.bookings.allBookings.data)
 
   const columns = [
     {
@@ -32,7 +32,7 @@ const Dashboard = () => {
       selector: (row) => <BookingColumn>
         <h3>{row.type}</h3>
         <h4>N° {row.number}</h4>
-        <h5>#{row.id}</h5>
+        <h5>#{row._id}</h5>
       </BookingColumn>,
       sortable: true,
       width: '17%'
@@ -57,7 +57,7 @@ const Dashboard = () => {
     },
     {
       name: "See More",
-      selector: (row) => <Link to={`/bookings/${row.id}`}><BtnToBooking>See more</BtnToBooking></Link>,
+      selector: (row) => <Link to={`/bookings/${row._id}`}><BtnToBooking>See more</BtnToBooking></Link>,
       width: '15%'
     },
     {
@@ -88,13 +88,13 @@ const Dashboard = () => {
   }
   const [open, setOpen] = useState(false)
 
-  if (data.length === 0 && allData.length === 0) {
-    return (
-      <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center', margin: '0 auto' }}>
-        <CircularProgress sx={{ color: '#E23428', marginTop: '200px' }} />
-      </div>
-    )
-  }
+  // if (data.length === 0 && allData.length === 0) {
+  //   return (
+  //     <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center', margin: '0 auto' }}>
+  //       <CircularProgress sx={{ color: '#E23428', marginTop: '200px' }} />
+  //     </div>
+  //   )
+  // }
 
   const handleClick = () => {
     setOpen(true);

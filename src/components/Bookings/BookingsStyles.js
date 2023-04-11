@@ -92,7 +92,7 @@ export const BtnStatus = styled.button`
     border: none;
     padding: 5px;
     border-radius: 4px;
-    background: ${props => props.status === 'Check-In' ? '#68e365' : props.status === 'Check-Out' ? '#E23428' : 'orange'}
+    background: ${props => props.status === 'Checking-In' ? '#68e365' : props.status === 'Checking Out' ? '#E23428' : 'orange'}
 `;
 
 export const BookingTableContainer = styled.div`
@@ -118,8 +118,8 @@ export const ClientData = styled.div`
 
     h4 {
         text-align: left;
-        font: normal normal medium 18px/28px Poppins;
-        letter-spacing: 1px;
+        font: normal normal medium 16px/26px Poppins;
+        // letter-spacing: 1px;
         color: #799283;
         // margin-bottom: 5px;
     }

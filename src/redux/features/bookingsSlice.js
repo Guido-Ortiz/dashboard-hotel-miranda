@@ -1,12 +1,15 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { getData } from '../../helpers/getData';
 import { bookings } from "../../data/bookings";
+import apiFetch from "../../helpers/apiFetch";
 
-export const getBookings = createAsyncThunk(
-    'bookings/getBookings',
-    async () => {
-        return await getData(bookings)
+export const getBookings = createAsyncThunk('bookings/getBookings', async () => {
+    const parameters = {
+        url: 'bookings',
+        method: 'GET'
     }
+    return await apiFetch(parameters)
+}
 )
 
 export const getBooking = createAsyncThunk(
@@ -40,22 +43,22 @@ export const bookingsSlice = createSlice({
     reducers: {
         filterBookings: (state, action) => {
             let filter = []
-            if(action.payload === 'all'){
-                filter = state.allBookings
+            if (action.payload === 'all') {
+                filter = state.allBookings.data
             } else {
-                if(action.payload === 'in'){
-                    filter = state.allBookings.filter(e => e.status === 'Check-In')
+                if (action.payload === 'in') {
+                    filter = state.allBookings.data.filter(e => e.status === 'Checking-In')
                 } else {
-                    if(action.payload === 'out'){
-                        filter = state.allBookings.filter(e => e.status === 'Check-Out')
+                    if (action.payload === 'out') {
+                        filter = state.allBookings.data.filter(e => e.status === 'Checking Out')
                     } else {
-                        filter = state.allBookings.filter(e =>e.status === 'In-Progress')
+                        filter = state.allBookings.data.filter(e => e.status === 'In Progress')
                     }
                 }
             }
-            state.bookings = filter
+            state.bookings.data = filter
         }
-     },
+    },
     extraReducers: (builder) => {
         builder
             .addCase(getBookings.pending, (state) => {
@@ -68,9 +71,10 @@ export const bookingsSlice = createSlice({
             })
             .addCase(getBookings.rejected, (state) => {
                 state.status = 'Error'
+                console.log('Failed to load bookings')
             })
 
-            .addCase(getBooking.pending,  (state) => {
+            .addCase(getBooking.pending, (state) => {
                 state.status = 'Loading'
             })
             .addCase(getBooking.fulfilled, (state, action) => {

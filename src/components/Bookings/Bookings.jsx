@@ -22,11 +22,11 @@ const Bookings = () => {
     {
       name: "Booking",
       selector: (row) => <ClientData>
-        <h3>{row.client}</h3>
-        <h4>#{row.id}</h4>
+        <h3>{row.customer_name}</h3>
+        <h4>#{row._id}</h4>
       </ClientData>,
       sortable: true,
-      width: '15%'
+      width: '17%'
     },
     {
       name: "Order",
@@ -48,14 +48,14 @@ const Bookings = () => {
     },
     {
       name: "Request",
-      selector: (row) => <BtnRequest>View Notes</BtnRequest>,
+      selector: (row) => <BtnRequest>{row.request}</BtnRequest>,
       sortable: true,
       width: '12%'
     },
     {
       name: "Room",
       selector: (row) => <BookingColumn>
-        <h3>{row.type}</h3>
+        <h3>{row.room_type}</h3>
         <h4>N° {row.number}</h4>
       </BookingColumn>,
       sortable: true,
@@ -83,7 +83,7 @@ const Bookings = () => {
 
   const dispatch = useDispatch()
 
-  const data = useSelector(state => state.bookings.bookings)
+  const data = useSelector(state => state.bookings.bookings.data)
 
   const [active, setActive] = useState({
     all: true,

@@ -31,7 +31,6 @@ export const BtnRoomStatus = styled.div `
 `;
 
 export const AmenitiesChip = styled.div `
-// dispaly: block;
     border: 1px solid #135846;
     width: auto;
     padding: 2px 4px;

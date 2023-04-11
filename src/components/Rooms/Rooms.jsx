@@ -13,7 +13,7 @@ const customStyles = {
   rows: {
     style: {
       // border: '1px solid blue'
-      height: '100px'
+      height: '150px'
     },
   },
   headCells: {
@@ -43,7 +43,7 @@ const Rooms = () => {
       name: "Room",
       selector: (row) => <RoomInfoContainer>
         <h3>N° {row.number}</h3>
-        <h4>#{row.id}</h4>
+        <h4>#{row._id}</h4>
       </RoomInfoContainer>,
       width: '8%'
     },
@@ -62,7 +62,7 @@ const Rooms = () => {
               )}
         </AmenitiesContainer>
       ,
-      width: '15%'
+      width: '20%'
     },
     {
       name: "Price",
@@ -72,7 +72,9 @@ const Rooms = () => {
     },
     {
       name: "% Offer",
-      selector: (row) => <Price>${row.price - row.offer}<span>/Night</span></Price>,
+      selector: (row) => <Price>
+        ${row.price - (row.discount * row.price / 100)}<span>/Night</span>
+        </Price>,
       sortable: true,
       width: '15%'
     },
@@ -92,7 +94,7 @@ const Rooms = () => {
     }
   ]
   
-  const data = useSelector(state => state.rooms.rooms)
+  const data = useSelector(state => state.rooms.rooms.data)
   
   const dispatch = useDispatch()
   
