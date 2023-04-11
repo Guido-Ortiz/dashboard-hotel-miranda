@@ -4,8 +4,13 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import apiFetch from "../../helpers/apiFetch";
 
 export const getUsers = createAsyncThunk('users/getUsers', async () => {
-        return await apiFetch('users', 'GET', null)
+    const parameters = {
+        url: 'users',
+        method: 'GET',
     }
+    const users = await apiFetch(parameters)
+    return users
+}
 )
 
 // export const getUser = createAsyncThunk('user/getUser', async (id) => {
@@ -15,7 +20,8 @@ export const getUsers = createAsyncThunk('users/getUsers', async () => {
 const initialState = {
     users: [],
     allUsers: [],
-    user: null
+    user: null,
+    status: 'Loading'
 }
 
 export const usersSlice = createSlice({
@@ -35,14 +41,20 @@ export const usersSlice = createSlice({
             }
             state.users.data = filter
         }
-     },
+    },
     extraReducers: (builder) => {
         builder
+            .addCase(getUsers.pending, (state) => {
+                state.status = 'Loading'
+            })
             .addCase(getUsers.fulfilled, (state, action) => {
+                console.log(state.users)
+                state.status = 'Fullfilled'
                 state.users = action.payload
                 state.allUsers = action.payload
             })
-            .addCase(getUsers.rejected, () => {
+            .addCase(getUsers.rejected, (state) => {
+                state.status = 'Error'
                 console.log('Failed to load users')
             })
     }

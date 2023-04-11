@@ -171,10 +171,16 @@ const Login = () => {
   const handleLogin = async (e) => {
     e.preventDefault()
     try {
-      const res = await apiFetch('login', 'POST', input)
+      const req = {
+        url: 'login',
+        method: 'POST',
+        body: input
+      }
+      const res = await apiFetch(req)
+      console.log(res)
       if(res.token) {
         dispatch({
-          type: 'LOGIN',
+          type: LOGIN,
           value: {
             email: input.email,
             token: res.token
@@ -183,7 +189,7 @@ const Login = () => {
         navigate('/')
       }
     } catch(e) {
-      e.target.reset()
+      console.log(e)
     }
   }
 

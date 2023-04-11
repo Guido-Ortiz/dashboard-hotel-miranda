@@ -62,6 +62,7 @@ const Users = () => {
   const dispatch = useDispatch()
 
   const users = useSelector(state => state.users.users.data)
+  console.log(users)
 
   useEffect(() => {
     dispatch(getUsers())
@@ -94,7 +95,7 @@ const Users = () => {
     // dispatch(deleteUser(id))
   }
 
-  console.log(localStorage.getItem('admin'))
+ 
 
   return (
     <UsersWrapper>

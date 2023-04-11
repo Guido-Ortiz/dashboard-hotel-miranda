@@ -7,7 +7,7 @@ export const useUser = () => {
     return useContext(UserContext);
 }
 
-// const initialState = JSON.parse(localStorage.getItem('admin')) || { logged: false, admin: { email: "", username: "" } }
+const initialState = (localStorage.getItem('admin')) || { logged: false, email: '', token: '' } 
 
 // const reducer = (state, action)=> {
 
@@ -81,9 +81,7 @@ const reducer = (state, action) => {
 
 export const UserProvider = ({ children }) => {
 
-    
-
-    const initialState = JSON.parse(localStorage.getItem('admin')) 
+    const initialState = (localStorage.getItem('admin')) 
 
     const [user, dispatch] = useReducer(reducer, initialState)
 

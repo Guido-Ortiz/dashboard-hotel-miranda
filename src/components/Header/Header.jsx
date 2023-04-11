@@ -30,8 +30,9 @@ const Header = ({ location, sidebar, setSidebar }) => {
   const { logout } = useLogout()
 
   const handleLogout = () => {
-    localStorage.removeItem('admin')
-    logout()
+    dispatch({
+      type: LOGOUT
+    })
   }
 
   const handleToggle = () => {
