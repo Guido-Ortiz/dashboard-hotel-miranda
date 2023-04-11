@@ -10,17 +10,21 @@ export const getUsers = createAsyncThunk('users/getUsers', async () => {
     }
     const users = await apiFetch(parameters)
     return users
-}
-)
-
-// export const getUser = createAsyncThunk('user/getUser', async (id) => {
-//     return await id
-// })
+})
 
 export const deleteUser = createAsyncThunk('users/deleteUser', async (id) => {
     const parameters = {
         url: `users/${id}`,
         method: 'DELETE'
+    }
+    return await apiFetch(parameters)
+})
+
+export const postUser = createAsyncThunk('users/postUser', async (newUser) => {
+    const parameters = {
+        url: 'users',
+        method: 'POST',
+        body: newUser
     }
     return await apiFetch(parameters)
 })
@@ -56,7 +60,7 @@ export const usersSlice = createSlice({
                 state.status = 'Loading'
             })
             .addCase(getUsers.fulfilled, (state, action) => {
-                
+
                 state.status = 'Fullfilled'
                 state.users = action.payload
                 state.allUsers = action.payload
@@ -69,6 +73,12 @@ export const usersSlice = createSlice({
         builder
             .addCase(deleteUser.fulfilled, (state) => {
                 state.status = 'Fullfilled'
+            })
+
+        builder
+            .addCase(postUser.fulfilled, (state) => {
+                state.users = []
+                state.allUsers = []
             })
     }
 })

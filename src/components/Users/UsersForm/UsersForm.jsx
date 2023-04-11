@@ -1,38 +1,38 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router';
-// import { createUser } from '../../../redux/actions/actions';
+import { useNavigate, useParams } from 'react-router';
 import { FormText, InputWrapper, BtnSubmit, radio, label } from './UsersFormStyles';
 import { RadioGroup, FormControlLabel, FormControl, Radio } from '@mui/material'
+import { postUser } from '../../../redux/features/usersSlice';
 
 const UsersForm = () => {
 
   const dispatch = useDispatch()
-  const users = useSelector(state => state.users.users)
+  const users = useSelector(state => state.users.users.data)
+
+  const navigate = useNavigate()
 
   const { user_id } = useParams()
 
-  const singleUser = users.filter(e => e.id == user_id)
+  const singleUser = users.filter(e => e._id === user_id)
 
   const [user, setUser] = useState(!user_id ? {
+    username: '',
     photo: '',
-    name: '',
-    position: '',
     email: '',
     phone: '',
     start: '',
     description: '',
-    status: '',
+    userstatus: '',
     password: ''
   } : {
+    username: singleUser[0].name,
     photo: singleUser[0].photo,
-    name: singleUser[0].name,
-    position: '',
     email: singleUser[0].email,
     phone: '',
     start: singleUser[0].start,
     description: singleUser[0].description,
-    status: singleUser[0].status,
+    userstatus: singleUser[0].status,
     password: ''
   })
 
@@ -41,24 +41,27 @@ const UsersForm = () => {
       ...user,
       [e.target.name]: e.target.value
     })
-    console.log(user)
+
   }
 
-  const handleSubmit = () => {
+  const handleSubmit = (e) => {
+    e.preventDefault()
     // dispatch(createUser(user))
+    dispatch(postUser(user))
+    navigate('/users')
   }
 
   return (
     <>
-      { user_id
-          ? <FormText>Edit User #{user_id} information</FormText>
-          : <FormText>Complete the following form to add a new employee to your staff.</FormText>
+      {user_id
+        ? <FormText>Edit User #{user_id} information</FormText>
+        : <FormText>Complete the following form to add a new employee to your staff.</FormText>
       }
-      {/* <FormText>Complete the following form to add a new employee to your staff.</FormText> */}
+
       <InputWrapper>
         <div>
           <h4>Full Name</h4>
-          <input type="text" placeholder='Jane Doe' name='name' value={user.name} onChange={(e) => handleChange(e)} />
+          <input type="text" placeholder='Jane Doe' name='username' value={user.username} onChange={(e) => handleChange(e)} />
         </div>
         <div>
           <h4>E-mail</h4>
@@ -92,8 +95,8 @@ const UsersForm = () => {
           <FormControl sx={{ height: '30px' }} onChange={e => handleChange(e)}>
             <RadioGroup row aria-labelledby="demo-row-radio-buttons-group-label" name="row-radio-buttons-group" defaultValue="active">
               <div>
-                <FormControlLabel name='status' value="active" control={<Radio sx={radio} />} label="Active" sx={label} />
-                <FormControlLabel name='status' value="inactive" control={<Radio sx={radio} />} label="Inactive" sx={label} />
+                <FormControlLabel name='userstatus' value="Active" control={<Radio sx={radio} />} label="Active" sx={label} />
+                <FormControlLabel name='userstatus' value="Inactive" control={<Radio sx={radio} />} label="Inactive" sx={label} />
               </div>
             </RadioGroup>
           </FormControl>
@@ -109,7 +112,7 @@ const UsersForm = () => {
         </div>
 
       </InputWrapper>
-      <BtnSubmit onClick={handleSubmit}>Add Employee</BtnSubmit>
+      <BtnSubmit onClick={(e) => handleSubmit(e)}>Add Employee</BtnSubmit>
 
     </>
   )

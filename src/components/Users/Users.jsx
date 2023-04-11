@@ -4,10 +4,10 @@ import { Link } from 'react-router-dom';
 import DataTable from 'react-data-table-component';
 import { BtnTopMenu, TopMenu, ActionsContainer } from '../Bookings/BookingsStyles';
 import { UsersWrapper, UserTableWrapper, BtnAddEmployee, User, UserImage, UserData, EmployeeStatus, customStyles, modalStyle, BtnTabsAllUsers, BtnTabsActiveUsers, BtnTabsInactiveUsers } from './UsersStyles';
+import { Snackbar, Alert, CircularProgress, IconButton, Tooltip } from '@mui/material';
 import UpdateIcon from '@mui/icons-material/Update';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { deleteUser, filterUsers, getUsers } from '../../redux/features/usersSlice';
-import { IconButton, Tooltip } from '@mui/material';
 
 const Users = () => {
 
@@ -96,12 +96,30 @@ const Users = () => {
     dispatch(filterUsers(filter))
   }
 
+  const [openAlert, setOpenAlert] = useState(false)
+
   const handleDeleteUser = (id) => {
-    // dispatch(deleteUser(id))
     dispatch(deleteUser(id))
+    setOpenAlert(true)
+    
   }
 
 
+  const handleCloseAlert = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+    setOpenAlert(false);
+  }
+
+  const status = useSelector(state => state.users.status)
+  if(status === 'Loading') {
+    return (
+      <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center', margin: '0 auto' }}>
+        <CircularProgress sx={{ color: '#E23428', marginTop: '200px' }} />
+      </div>
+    )
+  }
 
   return (
     <UsersWrapper>
@@ -122,6 +140,10 @@ const Users = () => {
       <UserTableWrapper>
         <DataTable columns={columns} data={users} defaultSortFieldId pagination={5} highlightOnHover customStyles={customStyles} />
       </UserTableWrapper>
+
+      <Snackbar open={openAlert} autoHideDuration={2000} onClose={handleCloseAlert} >
+        <Alert onClose={handleClose} severity="success" sx={{ width: '100%' }}>User deleted succesfully</Alert>
+      </Snackbar>
 
     </UsersWrapper>
   )
