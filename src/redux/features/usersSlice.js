@@ -17,6 +17,14 @@ export const getUsers = createAsyncThunk('users/getUsers', async () => {
 //     return await id
 // })
 
+export const deleteUser = createAsyncThunk('users/deleteUser', async (id) => {
+    const parameters = {
+        url: `users/${id}`,
+        method: 'DELETE'
+    }
+    return await apiFetch(parameters)
+})
+
 const initialState = {
     users: [],
     allUsers: [],
@@ -48,7 +56,7 @@ export const usersSlice = createSlice({
                 state.status = 'Loading'
             })
             .addCase(getUsers.fulfilled, (state, action) => {
-                console.log(state.users)
+                
                 state.status = 'Fullfilled'
                 state.users = action.payload
                 state.allUsers = action.payload
@@ -56,6 +64,11 @@ export const usersSlice = createSlice({
             .addCase(getUsers.rejected, (state) => {
                 state.status = 'Error'
                 console.log('Failed to load users')
+            })
+
+        builder
+            .addCase(deleteUser.fulfilled, (state) => {
+                state.status = 'Fullfilled'
             })
     }
 })

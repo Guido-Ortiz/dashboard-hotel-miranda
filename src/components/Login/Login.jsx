@@ -177,7 +177,7 @@ const Login = () => {
         body: input
       }
       const res = await apiFetch(req)
-      console.log(res)
+      
       if(res.token) {
         dispatch({
           type: LOGIN,

@@ -6,7 +6,8 @@ import { BtnTopMenu, TopMenu, ActionsContainer } from '../Bookings/BookingsStyle
 import { UsersWrapper, UserTableWrapper, BtnAddEmployee, User, UserImage, UserData, EmployeeStatus, customStyles, modalStyle, BtnTabsAllUsers, BtnTabsActiveUsers, BtnTabsInactiveUsers } from './UsersStyles';
 import UpdateIcon from '@mui/icons-material/Update';
 import DeleteIcon from '@mui/icons-material/Delete';
-import { filterUsers, getUsers } from '../../redux/features/usersSlice';
+import { deleteUser, filterUsers, getUsers } from '../../redux/features/usersSlice';
+import { IconButton, Tooltip } from '@mui/material';
 
 const Users = () => {
 
@@ -32,10 +33,10 @@ const Users = () => {
     {
       name: "Contact",
       selector: (row) => <UserData>
-      {/* <h4>{row.username}</h4> */}
-      <h5>{row.phone}</h5>
-      <h5>{row.email}</h5>
-    </UserData>,
+        {/* <h4>{row.username}</h4> */}
+        <h5>{row.phone}</h5>
+        <h5>{row.email}</h5>
+      </UserData>,
       sortable: true,
       width: '25%'
     },
@@ -48,8 +49,12 @@ const Users = () => {
     {
       name: "Actions",
       selector: (row) => <ActionsContainer>
-        <Link to={`/users/${row.id}`}><UpdateIcon sx={{ marginRight: '10px' }} /></Link>
-        <DeleteIcon onClick={() => handleDeleteUser(row.id)} />
+        <Link to={`/users/${row._id}`}><UpdateIcon sx={{ marginRight: '10px' }} /></Link>
+        <Tooltip title='Delete User'>
+          <IconButton onClick={() => handleDeleteUser(row._id)}>
+            <DeleteIcon />
+          </IconButton>
+        </Tooltip>
       </ActionsContainer>,
       width: '10%'
     }
@@ -62,7 +67,7 @@ const Users = () => {
   const dispatch = useDispatch()
 
   const users = useSelector(state => state.users.users.data)
-  console.log(users)
+
 
   useEffect(() => {
     dispatch(getUsers())
@@ -73,17 +78,17 @@ const Users = () => {
   const [inactive, setInactive] = useState(false)
 
   const handleFilterUser = (filter) => {
-    if(filter === 'All'){
+    if (filter === 'All') {
       setAll(true)
       setActive(false)
       setInactive(false)
     }
-    if(filter === 'Active'){
+    if (filter === 'Active') {
       setAll(false)
       setActive(true)
       setInactive(false)
     }
-    if(filter === 'Inactive'){
+    if (filter === 'Inactive') {
       setAll(false)
       setActive(false)
       setInactive(true)
@@ -93,9 +98,10 @@ const Users = () => {
 
   const handleDeleteUser = (id) => {
     // dispatch(deleteUser(id))
+    dispatch(deleteUser(id))
   }
 
- 
+
 
   return (
     <UsersWrapper>
