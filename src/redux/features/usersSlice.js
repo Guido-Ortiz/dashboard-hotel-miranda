@@ -71,14 +71,17 @@ export const usersSlice = createSlice({
             })
 
         builder
-            .addCase(deleteUser.fulfilled, (state) => {
+            .addCase(deleteUser.fulfilled, (state, action) => {
                 state.status = 'Fullfilled'
+                state.users = state.users.filter(e => e._id !== action.payload)
+                state.allUsers = state.allUsers.filter(e => e._id !== action.payload)
             })
 
         builder
-            .addCase(postUser.fulfilled, (state) => {
-                state.users = []
-                state.allUsers = []
+            .addCase(postUser.fulfilled, (state, action) => {
+                state.status = 'Fullfilled'
+                state.users.push(action.payload)
+                state.allUsers.push(action.payload)
             })
     }
 })

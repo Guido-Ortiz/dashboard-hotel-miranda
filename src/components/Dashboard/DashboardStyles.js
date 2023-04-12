@@ -16,6 +16,7 @@ export const RightContainer = styled.div`
     // border: ${props => props.sidebar ? '1px solid red' : '1px solid green'};
     width: ${props => props.sidebar ? '82vw' : '100vw'};
     min-height: 84vh;
+    padding: 20px;
     
 
 

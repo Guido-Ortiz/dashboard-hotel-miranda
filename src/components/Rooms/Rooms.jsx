@@ -139,9 +139,6 @@ const Rooms = () => {
     <>
       <TopMenu>
         <div>
-          {/* <h4 onClick={() => handleFilterRooms('all')}>All Rooms</h4>
-          <h4 value='in' onClick={() => handleFilterRooms('available')}>Available</h4>
-          <h4 value='out' onClick={() => handleFilterRooms('booked')}>Booked</h4> */}
           <BtnTabsAllRooms onClick={() => handleFilterRooms('all')} all={all} available={available} booked={booked}>All Rooms</BtnTabsAllRooms>
           <BtnTabsAvailable onClick={() => handleFilterRooms('available')} all={all} available={available} booked={booked}>Available</BtnTabsAvailable>
           <BtnTabsBooked onClick={() => handleFilterRooms('booked')} all={all} available={available} booked={booked}>Booked</BtnTabsBooked>

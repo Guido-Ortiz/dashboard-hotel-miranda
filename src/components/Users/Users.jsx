@@ -68,9 +68,10 @@ const Users = () => {
 
   const users = useSelector(state => state.users.users.data)
 
-
   useEffect(() => {
-    dispatch(getUsers())
+    // if(users && users.length === 0){
+      dispatch(getUsers())
+    // }
   }, [dispatch])
 
   const [all, setAll] = useState(true)
@@ -101,7 +102,6 @@ const Users = () => {
   const handleDeleteUser = (id) => {
     dispatch(deleteUser(id))
     setOpenAlert(true)
-    
   }
 
 
