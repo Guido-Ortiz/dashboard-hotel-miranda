@@ -1,6 +1,4 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { getData } from '../../helpers/getData';
-import { reviews } from "../../data/reviews";
 import apiFetch from "../../helpers/apiFetch";
 
 export const getReviews = createAsyncThunk('reviews/getReviews', async () => {
@@ -28,14 +26,14 @@ export const reviewsSlice = createSlice({
     initialState,
     // reducers: {
     //     someAction: function() {
-   
+
     //     }
     //  },
     extraReducers: (builder) => {
         builder
-        .addCase(getReviews.pending, (state) => {
-            state.status = 'Loading'
-        })
+            .addCase(getReviews.pending, (state) => {
+                state.status = 'Loading'
+            })
             .addCase(getReviews.fulfilled, (state, action) => {
                 state.status = 'Fullfilled'
                 state.reviews = action.payload

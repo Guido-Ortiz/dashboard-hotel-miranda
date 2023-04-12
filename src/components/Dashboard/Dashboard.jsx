@@ -8,10 +8,11 @@ import { BookingColumn, BtnToBooking, CustomStylesBookingTable, Date, SwiperCont
 import { ActionsContainer } from '../Bookings/BookingsStyles';
 import UpdateIcon from '@mui/icons-material/Update';
 import DeleteIcon from '@mui/icons-material/Delete';
-import { CircularProgress, Snackbar, Alert, Tooltip } from '@mui/material';
+import { Snackbar, Alert, Tooltip } from '@mui/material';
 import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
 import { getBookings } from '../../redux/features/bookingsSlice';
+import Loader from '../Loader/Loader';
 
 
 const Dashboard = () => {
@@ -19,7 +20,7 @@ const Dashboard = () => {
   const sidebar = useSelector(state => state.sidebar)
 
   const data = useSelector(state => state.bookings.bookings.data)
-  const allData = useSelector(state => state.bookings.allBookings.data)
+  // const allData = useSelector(state => state.bookings.allBookings.data)
 
   const columns = [
     {
@@ -67,10 +68,10 @@ const Dashboard = () => {
           <Tooltip title='Update Booking'>
             <UpdateIcon sx={{ marginRight: '10px' }} />
           </Tooltip>
-          </Link>
-          <Tooltip title='Delete Booking'>
-            <DeleteIcon onClick={() => handleDeleteBooking(row.id)} />
-          </Tooltip>
+        </Link>
+        <Tooltip title='Delete Booking'>
+          <DeleteIcon onClick={() => handleDeleteBooking(row.id)} />
+        </Tooltip>
       </ActionsContainer>,
       width: '12%'
     }
@@ -79,7 +80,7 @@ const Dashboard = () => {
   const dispatch = useDispatch()
 
   useEffect(() => {
-      dispatch(getBookings())  
+    dispatch(getBookings())
   }, [dispatch])
 
   const handleDeleteBooking = (id) => {
@@ -88,13 +89,6 @@ const Dashboard = () => {
   }
   const [open, setOpen] = useState(false)
 
-  // if (data.length === 0 && allData.length === 0) {
-  //   return (
-  //     <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center', margin: '0 auto' }}>
-  //       <CircularProgress sx={{ color: '#E23428', marginTop: '200px' }} />
-  //     </div>
-  //   )
-  // }
 
   const handleClick = () => {
     setOpen(true);
@@ -104,9 +98,8 @@ const Dashboard = () => {
     if (reason === 'clickaway') {
       return;
     }
-
     setOpen(false);
-  };
+  }
 
   const action = (
     <React.Fragment>
@@ -114,7 +107,14 @@ const Dashboard = () => {
         <CloseIcon fontSize="small" />
       </IconButton>
     </React.Fragment>
-  );
+  )
+
+  const status = useSelector(state => state.bookings.status)
+  if (status === 'Loading') {
+    return (
+      <Loader />
+    )
+  }
 
   return (
     <>

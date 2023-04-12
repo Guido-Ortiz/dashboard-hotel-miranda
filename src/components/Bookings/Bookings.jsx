@@ -15,6 +15,7 @@ import { BookingColumn, Date } from '../Dashboard/DashboardStyles';
 import { IconButton, Tooltip } from '@mui/material';
 
 import { deleteBooking, filterBookings, getBookings } from '../../redux/features/bookingsSlice';
+import Loader from '../Loader/Loader';
 
 const Bookings = () => {
 
@@ -144,6 +145,13 @@ const Bookings = () => {
   const handleDeleteBooking = (id) => {
     dispatch(deleteBooking(id))
     setOpen(true)
+  }
+
+  const status = useSelector(state => state.bookings.status)
+  if (status === 'Loading') {
+    return (
+      <Loader />
+    )
   }
 
   return (

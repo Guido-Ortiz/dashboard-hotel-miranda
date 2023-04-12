@@ -8,6 +8,7 @@ import UpdateIcon from '@mui/icons-material/Update';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { Tooltip } from '@mui/material';
 import { filterRooms, getRooms } from '../../redux/features/roomsSlice';
+import Loader from '../Loader/Loader';
 
 const customStyles = {
   rows: {
@@ -33,7 +34,6 @@ const customStyles = {
 
 const Rooms = () => {
 
-
   const columns = [
     {
       name: "Image",
@@ -55,11 +55,11 @@ const Rooms = () => {
     {
       name: "Amenities",
       selector: (row) =>
-      <AmenitiesContainer>
+        <AmenitiesContainer>
           {
             row.amenities.map(e =>
               <AmenitiesChip>{e}</AmenitiesChip>
-              )}
+            )}
         </AmenitiesContainer>
       ,
       width: '20%'
@@ -74,7 +74,7 @@ const Rooms = () => {
       name: "% Offer",
       selector: (row) => <Price>
         ${row.price - (row.discount * row.price / 100)}<span>/Night</span>
-        </Price>,
+      </Price>,
       sortable: true,
       width: '15%'
     },
@@ -93,15 +93,15 @@ const Rooms = () => {
       width: '10%'
     }
   ]
-  
+
   const data = useSelector(state => state.rooms.rooms.data)
-  
+
   const dispatch = useDispatch()
-  
+
   const handleRowClicked = (row) => {
     console.log(row.id)
   }
-  
+
   useEffect(() => {
     // dispatch(getRooms())
     dispatch(getRooms())
@@ -109,17 +109,17 @@ const Rooms = () => {
 
   const handleFilterRooms = (filter) => {
     // dispatch(filterRooms(filter))
-    if(filter === 'all'){
+    if (filter === 'all') {
       setAll(true)
       setAvailable(false)
       setBooked(false)
     }
-    if(filter === 'available'){
+    if (filter === 'available') {
       setAll(false)
       setAvailable(true)
       setBooked(false)
     }
-    if(filter === 'booked'){
+    if (filter === 'booked') {
       setAll(false)
       setAvailable(false)
       setBooked(true)
@@ -134,6 +134,13 @@ const Rooms = () => {
   const [all, setAll] = useState(true)
   const [available, setAvailable] = useState(false)
   const [booked, setBooked] = useState(false)
+
+  const status = useSelector(state => state.rooms.status)
+  if (status === 'Loading') {
+    return (
+      <Loader />
+    )
+  }
 
   return (
     <>

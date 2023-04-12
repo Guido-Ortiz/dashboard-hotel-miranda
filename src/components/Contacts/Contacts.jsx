@@ -8,6 +8,7 @@ import Swiper from '../Swiper/Swiper';
 import { SwiperContainer, TableContactsContainer, customStyles, InfoColumn, Customer, Comment } from './ContactsStyles';
 import { Rating, Tooltip } from '@mui/material';
 import { getReviews } from '../../redux/features/reviewsSlice';
+import Loader from '../Loader/Loader';
 
 const Contact = () => {
 
@@ -77,11 +78,11 @@ const Contact = () => {
 
   const handleFilterContacts = (filter) => {
     // dispatch(filterContacts(filter))
-    if(filter === 'all') {
+    if (filter === 'all') {
       setAll(true)
       setArchive(false)
-    } 
-    if(filter === 'archived') {
+    }
+    if (filter === 'archived') {
       setAll(false)
       setArchive(true)
     }
@@ -94,17 +95,23 @@ const Contact = () => {
   const [all, setAll] = useState(true)
   const [archive, setArchive] = useState(false)
 
+  const status = useSelector(state => state.reviews.status)
+  if (status === 'Loading') {
+    return (
+      <Loader />
+    )
+  }
+
   return (
     <>
-
       <SwiperContainer>
-        <Swiper />
+        <Swiper data={data} />
       </SwiperContainer>
 
       <TopMenu>
         <div>
-          <ButtonTabsAll value='all' onClick={() => handleFilterContacts('all')} all={all} archive={archive}>All Contacts</ButtonTabsAll> 
-          <ButtonTabsArchive onClick={() => handleFilterContacts('archived')} all={all} archive={archive}>Archived</ButtonTabsArchive> 
+          <ButtonTabsAll value='all' onClick={() => handleFilterContacts('all')} all={all} archive={archive}>All Contacts</ButtonTabsAll>
+          <ButtonTabsArchive onClick={() => handleFilterContacts('archived')} all={all} archive={archive}>Archived</ButtonTabsArchive>
         </div>
       </TopMenu>
 

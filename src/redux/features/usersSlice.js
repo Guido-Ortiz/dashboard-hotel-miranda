@@ -60,7 +60,6 @@ export const usersSlice = createSlice({
                 state.status = 'Loading'
             })
             .addCase(getUsers.fulfilled, (state, action) => {
-
                 state.status = 'Fullfilled'
                 state.users = action.payload
                 state.allUsers = action.payload
@@ -69,18 +68,24 @@ export const usersSlice = createSlice({
                 state.status = 'Error'
             })
 
-        builder
+            // builder
+            .addCase(deleteUser.pending, (state) => {
+                state.status = 'Loading'
+            })
             .addCase(deleteUser.fulfilled, (state, action) => {
                 state.status = 'Fullfilled'
                 state.users = state.users.data.filter(e => e._id !== action.payload)
                 state.allUsers = state.allUsers.data.filter(e => e._id !== action.payload)
             })
 
-        builder
+            // builder
+            .addCase(postUser.pending, (state) => {
+                state.status = 'Loading'
+            })
             .addCase(postUser.fulfilled, (state, action) => {
                 state.status = 'Fullfilled'
-                state.users.data.push(action.payload)
-                state.allUsers.data.push(action.payload)
+                state.users.push(action.payload)
+                state.allUsers.push(action.payload)
             })
     }
 })

@@ -17,13 +17,13 @@ export default async function apiFetch({ url, method, body = undefined }) {
         referrerPolicy: "no-referrer"
       }
       const res = await fetch(`${domain}${url}`, options)
-      console.log(res)
-      if (res.status >= 400) {
-        console.log('Error 400')
-      }
-      if (res.status >= 500) {
-        console.log('Server error')
-      }
+      
+      // if (res.status >= 400) {
+      //   console.log('Error 400')
+      // }
+      // if (res.status >= 500) {
+      //   console.log('Server error')
+      // }
   
       const data = await res.json()
   

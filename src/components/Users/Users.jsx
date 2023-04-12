@@ -3,11 +3,12 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import DataTable from 'react-data-table-component';
 import { BtnTopMenu, TopMenu, ActionsContainer } from '../Bookings/BookingsStyles';
-import { UsersWrapper, UserTableWrapper, BtnAddEmployee, User, UserImage, UserData, EmployeeStatus, customStyles, modalStyle, BtnTabsAllUsers, BtnTabsActiveUsers, BtnTabsInactiveUsers } from './UsersStyles';
-import { Snackbar, Alert, CircularProgress, IconButton, Tooltip } from '@mui/material';
+import { UsersWrapper, UserTableWrapper, BtnAddEmployee, User, UserImage, UserData, EmployeeStatus, customStyles, BtnTabsAllUsers, BtnTabsActiveUsers, BtnTabsInactiveUsers } from './UsersStyles';
+import { Snackbar, Alert, IconButton, Tooltip } from '@mui/material';
 import UpdateIcon from '@mui/icons-material/Update';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { deleteUser, filterUsers, getUsers } from '../../redux/features/usersSlice';
+import Loader from '../Loader/Loader';
 
 const Users = () => {
 
@@ -33,7 +34,6 @@ const Users = () => {
     {
       name: "Contact",
       selector: (row) => <UserData>
-        {/* <h4>{row.username}</h4> */}
         <h5>{row.phone}</h5>
         <h5>{row.email}</h5>
       </UserData>,
@@ -60,23 +60,18 @@ const Users = () => {
     }
   ]
 
-  const [open, setOpen] = useState(false);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
-
   const dispatch = useDispatch()
 
   const users = useSelector(state => state.users.users.data)
 
-  useEffect(() => {
-    // if(users && users.length === 0){
-      dispatch(getUsers())
-    // }
-  }, [dispatch])
-
+  const [openAlert, setOpenAlert] = useState(false)
   const [all, setAll] = useState(true)
   const [active, setActive] = useState(false)
   const [inactive, setInactive] = useState(false)
+
+  useEffect(() => {
+    dispatch(getUsers())
+  }, [dispatch, openAlert])
 
   const handleFilterUser = (filter) => {
     if (filter === 'All') {
@@ -97,13 +92,10 @@ const Users = () => {
     dispatch(filterUsers(filter))
   }
 
-  const [openAlert, setOpenAlert] = useState(false)
-
   const handleDeleteUser = (id) => {
     dispatch(deleteUser(id))
     setOpenAlert(true)
   }
-
 
   const handleCloseAlert = (event, reason) => {
     if (reason === 'clickaway') {
@@ -113,11 +105,9 @@ const Users = () => {
   }
 
   const status = useSelector(state => state.users.status)
-  if(status === 'Loading') {
+  if (status === 'Loading') {
     return (
-      <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center', margin: '0 auto' }}>
-        <CircularProgress sx={{ color: '#E23428', marginTop: '200px' }} />
-      </div>
+      <Loader />
     )
   }
 
@@ -142,7 +132,7 @@ const Users = () => {
       </UserTableWrapper>
 
       <Snackbar open={openAlert} autoHideDuration={2000} onClose={handleCloseAlert} >
-        <Alert onClose={handleClose} severity="success" sx={{ width: '100%' }}>User deleted succesfully</Alert>
+        <Alert onClose={handleCloseAlert} severity="success" sx={{ width: '100%' }}>User deleted succesfully</Alert>
       </Snackbar>
 
     </UsersWrapper>
