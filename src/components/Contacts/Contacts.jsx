@@ -16,7 +16,7 @@ const Contact = () => {
       name: "Info",
       selector: row => <InfoColumn>
         <h3>{row.date}</h3>
-        <h4>#{row.id}</h4>
+        <h4>#{row._id}</h4>
       </InfoColumn>,
       sortable: true,
       width: '18%'
@@ -26,21 +26,21 @@ const Contact = () => {
       selector: row => <Customer>
         <h3>{row.name}</h3>
         <h4>{row.email}</h4>
-        <h4>{row.telephone}</h4>
+        <h4>{row.phone}</h4>
       </Customer>,
       sortable: true,
       width: '18%'
     },
     {
       name: "Issue",
-      selector: row => <h4>Issue</h4>,
+      selector: row => <h4>{row.issue}</h4>,
       width: '14%'
     },
     {
       name: "Comment",
       selector: (row) => <div>
-        <Rating name="half-rating-read" defaultValue={2.5} precision={0.5} readOnly sx={{ color: '#135846' }} />
-        <Comment>{row.review}</Comment>
+        <Rating name="half-rating-read" defaultValue={row.stars} precision={0.5} readOnly sx={{ color: '#135846' }} />
+        <Comment>{row.comment}</Comment>
       </div>,
       sortable: true,
       width: '36%', //400px
@@ -57,7 +57,7 @@ const Contact = () => {
 
   const dispatch = useDispatch()
 
-  const data = useSelector(state => state.reviews.reviews)
+  const data = useSelector(state => state.reviews.reviews.data)
   const archived = useSelector(state => state.reviews.archived)
 
   const handleRowClicked = (row) => {
@@ -94,9 +94,6 @@ const Contact = () => {
   const [all, setAll] = useState(true)
   const [archive, setArchive] = useState(false)
 
-  // console.log('ALL -> ', all)
-  // console.log('ARCHIVE -> ', archive)
-
   return (
     <>
 
@@ -106,11 +103,8 @@ const Contact = () => {
 
       <TopMenu>
         <div>
-          {/* { all === true ? <h3 value='all' onClick={() => handleFilterContacts('all')}>All Contacts</h3> : <h4 onClick={() => handleFilterContacts('all')}>All Contacts</h4> }
-          { !archive ? <h4 onClick={() => handleFilterContacts('archived')}>Archived</h4> : <h3 value='archived' onClick={() => handleFilterContacts('archived')}>Archived</h3> } */}
           <ButtonTabsAll value='all' onClick={() => handleFilterContacts('all')} all={all} archive={archive}>All Contacts</ButtonTabsAll> 
           <ButtonTabsArchive onClick={() => handleFilterContacts('archived')} all={all} archive={archive}>Archived</ButtonTabsArchive> 
-      
         </div>
       </TopMenu>
 

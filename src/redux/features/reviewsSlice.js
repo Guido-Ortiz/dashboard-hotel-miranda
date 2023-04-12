@@ -1,13 +1,16 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { getData } from '../../helpers/getData';
 import { reviews } from "../../data/reviews";
+import apiFetch from "../../helpers/apiFetch";
 
-export const getReviews = createAsyncThunk(
-    'reviews/getReviews',
-    async () => {
-        return await getData(reviews)
+export const getReviews = createAsyncThunk('reviews/getReviews', async () => {
+    const parameters = {
+        url: 'contacts',
+        method: 'GET'
     }
-)
+    const contacts = await apiFetch(parameters)
+    return contacts
+})
 
 // export const getUser = createAsyncThunk('user/getUser', async (id) => {
 //     return await id
@@ -16,7 +19,8 @@ export const getReviews = createAsyncThunk(
 const initialState = {
     reviews: [],
     allReviews: [],
-    review: null
+    review: null,
+    status: 'Loading'
 }
 
 export const reviewsSlice = createSlice({
@@ -29,12 +33,16 @@ export const reviewsSlice = createSlice({
     //  },
     extraReducers: (builder) => {
         builder
+        .addCase(getReviews.pending, (state) => {
+            state.status = 'Loading'
+        })
             .addCase(getReviews.fulfilled, (state, action) => {
+                state.status = 'Fullfilled'
                 state.reviews = action.payload
                 state.allReviews = action.payload
             })
-            .addCase(getReviews.rejected, () => {
-                console.log('Failed to load users')
+            .addCase(getReviews.rejected, (state) => {
+                state.status = 'Error'
             })
     }
 })

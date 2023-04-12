@@ -22,6 +22,8 @@ export const SliderItemWrapper = styled.div`
     border: 1px solid #135846;
     margin: 0 auto;
     margin-right: 10px;
+    height: 300px;
+    text-overflow: ellipsis;
 
     &:hover {
         cursor: pointer;
