@@ -46,7 +46,6 @@ const UsersForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    // dispatch(createUser(user))
     dispatch(postUser(user))
     navigate('/users')
   }

@@ -7,13 +7,17 @@ export default async function apiFetch({ url, method, body = undefined }) {
         method,
         body: body ? JSON.stringify(body) : undefined,
         mode: 'cors',
+        cache: "no-cache",
+        credentials: "same-origin",
         headers: {
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${AUTH_DATA !== null ? AUTH_DATA.token : ''}`,
         },
-      };
-      const res = await fetch(`${domain}${url}`, options);
-  
+        redirect: "follow",
+        referrerPolicy: "no-referrer"
+      }
+      const res = await fetch(`${domain}${url}`, options)
+      console.log(res)
       if (res.status >= 400) {
         console.log('Error 400')
       }
@@ -21,10 +25,10 @@ export default async function apiFetch({ url, method, body = undefined }) {
         console.log('Server error')
       }
   
-      const data = await res.json();
+      const data = await res.json()
   
-      return data;
+      return data
     } catch (err) {
-      return [];
+      return []
     }
   }

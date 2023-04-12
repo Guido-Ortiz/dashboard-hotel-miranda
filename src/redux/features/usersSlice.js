@@ -67,21 +67,20 @@ export const usersSlice = createSlice({
             })
             .addCase(getUsers.rejected, (state) => {
                 state.status = 'Error'
-                console.log('Failed to load users')
             })
 
         builder
             .addCase(deleteUser.fulfilled, (state, action) => {
                 state.status = 'Fullfilled'
-                state.users = state.users.filter(e => e._id !== action.payload)
-                state.allUsers = state.allUsers.filter(e => e._id !== action.payload)
+                state.users = state.users.data.filter(e => e._id !== action.payload)
+                state.allUsers = state.allUsers.data.filter(e => e._id !== action.payload)
             })
 
         builder
             .addCase(postUser.fulfilled, (state, action) => {
                 state.status = 'Fullfilled'
-                state.users.push(action.payload)
-                state.allUsers.push(action.payload)
+                state.users.data.push(action.payload)
+                state.allUsers.data.push(action.payload)
             })
     }
 })
