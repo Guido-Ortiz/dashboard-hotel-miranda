@@ -18,7 +18,7 @@ const Booking = () => {
   const dispatch = useDispatch()
 
   // const sidebar = useSelector(state => state.sidebar)
-  const detail = useSelector(state => state.bookings.booking.data)
+  const detail = useSelector(state => state.bookings.booking?.data)
   console.log(booking_id, detail)
   useEffect(() => {
     dispatch(getBooking(booking_id))
