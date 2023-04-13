@@ -70,7 +70,7 @@ const Users = () => {
   const [inactive, setInactive] = useState(false)
 
   useEffect(() => {
-    dispatch(getUsers())
+      dispatch(getUsers())
   }, [dispatch, openAlert])
 
   const handleFilterUser = (filter) => {

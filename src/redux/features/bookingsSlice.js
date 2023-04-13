@@ -1,6 +1,4 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { getData } from '../../helpers/getData';
-import { bookings } from "../../data/bookings";
 import apiFetch from "../../helpers/apiFetch";
 
 export const getBookings = createAsyncThunk('bookings/getBookings', async () => {
@@ -20,14 +18,13 @@ export const getBooking = createAsyncThunk('bookings/getBooking', async (id) => 
     return booking
 })
 
-export const deleteBooking = createAsyncThunk(
-    'booking/deleteBooking',
-    async (id) => {
-        const booking_to_delete = bookings.find(e => e.id === id)
-        const booking = await getData(booking_to_delete)
-        return booking
+export const deleteBooking = createAsyncThunk('booking/deleteBooking', async (id) => {
+    const parameters = {
+        url: `bookings/${id}`,
+        method: 'DELETE'
     }
-)
+    return await apiFetch(parameters)
+})
 
 const initialState = {
     bookings: [],
@@ -58,10 +55,7 @@ export const bookingsSlice = createSlice({
             state.bookings.data = filter
         },
         resetBooking: (state) => {
-            // return {
-                // ...state,
-                state.booking = null
-            // }
+            state.booking = null
         }
     },
     extraReducers: (builder) => {
@@ -90,9 +84,16 @@ export const bookingsSlice = createSlice({
                 state.status = 'Error'
             })
 
+            .addCase(deleteBooking.pending, (state) => {
+                state.status = 'Loading'
+            })
             .addCase(deleteBooking.fulfilled, (state, action) => {
                 state.status = 'Fullfilled'
-                state.bookings = state.bookings.map(e => e.id === action.payload.id ? action.payload : e)
+                state.bookings = state.bookings.data.filter(e => e._id !== action.payload)
+                state.allBookings = state.allBookings.data.filter(e => e._id !== action.payload)
+            })
+            .addCase(deleteBooking.rejected, (state) => {
+                state.status = 'Error'
             })
     }
 })

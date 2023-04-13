@@ -93,9 +93,13 @@ const Bookings = () => {
     progres: false
   })
 
+  const [open, setOpen] = useState(false)
+
   useEffect(() => {
+    // if(data && data.length === 0) {
     dispatch(getBookings())
-  }, [dispatch])
+    // }
+  }, [dispatch, open])
 
   const handleFilterBookings = (filter) => {
     if (filter === 'all') {
@@ -132,8 +136,8 @@ const Bookings = () => {
     }
     dispatch(filterBookings(filter))
   }
-
-  const [open, setOpen] = useState(false)
+  
+  
 
   const handleClose = (event, reason) => {
     if (reason === 'clickaway') {
@@ -173,8 +177,10 @@ const Bookings = () => {
         <DataTable columns={columns} data={data} defaultSortFieldId pagination={5} highlightOnHover customStyles={CustomTable} />
       </BookingTableContainer>
 
-      <Snackbar open={open} autoHideDuration={2000} onClose={handleClose} >
-        <Alert onClose={handleClose} severity="success" sx={{ width: '100%' }}>Booking deleted!</Alert>
+      <Snackbar open={open} autoHideDuration={4000} onClose={handleClose} >
+        <Alert onClose={handleClose} variant='filled' severity="success" sx={{ width: '100%' }}>
+          Booking deleted
+        </Alert>
       </Snackbar>
 
     </>

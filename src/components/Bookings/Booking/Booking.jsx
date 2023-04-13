@@ -19,14 +19,13 @@ const Booking = () => {
 
   // const sidebar = useSelector(state => state.sidebar)
   const detail = useSelector(state => state.bookings.booking?.data)
-  console.log(booking_id, detail)
+  
   useEffect(() => {
     dispatch(getBooking(booking_id))
     return () => dispatch(resetBooking())
   }, [dispatch, booking_id])
+  
 
-  // useEffect(() => {
-  // })
 
   const requests = ['Early Check-In', 'Late Check-Out', 'None']
 

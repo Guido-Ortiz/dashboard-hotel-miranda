@@ -73,7 +73,9 @@ const Contact = () => {
   }
 
   useEffect(() => {
-    dispatch(getReviews())
+    // if(data && data.length === 0) {
+      dispatch(getReviews())
+    // }
   }, [dispatch])
 
   const handleFilterContacts = (filter) => {

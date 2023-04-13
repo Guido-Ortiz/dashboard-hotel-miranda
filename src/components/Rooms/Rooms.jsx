@@ -103,8 +103,7 @@ const Rooms = () => {
   }
 
   useEffect(() => {
-    // dispatch(getRooms())
-    dispatch(getRooms())
+      dispatch(getRooms())
   }, [dispatch])
 
   const handleFilterRooms = (filter) => {
