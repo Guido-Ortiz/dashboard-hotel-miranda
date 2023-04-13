@@ -29,6 +29,16 @@ export const postUser = createAsyncThunk('users/postUser', async (newUser) => {
     return await apiFetch(parameters)
 })
 
+export const editUser = createAsyncThunk('users/editUser', async (user) => {
+    console.log(user)
+    const parameters = {
+        url: `users/${user.user_id}`,
+        method: 'PUT',
+        body: user.user
+    }
+    return await apiFetch(parameters)
+})
+
 const initialState = {
     users: [],
     allUsers: [],
@@ -86,6 +96,12 @@ export const usersSlice = createSlice({
                 state.status = 'Fullfilled'
                 state.users.push(action.payload)
                 state.allUsers.push(action.payload)
+            })
+
+            .addCase(editUser.fulfilled, (state, action) => {
+                // console.log(action.payload)
+                state.users.data = state.users.data.map(e => e._id === action.payload._id ? action.payload.updatedUser : e)
+                state.allUsers.data = state.allUsers.data.map(e => e._id === action.payload._id ? action.payload.updatedUser : e)
             })
     }
 })

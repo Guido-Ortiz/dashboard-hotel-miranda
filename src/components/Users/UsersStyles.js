@@ -34,6 +34,7 @@ export const UserTableWrapper = styled.div`
     // border: 1px solid red;
     margin: 0 auto;
     width: 90%;
+    margin-top: 30px;
 `;
 
 export const BtnAddEmployee = styled.button`

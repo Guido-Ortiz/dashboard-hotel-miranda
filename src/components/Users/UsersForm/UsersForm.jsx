@@ -3,39 +3,37 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router';
 import { FormText, InputWrapper, BtnSubmit, radio, label } from './UsersFormStyles';
 import { RadioGroup, FormControlLabel, FormControl, Radio } from '@mui/material'
-import { postUser } from '../../../redux/features/usersSlice';
+import { editUser, postUser } from '../../../redux/features/usersSlice';
+import AlertComponent from '../../Alert/Alert';
 
 const UsersForm = () => {
 
   const dispatch = useDispatch()
   const users = useSelector(state => state.users.users.data)
-
-  // const navigate = useNavigate()
-
+  console.log(users)
   const { user_id } = useParams()
-
-  const singleUser = users.filter(e => e._id === user_id)
+  const singleUser = users?.filter(e => e._id === user_id)
 
   const [user, setUser] = useState(!user_id ? {
     username: '',
     photo: '',
-    email: '',
+    email: '', 
     phone: '',
     start: '',
     description: '',
     userstatus: '',
     password: ''
   } : {
-    username: singleUser[0].name,
+    username: singleUser[0].username,
     photo: singleUser[0].photo,
     email: singleUser[0].email,
-    phone: '',
+    phone: singleUser[0].phone,
     start: singleUser[0].start,
     description: singleUser[0].description,
-    userstatus: singleUser[0].status,
-    password: ''
+    userstatus: singleUser[0].userstatus,
+    password: singleUser[0].password
   })
-
+  
   const handleChange = (e) => {
     setUser({
       ...user,
@@ -48,7 +46,16 @@ const UsersForm = () => {
     e.preventDefault()
     dispatch(postUser(user))
     // navigate('/users')
+    setOpen(true)
   }
+
+  const handleEdit = (e) => {
+    e.preventDefault()
+    dispatch(editUser({ user_id, user }))
+    setOpen(true)
+  }
+
+  const [open, setOpen] = useState(false)
 
   return (
     <>
@@ -85,12 +92,6 @@ const UsersForm = () => {
         </div>
         <div>
           <h4>Status</h4>
-          {/* <div>
-            <input type="radio" name='status' value="HTML" />
-            <h4 for="html">Active</h4>
-            <input type="radio" name='status' value="CSS" />
-            <h4 for="css">Inactive</h4>
-          </div> */}
           <FormControl sx={{ height: '30px' }} onChange={e => handleChange(e)}>
             <RadioGroup row aria-labelledby="demo-row-radio-buttons-group-label" name="row-radio-buttons-group" defaultValue="active">
               <div>
@@ -111,7 +112,13 @@ const UsersForm = () => {
         </div>
 
       </InputWrapper>
-      <BtnSubmit onClick={(e) => handleSubmit(e)}>Add Employee</BtnSubmit>
+      {
+        user_id 
+          ? <BtnSubmit onClick={(e) => handleEdit(e)}>Update</BtnSubmit>
+          : <BtnSubmit onClick={(e) => handleSubmit(e)}>Add Employee</BtnSubmit>
+      }
+
+      <AlertComponent open={open} setOpen={setOpen} text='User updated' />
 
     </>
   )
