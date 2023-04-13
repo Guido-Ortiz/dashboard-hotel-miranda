@@ -9,17 +9,16 @@ export const getBookings = createAsyncThunk('bookings/getBookings', async () => 
         method: 'GET'
     }
     return await apiFetch(parameters)
-}
-)
+})
 
-export const getBooking = createAsyncThunk(
-    'booking/getBooking',
-    async (id) => {
-        const single_booking = bookings.find(e => e.id === id)
-        const booking = await getData(single_booking)
-        return booking
+export const getBooking = createAsyncThunk('bookings/getBooking', async (id) => {
+    const parameters = {
+        url: `bookings/${id}`,
+        method: 'GET'
     }
-)
+    const booking = await apiFetch(parameters)
+    return booking
+})
 
 export const deleteBooking = createAsyncThunk(
     'booking/deleteBooking',
@@ -57,6 +56,12 @@ export const bookingsSlice = createSlice({
                 }
             }
             state.bookings.data = filter
+        },
+        resetBooking: (state) => {
+            // return {
+                // ...state,
+                state.booking = null
+            // }
         }
     },
     extraReducers: (builder) => {
@@ -92,6 +97,6 @@ export const bookingsSlice = createSlice({
     }
 })
 
-export const { filterBookings } = bookingsSlice.actions
+export const { filterBookings, resetBooking } = bookingsSlice.actions
 
 export default bookingsSlice.reducer

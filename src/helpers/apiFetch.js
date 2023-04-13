@@ -1,6 +1,6 @@
 const domain = 'http://localhost:3001/'
 
-export default async function apiFetch({ url, method, body = undefined }) {
+export default async function apiFetch({ url, method, body }) {
     try {
       const AUTH_DATA = JSON.parse(localStorage.getItem('admin'));
       const options = {
@@ -16,19 +16,14 @@ export default async function apiFetch({ url, method, body = undefined }) {
         redirect: "follow",
         referrerPolicy: "no-referrer"
       }
-      const res = await fetch(`${domain}${url}`, options)
       
-      // if (res.status >= 400) {
-      //   console.log('Error 400')
-      // }
-      // if (res.status >= 500) {
-      //   console.log('Server error')
-      // }
+      const res = await fetch(`${domain}${url}`, options)
   
-      const data = await res.json()
-  
+      const data = res.json()
+
       return data
-    } catch (err) {
-      return []
+
+    } catch (e) {
+      console.log(e)
     }
   }

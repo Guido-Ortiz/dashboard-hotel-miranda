@@ -71,10 +71,10 @@ const Bookings = () => {
     {
       name: "Actions",
       selector: (row) => <ActionsContainer>
-        <Link to={`/bookings/${row.id}`}><UpdateIcon sx={{ marginRight: '10px' }} /></Link>
+        <Link to={`/bookings/${row._id}`}><UpdateIcon sx={{ marginRight: '10px' }} /></Link>
         <Tooltip title='Delete Booking'>
           <IconButton>
-            <DeleteIcon onClick={() => handleDeleteBooking(row.id)} />
+            <DeleteIcon onClick={() => handleDeleteBooking(row._id)} />
           </IconButton>
         </Tooltip>
       </ActionsContainer>,

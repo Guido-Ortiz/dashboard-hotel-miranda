@@ -4,23 +4,29 @@ import guest from '../../../resources/p1.jpg';
 import { useDispatch, useSelector } from 'react-redux';
 import { Email, Phone } from '@mui/icons-material';
 import { useParams } from 'react-router';
-// import { editBooking, getBookingDetail } from '../../../redux/actions/actions';
+
 
 import { Modal } from '@mui/material';
 import BookingSlider from './BookingSlider/BookingSlider';
+import { getBooking, resetBooking } from '../../../redux/features/bookingsSlice';
+import Loader from '../../Loader/Loader';
 
 const Booking = () => {
 
   const { booking_id } = useParams()
-
+  
   const dispatch = useDispatch()
 
-  const sidebar = useSelector(state => state.sidebar)
-  // const detail = useSelector(state => state.bookings.detail)
-
+  // const sidebar = useSelector(state => state.sidebar)
+  const detail = useSelector(state => state.bookings.booking.data)
+  console.log(booking_id, detail)
   useEffect(() => {
-    // dispatch(getBookingDetail(booking_id))
+    dispatch(getBooking(booking_id))
+    return () => dispatch(resetBooking())
   }, [dispatch, booking_id])
+
+  // useEffect(() => {
+  // })
 
   const requests = ['Early Check-In', 'Late Check-Out', 'None']
 
@@ -50,25 +56,29 @@ const Booking = () => {
     number: ''
   })
 
+  if(!detail) {
+    return <Loader />
+  }
+
   return (
     <>
-      {/* <BookingDetail /> */}
-      <DetailWrapper sidebar={sidebar}>
+
+      <DetailWrapper>
 
         <div>
           <GuestWrapper>
             <img src={guest} alt='Guest' />
             <GuestData>
-              <h2>Guest</h2>
-              <h4>#123456</h4>
+              <h2>{detail?.customer_name}</h2>
+              <h4>{detail._id}</h4>
               <GuestContact>
                 <div>
                   <Phone />
-                  <h3>Phone</h3>
+                  <h3>{detail.customer_phone}</h3>
                 </div>
                 <div>
                   <Email />
-                  <h3>E-mail</h3>
+                  <h3>{detail.customer_email}</h3>
                 </div>
                 <BtnEdit onClick={handleOpen}>Edit Booking</BtnEdit>
 
@@ -79,18 +89,18 @@ const Booking = () => {
           <CheckWapper>
             <div>
               <h5>Check-In</h5>
-              <h4>October 30th, 2020 | 08:23AM</h4>
+              <h4>{detail.checkin}</h4>
             </div>
             <div>
-              <h5>Check-In</h5>
-              <h4>October 30th, 2020 | 08:23AM</h4>
+              <h5>Check-Out</h5>
+              <h4>{detail.checkout}</h4>
             </div>
           </CheckWapper>
 
           <RoomInfoWrapper>
             <div>
-              <h5>Room info</h5>
-              <h2>Deluxe Z - 002424</h2>
+              <h5>Room Info</h5>
+              <h2>{detail.room_type} - {detail.number}</h2>
             </div>
             <div>
               <h5>Price</h5>
@@ -114,7 +124,7 @@ const Booking = () => {
 
         <RoomWrapper>
           <BookingSlider />
-          <h2>Bed Room</h2>
+          <h2>{detail.room_type}</h2>
           <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores nostrum quos itaque dignissimos? At culpa soluta deleniti quibusdam officiis similique recusandae officia expedita quam est eligendi aspernatur, sit, impedit perferendis.</p>
         </RoomWrapper>
 
@@ -191,7 +201,7 @@ const Booking = () => {
                 </select>
               </InputEditWrapper>
 
-            <BtnEdit onClick={handleEdit} modal='modal' >Edit Booking</BtnEdit>
+              <BtnEdit onClick={handleEdit} modal='modal' >Edit Booking</BtnEdit>
             </div>
 
 
