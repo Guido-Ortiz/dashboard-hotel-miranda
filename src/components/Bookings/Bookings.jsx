@@ -83,8 +83,9 @@ const Bookings = () => {
   ]
 
   const dispatch = useDispatch()
-
+  
   const data = useSelector(state => state.bookings.bookings.data)
+  const status = useSelector(state => state.bookings.status)
 
   const [active, setActive] = useState({
     all: true,
@@ -96,7 +97,7 @@ const Bookings = () => {
   const [open, setOpen] = useState(false)
 
   useEffect(() => {
-    // if(data && data.length === 0) {
+    // if(status === 'idle') {
     dispatch(getBookings())
     // }
   }, [dispatch, open])
@@ -136,8 +137,6 @@ const Bookings = () => {
     }
     dispatch(filterBookings(filter))
   }
-  
-  
 
   const handleClose = (event, reason) => {
     if (reason === 'clickaway') {
@@ -151,7 +150,6 @@ const Bookings = () => {
     setOpen(true)
   }
 
-  const status = useSelector(state => state.bookings.status)
   if (status === 'Loading') {
     return (
       <Loader />

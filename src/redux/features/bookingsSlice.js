@@ -39,7 +39,7 @@ const initialState = {
     bookings: [],
     allBookings: [],
     booking: null,
-    status: 'Loading'
+    status: 'idle'
 }
 
 export const bookingsSlice = createSlice({

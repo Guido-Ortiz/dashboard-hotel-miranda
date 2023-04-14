@@ -26,7 +26,7 @@ const Booking = () => {
     return () => dispatch(resetBooking())
   }, [dispatch, booking_id])
 
-
+  
 
   const requests = ['Early Check-In', 'Late Check-Out', 'None']
 
@@ -67,6 +67,10 @@ const Booking = () => {
     photo: detail?.photo,
     status: detail?.status,
   })
+
+  // useEffect(() => {
+  //   dispatch(getBooking(booking_id))
+  // }, [handleEdit, booking_id])
 
   if (!detail) {
     return <Loader />

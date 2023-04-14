@@ -64,7 +64,7 @@ const Dashboard = () => {
     {
       name: "Actions",
       selector: (row) => <ActionsContainer>
-        <Link to={`/bookings/${row.id}`}>
+        <Link to={`/bookings/${row._id}`}>
           <Tooltip title='Update Booking'>
             <UpdateIcon sx={{ marginRight: '10px' }} />
           </Tooltip>

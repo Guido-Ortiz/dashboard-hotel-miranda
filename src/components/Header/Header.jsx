@@ -1,6 +1,6 @@
 import React from 'react';
-import { useNavigate } from 'react-router';
-import { useDispatch } from 'react-redux';
+// import { useNavigate } from 'react-router';
+// import { useDispatch } from 'react-redux';
 import { HeaderWrapper, IconsContainer } from './HeaderStyles';
 import { Tooltip } from '@mui/material';
 import MenuOpenIcon from '@mui/icons-material/MenuOpen';
@@ -10,33 +10,23 @@ import LogoutIcon from '@mui/icons-material/Logout';
 import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone';
 import { useUser } from '../../context/userContext';
 import { LOGOUT } from '../../context/constants';
-import useLogout from '../../helpers/useLogout';
+// import useLogout from '../../helpers/useLogout';
 
 const Header = ({ location, sidebar, setSidebar }) => {
 
-  const dispatchAction = useDispatch()
-
   const { dispatch } = useUser()
-
-  const navigate = useNavigate()
-
-  // const handleLogout = () => {
-  //   dispatch({
-  //     type: LOGOUT
-  //   })
-  //   navigate('/login')
-  // }
-
-  const { logout } = useLogout()
 
   const handleLogout = () => {
     dispatch({
       type: LOGOUT
     })
+
+    // REMOVE TOKEN
+    localStorage.removeItem('admin')
+
   }
 
   const handleToggle = () => {
-    // dispatchAction(toggleSidebar())
     setSidebar(prev => !prev)
   }
 
