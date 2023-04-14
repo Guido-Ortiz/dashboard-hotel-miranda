@@ -8,23 +8,24 @@ import { useParams } from 'react-router';
 
 import { Modal } from '@mui/material';
 import BookingSlider from './BookingSlider/BookingSlider';
-import { getBooking, resetBooking } from '../../../redux/features/bookingsSlice';
+import { editBooking, getBooking, resetBooking } from '../../../redux/features/bookingsSlice';
 import Loader from '../../Loader/Loader';
+import AlertComponent from '../../Alert/Alert';
 
 const Booking = () => {
 
   const { booking_id } = useParams()
-  
+
   const dispatch = useDispatch()
 
   // const sidebar = useSelector(state => state.sidebar)
   const detail = useSelector(state => state.bookings.booking?.data)
-  
+
   useEffect(() => {
     dispatch(getBooking(booking_id))
     return () => dispatch(resetBooking())
   }, [dispatch, booking_id])
-  
+
 
 
   const requests = ['Early Check-In', 'Late Check-Out', 'None']
@@ -35,9 +36,12 @@ const Booking = () => {
 
   const handleClose = () => setOpen(false)
 
-  const handleEdit = () => {
-    // dispatch(editBooking({ booking_id, newBooking }))
+  const handleEdit = (e) => {
+    e.preventDefault()
+    dispatch(editBooking({ booking_id, newBooking }))
+    console.log(newBooking)
     setOpen(false)
+    setOpenAlert(true)
   }
 
   const handleChange = e => {
@@ -48,14 +52,23 @@ const Booking = () => {
   }
 
   const [open, setOpen] = useState(false)
+  const [openAlert, setOpenAlert] = useState(false)
 
   const [newBooking, setNewBooking] = useState({
-    name: '',
-    status: '',
-    number: ''
+    customer_name: detail?.customer_name,
+    customer_email: detail?.customer_email,
+    customer_phone: detail?.customer_phone,
+    order: detail?.order,
+    checkin: detail?.checkin,
+    checkout: detail?.checkout,
+    request: detail?.request,
+    room_type: detail?.room_type,
+    number: detail?.number,
+    photo: detail?.photo,
+    status: detail?.status,
   })
 
-  if(!detail) {
+  if (!detail) {
     return <Loader />
   }
 
@@ -137,32 +150,32 @@ const Booking = () => {
             <div>
               <InputEditWrapper>
                 <h4>Full Name</h4>
-                <InputEdit type="text" placeholder='Guest name' value={newBooking.name} name='name' onChange={e => handleChange(e)} />
+                <InputEdit type="text" placeholder='Guest name' value={newBooking.customer_name} name='customer_name' onChange={e => handleChange(e)} />
               </InputEditWrapper>
               <InputEditWrapper>
                 <h4>E-mail</h4>
-                <InputEdit type="text" placeholder='email' />
+                <InputEdit type="text" name='customer_email' value={newBooking.customer_email} placeholder='email' onChange={e => handleChange(e)} />
               </InputEditWrapper>
               <InputEditWrapper>
                 <h4>Phone</h4>
-                <InputEdit type="text" placeholder='Phone' />
+                <InputEdit type="text" name='customer_phone' value={newBooking.customer_phone} placeholder='Phone' onChange={e => handleChange(e)} />
               </InputEditWrapper>
               <InputEditWrapper>
                 <h4>Order</h4>
-                <InputEdit type="date" />
+                <InputEdit type="date" name='order' value={newBooking.order} onChange={e => handleChange(e)} />
               </InputEditWrapper>
               <InputEditWrapper>
                 <h4>Check-In</h4>
-                <InputEdit type="date" />
+                <InputEdit type="date" name='checkin' value={newBooking.checkin} onChange={e => handleChange(e)} />
               </InputEditWrapper>
               <InputEditWrapper>
                 <h4>Check-Out</h4>
-                <InputEdit type="date" />
+                <InputEdit type="date" name='checkout' value={newBooking.checkout} onChange={e => handleChange(e)} />
               </InputEditWrapper>
               <InputEditWrapper>
                 <h4>Special Request</h4>
-                <select>
-                  {/* <option value="a">Please select request</option> */}
+                <select name='request' value={newBooking.request} onChange={e => handleChange(e)}>
+                <option value="">Please select a special request</option>
                   {
                     requests.map(e => {
                       return (
@@ -175,39 +188,42 @@ const Booking = () => {
               </InputEditWrapper>
               <InputEditWrapper>
                 <h4>Room Type</h4>
-                <select>
-                  {/* <option value="">Select a room type</option> */}
-                  <option value="single">Single Bed</option>
-                  <option value="double">Double Bed</option>
-                  <option value="sup">Double Superior</option>
-                  <option value="suite">Suite</option>
+                <select name='room_type' value={newBooking.room_type} onChange={e => handleChange(e)}>
+                <option value="">Please select room type</option>
+                  <option value="Single Bed">Single Bed</option>
+                  <option value="Double Bed">Double Bed</option>
+                  <option value="Double Superior">Double Superior</option>
+                  <option value="Suite">Suite</option>
                 </select>
               </InputEditWrapper>
               <InputEditWrapper>
                 <h4>Room Number</h4>
-                <InputEdit type="number" />
+                <InputEdit type="number" name='number' value={newBooking.number} onChange={e => handleChange(e)} />
               </InputEditWrapper>
               <InputEditWrapper>
                 <h4>Photo</h4>
-                <InputEdit type="text" />
+                <InputEdit type="text" name='photo' value={newBooking.photo} onChange={e => handleChange(e)} />
               </InputEditWrapper>
               <InputEditWrapper>
                 <h4>Status</h4>
-                <select>
-                  <option value="">In Progress</option>
-                  <option value="">Checking-In</option>
-                  <option value="">Checking-Out</option>
+                <select name='status' value={newBooking.status} onChange={e => handleChange(e)}>
+                <option value="">Please select status</option>
+                  <option value="In Progress">In Progress</option>
+                  <option value="Checking-In">Checking-In</option>
+                  <option value="Checking Out">Checking-Out</option>
                 </select>
               </InputEditWrapper>
 
-              <BtnEdit onClick={handleEdit} modal='modal' >Edit Booking</BtnEdit>
+              <BtnEdit onClick={(e) => handleEdit(e)} modal='modal' >Edit Booking</BtnEdit>
             </div>
-
 
           </BoxEdit>
         </Modal>
 
       </DetailWrapper>
+
+      <AlertComponent open={openAlert} setOpen={setOpenAlert} text='Booking updated' />
+
     </>
   )
 }

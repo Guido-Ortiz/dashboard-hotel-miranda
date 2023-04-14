@@ -18,10 +18,19 @@ export const getBooking = createAsyncThunk('bookings/getBooking', async (id) => 
     return booking
 })
 
-export const deleteBooking = createAsyncThunk('booking/deleteBooking', async (id) => {
+export const deleteBooking = createAsyncThunk('bookings/deleteBooking', async (id) => {
     const parameters = {
         url: `bookings/${id}`,
         method: 'DELETE'
+    }
+    return await apiFetch(parameters)
+})
+
+export const editBooking = createAsyncThunk('bookings/editBooking', async (booking) => {
+    const parameters = {
+        url: `bookings/${booking.booking_id}`,
+        method: 'PUT',
+        body: booking.newBooking
     }
     return await apiFetch(parameters)
 })
@@ -94,6 +103,12 @@ export const bookingsSlice = createSlice({
             })
             .addCase(deleteBooking.rejected, (state) => {
                 state.status = 'Error'
+            })
+
+            .addCase(editBooking.fulfilled, (state, action) => {
+                // console.log(action.payload)
+                state.bookings.data = state.bookings.data.map(e => e._id === action.payload._id ? action.payload.data : e)
+                state.allBookings.data = state.allBookings.data.map(e => e._id === action.payload._id ? action.payload.data : e)
             })
     }
 })
