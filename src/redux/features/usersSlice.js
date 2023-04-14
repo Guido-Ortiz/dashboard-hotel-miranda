@@ -78,7 +78,7 @@ export const usersSlice = createSlice({
                 state.status = 'Error'
             })
 
-            // builder
+    
             .addCase(deleteUser.pending, (state) => {
                 state.status = 'Loading'
             })
@@ -88,7 +88,7 @@ export const usersSlice = createSlice({
                 // state.allUsers = state.allUsers.data.filter(e => e._id !== action.payload)
             })
 
-            // builder
+            
             .addCase(postUser.pending, (state) => {
                 state.status = 'Loading'
             })

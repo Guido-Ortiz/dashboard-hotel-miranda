@@ -18,15 +18,15 @@ const Booking = () => {
 
   const dispatch = useDispatch()
 
-  // const sidebar = useSelector(state => state.sidebar)
   const detail = useSelector(state => state.bookings.booking?.data)
+  const status = useSelector(state => state.bookings.status)
 
   useEffect(() => {
+    // if(status === 'idle') {
     dispatch(getBooking(booking_id))
+    // }
     return () => dispatch(resetBooking())
   }, [dispatch, booking_id])
-
-  
 
   const requests = ['Early Check-In', 'Late Check-Out', 'None']
 
@@ -39,7 +39,6 @@ const Booking = () => {
   const handleEdit = (e) => {
     e.preventDefault()
     dispatch(editBooking({ booking_id, newBooking }))
-    console.log(newBooking)
     setOpen(false)
     setOpenAlert(true)
   }
@@ -68,17 +67,12 @@ const Booking = () => {
     status: detail?.status,
   })
 
-  // useEffect(() => {
-  //   dispatch(getBooking(booking_id))
-  // }, [handleEdit, booking_id])
-
   if (!detail) {
     return <Loader />
   }
 
   return (
     <>
-
       <DetailWrapper>
 
         <div>
@@ -179,7 +173,7 @@ const Booking = () => {
               <InputEditWrapper>
                 <h4>Special Request</h4>
                 <select name='request' value={newBooking.request} onChange={e => handleChange(e)}>
-                <option value="">Please select a special request</option>
+                  <option value="">Please select a special request</option>
                   {
                     requests.map(e => {
                       return (
@@ -193,7 +187,7 @@ const Booking = () => {
               <InputEditWrapper>
                 <h4>Room Type</h4>
                 <select name='room_type' value={newBooking.room_type} onChange={e => handleChange(e)}>
-                <option value="">Please select room type</option>
+                  <option value="">Please select room type</option>
                   <option value="Single Bed">Single Bed</option>
                   <option value="Double Bed">Double Bed</option>
                   <option value="Double Superior">Double Superior</option>
@@ -211,7 +205,7 @@ const Booking = () => {
               <InputEditWrapper>
                 <h4>Status</h4>
                 <select name='status' value={newBooking.status} onChange={e => handleChange(e)}>
-                <option value="">Please select status</option>
+                  <option value="">Please select status</option>
                   <option value="In Progress">In Progress</option>
                   <option value="Checking-In">Checking-In</option>
                   <option value="Checking Out">Checking-Out</option>

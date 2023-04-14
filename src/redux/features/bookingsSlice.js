@@ -97,18 +97,14 @@ export const bookingsSlice = createSlice({
                 state.status = 'Loading'
             })
             .addCase(deleteBooking.fulfilled, (state, action) => {
-                state.status = 'Fullfilled'
-                state.bookings = state.bookings.data.filter(e => e._id !== action.payload)
-                state.allBookings = state.allBookings.data.filter(e => e._id !== action.payload)
+                state.status = 'idle'
             })
             .addCase(deleteBooking.rejected, (state) => {
                 state.status = 'Error'
             })
 
             .addCase(editBooking.fulfilled, (state, action) => {
-                // console.log(action.payload)
-                state.bookings.data = state.bookings.data.map(e => e._id === action.payload._id ? action.payload.data : e)
-                state.allBookings.data = state.allBookings.data.map(e => e._id === action.payload._id ? action.payload.data : e)
+                state.status = 'idle'
             })
     }
 })

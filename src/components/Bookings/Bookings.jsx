@@ -97,10 +97,10 @@ const Bookings = () => {
   const [open, setOpen] = useState(false)
 
   useEffect(() => {
-    // if(status === 'idle') {
+    if(status === 'idle') {
     dispatch(getBookings())
-    // }
-  }, [dispatch, open])
+    }
+  }, [dispatch, status])
 
   const handleFilterBookings = (filter) => {
     if (filter === 'all') {
