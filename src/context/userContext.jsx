@@ -9,46 +9,12 @@ export const useUser = () => {
 
 const initialState = (localStorage.getItem('admin')) || { logged: false, email: '', token: '' } 
 
-// const reducer = (state, action)=> {
-
-//     switch(action.type){
-//         case LOGIN:
-//             return {
-
-//                 // ...state,
-//                 logged: true,
-//                 admin: action.payload,
-
-//             }
-//         case EDIT_USERNAME:
-//             return {
-//                 ...state,
-//                 username: action.value
-//             }
-//         case EDIT_EMAIL:
-//             return {
-//                 ...state,
-//                 email: action.value
-//             }
-//         case LOGOUT:
-//             return{
-//                 logged: false,
-//                 admin: null
-//             }
-
-//         default:
-//             return state
-//     }
-// }
-
 const reducer = (state, action) => {
 
     switch (action.type) {
         case LOGIN:
             localStorage.setItem('admin', JSON.stringify(action.value))
             return {
-
-                // ...state,
                 logged: true,
                 email: action.value.email,
                 token: action.value.token

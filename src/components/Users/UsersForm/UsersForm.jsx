@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router';
+import { useNavigate, useParams } from 'react-router';
 import { FormText, InputWrapper, BtnSubmit, radio, label } from './UsersFormStyles';
 import { RadioGroup, FormControlLabel, FormControl, Radio } from '@mui/material'
 import { editUser, postUser } from '../../../redux/features/usersSlice';
@@ -42,11 +42,13 @@ const UsersForm = () => {
 
   }
 
+  const navigate = useNavigate()
+
   const handleSubmit = (e) => {
     e.preventDefault()
     dispatch(postUser(user))
-    // navigate('/users')
     setOpen(true)
+    navigate('/users')
   }
 
   const handleEdit = (e) => {

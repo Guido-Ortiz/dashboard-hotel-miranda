@@ -63,6 +63,7 @@ const Users = () => {
   const dispatch = useDispatch()
 
   const users = useSelector(state => state.users.users.data)
+  const status = useSelector(state => state.users.status)
 
   const [openAlert, setOpenAlert] = useState(false)
   const [all, setAll] = useState(true)
@@ -70,8 +71,11 @@ const Users = () => {
   const [inactive, setInactive] = useState(false)
 
   useEffect(() => {
-      dispatch(getUsers())
-  }, [dispatch, openAlert])
+      // dispatch(getUsers())
+      if(status === 'idle'){
+        dispatch(getUsers())
+      }
+  }, [dispatch, status])
 
   const handleFilterUser = (filter) => {
     if (filter === 'All') {
@@ -104,7 +108,7 @@ const Users = () => {
     setOpenAlert(false);
   }
 
-  const status = useSelector(state => state.users.status)
+  // const status = useSelector(state => state.users.status)
   if (status === 'Loading') {
     return (
       <Loader />
