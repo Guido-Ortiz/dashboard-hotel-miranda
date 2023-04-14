@@ -10,7 +10,6 @@ const UsersForm = () => {
 
   const dispatch = useDispatch()
   const users = useSelector(state => state.users.users.data)
-  console.log(users)
   const { user_id } = useParams()
   const singleUser = users?.filter(e => e._id === user_id)
 
@@ -55,6 +54,7 @@ const UsersForm = () => {
     e.preventDefault()
     dispatch(editUser({ user_id, user }))
     setOpen(true)
+    navigate('/users')
   }
 
   const [open, setOpen] = useState(false)

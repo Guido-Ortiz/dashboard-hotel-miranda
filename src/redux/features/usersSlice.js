@@ -99,9 +99,9 @@ export const usersSlice = createSlice({
             })
 
             .addCase(editUser.fulfilled, (state, action) => {
-                // console.log(action.payload)
-                state.users.data = state.users.data.map(e => e._id === action.payload._id ? action.payload.updatedUser : e)
-                state.allUsers.data = state.allUsers.data.map(e => e._id === action.payload._id ? action.payload.updatedUser : e)
+                // state.users.data = state.users.data.map(e => e._id === action.payload._id ? action.payload.updatedUser : e)
+                // state.allUsers.data = state.allUsers.data.map(e => e._id === action.payload._id ? action.payload.updatedUser : e)
+                state.status = 'idle'
             })
     }
 })

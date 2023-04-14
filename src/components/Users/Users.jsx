@@ -49,7 +49,11 @@ const Users = () => {
     {
       name: "Actions",
       selector: (row) => <ActionsContainer>
-        <Link to={`/users/${row._id}`}><UpdateIcon sx={{ marginRight: '10px' }} /></Link>
+        <Tooltip title='Edit User'>
+          <IconButton>
+            <Link to={`/users/${row._id}`}><UpdateIcon sx={{ marginRight: '10px' }} /></Link>
+          </IconButton>
+        </Tooltip>
         <Tooltip title='Delete User'>
           <IconButton onClick={() => handleDeleteUser(row._id)}>
             <DeleteIcon />
