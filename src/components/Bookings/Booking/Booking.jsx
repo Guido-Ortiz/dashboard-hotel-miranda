@@ -3,7 +3,7 @@ import { BoxEdit, BtnEdit, CheckWapper, DetailWrapper, FacilitiesWrapper, Facili
 import guest from '../../../resources/p1.jpg';
 import { useDispatch, useSelector } from 'react-redux';
 import { Email, Phone } from '@mui/icons-material';
-import { useParams } from 'react-router';
+import { useNavigate, useParams } from 'react-router';
 
 
 import { Modal } from '@mui/material';
@@ -11,6 +11,7 @@ import BookingSlider from './BookingSlider/BookingSlider';
 import { editBooking, getBooking, resetBooking } from '../../../redux/features/bookingsSlice';
 import Loader from '../../Loader/Loader';
 import AlertComponent from '../../Alert/Alert';
+import { Link } from 'react-router-dom';
 
 const Booking = () => {
 
@@ -21,12 +22,20 @@ const Booking = () => {
   const detail = useSelector(state => state.bookings.booking?.data)
   const status = useSelector(state => state.bookings.status)
 
+  const navigate = useNavigate()
+
   useEffect(() => {
-    // if(status === 'idle') {
     dispatch(getBooking(booking_id))
+
+
+    // if (status === 'idle') {
+    //   dispatch(getBooking(booking_id))
     // }
-    return () => dispatch(resetBooking())
+    // if (status !== 'idle') {
+    //   dispatch(resetBooking())
+    // }
   }, [dispatch, booking_id])
+  // }, [dispatch, status])
 
   const requests = ['Early Check-In', 'Late Check-Out', 'None']
 
@@ -41,6 +50,7 @@ const Booking = () => {
     dispatch(editBooking({ booking_id, newBooking }))
     setOpen(false)
     setOpenAlert(true)
+    navigate('/bookings')
   }
 
   const handleChange = e => {
@@ -90,7 +100,9 @@ const Booking = () => {
                   <Email />
                   <h3>{detail.customer_email}</h3>
                 </div>
+                {/* <Link to='/bookings/add'> */}
                 <BtnEdit onClick={handleOpen}>Edit Booking</BtnEdit>
+                {/* </Link> */}
 
               </GuestContact>
             </GuestData>

@@ -65,6 +65,7 @@ export const bookingsSlice = createSlice({
         },
         resetBooking: (state) => {
             state.booking = null
+            state.status = 'idle'
         }
     },
     extraReducers: (builder) => {
@@ -79,8 +80,8 @@ export const bookingsSlice = createSlice({
             })
             .addCase(getBookings.rejected, (state) => {
                 state.status = 'Error'
-                console.log('Failed to load bookings')
             })
+
 
             .addCase(getBooking.pending, (state) => {
                 state.status = 'Loading'
@@ -93,6 +94,7 @@ export const bookingsSlice = createSlice({
                 state.status = 'Error'
             })
 
+            
             .addCase(deleteBooking.pending, (state) => {
                 state.status = 'Loading'
             })

@@ -1,6 +1,5 @@
 import { React, useState } from 'react';
 import './App.css';
-import { useSelector } from 'react-redux';
 import { Route, Routes, useLocation } from 'react-router-dom';
 import Booking from './components/Bookings/Booking/Booking';
 import Bookings from './components/Bookings/Bookings';
@@ -15,6 +14,7 @@ import Topbar from './components/Topbar/Topbar';
 import Users from './components/Users/Users';
 import UsersForm from './components/Users/UsersForm/UsersForm';
 import ProtectedRoutes from './services/ProtectedRoutes';
+import BookingsForm from './components/Bookings/BookingsForm/BookingsForm';
 
 function App() {
 
@@ -26,8 +26,8 @@ function App() {
     <div>
 
       <Topbar location={location.pathname} sidebar={sidebar} setSidebar={setSidebar} />
+
       <DashboardWrapper>
-        {/* {sidebar && <Sidebar location={location.pathname} sidebar={sidebar} />} */}
         <Sidebar location={location.pathname} sidebar={sidebar} setSidebar={setSidebar} />
 
         <RightContainer sidebar={sidebar}>
@@ -42,6 +42,7 @@ function App() {
 
               <Route path='bookings'>
                 <Route path='' element={<Bookings />} />
+                <Route path='add' element={<BookingsForm />} />
                 <Route path=':booking_id' element={<Booking />} />
               </Route>
 
