@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
-import { Chip } from '@mui/material';
-import { useDispatch } from 'react-redux';
+// import { Chip } from '@mui/material';
+// import { useDispatch } from 'react-redux';
 // import { createRoom } from '../../../redux/actions/actions';
 import { BtnSubmit, FormText, InputWrapper } from '../../Users/UsersForm/UsersFormStyles';
-import { StyledChip, chipStyle, ChipsContainer } from './RoomsFormStyles';
-import { AmenitiesChip } from '../RoomsStyles';
+import { StyledChip, ChipsContainer } from './RoomsFormStyles';
+// import { AmenitiesChip } from '../RoomsStyles';
 
 const RoomsForm = () => {
 
-    const dispatch = useDispatch()
+    // const dispatch = useDispatch()
     const amenities = ['Wi-Fi', 'TV', 'Towels', 'AC', 'Parking']
     const cancelation = ['If cancelled up to 48 hours before arrival no fee will be charged', 'If cancelled less than 48 hours before arrival 100% of the first night will be charged', 'If you are a no-show, 100% of the first night will be charged']
     const [room, setRoom] = useState({

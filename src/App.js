@@ -1,6 +1,6 @@
 import { React, useState } from 'react';
 import './App.css';
-import { useSelector } from 'react-redux';
+// import { useSelector } from 'react-redux';
 import { Route, Routes, useLocation } from 'react-router-dom';
 import Booking from './components/Bookings/Booking/Booking';
 import Bookings from './components/Bookings/Bookings';

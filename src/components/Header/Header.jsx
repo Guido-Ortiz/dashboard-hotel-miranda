@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router';
-import { useDispatch } from 'react-redux';
+// import { useDispatch } from 'react-redux';
 import { HeaderWrapper, IconsContainer } from './HeaderStyles';
 import { Tooltip } from '@mui/material';
 import MenuOpenIcon from '@mui/icons-material/MenuOpen';
@@ -13,7 +13,7 @@ import { LOGOUT } from '../../context/constants';
 
 const Header = ({ location, sidebar, setSidebar }) => {
 
-  const dispatchAction = useDispatch()
+  // const dispatchAction = useDispatch()
 
   const { dispatch } = useUser()
 

@@ -126,8 +126,8 @@ font-weight: 700;
 padding: 0.5rem 1.25rem;
 font-family: 'poppins', sans-serif;
 // margin-right: 2px;
-color: ${props => props.all == true ? '#135846' : '#6E6E6E'};
-border-bottom: ${props => props.all == true ? '2px solid #135846' : '1px solid #6E6E6E'};
+color: ${props => props.all ? '#135846' : '#6E6E6E'};
+border-bottom: ${props => props.all ? '2px solid #135846' : '1px solid #6E6E6E'};
     
 &:hover {
     cursor: pointer;
@@ -142,8 +142,8 @@ font-weight: 700;
 padding: 0.5rem 1.25rem;
 font-family: 'poppins', sans-serif;
 // margin-right: 2px;
-color: ${props => props.active == true ? '#135846' : '#6E6E6E'};
-border-bottom: ${props => props.active == true ? '2px solid #135846' : '1px solid #6E6E6E'};
+color: ${props => props.active ? '#135846' : '#6E6E6E'};
+border-bottom: ${props => props.active ? '2px solid #135846' : '1px solid #6E6E6E'};
     
 &:hover {
     cursor: pointer;
@@ -158,8 +158,8 @@ font-weight: 700;
 padding: 0.5rem 1.25rem;
 font-family: 'poppins', sans-serif;
 // margin-right: 2px;
-color: ${props => props.inactive == true ? '#135846' : '#6E6E6E'};
-border-bottom: ${props => props.inactive == true ? '2px solid #135846' : '1px solid #6E6E6E'};
+color: ${props => props.inactive ? '#135846' : '#6E6E6E'};
+border-bottom: ${props => props.inactive ? '2px solid #135846' : '1px solid #6E6E6E'};
     
 &:hover {
     cursor: pointer;

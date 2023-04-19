@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { useParams } from 'react-router';
 // import { createUser } from '../../../redux/actions/actions';
 import { FormText, InputWrapper, BtnSubmit, radio, label } from './UsersFormStyles';
@@ -7,12 +7,14 @@ import { RadioGroup, FormControlLabel, FormControl, Radio } from '@mui/material'
 
 const UsersForm = () => {
 
-  const dispatch = useDispatch()
+  // const dispatch = useDispatch()
   const users = useSelector(state => state.users.users)
 
   const { user_id } = useParams()
 
+  
   const singleUser = users.filter(e => e.id == user_id)
+  console.log(user_id)
 
   const [user, setUser] = useState(!user_id ? {
     photo: '',
