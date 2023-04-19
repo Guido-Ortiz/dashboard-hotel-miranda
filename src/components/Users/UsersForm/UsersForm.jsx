@@ -12,9 +12,16 @@ const UsersForm = () => {
 
   const { user_id } = useParams()
 
+  const id = parseInt(user_id)
+  if(!user_id){
+    const id = ''
+    console.log(id)
+  } 
+  // else {
+  // } 
   
-  const singleUser = users.filter(e => e.id == user_id)
-  console.log(user_id)
+  const singleUser = users.filter(e => e.id === id)
+  console.log(typeof(user_id))
 
   const [user, setUser] = useState(!user_id ? {
     photo: '',
